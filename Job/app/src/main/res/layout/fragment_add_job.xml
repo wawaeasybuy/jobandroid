@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.mardin.job.activities.AddJobActivityFragment">
+
+    <!--<TextView android:text="@string/hello_world" android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <TextView
+        android:id="@+id/textJobName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/jobName"
+        android:textAppearance="@android:style/TextAppearance.Medium"/>
+
+    <EditText
+        android:id="@+id/jobNameET"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@+id/textJobName"
+        android:layout_alignBottom="@+id/textJobName"
+        />
+
+    <TextView
+        android:id="@+id/textDistrict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textJobName"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textJobName"
+        android:text="@string/district"
+        android:textAppearance="@android:style/TextAppearance.Medium"/>
+
+    <EditText
+        android:id="@+id/districtET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textDistrict"
+        android:layout_alignLeft="@+id/jobNameET"
+        android:layout_alignRight="@+id/jobNameET"
+        />
+
+    <TextView
+        android:id="@+id/textCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textDistrict"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textDistrict"
+        android:text="@string/company"
+        android:textAppearance="@android:style/TextAppearance.Medium"/>
+
+    <EditText
+        android:id="@+id/companyET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textCompany"
+        android:layout_alignLeft="@+id/districtET"
+        android:layout_alignRight="@+id/districtET"
+        />
+
+
+
+</RelativeLayout>

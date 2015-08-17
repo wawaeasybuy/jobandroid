@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/jobcompanyinfo"
+                style="@style/detailheader"
+                />
+            <View
+                android:id="@+id/tvDivider"
+                android:layout_below="@+id/tvHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/rowone"
+                android:layout_alignLeft="@+id/tvDivider"
+                android:layout_below="@+id/tvDivider"
+                style="@style/detaillinear">
+                <RelativeLayout
+                    style="@style/detailrelative">
+                    <TextView
+                        android:id="@+id/tagCompany"
+                        style="@style/detailtag"
+                        android:text="@string/jobcompanyname"
+                        />
+                    <TextView
+                        android:id="@+id/tvJobCompany"
+                        style="@style/detailContent"
+                        android:layout_alignLeft="@+id/tagCompany"
+                        android:layout_below="@+id/tagCompany"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/detailrelative">
+                    <TextView
+                        android:id="@+id/tagHeadquarter"
+                        style="@style/detailtag"
+                        android:text="@string/jobheadquarter"
+                        />
+                    <TextView
+                        android:id="@+id/tvHeaderquarter"
+                        style="@style/detailContent"
+                        android:layout_alignLeft="@+id/tagHeadquarter"
+                        android:layout_below="@+id/tagHeadquarter"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowtwo"
+                android:layout_alignLeft="@+id/tvDivider"
+                android:layout_below="@+id/rowone"
+                style="@style/detaillinear">
+                <RelativeLayout
+                    style="@style/detailrelative">
+                    <TextView
+                        android:id="@+id/tagSize"
+                        style="@style/detailtag"
+                        android:text="@string/jobsize"
+                        />
+                    <TextView
+                        android:id="@+id/tvSize"
+                        style="@style/detailContent"
+                        android:layout_alignLeft="@+id/tagSize"
+                        android:layout_below="@+id/tagSize"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/detailrelative">
+                    <TextView
+                        android:id="@+id/tagFounded"
+                        style="@style/detailtag"
+                        android:text="@string/jobfounded"
+                        />
+                    <TextView
+                        android:id="@+id/tvFounded"
+                        style="@style/detailContent"
+                        android:layout_alignLeft="@+id/tagFounded"
+                        android:layout_below="@+id/tagFounded"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowthird"
+                android:layout_alignLeft="@+id/tvDivider"
+                android:layout_below="@+id/rowtwo"
+                style="@style/detaillinear">
+                <RelativeLayout
+                    style="@style/detailrelative">
+                    <TextView
+                        android:id="@+id/tagRevenue"
+                        style="@style/detailtag"
+                        android:text="@string/jobrevenue"
+                        />
+                    <TextView
+                        android:id="@+id/tvRevenue"
+                        style="@style/detailContent"
+                        android:layout_alignLeft="@+id/tagRevenue"
+                        android:layout_below="@+id/tagRevenue"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/detailrelative">
+                    <TextView
+                        android:id="@+id/tagType"
+                        style="@style/detailtag"
+                        android:text="@string/jobtype"
+                        />
+                    <TextView
+                        android:id="@+id/tvType"
+                        style="@style/detailContent"
+                        android:layout_alignLeft="@+id/tagType"
+                        android:layout_below="@+id/tagType"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

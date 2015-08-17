@@ -1,0 +1,93 @@
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.mardin.job.widgets.wizard.ui.UpdateEmployerFragment">-->
+
+    <!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+    <!--<TextView android:layout_width="match_parent" android:layout_height="match_parent"-->
+        <!--android:text="@string/hello_blank_fragment" />-->
+
+<!--</FrameLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer">
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/companyname" />
+
+            <EditText android:id="@+id/companyNameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:inputType="textCapWords"
+                android:hint="@string/hint_company"
+                android:layout_marginBottom="16dp" />
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/address" />
+
+            <EditText android:id="@+id/addressET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:hint="@string/hint_address" />
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/contact" />
+
+            <EditText android:id="@+id/contactET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false" />
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/jobsize" />
+
+            <EditText android:id="@+id/sizeET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:hint="@string/hint_size" />
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/jobtype" />
+
+            <EditText android:id="@+id/typeET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:hint="@string/hint_type" />
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/jobrevenue" />
+
+            <EditText android:id="@+id/revenueET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:hint="@string/hint_revenue" />
+
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/website" />
+
+            <EditText android:id="@+id/websiteET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:hint="@string/hint_weblink" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

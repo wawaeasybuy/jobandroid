@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvJobCompany"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                style="@style/detailContent"
+                />
+            <TextView
+                android:id="@+id/tvDistrict"
+                android:layout_alignLeft="@+id/tvJobCompany"
+                android:layout_below="@+id/tvJobCompany"
+                style="@style/detailContent"
+                />
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tvJobCompany"
+                android:layout_alignParentRight="true"
+                />
+
+            <View
+                android:id="@+id/tvDivider"
+                android:layout_below="@+id/tvDistrict"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnsave"
+                style="@style/detailbtn"
+                android:text="@string/save"
+                android:layout_below="@+id/tvDivider"
+                android:layout_alignLeft="@+id/tvDivider"
+                />
+
+            <Button
+                android:id="@+id/btnLink"
+                style="@style/detailbtn"
+                android:text="@string/linkbtn"
+                android:layout_below="@+id/tvDivider"
+                android:layout_toRightOf="@+id/btnsave"
+                android:layout_alignBottom="@+id/btnsave"
+                />
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
