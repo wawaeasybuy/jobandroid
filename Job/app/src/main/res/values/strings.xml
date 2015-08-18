@@ -3,6 +3,7 @@
 
     <string name="title_section1">Job</string>
     <string name="title_section2">Me</string>
+    <string name="title_section3">Topic</string>
     <!--<string name="title_section3">Section 3</string>-->
 
 
@@ -106,4 +107,21 @@
     <string name="title_activity_web">WebActivity</string>
     <string name="title_activity_register_employee">RegisterEmployeeActivity</string>
     <string name="title_activity_reg_employer">RegEmployerActivity</string>
+
+    <string name="recommendTopic">为你推荐的话题</string>
+    <string name="recommendedTopic">化妆品销售</string>
+    <string name="recommendedTopic1">化妆品销售</string>
+    <string name="search_topic">搜索你感兴趣的话题</string>
+    <string name="addTopic">增加话题</string>
+    <string name="jobMarket">职场</string>
+    <string name="edit">编辑</string>
+    <string name="topic">话题</string>
+    <string name="myTopic">我的话题</string>
+    <string name="myTopic1">化妆品销售</string>
+    <string name="myTopic2">化妆品销售</string>
+    <string name="hotTopic">热门话题</string>
+    <string name="hotTopic1">韩束怎么做微商</string>
+    <string name="hotTopic2">韩束怎么做微商</string>
+    <string name="hotTopic3">韩束怎么做微商</string>
+
 </resources>

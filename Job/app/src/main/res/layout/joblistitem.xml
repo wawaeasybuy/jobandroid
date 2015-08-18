@@ -8,20 +8,23 @@
         android:layout_height="wrap_content"
         >
 
-        <ImageView android:id="@+id/ivIcon"
+        <ImageView
+            android:id="@+id/ivIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:scaleType="fitXY"
             android:layout_alignParentLeft="true" />
 
-        <RelativeLayout android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/ivIcon"
             android:layout_centerVertical="true" >
 
             <!-- the title view -->
-            <TextView android:id="@+id/tvTitle"
+            <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Medium" />
