@@ -12,7 +12,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
             android:paddingStart="5dp"
+            android:paddingEnd="305dp"
+
             android:clickable="true"
             android:src="@drawable/turn_left"
             android:id="@+id/turn_left"
@@ -31,21 +35,23 @@
             android:id="@+id/topic"
             android:layout_gravity="center"
             android:layout_width="0dp"
+            style="@style/text_title"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="@string/topic"
-            android:textColor="#ffffff"
             android:textSize="20sp"/>
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:clickable="true"
             android:textSize="15sp"
             android:gravity="center"
             android:text="@string/edit"
             android:textColor="#ffffff"
-            android:paddingEnd="5dp"/>
+
+            android:paddingLeft="305dp"
+            android:paddingRight="5dp" />
 
     </LinearLayout>
 
@@ -58,12 +64,14 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/myTopic"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/myTopic"
             android:textSize="14sp"/>
 
@@ -78,14 +86,16 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/myTopic1"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:text="@string/myTopic1"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <ImageView
             android:background="#EAEAEA"
@@ -94,8 +104,10 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/myTopic2"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:layout_width="0dp"
@@ -114,11 +126,13 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/hotTopic"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="@string/hotTopic"
             android:textSize="14sp"/>
@@ -134,11 +148,13 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/hotTopic1"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:text="@string/hotTopic1"
             android:textSize="14sp"/>
@@ -150,8 +166,10 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/hotTopic2"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:layout_width="0dp"
@@ -166,8 +184,10 @@
 
         <TextView
 
+            android:paddingLeft="5dp"
+            android:paddingRight="305dp"
+
             android:id="@+id/hotTopic3"
-            android:paddingStart="5dp"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:layout_width="0dp"

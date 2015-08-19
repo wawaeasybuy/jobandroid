@@ -26,6 +26,7 @@ import com.mardin.job.activities.LoginActivity;
 import com.mardin.job.fragments.JobListFragment;
 import com.mardin.job.fragments.MeFragment;
 import com.mardin.job.fragments.SettingFragment;
+import com.mardin.job.fragments.zhiwei.TopicFragment;
 import com.mardin.job.network.Constants;
 
 
@@ -44,6 +45,7 @@ public class MainActivity extends ActionBarActivity
     private JobListFragment mJobListFragment;
     private SettingFragment mSettingFragment;
     private MeFragment mMeFragment;
+    private TopicFragment topicFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,16 @@ public class MainActivity extends ActionBarActivity
                 }else {
                     mMeFragment = new MeFragment();
                     fragment = mMeFragment;
+                }
+//                fragment = SettingFragment.newInstance("setting","fragment");
+
+                break;
+            case 2:
+                if (topicFragment != null) {
+                    fragment = topicFragment;
+                }else {
+                    topicFragment = new TopicFragment();
+                    fragment =topicFragment;
                 }
 //                fragment = SettingFragment.newInstance("setting","fragment");
 
