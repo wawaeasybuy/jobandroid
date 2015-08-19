@@ -4,6 +4,7 @@
     <string name="title_section1">Job</string>
     <string name="title_section2">Me</string>
     <string name="title_section3">Topic</string>
+    <string name="title_section4">Home</string>
     <!--<string name="title_section3">Section 3</string>-->
 
 
@@ -115,6 +116,7 @@
     <string name="addTopic">增加话题</string>
     <string name="jobMarket">职场</string>
     <string name="edit">编辑</string>
+    <string name="finished">完成</string>
     <string name="topic">话题</string>
     <string name="myTopic">我的话题</string>
     <string name="myTopic1">化妆品销售</string>

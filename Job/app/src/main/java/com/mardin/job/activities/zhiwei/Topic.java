@@ -29,23 +29,7 @@ public class Topic extends Activity {
         });
     }
 
-   /* private String Topic
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.joblistitem);
-
-        String title_section3= (String) findViewById(R.string.title_section3);
-
-        title_section3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-    */
 
 }
 

@@ -9,24 +9,20 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <ImageView
             android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-            android:paddingStart="5dp"
-            android:paddingEnd="305dp"
-
             android:clickable="true"
             android:src="@drawable/turn_left"
             android:id="@+id/turn_left"
-            android:layout_width="35dp"
-            android:layout_height="35dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:gravity="center"
             android:text="@string/jobMarket"
             android:textColor="#ffffff" />
@@ -34,7 +30,7 @@
         <TextView
             android:id="@+id/topic"
             android:layout_gravity="center"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             style="@style/text_title"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -45,55 +41,49 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:clickable="true"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:gravity="center"
             android:text="@string/edit"
             android:textColor="#ffffff"
-
-            android:paddingLeft="305dp"
             android:paddingRight="5dp" />
 
     </LinearLayout>
 
     <!-- myTopic -->
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/myTopic"
             android:layout_gravity="center"
+            android:gravity="center_vertical"
             android:textColor="#000000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:text="@string/myTopic"
             android:textSize="14sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="#ffffff">
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/myTopic1"
+            android:gravity="center_vertical"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:text="@string/myTopic1"
             android:textSize="14sp" />
 
@@ -104,14 +94,13 @@
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/myTopic2"
+            android:gravity="center_vertical"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
             android:text="@string/myTopic2"
             android:textSize="14sp"/>
 
@@ -119,43 +108,39 @@
 
     <!-- hotTopic-->
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/hotTopic"
+            android:gravity="center_vertical"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="30dp"
             android:text="@string/hotTopic"
             android:textSize="14sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="#ffffff">
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/hotTopic1"
+            android:gravity="center_vertical"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
             android:text="@string/hotTopic1"
             android:textSize="14sp"/>
 
@@ -166,14 +151,13 @@
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/hotTopic2"
+            android:gravity="center_vertical"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
             android:text="@string/hotTopic2"
             android:textSize="14sp"/>
 
@@ -184,14 +168,13 @@
 
         <TextView
 
-            android:paddingLeft="5dp"
-            android:paddingRight="305dp"
-
+            android:paddingLeft="10dp"
             android:id="@+id/hotTopic3"
+            android:gravity="center_vertical"
             android:layout_gravity="center"
             android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
             android:text="@string/hotTopic3"
             android:textSize="14sp"/>
 

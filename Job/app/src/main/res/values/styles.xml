@@ -97,7 +97,7 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:background">#0070ee</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">40.0dip</item>
+        <item name="android:layout_height">50.0dp</item>
     </style>
 
     <style name="text_title">
