@@ -8,13 +8,13 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="50dp">
 
         <TextView
             android:id="@+id/addTopicL"
             android:layout_gravity="center"
             android:textColor="#ffffff"
+            style="@style/text_title"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="@string/addTopic"
@@ -24,11 +24,8 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
 
@@ -36,51 +33,51 @@
             android:id="@+id/search_topic"
             android:layout_width="match_parent"
             android:text=""
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="@string/search_topic"
-            android:textSize="14sp"
-            android:inputType="textMultiLine"/>
-
+            android:textSize="13sp"
+            android:inputType="textMultiLine"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
+        android:layout_height="wrap_content">
 
         <TextView
 
             android:id="@+id/recommendTopic"
-            android:paddingStart="5dp"
+            android:paddingLeft="10dp"
             android:layout_gravity="center"
+            android:gravity="center_vertical"
             android:textColor="#E0E0E0"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:text="@string/recommendTopic"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="#ffffff">
 
         <TextView
 
             android:id="@+id/recommendedTopic1"
-            android:paddingStart="5dp"
+            android:paddingLeft="10dp"
             android:layout_gravity="center"
+            android:gravity="center_vertical"
             android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:text="@string/recommendedTopic"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
         <ImageView
             android:background="#EAEAEA"
@@ -90,13 +87,14 @@
         <TextView
 
             android:id="@+id/recommendedTopic2"
-            android:paddingStart="5dp"
+            android:paddingLeft="10dp"
             android:layout_gravity="center"
+            android:gravity="center_vertical"
             android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:text="@string/recommendedTopic1"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 

@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    style="@style/header"
+    android:layout_height="50dp">
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/topic"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        style="@style/text_title"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="@string/jobMarket"
+        android:textSize="20sp"/>
+
+   <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/edit"
+        android:clickable="true"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/edit"
+        android:textColor="#ffffff"
+        android:paddingRight="5dp" /> -->
+
+    <ImageView
+        android:paddingRight="10dp"
+        android:clickable="true"
+        android:src="@drawable/white_add"
+        android:id="@+id/home_header_add"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:paddingRight="5dp"
+        android:clickable="true"
+        android:src="@drawable/search"
+        android:id="@+id/home_header_search"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+
+
 
 </LinearLayout>

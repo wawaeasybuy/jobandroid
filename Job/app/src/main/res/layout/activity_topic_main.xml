@@ -40,6 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
+            android:id="@+id/edit"
             android:clickable="true"
             android:textSize="16sp"
             android:gravity="center"
@@ -65,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="@string/myTopic"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 
@@ -85,7 +86,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/myTopic1"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:background="#EAEAEA"
@@ -102,7 +103,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/myTopic2"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 
@@ -122,7 +123,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 
@@ -142,7 +143,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic1"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
         <ImageView
             android:background="#EAEAEA"
@@ -159,7 +160,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic2"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
         <ImageView
             android:background="#EAEAEA"
@@ -176,7 +177,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic3"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 

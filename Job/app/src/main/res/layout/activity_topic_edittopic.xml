@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="@string/myTopic"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 
@@ -75,52 +75,106 @@
         android:layout_height="wrap_content"
         android:background="#ffffff">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            android:paddingLeft="10dp"
-            android:id="@+id/myTopic1"
-            android:gravity="center_vertical"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:text="@string/myTopic1"
-            android:textSize="14sp" />
+            <TextView
+
+                android:paddingLeft="10dp"
+                android:id="@+id/myTopic1"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/myTopic1"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/myTopic1Delete1"
+                android:src="@drawable/delete"
+                android:paddingRight="10dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:clickable="true"/>
+
+        </LinearLayout>
+
 
         <ImageView
             android:background="#EAEAEA"
             android:layout_width="match_parent"
             android:layout_height="0.5dp" />
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            android:paddingLeft="10dp"
-            android:id="@+id/myTopic2"
-            android:gravity="center_vertical"
-            android:layout_gravity="center"
-            android:textColor="#000000"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:text="@string/myTopic2"
-            android:textSize="14sp"/>
+            <TextView
+
+                android:paddingLeft="10dp"
+                android:id="@+id/myTopic2"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/myTopic2"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/myTopic1Delete2"
+                android:src="@drawable/delete"
+                android:paddingRight="10dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:clickable="true"/>
+
+        </LinearLayout>
+
 
         <ImageView
             android:background="#EAEAEA"
             android:layout_width="match_parent"
             android:layout_height="0.5dp" />
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            android:paddingLeft="10dp"
-            android:id="@+id/addTopicB"
-            android:gravity="center_vertical"
-            android:layout_gravity="center"
-            android:textColor="#0070ee"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:text="@string/addTopic"
-            android:textSize="14sp"
-            android:drawableLeft="@drawable/add" />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/addTopic"
+                android:src="@drawable/add"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:clickable="true"/>
+
+            <TextView
+
+                android:paddingLeft="10dp"
+                android:id="@+id/addTopicB"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:textColor="#0070ee"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:text="@string/addTopic"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
@@ -140,7 +194,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 
@@ -160,7 +214,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic1"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
         <ImageView
             android:background="#EAEAEA"
@@ -177,7 +231,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic2"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
         <ImageView
             android:background="#EAEAEA"
@@ -194,7 +248,7 @@
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:text="@string/hotTopic3"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 

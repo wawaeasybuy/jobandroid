@@ -64,6 +64,10 @@
             android:name=".activities.RegEmployerActivity"
             android:label="@string/title_activity_reg_employer" >
         </activity>
+        <activity
+            android:name=".activities.zhiwei.EditTopic_Edit"
+            android:label="@string/title_activity_reg_employer" >
+        </activity>
     </application>
 
 </manifest>
