@@ -108,7 +108,7 @@
     <string name="title_activity_web">WebActivity</string>
     <string name="title_activity_register_employee">RegisterEmployeeActivity</string>
     <string name="title_activity_reg_employer">RegEmployerActivity</string>
-
+<!--  Topic  -->
     <string name="recommendTopic">为你推荐的话题</string>
     <string name="recommendedTopic">化妆品销售</string>
     <string name="recommendedTopic1">化妆品销售</string>
@@ -126,4 +126,22 @@
     <string name="hotTopic2">韩束怎么做微商</string>
     <string name="hotTopic3">韩束怎么做微商</string>
 
+    <!-- Home -->
+    <string name="personal">个人</string>
+    <string name="position">职位</string>
+    <string name="home_classify">化妆品销售</string>
+    <string name="home_time1">刚刚提问</string>
+    <string name="home_time2">2小时前回答</string>
+    <string name="home_answer_number1">0个人回答了</string>
+    <string name="home_answer_number2">20个人回答了</string>
+    <string name="home_question_title">怎么样做好化妆品销售呢？</string>
+    <string name="home_question_content">我是一个销售菜鸟，对化妆品销售感兴趣。想请教一下如何在微信朋友圈和微博这些社交平台展开营销呢？...</string>
+    <string name="home_viewMore">查看更多</string>
+    <string name="home_answerButton1">回答</string>
+    <string name="home_answerButton2">赞|20</string>
+    <string name="home_interest1">不感兴趣</string>
+    <string name="home_interest2">没有帮助</string>
+    <string name="home_follow">关注</string>
+    <string name="home_follow_number1">3</string>
+    <string name="home_apostrophe">...</string>
 </resources>
