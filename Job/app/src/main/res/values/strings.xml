@@ -144,6 +144,8 @@
     <string name="home_follow">关注</string>
     <string name="home_follow_number1">3</string>
     <string name="home_apostrophe">...</string>
+    <string name="jobMaket_searchContent">搜索你感兴趣的内容</string>
+    <string name="search">搜索</string>
 
     <!-- topicDetail -->
     <string name="topicDetail">话题详情</string>
@@ -152,5 +154,16 @@
     <string name="followers">关注|399</string>
     <string name="topicDataDetail">根据《中华人民共和国产品质量法》、《中华人民共和国标准化法》、《中华人民共和国工业产品生产许可证管理条例》、《国务院关于加强食品等产品安全监督管理的特别规定》等法律法规，制定本规定。</string>
     <string name="topicDetail_ID">陈海鸥，聚美某品西一欧</string>
+    <string name="topicAbout1">汽车销售</string>
+    <string name="topicAbout2">房地产销售</string>
+
+    <!-- question -->
+    <string name="question">问题</string>
+    <string name="question_requestToAnswer">邀请回答</string>
+    <string name="answerTheQuestion">回答该问题</string>
+    <string name="question_ID">陈海鸥</string>
+    <string name="question_ID_detail">聚美某品西一欧</string>
+    <string name="question_comment">评论</string>
+    <string name="question_comment_number">9</string>
 
 </resources>

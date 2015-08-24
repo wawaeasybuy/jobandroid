@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header-->
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:paddingLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/turn_left"
+            android:id="@+id/turn_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@string/jobMarket"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/search"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            style="@style/text_title"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/search"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@string/finished"
+            android:textColor="#0070ee"
+            android:paddingRight="5dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:textColorHint="#E0E0E0"
+        android:id="@+id/jobMaket_searchContent"
+        android:layout_width="match_parent"
+        android:text=""
+        android:drawableLeft="@drawable/search1"
+        android:layout_height="wrap_content"
+        android:hint="@string/jobMaket_searchContent"
+        android:textSize="13sp"
+        android:inputType="textMultiLine"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
