@@ -85,11 +85,6 @@
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"/>
-            <!--android:paddingLeft="10dp"
-                android:paddingRight="5dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="10dp"
-                 -->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_follow_number1"
                 style="@style/home_follow_number"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:layout_width="30dp"
@@ -157,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_time2"
                 style="@style/home_time"
+                android:layout_weight="1"
                 android:layout_marginLeft="10dp"/>
 
             <TextView
@@ -164,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_answer_number2"
                 style="@style/home_answer_number"
-                android:layout_marginRight="10dp"/>
+                android:paddingRight="10dp"/>
 
         </LinearLayout>
 
@@ -221,7 +218,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_interest2"
                 style="@style/home_interest"
-                android:paddingLeft="20dp"/>
+                android:paddingLeft="20dp"
+                android:layout_weight="1"/>
 
             <!--
             <TextView

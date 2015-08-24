@@ -144,4 +144,13 @@
     <string name="home_follow">关注</string>
     <string name="home_follow_number1">3</string>
     <string name="home_apostrophe">...</string>
+
+    <!-- topicDetail -->
+    <string name="topicDetail">话题详情</string>
+    <string name="topicData">话题资料</string>
+    <string name="topicAbout">相关话题</string>
+    <string name="followers">关注|399</string>
+    <string name="topicDataDetail">根据《中华人民共和国产品质量法》、《中华人民共和国标准化法》、《中华人民共和国工业产品生产许可证管理条例》、《国务院关于加强食品等产品安全监督管理的特别规定》等法律法规，制定本规定。</string>
+    <string name="topicDetail_ID">陈海鸥，聚美某品西一欧</string>
+
 </resources>

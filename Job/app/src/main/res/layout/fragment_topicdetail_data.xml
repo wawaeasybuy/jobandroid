@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/dataTitle"
+            android:text="@string/home_classify"
+            style="@style/home_question_title"
+            android:textSize="18sp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/topicDataDetail"
+            style="@style/topicDetail_data_content"
+            android:layout_below="@id/dataTitle"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+
+
+    </RelativeLayout>
+
+
+    <!-- Bottom -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="#F0F0F0">
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:text="@string/followers"
+            android:textSize="16sp"
+            style="@style/home_answerButton"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_apostrophe"
+            style="@style/home_apostrophe"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
