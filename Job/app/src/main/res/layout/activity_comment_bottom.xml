@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <EditText
+        android:id="@+id/write_comment"
+        android:textColorHint="#f0aeaeae"
+        android:layout_width="match_parent"
+        android:text=""
+        android:drawableRight="@drawable/send"
+        android:layout_height="wrap_content"
+        android:hint="@string/write_comment"
+        android:textSize="13sp"
+        android:inputType="textMultiLine"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"/>
+
+
+
+  <!--  <EditText
+        android:id="@+id/response_comment"
+        android:textColorHint="#E0E0E0"
+        android:layout_width="match_parent"
+        android:text=""
+        android:drawableRight="@drawable/send"
+        android:layout_height="wrap_content"
+        android:hint="@string/response_comment"
+        android:textSize="13sp"
+        android:inputType="textMultiLine"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"/>
+        -->
+
+</LinearLayout>

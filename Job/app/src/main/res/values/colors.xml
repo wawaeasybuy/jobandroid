@@ -12,4 +12,7 @@
     <color name="review_green">#ff669900</color>
     <color name="text_light">#66000000</color>
     <color name="text_black">#080800</color>
+
+    <color name="transparent_background">#ffffffff</color>
+    <color name="blue">#ff87cefa</color>
 </resources>

@@ -166,4 +166,23 @@
     <string name="question_comment">评论</string>
     <string name="question_comment_number">9</string>
 
+    <!-- Comment -->
+    <string name="comment">评论</string>
+    <string name="cancel_comment">取消回复</string>
+    <string name="date_comment">08-26</string>
+    <string name="write_comment">写下你的评论...</string>
+    <string name="judge_comment">回答得很好！</string>
+    <string name="response_comment">发送给陈海鸥的回复...</string>
+    <string name="praise_comment">赞</string>
+    <string name="praise_num">5</string>
+
+    <!-- Quiz -->
+    <string name="quiz">提问</string>
+    <string name="quiz_release">发布</string>
+    <string name="quiz_describe">描述</string>
+    <string name="quiz_topic">话题</string>
+    <string name="quiz_topic_about">添加相关话题</string>
+    <string name="quiz_question">请输入您的问题...</string>
+    <string name="quiz_describe_content">请对您的问题补充说明...</string>
+
 </resources>

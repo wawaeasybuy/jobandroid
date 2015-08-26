@@ -1,65 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="#ffffff"
+    android:gravity="center"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="50dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:id="@+id/homePosition"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="@drawable/textview_style">
 
         <TextView
-            android:layout_width="match_parent"
+            android:text="@string/position"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#ffffff"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp">
-
-        <TextView
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:clickable="true"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:id="@+id/homePosition"
-            android:text="@string/position"
-            android:textColor="#000000" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:id="@+id/home_jobMarket"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="@drawable/textview_style">
 
         <TextView
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:textColor="#0070ee"
-            android:clickable="true"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
+
             android:text="@string/jobMarket"
-            android:textSize="16sp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/homePersonal"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="@drawable/textview_style">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/homePersonal"
-            android:clickable="true"
-            android:textSize="16sp"
-            android:gravity="center"
+
             android:text="@string/personal"
-            android:textColor="#000000"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 
-    </RelativeLayout>
+
+
+</LinearLayout>
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:clickable="true"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:id="@+id/homePosition"
+                    android:text="@string/position"
+                    android:textColor="#000000"
+                    android:background="@drawable/textview_style"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_style"
+                android:layout_weight="1">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="#000000"
+                    android:clickable="true"
+                    android:layout_height="fill_parent"
+
+                    android:id="@+id/home_jobMarket"
+                    android:text="@string/jobMarket"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_style">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:clickable="true"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:id="@+id/homePersonal"
+                    android:text="@string/personal"
+                    android:textColor="#000000"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp" />
+
+
+            </RelativeLayout>
 
 
 
-</RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>  -->

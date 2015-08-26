@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_home_header"></include>
+
+    <!--<include layout="@layout/activity_home_content"></include> -->
+
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:id="@+id/main"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp">
+
+    </LinearLayout>
+
+
+
+    <include layout="@layout/activity_home_bottom"></include>
+
+
+</LinearLayout>

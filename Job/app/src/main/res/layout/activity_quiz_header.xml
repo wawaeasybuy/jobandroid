@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    style="@style/header"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <ImageView
+        android:paddingLeft="5dp"
+        android:clickable="true"
+        android:src="@drawable/turn_left"
+        android:id="@+id/turn_left"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/jobMarket"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/search"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        style="@style/text_title"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="@string/quiz"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/quiz_release"
+        android:paddingRight="5dp"
+        android:textColor="#ffffff"/>
+
+</LinearLayout>

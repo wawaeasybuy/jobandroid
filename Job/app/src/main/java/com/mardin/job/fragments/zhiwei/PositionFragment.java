@@ -9,15 +9,14 @@ import android.view.ViewGroup;
 import com.mardin.job.R;
 
 /**
- * Created by Ryo on 2015/8/19.
+ * Created by Ryo on 2015/8/26.
  */
-public class HomeFragment extends Fragment {
+public class PositionFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_comment_content, container, false);
+        return inflater.inflate(R.layout.activity_topic_addtopic, container, false);
     }
 }
-
