@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.MainActivity;
+import com.mardin.job.MainActivityNew;
 import com.mardin.job.R;
 import com.mardin.job.activities.CollectedJobListActivity;
 import com.mardin.job.activities.LoginActivity;
@@ -214,7 +215,7 @@ public class MeFragment extends Fragment {
         super.onAttach(activity);
         try {
             mListener = (OnFragmentInteractionListener) activity;
-            ((MainActivity)mListener).onSectionAttached(2);
+            ((MainActivityNew)mListener).onSectionAttached(2);
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");

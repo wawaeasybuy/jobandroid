@@ -17,7 +17,7 @@ import com.mardin.job.activities.JobDetailActivity;
  */
 public class Topic extends Activity {
 
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_main);

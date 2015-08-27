@@ -22,6 +22,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.MainActivity;
+import com.mardin.job.MainActivityNew;
 import com.mardin.job.R;
 
 import com.mardin.job.activities.JobDetailActivity;
@@ -190,7 +191,7 @@ public class JobListFragment extends Fragment implements AbsListView.OnItemClick
         super.onAttach(activity);
         try {
             mListener = (OnFragmentInteractionListener) activity;
-            ((MainActivity)mListener).onSectionAttached(1);
+            ((MainActivityNew)mListener).onSectionAttached(1);
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");

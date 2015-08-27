@@ -185,4 +185,8 @@
     <string name="quiz_question">请输入您的问题...</string>
     <string name="quiz_describe_content">请对您的问题补充说明...</string>
 
+    <!-- Activity Label -->
+    <string name="title_activity_Topic">Topic</string>
+    <string name="title_activity_HomeHeader">HomeHeader</string>
+
 </resources>

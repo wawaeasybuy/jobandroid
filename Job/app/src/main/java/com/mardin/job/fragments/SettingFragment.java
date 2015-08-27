@@ -14,6 +14,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.mardin.job.MainActivity;
+import com.mardin.job.MainActivityNew;
 import com.mardin.job.R;
 
 import com.mardin.job.fragments.dummy.DummyContent;
@@ -101,7 +102,7 @@ public class SettingFragment extends Fragment implements AbsListView.OnItemClick
         super.onAttach(activity);
         try {
             mListener = (OnFragmentInteractionListener) activity;
-            ((MainActivity)mListener).onSectionAttached(2);
+            ((MainActivityNew)mListener).onSectionAttached(2);
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");

@@ -64,9 +64,17 @@
             android:name=".activities.RegEmployerActivity"
             android:label="@string/title_activity_reg_employer" >
         </activity>
+
+
+        <!-- Ryo -->
         <activity
-            android:name=".activities.zhiwei.EditTopic_Edit"
-            android:label="@string/title_activity_reg_employer" >
+            android:name=".activities.zhiwei.Topic"
+            android:label="@string/title_activity_Topic" >
+        </activity>
+
+        <activity
+            android:name=".activities.zhiwei.HomeHeader"
+            android:label="@string/title_activity_HomeHeader" >
         </activity>
     </application>
 
