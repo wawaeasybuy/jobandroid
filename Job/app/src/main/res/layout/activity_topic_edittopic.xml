@@ -38,6 +38,7 @@
             android:textSize="20sp"/>
 
         <TextView
+            android:id="@+id/editTopic_finished"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:clickable="true"
@@ -148,12 +149,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/addTopic">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/addTopic"
+                android:id="@+id/addTopicA"
                 android:src="@drawable/add"
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"

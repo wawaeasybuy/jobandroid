@@ -71,11 +71,39 @@
             android:name=".activities.zhiwei.Topic"
             android:label="@string/title_activity_Topic" >
         </activity>
-
         <activity
-            android:name=".activities.zhiwei.HomeHeader"
-            android:label="@string/title_activity_HomeHeader" >
+            android:name=".activities.zhiwei.TopicDetail"
+            android:label="@string/title_activity_TopicDetail" >
         </activity>
+        <activity
+            android:name=".activities.zhiwei.Question"
+            android:label="@string/question" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.TopicEdit"
+            android:label="@string/question" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.TopicAdd"
+            android:label="@string/question" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.Quiz"
+            android:label="@string/quiz" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.JobMarketSearch"
+            android:label="@string/search" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.Comment"
+            android:label="@string/comment" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.Personal"
+            android:label="@string/personal" >
+        </activity>
+
     </application>
 
 </manifest>

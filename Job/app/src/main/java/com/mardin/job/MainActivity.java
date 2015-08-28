@@ -47,19 +47,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         home_jobMarket.setOnClickListener(this);
         homePersonal.setOnClickListener(this);
 
-
-        TextView homeTopic= (TextView) findViewById(R.id.homeTopic);
-        //homeTopic.setOnClickListener(this);
-        homeTopic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent=new Intent(MainActivity.this,Topic.class);
-
-                startActivity(intent);
-            }
-        });
-
         setSelect(0);
 
     }

@@ -5,16 +5,25 @@
     style="@style/header"
     android:layout_height="50dp">
 
-    <TextView
-        android:id="@+id/homeTopic"
-        android:paddingLeft="5dp"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:clickable="true"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:text="@string/topic"
-        android:textColor="#ffffff" />
+        android:id="@+id/homeTopic">
+
+        <TextView
+
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@string/topic"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+
 
     <TextView
 

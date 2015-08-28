@@ -21,7 +21,7 @@
                 android:layout_height="25dp"
                 android:text="@string/home_classify"
                 style="@style/home_classify"
-                android:background="#FCFCFC"
+                android:background="#F0F0F0"
                 android:gravity="center"
                 android:layout_marginLeft="10dp"/>
 
@@ -44,6 +44,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/home_question_title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/home_question_title"
@@ -144,7 +145,7 @@
                 android:layout_height="25dp"
                 android:text="@string/home_classify"
                 style="@style/home_classify"
-                android:background="#FCFCFC"
+                android:background="#F0F0F0"
                 android:gravity="center"
                 android:layout_marginLeft="10dp"/>
 
@@ -166,6 +167,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/home_question_title2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/home_question_title"
@@ -218,7 +220,22 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_interest2"
                 style="@style/home_interest"
-                android:paddingLeft="20dp"
+                android:paddingLeft="20dp" />
+
+            <TextView
+                android:id="@+id/question_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/question_comment"
+                style="@style/home_follow"
+                android:paddingLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/question_comment_number"
+                style="@style/home_follow_number"
+                android:paddingLeft="5dp"
                 android:layout_weight="1"/>
 
             <!--

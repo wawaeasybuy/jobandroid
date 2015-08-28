@@ -50,12 +50,12 @@
 
     <EditText
         android:textColorHint="#E0E0E0"
-        android:id="@+id/jobMaket_searchContent"
+        android:id="@+id/jobMarket_searchContent"
         android:layout_width="match_parent"
         android:text=""
         android:drawableLeft="@drawable/search1"
         android:layout_height="wrap_content"
-        android:hint="@string/jobMaket_searchContent"
+        android:hint="@string/jobMarket_searchContent"
         android:textSize="13sp"
         android:inputType="textMultiLine"
         android:layout_marginLeft="5dp"
