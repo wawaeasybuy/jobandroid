@@ -11,12 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mardin.job.R;
-
 import com.mardin.job.activities.zhiwei.Comment;
 import com.mardin.job.activities.zhiwei.JobMarketSearch;
 import com.mardin.job.activities.zhiwei.Question;
 import com.mardin.job.activities.zhiwei.Quiz;
 import com.mardin.job.activities.zhiwei.Topic;
+import com.mardin.job.activities.zhiwei.TopicDetail;
 
 /**
  * Created by Ryo on 2015/8/19.
@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        TextView home_question_title1= (TextView) getActivity().findViewById(R.id.home_question_title1);
+        LinearLayout home_question_title1= (LinearLayout) getActivity().findViewById(R.id.home_question_title1);
         home_question_title1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        TextView home_question_title2= (TextView) getActivity().findViewById(R.id.home_question_title2);
+        LinearLayout home_question_title2= (LinearLayout) getActivity().findViewById(R.id.home_question_title2);
         home_question_title2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,5 +94,40 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        TextView home_classify1= (TextView) getActivity().findViewById(R.id.home_classify1);
+        home_classify1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),TopicDetail.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView home_classify2= (TextView) getActivity().findViewById(R.id.home_classify2);
+        home_classify2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),TopicDetail.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView home_apostrophe1= (TextView) getActivity().findViewById(R.id.home_apostrophe1);
+        home_apostrophe1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),Question.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView home_apostrophe2= (TextView) getActivity().findViewById(R.id.home_apostrophe2);
+        home_apostrophe2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),Question.class);
+                startActivity(intent);
+            }
+        });
     }
 }

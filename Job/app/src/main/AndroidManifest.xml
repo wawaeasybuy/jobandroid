@@ -32,10 +32,10 @@
             android:name=".activities.JobDetailActivity"
             android:label="@string/title_activity_job_detail" >
         </activity>
-        <activity
+    <!--    <activity
             android:name=".activities.CollectedJobsActivity"
             android:label="@string/title_activity_collected_jobs" >
-        </activity>
+        </activity>   -->
         <activity
             android:name=".activities.CollectedJobListActivity"
             android:label="@string/title_activity_collected_job_list" >

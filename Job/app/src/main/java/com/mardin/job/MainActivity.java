@@ -22,9 +22,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private LinearLayout home_jobMarket;
     private LinearLayout homePersonal;
 
-    //private TextView homeTopic;
-
-
+    private TextView homePositionT;
+    private TextView home_jobMarketT;
+    private TextView homePersonalT;
 
     private static MainActivity defaultActivity = null;
     public static MainActivity getDefault() {
@@ -39,6 +39,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_home_main);
 
         defaultActivity = this;
+
+        homePositionT= (TextView) findViewById(R.id.homePositionT);
+        home_jobMarketT= (TextView) findViewById(R.id.home_jobMarketT);
+        homePersonalT= (TextView) findViewById(R.id.homePersonalT);
 
 
         initView();
@@ -97,17 +101,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 HomeFragment home_fragment= new HomeFragment();
                 transaction.replace(R.id.main, home_fragment);
 
+                homePositionT.setTextColor(0xff666666);
+                home_jobMarketT.setTextColor(0xFF0000FF);
+                homePersonalT.setTextColor(0xff666666);
+
                 break;
             case 1:
 
                 PositionFragment position_fragment=new PositionFragment();
                 transaction.replace(R.id.main,position_fragment);
 
+                homePositionT.setTextColor(0xFF0000FF);
+                home_jobMarketT.setTextColor(0xff666666);
+                homePersonalT.setTextColor(0xff666666);
+
                 break;
             case 2:
 
                 PersonalFragment personal_fragment=new PersonalFragment();
                 transaction.replace(R.id.main, personal_fragment);
+
+                homePositionT.setTextColor(0xff666666);
+                home_jobMarketT.setTextColor(0xff666666);
+                homePersonalT.setTextColor(0xFF0000FF);
+
                 break;
         }
         transaction.commit();

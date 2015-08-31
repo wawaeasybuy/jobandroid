@@ -17,6 +17,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/home_classify1"
                 android:layout_width="90dp"
                 android:layout_height="25dp"
                 android:text="@string/home_classify"
@@ -43,33 +44,40 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/home_question_title1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/home_question_title"
-            style="@style/home_question_title"
-            android:layout_marginLeft="5dp"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:id="@+id/home_question_title1">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:text="@string/home_question_content"
-                style="@style/home_question_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/home_viewMore"
-                style="@style/home_viewMore"
-                android:paddingLeft="10dp"/>
+                android:text="@string/home_question_title"
+                style="@style/home_question_title"
+                android:layout_marginLeft="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="@string/home_question_content"
+                    style="@style/home_question_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_viewMore"
+                    style="@style/home_viewMore"
+                    android:paddingLeft="10dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -110,6 +118,7 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:id="@+id/home_apostrophe1"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:text="@string/home_apostrophe"
@@ -141,6 +150,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/home_classify2"
                 android:layout_width="90dp"
                 android:layout_height="25dp"
                 android:text="@string/home_classify"
@@ -166,33 +176,40 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/home_question_title2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/home_question_title"
-            style="@style/home_question_title"
-            android:layout_marginLeft="5dp"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:id="@+id/home_question_title2">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:text="@string/home_question_content"
-                style="@style/home_question_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/home_viewMore"
-                style="@style/home_viewMore"
-                android:paddingLeft="10dp"/>
+                android:text="@string/home_question_title"
+                style="@style/home_question_title"
+                android:layout_marginLeft="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="@string/home_question_content"
+                    style="@style/home_question_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_viewMore"
+                    style="@style/home_viewMore"
+                    android:paddingLeft="10dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -255,6 +272,7 @@
                 -->
 
             <TextView
+                android:id="@+id/home_apostrophe2"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:text="@string/home_apostrophe"

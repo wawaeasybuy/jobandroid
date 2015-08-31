@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="50dp"
     android:background="#E0E0E0">
 
@@ -9,30 +9,41 @@
         android:textColorHint="#f0aeaeae"
         android:layout_width="match_parent"
         android:text=""
-        android:drawableRight="@drawable/send"
         android:layout_height="wrap_content"
         android:hint="@string/write_comment"
         android:textSize="13sp"
         android:inputType="textMultiLine"
+        android:layout_weight="1"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"/>
 
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/myTopic1Delete2"
+        android:src="@drawable/send"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        android:clickable="true"/>
 
 
-  <!--  <EditText
-        android:id="@+id/response_comment"
-        android:textColorHint="#E0E0E0"
-        android:layout_width="match_parent"
-        android:text=""
-        android:drawableRight="@drawable/send"
-        android:layout_height="wrap_content"
-        android:hint="@string/response_comment"
-        android:textSize="13sp"
-        android:inputType="textMultiLine"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"/>
-        -->
+
+
+    <!--  <EditText
+          android:id="@+id/response_comment"
+          android:textColorHint="#E0E0E0"
+          android:layout_width="match_parent"
+          android:text=""
+          android:drawableRight="@drawable/send"
+          android:layout_height="wrap_content"
+          android:hint="@string/response_comment"
+          android:textSize="13sp"
+          android:inputType="textMultiLine"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:layout_marginTop="10dp"/>
+          -->
 
 </LinearLayout>

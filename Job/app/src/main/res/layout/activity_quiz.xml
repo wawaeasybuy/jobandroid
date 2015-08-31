@@ -8,4 +8,16 @@
 
     <include layout="@layout/activity_quiz_tab"></include>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#67b9cee0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:id="@+id/quizTab_content">
+
+
+
+    </LinearLayout>
+
 </LinearLayout>
