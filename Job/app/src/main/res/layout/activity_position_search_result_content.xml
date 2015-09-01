@@ -1,6 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <!-- One-->
+    <LinearLayout
+        android:id="@+id/position1"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/home_interest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/position_title"
+                android:textSize="15sp"/>
+
+            <TextView
+                style="@style/home_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/position_release_time"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/home_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/position_firm"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/home_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/position_more"
+                android:textSize="12sp"/>
+
+            <TextView
+                style="@style/home_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/position_salary"
+                android:textSize="12sp"
+                android:textColor="#ff0000"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:background="#EAEAEA"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp" />
+
+<!-- Two -->
+    <LinearLayout
+        android:id="@+id/position2"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/home_interest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/position_title"
+                android:textSize="15sp"/>
+
+            <TextView
+                style="@style/home_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/position_release_time"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/home_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/position_firm"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/home_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/position_more"
+                android:textSize="12sp"/>
+
+            <TextView
+                style="@style/home_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/position_salary"
+                android:textSize="12sp"
+                android:textColor="#ff0000"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:background="#EAEAEA"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp" />
 
 </LinearLayout>

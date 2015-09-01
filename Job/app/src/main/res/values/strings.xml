@@ -198,6 +198,13 @@
     <string name="position_category">职位性质</string>
     <string name="position_category_selected">全职</string>
     <string name="position_more_choice">更多筛选</string>
+    <string name="position_title">产品运营 3000+提成</string>
+    <string name="position_release_time">8-15</string>
+    <string name="position_firm">杭州马马网络科技有限公司</string>
+    <string name="position_more">杭州 | 兼职 | 大专</string>
+    <string name="position_salary">3000底薪+提成</string>
+    <string name="position_detail_header">详情</string>
+
 
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>

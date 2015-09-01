@@ -123,7 +123,7 @@
 
     <style name="home_time">
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textColor">#BEBEBE</item>
+        <item name="android:textColor">#AEAEAE</item>
         <item name="android:textSize">13sp</item>
         <item name="android:singleLine">true</item>
     </style>

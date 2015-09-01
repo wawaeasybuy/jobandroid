@@ -1,121 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:background="#F8F8FF"
+    android:orientation="vertical"
     android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="wrap_content">
 
-    <!-- One -->
+    <include layout="@layout/activity_position_search_result_header"></include>
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:background="#F8F8FF"
         android:gravity="center"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
+        <!-- One -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:gravity="center"
-            android:id="@+id/position_area">
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:gravity="center"
+                android:id="@+id/position_area">
+
+                <TextView
+                    android:text="@string/position_area"
+                    style="@style/home_interest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/turn_down"/>
+
+            </LinearLayout>
 
             <TextView
-                android:text="@string/position_area"
-                style="@style/home_interest"
-                android:layout_width="wrap_content"
+                style="@style/home_time"
+                android:id="@+id/position_area_selected"
+                android:text="@string/position_area_selected"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:paddingLeft="10dp"
-                android:src="@drawable/turn_down"/>
 
         </LinearLayout>
 
-        <TextView
-            style="@style/home_time"
-            android:id="@+id/position_area_selected"
-            android:text="@string/position_area_selected"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="1dp"
+            android:layout_height="20dp" />
 
-    </LinearLayout>
-
-    <ImageView
-        android:background="#EAEAEA"
-        android:layout_width="1dp"
-        android:layout_height="20dp" />
-
-    <!-- Two -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_height="match_parent">
-
+        <!-- Two -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:gravity="center"
-            android:id="@+id/position_category">
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:gravity="center"
+                android:id="@+id/position_category">
+
+                <TextView
+                    style="@style/home_interest"
+                    android:text="@string/position_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/turn_down"/>
+
+            </LinearLayout>
 
             <TextView
-                style="@style/home_interest"
-                android:text="@string/position_category"
-                android:layout_width="wrap_content"
+                style="@style/home_time"
+                android:id="@+id/position_category_selected"
+                android:text="@string/position_category_selected"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:paddingLeft="10dp"
-                android:src="@drawable/turn_down"/>
 
         </LinearLayout>
 
-        <TextView
-            style="@style/home_time"
-            android:id="@+id/position_category_selected"
-            android:text="@string/position_category_selected"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="1dp"
+            android:layout_height="20dp" />
 
-    </LinearLayout>
-
-    <ImageView
-        android:background="#EAEAEA"
-        android:layout_width="1dp"
-        android:layout_height="20dp" />
-
-    <!-- Three -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_height="match_parent">
-
+        <!-- Three -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:clickable="true"
+            android:layout_gravity="center_vertical"
             android:gravity="center"
             android:id="@+id/position_more_choice">
 
@@ -132,16 +134,6 @@
                 android:src="@drawable/turn_down"/>
 
         </LinearLayout>
-
-        <TextView
-            style="@style/home_time"
-            android:id="@+id/position_more_choice_selected"
-            android:text="@string/position_area_selected"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

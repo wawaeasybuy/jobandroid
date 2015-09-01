@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/search"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         style="@style/text_title"
         android:layout_height="fill_parent"
@@ -32,12 +32,20 @@
         android:text="@string/position_search_result"
         android:textSize="20sp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/position"
+        android:textColor="#0070ee" />
+
     <ImageView
-        android:paddingRight="10dp"
+        android:layout_marginRight="20dp"
         android:clickable="true"
         android:src="@drawable/search"
         android:id="@+id/position_header_search"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
+        android:layout_width="22dp"
+        android:layout_height="22dp" />
 
 </LinearLayout>
