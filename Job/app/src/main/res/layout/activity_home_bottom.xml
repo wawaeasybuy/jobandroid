@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:background="#ffffff"
+    android:background="#F8F8FF"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="50dp">
@@ -12,8 +12,7 @@
         android:clickable="true"
         android:id="@+id/homePosition"
         android:gravity="center"
-        android:layout_height="match_parent"
-        android:background="@drawable/textview_style">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/homePositionT"
@@ -29,8 +28,7 @@
         android:clickable="true"
         android:id="@+id/home_jobMarket"
         android:gravity="center"
-        android:layout_height="match_parent"
-        android:background="@drawable/textview_style">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/home_jobMarketT"
@@ -47,8 +45,7 @@
         android:id="@+id/homePersonal"
         android:clickable="true"
         android:gravity="center"
-        android:layout_height="match_parent"
-        android:background="@drawable/textview_style">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/homePersonalT"

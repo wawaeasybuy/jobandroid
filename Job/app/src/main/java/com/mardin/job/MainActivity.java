@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 transaction.replace(R.id.main, home_fragment);
 
                 homePositionT.setTextColor(0xff666666);
-                home_jobMarketT.setTextColor(0xFF0000FF);
+                home_jobMarketT.setTextColor(0xFF0070ee);
                 homePersonalT.setTextColor(0xff666666);
 
                 break;
@@ -111,7 +111,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 PositionFragment position_fragment=new PositionFragment();
                 transaction.replace(R.id.main,position_fragment);
 
-                homePositionT.setTextColor(0xFF0000FF);
+                homePositionT.setTextColor(0xFF0070ee);
                 home_jobMarketT.setTextColor(0xff666666);
                 homePersonalT.setTextColor(0xff666666);
 
@@ -123,7 +123,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 homePositionT.setTextColor(0xff666666);
                 home_jobMarketT.setTextColor(0xff666666);
-                homePersonalT.setTextColor(0xFF0000FF);
+                homePersonalT.setTextColor(0xFF0070ee);
 
                 break;
         }

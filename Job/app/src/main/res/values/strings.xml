@@ -185,6 +185,20 @@
     <string name="quiz_question">请输入您的问题...</string>
     <string name="quiz_describe_content">请对您的问题补充说明...</string>
 
+    <!-- Position -->
+    <string name="position_search">职位搜索</string>
+    <string name="position_search_content">输入关键字 职位/行业/公司</string>
+    <string name="position_classify">职位类别</string>
+    <string name="profession_classify">行业类别</string>
+    <string name="working_place">工作地点</string>
+    <string name="search_result">搜索记录：化妆品销售/杭州</string>
+    <string name="position_search_result">搜索结果</string>
+    <string name="position_area">地区</string>
+    <string name="position_area_selected">杭州</string>
+    <string name="position_category">职位性质</string>
+    <string name="position_category_selected">全职</string>
+    <string name="position_more_choice">更多筛选</string>
+
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>
     <string name="title_activity_HomeHeaderSearch">HomeHeaderSearch</string>

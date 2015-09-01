@@ -76,7 +76,7 @@ public class Quiz extends Activity implements View.OnClickListener{
                 QuizLeftFragment quiz_question= new QuizLeftFragment();
                 transaction.replace(R.id.quizTab_content, quiz_question);
 
-                quiz_questionT.setTextColor(0xFF0000FF);
+                quiz_questionT.setTextColor(0xFF0070ee);
                 quiz_describeT.setTextColor(0xff666666);
                 quiz_topicT.setTextColor(0xff666666);
 
@@ -87,7 +87,7 @@ public class Quiz extends Activity implements View.OnClickListener{
                 transaction.replace(R.id.quizTab_content, quiz_describe);
 
                 quiz_questionT.setTextColor(0xff666666);
-                quiz_describeT.setTextColor(0xFF0000FF);
+                quiz_describeT.setTextColor(0xFF0070ee);
                 quiz_topicT.setTextColor(0xff666666);
 
                 break;
@@ -98,7 +98,7 @@ public class Quiz extends Activity implements View.OnClickListener{
 
                 quiz_questionT.setTextColor(0xff666666);
                 quiz_describeT.setTextColor(0xff666666);
-                quiz_topicT.setTextColor(0xFF0000FF);
+                quiz_topicT.setTextColor(0xFF0070ee);
 
 
                 break;

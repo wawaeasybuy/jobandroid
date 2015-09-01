@@ -103,6 +103,10 @@
             android:name=".activities.zhiwei.Personal"
             android:label="@string/personal" >
         </activity>
+        <activity
+            android:name=".activities.zhiwei.PositionSearchResult"
+            android:label="@string/personal" >
+        </activity>
 
     </application>
 

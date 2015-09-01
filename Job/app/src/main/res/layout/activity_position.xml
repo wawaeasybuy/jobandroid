@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/header">
+
+        <TextView
+            android:id="@+id/search"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            style="@style/text_title"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/position_search"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical"
+        android:background="#ffffff">
+
+        <EditText
+            android:textColorHint="#000000"
+            android:id="@+id/position_search"
+            android:layout_width="match_parent"
+            android:text=""
+            android:drawableLeft="@drawable/search_blue"
+            android:layout_height="wrap_content"
+            android:hint="@string/position_search_content"
+            android:textSize="13sp"
+            android:inputType="textMultiLine"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:id="@+id/position_classify">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/position_classify"
+                style="@style/home_follow_number"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/turn_right1"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:id="@+id/profession_classify">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profession_classify"
+                style="@style/home_follow_number"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/turn_right1"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:id="@+id/working_place">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/working_place"
+                style="@style/home_follow_number"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/turn_right1"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <Button
+            android:id="@+id/position_search_button"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="@string/search"
+            android:textColor="#ffffff"
+            style="@style/position_search_button"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_result"
+            style="@style/home_follow_number"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

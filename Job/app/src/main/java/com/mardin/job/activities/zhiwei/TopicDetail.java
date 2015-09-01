@@ -79,7 +79,7 @@ public class TopicDetail extends Activity  implements View.OnClickListener {
                 TopicDataFragment topicData= new TopicDataFragment();
                 transaction.replace(R.id.topicDetail_content, topicData);
 
-                topicDataT.setTextColor(0xFF0000FF);
+                topicDataT.setTextColor(0xFF0070ee);
                 hotTopicT.setTextColor(0xff666666);
                 topicAboutT.setTextColor(0xff666666);
 
@@ -90,7 +90,7 @@ public class TopicDetail extends Activity  implements View.OnClickListener {
                 transaction.replace(R.id.topicDetail_content, hotTopic);
 
                 topicDataT.setTextColor(0xff666666);
-                hotTopicT.setTextColor(0xFF0000FF);
+                hotTopicT.setTextColor(0xFF0070ee);
                 topicAboutT.setTextColor(0xff666666);
 
                 break;
@@ -101,7 +101,7 @@ public class TopicDetail extends Activity  implements View.OnClickListener {
 
                 topicDataT.setTextColor(0xff666666);
                 hotTopicT.setTextColor(0xff666666);
-                topicAboutT.setTextColor(0xFF0000FF);
+                topicAboutT.setTextColor(0xFF0070ee);
 
 
                 break;
