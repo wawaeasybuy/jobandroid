@@ -23,7 +23,7 @@ public class Topic extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_main);
 
-        ImageView turn_left= (ImageView) findViewById(R.id.turn_left);
+        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
         TextView edit= (TextView) findViewById(R.id.edit);
 
         turn_left.setOnClickListener(new View.OnClickListener() {

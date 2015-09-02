@@ -9,21 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
-        <ImageView
-            android:paddingLeft="5dp"
-            android:clickable="true"
-            android:src="@drawable/turn_left"
+        <LinearLayout
             android:id="@+id/turn_left"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-
-        <TextView
+            android:clickable="true"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/position_search_result"
-            android:textColor="#ffffff" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:paddingLeft="5dp"
+                android:src="@drawable/turn_left"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="@string/position_search_result"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/search"
@@ -54,5 +61,19 @@
               android:layout_height="30dp" />   -->
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detail_content"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/activity_position_detail_content"></include>
+
+    </LinearLayout>
+
+
+    <include layout="@layout/activity_position_detail_bottom"></include>
 
 </LinearLayout>

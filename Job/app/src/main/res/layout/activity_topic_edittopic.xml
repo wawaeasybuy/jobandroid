@@ -11,21 +11,28 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
-        <ImageView
-            android:paddingLeft="5dp"
-            android:clickable="true"
-            android:src="@drawable/turn_left"
+        <LinearLayout
             android:id="@+id/turn_left"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-
-        <TextView
+            android:clickable="true"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/jobMarket"
-            android:textColor="#ffffff" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:paddingLeft="5dp"
+                android:src="@drawable/turn_left"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="@string/jobMarket"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/topic"

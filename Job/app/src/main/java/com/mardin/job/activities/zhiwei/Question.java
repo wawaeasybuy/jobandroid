@@ -20,7 +20,7 @@ public class Question extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_main);
 
-        ImageView turn_left= (ImageView) findViewById(R.id.turn_left);
+        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

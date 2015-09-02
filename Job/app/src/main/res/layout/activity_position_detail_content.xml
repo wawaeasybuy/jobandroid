@@ -3,4 +3,354 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Position Detail -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/position_detail"
+            android:textSize="15sp"
+            android:textColor="#0070ee"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:id="@+id/position_detail"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/home_interest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/position_title"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        style="@style/home_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/position_release_time"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/home_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/position_firm"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/home_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/position_more"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        style="@style/home_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/position_salary"
+                        android:textSize="12sp"
+                        android:textColor="#ff0000"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp" />
+
+            <LinearLayout
+                android:id="@+id/position_welfare"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/position_welfare"
+                    android:textSize="15sp"
+                    android:textColor="#0070ee"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/position_welfare_content"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp" />
+
+            <LinearLayout
+                android:id="@+id/position_request"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/position_request"
+                    android:textSize="15sp"
+                    android:textColor="#0070ee"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/position_welfare"
+                    android:textSize="13sp"
+                    android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- Firm Detail -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/firm_detail"
+            android:textSize="15sp"
+            android:textColor="#0070ee"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/home_interest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/position_firm"
+                        android:textSize="15sp"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/home_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/firm_classify"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/home_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/verified"
+                        android:textColor="#0070ee"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        style="@style/home_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/firm_staff_number"
+                        android:textSize="12sp"
+                        android:textColor="#ff0000"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp" />
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/home_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/firm_website"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    style="@style/home_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/website_mama"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    style="@style/home_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/firm_address"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    style="@style/home_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/firm_address_mama"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp" />
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/firm_introduce"
+                    android:textSize="15sp"
+                    android:textColor="#0070ee"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/position_welfare"
+                    android:textSize="13sp"
+                    android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

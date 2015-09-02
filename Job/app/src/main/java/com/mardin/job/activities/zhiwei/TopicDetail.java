@@ -35,7 +35,7 @@ public class TopicDetail extends Activity  implements View.OnClickListener {
 
 
 
-        ImageView turn_left= (ImageView) findViewById(R.id.turn_left);
+        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

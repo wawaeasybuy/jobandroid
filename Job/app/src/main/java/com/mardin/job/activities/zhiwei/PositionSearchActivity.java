@@ -5,23 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mardin.job.MainActivity;
 import com.mardin.job.R;
 
 /**
- * Created by Ryo on 2015/8/28.
+ * Created by Ryo on 2015/9/2.
  */
-public class TopicEdit extends Activity {
+public class PositionSearchActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_topic_edittopic);
+        setContentView(R.layout.activity_position_search);
 
-        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
+        ImageView turn_left= (ImageView) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,25 +28,25 @@ public class TopicEdit extends Activity {
             }
         });
 
-        LinearLayout addTopic= (LinearLayout) findViewById(R.id.addTopic);
-        addTopic.setOnClickListener(new View.OnClickListener() {
+        TextView search_history1= (TextView) findViewById(R.id.search_history1);
+        search_history1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(TopicEdit.this, TopicAdd.class);
+                Intent intent = new Intent(PositionSearchActivity.this,PositionSearchResult.class);
                 startActivity(intent);
             }
         });
 
-
-        TextView editTopic_finished= (TextView) findViewById(R.id.editTopic_finished);
-        editTopic_finished.setOnClickListener(new View.OnClickListener() {
+        TextView search_history2= (TextView) findViewById(R.id.search_history2);
+        search_history2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(TopicEdit.this, Topic.class);
+                Intent intent = new Intent(PositionSearchActivity.this,PositionSearchResult.class);
                 startActivity(intent);
             }
         });
+
     }
 }

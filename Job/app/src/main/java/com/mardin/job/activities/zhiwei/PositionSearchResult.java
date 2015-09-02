@@ -19,12 +19,22 @@ public class PositionSearchResult extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_position_search_result);
 
-        ImageView turn_left= (ImageView) findViewById(R.id.turn_left);
+        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
 
+            }
+        });
+
+        ImageView position_header_search= (ImageView) findViewById(R.id.position_header_search);
+        position_header_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(PositionSearchResult.this, PositionSearchActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -111,6 +111,10 @@
             android:name=".activities.zhiwei.PositionDetail"
             android:label="@string/personal" >
         </activity>
+        <activity
+            android:name=".activities.zhiwei.PositionSearchActivity"
+            android:label="@string/position_search" >
+        </activity>
 
     </application>
 

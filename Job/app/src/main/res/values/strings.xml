@@ -204,6 +204,29 @@
     <string name="position_more">杭州 | 兼职 | 大专</string>
     <string name="position_salary">3000底薪+提成</string>
     <string name="position_detail_header">详情</string>
+    <string name="position_search_hint">请输入订单编号或日期...</string>
+    <string name="search_history">历史记录</string>
+    <string name="search_history1">产品经理</string>
+    <string name="search_history2">化妆品销售专员</string>
+    <string name="search_history_delete">删除历史记录</string>
+    <string name="position_apply">申请职位</string>
+    <string name="position_tip_off">举报</string>
+    <string name="position_share">分享</string>
+    <string name="position_detail">职位详情</string>
+    <string name="position_welfare">职位福利</string>
+    <string name="position_welfare_content">五险一金、带薪休假、股票期权、五险一金、带薪休假、股票期权</string>
+    <string name="position_request">任职要求</string>
+    <string name="firm_detail">公司详情</string>
+    <string name="firm_classify">APP开发/网站制作开发</string>
+    <string name="verified">已验证</string>
+    <string name="firm_staff_number">20人以下</string>
+    <string name="firm_website">公司网站</string>
+    <string name="website_mama">www.mama.com</string>
+    <string name="firm_address">公司地址</string>
+    <string name="firm_address_mama">杭州市临安市创业孵化园区</string>
+    <string name="firm_introduce">公司介绍</string>
+
+
 
 
     <!-- Activity Label -->

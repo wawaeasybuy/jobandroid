@@ -32,7 +32,7 @@ public class Quiz extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        ImageView turn_left= (ImageView) findViewById(R.id.turn_left);
+        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
