@@ -225,9 +225,25 @@
     <string name="firm_address">公司地址</string>
     <string name="firm_address_mama">杭州市临安市创业孵化园区</string>
     <string name="firm_introduce">公司介绍</string>
-
-
-
+    <string name="position_submit">提交</string>
+    <string name="position_firm_owning">所属公司| xxxx公司</string>
+    <string name="position_name">职位名称| 产品运营</string>
+    <string name="tip_off_reason">举报原因（必填）</string>
+    <string name="tip_off_reason1">虚假招聘</string>
+    <string name="tip_off_reason2">分类错误</string>
+    <string name="tip_off_reason_other">其他</string>
+    <string name="tip_off_name">您的姓名</string>
+    <string name="tip_off_name_get">Ryo</string>
+    <string name="tip_off_email">电子邮箱</string>
+    <string name="tip_off_email_get">1234567890@163.com</string>
+    <string name="tip_off_phone">联系电话</string>
+    <string name="tip_off_phone_get">13336669990</string>
+    <string name="tip_off_reason_describe">举报说明</string>
+    <string name="position_total">全部</string>
+    <string name="release_time">发布时间</string>
+    <string name="salary_range">月薪范围</string>
+    <string name="education_request">学历要求</string>
+    <string name="firm_size">公司规模</string>
 
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>

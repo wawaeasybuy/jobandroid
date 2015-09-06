@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:id="@+id/turn_left"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:paddingLeft="5dp"
+                android:src="@drawable/turn_left"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="@string/position_detail_header"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            style="@style/text_title"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/position_tip_off"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/position_submit"
+            android:clickable="true"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@string/position_submit"
+            android:textColor="#ffffff"
+            android:paddingRight="5dp" />
+
+    </LinearLayout>
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/position_firm_owning"
+            android:text="@string/position_firm_owning"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/position_name"
+            android:text="@string/position_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:orientation="vertical"
+            android:background="@drawable/border_blue">
+
+            <TextView
+                android:id="@+id/tip_off_reason"
+                android:text="@string/tip_off_reason"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/tip_off_reason1"
+                    android:text="@string/tip_off_reason1"
+                    android:checked="false"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <CheckBox
+                    android:id="@+id/tip_off_reason2"
+                    android:text="@string/tip_off_reason2"
+                    android:checked="false"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <CheckBox
+                    android:id="@+id/tip_off_reason_other"
+                    android:text="@string/tip_off_reason_other"
+                    android:checked="false"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--  Message -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:orientation="vertical"
+            android:background="@drawable/border_gray">
+
+            <!--  1   -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/tip_off_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_name"
+                    style="@style/home_follow_number"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tip_off_name_get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_name_get"
+                    style="@style/home_follow_number" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp" />
+
+            <!--  2  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/tip_off_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_email"
+                    style="@style/home_follow_number"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tip_off_email_get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_email_get"
+                    style="@style/home_follow_number" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp" />
+
+            <!--  3  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/tip_off_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_phone"
+                    style="@style/home_follow_number"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tip_off_phone_get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_phone_get"
+                    style="@style/home_follow_number" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#EAEAEA"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp" />
+
+            <!--  4  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/tip_off_reason_describe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_off_reason_describe"
+                    style="@style/home_follow_number"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/turn_right1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,9 +1,10 @@
 package com.mardin.job.activities.zhiwei;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.mardin.job.R;
@@ -24,6 +25,16 @@ public class PositionDetail extends Activity {
             public void onClick(View v) {
                 finish();
 
+            }
+        });
+
+        Button position_tip_off= (Button) findViewById(R.id.position_tip_off);
+        position_tip_off.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(PositionDetail.this,PositionTipOffActivity.class);
+                startActivity(intent);
             }
         });
     }

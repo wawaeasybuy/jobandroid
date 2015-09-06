@@ -57,5 +57,15 @@ public class PositionSearchResult extends Activity {
                 startActivity(intent);
             }
         });
+
+        LinearLayout position_area= (LinearLayout) findViewById(R.id.position_area);
+        position_area.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(PositionSearchResult.this,SpinnerTest1.class);
+                startActivity(intent);
+            }
+        });
     }
 }
