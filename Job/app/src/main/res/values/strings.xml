@@ -245,6 +245,14 @@
     <string name="education_request">学历要求</string>
     <string name="firm_size">公司规模</string>
 
+    <string-array name="area">
+        <item>全部</item>
+        <item>拱墅区</item>
+        <item>拱墅区</item>
+        <item>拱墅区</item>
+        <item>拱墅区</item>
+    </string-array>
+
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>
     <string name="title_activity_HomeHeaderSearch">HomeHeaderSearch</string>

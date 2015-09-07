@@ -1,45 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+    android:id="@+id/spinner"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/spinnerText"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:gravity="clip_vertical" >
+        android:layout_height="wrap_content">  </TextView>
 
-        <LinearLayout
-            android:id="@+id/spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center" >
+    <Spinner
+        android:id="@+id/Spinner1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">  </Spinner>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="1234"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <!--    <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/mm_submenu_dropdown" />  -->
-
-        </LinearLayout>
-    </RelativeLayout>
+    <resources>
+        <string-array name="plantes">
+            <item>中国</item>
+            <item>美国</item>
+            <item>日本</item>
+            <item>英国</item>
+            <item>法国</item>
+        </string-array>
+    </resources>
 
 </LinearLayout>
