@@ -22,7 +22,23 @@
 
     </LinearLayout>
 
-    <include layout="@layout/activity_personal_content"></include>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/activity_personal_content"></include>
+
+       <!-- <LinearLayout
+            android:id="@+id/personal_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+        </LinearLayout>  -->
+
+    </ScrollView>
 
 
 </LinearLayout>

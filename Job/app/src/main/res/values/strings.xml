@@ -283,6 +283,16 @@
     <string name="personal_job_seeker">求职者</string>
     <string name="personal_praise_num">320</string>
     <string name="personal_follow">关注</string>
+    <string name="personal_my_quiz">我的提问</string>
+    <string name="personal_my_answer">我的回答</string>
+    <string name="personal_my_follow">我的关注</string>
+    <string name="personal_my_collect">我的收藏</string>
+    <string name="personal_my_resume">我的简历</string>
+    <string name="personal_create_resume">创建属于自己的简历</string>
+    <string name="personal_apply_record">申请记录</string>
+    <string name="personal_view_record">查看记录</string>
+    <string name="personal_firm_feedback">公司反馈</string>
+    <string name="personal_firm_feedback_num">8</string>
 
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>

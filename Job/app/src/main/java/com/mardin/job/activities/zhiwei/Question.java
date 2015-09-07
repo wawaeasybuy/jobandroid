@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mardin.job.R;
+import com.mardin.job.fragments.zhiwei.PersonalFragment;
 
 /**
  * Created by Ryo on 2015/8/28.
@@ -64,7 +65,7 @@ public class Question extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Question.this, Personal.class);
+                Intent intent = new Intent(Question.this, PersonalFragment.class);
                 startActivity(intent);
             }
         });
