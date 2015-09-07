@@ -245,13 +245,44 @@
     <string name="education_request">学历要求</string>
     <string name="firm_size">公司规模</string>
 
-    <string-array name="area">
+    <string-array name="position_category">
+        <item>职业性质</item>
+        <item>全部</item>
+        <item>全职</item>
+        <item>实习</item>
+        <item>兼职</item>
+    </string-array>
+
+    <string-array name="position_area">
+        <item>地区</item>
         <item>全部</item>
         <item>拱墅区</item>
         <item>拱墅区</item>
         <item>拱墅区</item>
         <item>拱墅区</item>
     </string-array>
+
+    <string-array name="position_more_choice">
+        <item>更多筛选</item>
+        <item>发布时间</item>
+        <item>月薪范围</item>
+        <item>学历要求</item>
+        <item>公司规模</item>
+    </string-array>
+
+    <!-- Personal -->
+    <string name="personal_main_header">Mocius</string>
+    <string name="personal_my_message">我的信息</string>
+    <string name="personal_introduce_sentence">一句话介绍自己</string>
+    <string name="personal_myTopic">我的话题</string>
+    <string name="personal_myTopic_number">6</string>
+    <string name="personal_followed">我关注的人</string>
+    <string name="personal_followed_number">8</string>
+    <string name="personal_follower">关注我的人</string>
+    <string name="personal_follower_number">10</string>
+    <string name="personal_job_seeker">求职者</string>
+    <string name="personal_praise_num">320</string>
+    <string name="personal_follow">关注</string>
 
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>

@@ -119,10 +119,6 @@
             android:name=".activities.zhiwei.PositionTipOffActivity"
             android:label="@string/position_tip_off" >
         </activity>
-        <activity
-            android:name=".activities.zhiwei.SpinnerTest1"
-            android:label="@string/position_tip_off" >
-        </activity>
 
     </application>
 

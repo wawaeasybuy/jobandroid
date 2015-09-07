@@ -31,21 +31,35 @@
                 android:gravity="center"
                 android:id="@+id/position_area">
 
-                <TextView
+                <Spinner
+                    android:id="@+id/spinner1"
                     android:text="@string/position_area"
-                    style="@style/home_interest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    style="@style/position_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
+
+                </Spinner>
+
+            <!--    <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/turn_down"/>
+                    android:src="@drawable/turn_down"/>   -->
 
             </LinearLayout>
 
             <TextView
+                android:id="@+id/spinnerText1"
+                android:text="@string/position_area_selected"
+                style="@style/position_spinner_visible"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+       <!--     <TextView
                 style="@style/home_time"
                 android:id="@+id/position_area_selected"
                 android:text="@string/position_area_selected"
@@ -53,7 +67,7 @@
                 android:gravity="center"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" />   -->
 
         </LinearLayout>
 
@@ -79,29 +93,28 @@
                 android:gravity="center"
                 android:id="@+id/position_category">
 
-                <TextView
-                    style="@style/home_interest"
+                <Spinner
+                    android:id="@+id/spinner2"
                     android:text="@string/position_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    style="@style/position_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:paddingLeft="10dp"
-                    android:src="@drawable/turn_down"/>
+                </Spinner>
+
 
             </LinearLayout>
 
             <TextView
-                style="@style/home_time"
-                android:id="@+id/position_category_selected"
+                android:id="@+id/spinnerText2"
                 android:text="@string/position_category_selected"
+                style="@style/position_spinner_visible"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
 
         </LinearLayout>
 
@@ -121,17 +134,14 @@
             android:gravity="center"
             android:id="@+id/position_more_choice">
 
-            <TextView
-                style="@style/home_interest"
-                android:text="@string/position_more_choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/spinner3"
+                android:text="@string/position_category"
+                style="@style/position_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:paddingLeft="10dp"
-                android:src="@drawable/turn_down"/>
+            </Spinner>
 
         </LinearLayout>
 
