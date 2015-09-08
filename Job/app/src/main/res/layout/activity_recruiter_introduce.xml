@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        style="@style/header">
+
+        <TextView
+            android:id="@+id/search"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            style="@style/text_title"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/personal_name"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <!-- Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <!-- Frist -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingLeft="10dp"
+               android:paddingRight="10dp"
+               android:paddingTop="10dp"
+               android:background="#ffffff"
+               android:orientation="vertical">
+
+               <!-- First 1 -->
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <ImageView
+                       android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/touxiang"/>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:paddingTop="5dp"
+                       android:layout_marginLeft="20dp"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:id="@+id/introduce_sentence"
+                           style="@style/home_interest"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:paddingBottom="5dp"
+                           android:text="@string/personal_introduce_sentence"/>
+
+                       <ImageView
+                           android:background="#EAEAEA"
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp" />
+
+                       <!-- figure -->
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="5dp"
+                           android:orientation="horizontal">
+
+                           <LinearLayout
+                               android:layout_width="0dp"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="1"
+                               android:orientation="vertical">
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/personal_myTopic_number"
+                                   android:textSize="16sp"/>
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/personal_myTopic"
+                                   android:textSize="12sp"
+                                   android:textColor="#AEAEAE"/>
+
+                           </LinearLayout>
+
+                           <LinearLayout
+                               android:layout_width="0dp"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="1"
+                               android:orientation="vertical">
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/personal_followed_number"
+                                   android:textSize="16sp"/>
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/personal_followed"
+                                   android:textSize="12sp"
+                                   android:textColor="#AEAEAE"/>
+
+                           </LinearLayout>
+
+                           <LinearLayout
+                               android:layout_width="0dp"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="1"
+                               android:orientation="vertical">
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/personal_follower_number"
+                                   android:textSize="16sp"/>
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:text="@string/personal_follower"
+                                   android:textSize="12sp"
+                                   android:textColor="#AEAEAE"/>
+
+                           </LinearLayout>
+
+                       </LinearLayout>
+
+                   </LinearLayout>
+
+               </LinearLayout>
+
+               <!-- First 2 -->
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="20dp"
+                   android:orientation="horizontal">
+
+                   <ImageView
+                       android:layout_width="28dp"
+                       android:layout_height="28dp"
+                       android:paddingTop="3dp"
+                       android:paddingBottom="5dp"
+                       android:paddingLeft="10dp"
+                       android:src="@drawable/zan"/>
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:paddingBottom="5dp"
+                       android:layout_marginLeft="10dp"
+                       android:layout_weight="1"
+                       android:text="@string/personal_praise_num"
+                       android:textSize="16sp"/>
+
+                   <Button
+                       android:layout_width="wrap_content"
+                       android:layout_height="30dp"
+                       android:layout_marginBottom="10dp"
+                       android:background="#0070ee"
+                       android:text="@string/personal_follow"
+                       android:textSize="14sp"
+                       android:textColor="#ffffff"/>
+
+               </LinearLayout>
+
+           </LinearLayout>
+
+           <!-- Second -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:paddingLeft="10dp"
+               android:paddingRight="10dp"
+               android:orientation="vertical"
+               android:background="#ffffff">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:orientation="horizontal"
+                   android:clickable="true"
+                   android:id="@+id/personal_my_quiz">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/personal_my_quiz"
+                       style="@style/home_follow_number"
+                       android:layout_weight="1"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:paddingRight="5dp"
+                       android:text="@string/personal_praise_num"
+                       style="@style/position_spinner_visible"
+                       android:id="@+id/personal_my_quiz_num1"/>
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/turn_right1"/>
+
+               </LinearLayout>
+
+               <ImageView
+                   android:background="#EAEAEA"
+                   android:layout_width="match_parent"
+                   android:layout_height="0.5dp" />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:orientation="horizontal"
+                   android:clickable="true"
+                   android:id="@+id/personal_my_answer">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/personal_my_answer"
+                       style="@style/home_follow_number"
+                       android:layout_weight="1"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:paddingRight="5dp"
+                       android:text="@string/personal_praise_num"
+                       style="@style/position_spinner_visible"
+                       android:id="@+id/personal_my_quiz_num2"/>
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/turn_right1"/>
+
+               </LinearLayout>
+
+               <ImageView
+                   android:background="#EAEAEA"
+                   android:layout_width="match_parent"
+                   android:layout_height="0.5dp" />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:orientation="horizontal"
+                   android:clickable="true"
+                   android:id="@+id/personal_my_follow">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/personal_my_follow"
+                       style="@style/home_follow_number"
+                       android:layout_weight="1"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:paddingRight="5dp"
+                       android:text="@string/personal_praise_num"
+                       style="@style/position_spinner_visible"
+                       android:id="@+id/personal_my_quiz_num3"/>
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/turn_right1"/>
+
+               </LinearLayout>
+
+               <ImageView
+                   android:background="#EAEAEA"
+                   android:layout_width="match_parent"
+                   android:layout_height="0.5dp" />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:orientation="horizontal"
+                   android:clickable="true"
+                   android:id="@+id/personal_my_collect">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/personal_my_collect"
+                       style="@style/home_follow_number"
+                       android:layout_weight="1"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:paddingRight="5dp"
+                       android:text="@string/personal_praise_num"
+                       style="@style/position_spinner_visible"
+                       android:id="@+id/personal_my_quiz_num4"/>
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/turn_right1"/>
+
+               </LinearLayout>
+
+           </LinearLayout>
+
+           <!-- Third -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:paddingLeft="10dp"
+               android:paddingRight="10dp"
+               android:orientation="vertical"
+               android:background="#ffffff">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:orientation="horizontal"
+                   android:clickable="true"
+                   android:id="@+id/personal_my_resume">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/personal_job_post"
+                       style="@style/home_follow_number"
+                       android:layout_weight="1"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:paddingRight="5dp"
+                       android:text="@string/personal_job_view"
+                       android:textSize="12sp"
+                       style="@style/position_spinner_visible"
+                       android:id="@+id/personal_job_post"/>
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/turn_right1"/>
+
+               </LinearLayout>
+
+               <ImageView
+                   android:background="#EAEAEA"
+                   android:layout_width="match_parent"
+                   android:layout_height="0.5dp" />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:orientation="horizontal"
+                   android:clickable="true"
+                   android:id="@+id/personal_apply_record">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/personal_apply_record"
+                       style="@style/home_follow_number"
+                       android:layout_weight="1"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:paddingRight="5dp"
+                       android:text="@string/personal_firm_feedback_num"
+                       android:textSize="12sp"
+                       style="@style/position_spinner_visible"
+                       android:id="@+id/personal_apply_record_num"/>
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/turn_right1"/>
+
+               </LinearLayout>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

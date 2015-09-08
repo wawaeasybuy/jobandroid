@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/introduce"
+                    android:id="@+id/introduce_sentence"
                     style="@style/home_interest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,12 +52,14 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/personal_myTopic"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/personal_myTopic_number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/personal_myTopic_number"
@@ -73,12 +75,14 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/personal_followed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/personal_followed_number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/personal_followed_number"
@@ -94,12 +98,14 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/personal_follower"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/personal_follower_number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/personal_follower_number"
@@ -127,21 +133,12 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingBottom="5dp"
-                android:text="@string/personal_job_seeker"
-                android:textSize="12sp"
-                android:textColor="#AEAEAE"/>
-
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:gravity="center"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:paddingTop="3dp"
                 android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:src="@drawable/zan"/>
 
             <TextView

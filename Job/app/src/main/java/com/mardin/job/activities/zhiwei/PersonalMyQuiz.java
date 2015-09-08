@@ -10,14 +10,14 @@ import com.mardin.job.R;
 /**
  * Created by Ryo on 2015/9/8.
  */
-public class PersonalSelfIntroduceActivity extends Activity {
+public class PersonalMyQuiz extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_introduce);
+        setContentView(R.layout.activity_personal_my_quiz);
 
-        LinearLayout turn_left= (LinearLayout) findViewById(R.id.turn_left);
+        LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,5 +25,6 @@ public class PersonalSelfIntroduceActivity extends Activity {
 
             }
         });
+
     }
 }

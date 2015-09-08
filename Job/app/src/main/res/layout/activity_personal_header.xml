@@ -11,13 +11,12 @@
         style="@style/header">
 
         <TextView
-            android:id="@+id/search"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             style="@style/text_title"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="@string/personal_main_header"
+            android:text="@string/personal_name"
             android:textSize="20sp"/>
 
     </LinearLayout>

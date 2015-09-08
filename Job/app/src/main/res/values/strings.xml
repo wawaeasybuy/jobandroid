@@ -271,7 +271,7 @@
     </string-array>
 
     <!-- Personal -->
-    <string name="personal_main_header">Mocius</string>
+    <string name="personal_name">Mocius</string>
     <string name="personal_my_message">我的信息</string>
     <string name="personal_introduce_sentence">一句话介绍自己</string>
     <string name="personal_myTopic">我的话题</string>
@@ -293,6 +293,18 @@
     <string name="personal_view_record">查看记录</string>
     <string name="personal_firm_feedback">公司反馈</string>
     <string name="personal_firm_feedback_num">8</string>
+    <string name="personal_introduce_tip">职业技能。专业背景。30字以内。</string>
+    <string name="personal_introduce_hint">例如：化妆品销售/销售爱好者/产品运营</string>
+    <string name="personal_job_post">发布职位</string>
+    <string name="personal_job_view">查看职位</string>
+    <string name="personal_topic_content">根据《中华人民共和国产品质量法》、《中华人民共和国标准化法》、《中华人民共和国工业产品生产许可证管理条例》、《国务院关于加强食品等产品安全监督管理的特别规定》等法律法规，制定本规定。</string>
+    <string name="personal_followed_name">Ryo</string>
+    <string name="personal_introduce">一句话的自我介绍</string>
+    <string name="personal_question_title">怎么样做好化妆品销售呢？</string>
+    <string name="personal_quiz_follow_num">6</string>
+    <string name="personal_quiz_follow">人关注</string>
+    <string name="personal_quiz_answer_num">6</string>
+    <string name="personal_quiz_answer">个回答</string>
 
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>

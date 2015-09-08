@@ -115,7 +115,26 @@
             android:name=".activities.zhiwei.PositionTipOffActivity"
             android:label="@string/position_tip_off" >
         </activity>
-
+        <activity
+            android:name=".activities.zhiwei.PersonalSelfIntroduceActivity"
+            android:label="@string/personal_introduce_sentence" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalMyTopicActivity"
+            android:label="@string/personal_myTopic" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalFollowedActivity"
+            android:label="@string/personal_followed" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalFollowerActivity"
+            android:label="@string/personal_follower" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalMyQuizActivity"
+            android:label="@string/personal_my_quiz" >
+        </activity>
     </application>
 
 </manifest>

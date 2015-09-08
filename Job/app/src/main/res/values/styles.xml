@@ -229,4 +229,15 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <!--  Personal -->
+    <style name="personal_topic_content">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#AEAEAE</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:singleLine">false</item>
+    </style>
+
 </resources>
