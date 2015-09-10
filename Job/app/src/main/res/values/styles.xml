@@ -103,14 +103,15 @@
     <style name="text_title">
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center</item>
-        <item name="android:shadowColor">#ff404040</item>
-        <item name="android:shadowDx">1.2</item>
-        <item name="android:shadowDy">1.2</item>
-        <item name="android:shadowRadius">1.0</item>
         <item name="android:textColor">#ffffffff</item>
         <item name="android:textSize">18.0dip</item>
         <item name="android:singleLine">true</item>
     </style>
+
+    <!--  <item name="android:shadowColor">#ff404040</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowRadius">1.0</item>   -->
 
     <!-- Home-->
     <style name="home_classify">
@@ -240,4 +241,13 @@
         <item name="android:singleLine">false</item>
     </style>
 
+    <style name="personal_answer_content">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#AEAEAE</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:singleLine">false</item>
+    </style>
 </resources>

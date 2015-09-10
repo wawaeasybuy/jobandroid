@@ -305,6 +305,33 @@
     <string name="personal_quiz_follow">人关注</string>
     <string name="personal_quiz_answer_num">6</string>
     <string name="personal_quiz_answer">个回答</string>
+    <string name="personal_my_resume_create">新建简历</string>
+    <string name="personal_my_resume_id">的个人简历</string>
+    <string name="personal_my_resume_delete">删除</string>
+    <string name="personal_my_resume_update">更新于</string>
+    <string name="personal_my_resume_update_time">2015-08-15</string>
+    <string name="personal_my_resume_preview">预览</string>
+    <string name="personal_my_resume_delivery">可投递</string>
+    <string name="personal_my_resume_release">公开</string>
+    <string name="personal_my_resume_netobcomplt">需完善</string>
+    <string name="personal_my_resume_keep_secret">保密</string>
+    <string name="personal_my_resume_edit">编辑简历</string>
+    <string name="personal_base_info">基本信息</string>
+    <string name="personal_unnamed_resume">未命名简历</string>
+    <string name="personal_add_name">输入名称</string>
+    <string name="personal_info">个人信息</string>
+    <string name="personal_job_intension">求职意向</string>
+    <string name="personal_self_evaluate">自我评价</string>
+    <string name="personal_completed">完整</string>
+    <string name="personal_important_info">重要信息</string>
+    <string name="personal_education">教育背景</string>
+    <string name="personal_work_experience">工作经验</string>
+    <string name="personal_apply_position"> 产品运营</string>
+    <string name="personal_position_area"> 杭州/滨江区</string>
+    <string name="personal_deliver_success">投递成功</string>
+    <string name="personal_deliver_success_time">05-09 11:18</string>
+    <string name="personal_resume_viewed">被查看</string>
+
 
     <!-- Activity Label -->
     <string name="title_activity_Topic">Topic</string>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:layout_height="match_parent">
 
     <!--  Header -->
     <LinearLayout
@@ -41,7 +40,7 @@
             android:layout_weight="1"
             style="@style/text_title"
             android:layout_height="fill_parent"
-            android:text="@string/personal_my_quiz"
+            android:text="@string/personal_apply_record"
             android:textSize="20sp"/>
 
         <TextView
@@ -57,76 +56,99 @@
     <!-- Content -->
     <LinearLayout
         android:id="@+id/personal_question"
+        android:background="#259CD2FF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/personal_question_title"
-            style="@style/home_interest"
+            android:id="@+id/position_firm"
+            style="@style/position_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:textSize="16sp"
-            android:text="@string/personal_question_title"/>
+            android:text="@string/position_firm"/>
+
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/personal_apply_position"
+                style="@style/home_interest"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_apply_position"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/position_spinner_visible"
+                    android:text="@string/personal_position_area"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/position_spinner_visible"
+                    android:text="@string/position_salary"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:background="#EAEAEA"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/personal_quiz_follow_num"
-                style="@style/personal_topic_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="@string/personal_quiz_follow_num"/>
-
-            <TextView
-                android:id="@+id/personal_quiz_follow"
-                style="@style/personal_topic_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="@string/personal_quiz_follow"/>
-
-            <TextView
-                android:id="@+id/personal_quiz_answer_num"
-                style="@style/personal_topic_content"
-                android:paddingLeft="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="@string/personal_quiz_answer_num"/>
-
-            <TextView
-                android:id="@+id/personal_quiz_answer"
-                style="@style/personal_topic_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="14sp"
-                android:text="@string/personal_quiz_answer"/>
+                style="@style/position_spinner_visible"
+                android:text="@string/personal_deliver_success"/>
 
-            <ImageView
-                android:id="@+id/delete"
-                android:src="@drawable/shanchu"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/position_spinner_visible"
+                android:text="@string/personal_deliver_success_time"/>
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <ImageView
-        android:background="#EAEAEA"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
 
 </LinearLayout>

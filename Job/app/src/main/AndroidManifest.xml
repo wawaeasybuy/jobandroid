@@ -135,6 +135,31 @@
             android:name=".activities.zhiwei.PersonalMyQuizActivity"
             android:label="@string/personal_my_quiz" >
         </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalMyAnswerActivity"
+            android:label="@string/personal_my_answer" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalMyFollowActivity"
+            android:label="@string/personal_my_follow" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalMyCollectActivity"
+            android:label="@string/personal_my_collect" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalMyResumeActivity"
+            android:label="@string/personal_my_resume" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.ResumeEditActivity"
+            android:label="@string/personal_my_resume_edit" >
+        </activity>
+        <activity
+            android:name=".activities.zhiwei.PersonalApplyRecordActivity"
+            android:label="@string/personal_apply_record" >
+        </activity>
+
     </application>
 
 </manifest>

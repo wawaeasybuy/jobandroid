@@ -11,9 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mardin.job.R;
+import com.mardin.job.activities.zhiwei.PersonalApplyRecordActivity;
 import com.mardin.job.activities.zhiwei.PersonalFollowedActivity;
 import com.mardin.job.activities.zhiwei.PersonalFollowerActivity;
+import com.mardin.job.activities.zhiwei.PersonalMyAnswerActivity;
+import com.mardin.job.activities.zhiwei.PersonalMyCollectActivity;
 import com.mardin.job.activities.zhiwei.PersonalMyQuizActivity;
+import com.mardin.job.activities.zhiwei.PersonalMyResumeActivity;
 import com.mardin.job.activities.zhiwei.PersonalMyTopicActivity;
 import com.mardin.job.activities.zhiwei.PersonalSelfIntroduceActivity;
 
@@ -79,5 +83,49 @@ public class PersonalFragment extends Fragment {
             }
         });
 
+        LinearLayout personal_my_answer= ( LinearLayout) getActivity().findViewById(R.id.personal_my_answer);
+        personal_my_answer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonalMyAnswerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout personal_my_follow= ( LinearLayout) getActivity().findViewById(R.id.personal_my_follow);
+        personal_my_follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonalMyAnswerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout personal_my_collect= ( LinearLayout) getActivity().findViewById(R.id.personal_my_collect);
+        personal_my_collect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonalMyCollectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout personal_my_resume= ( LinearLayout) getActivity().findViewById(R.id.personal_my_resume);
+        personal_my_resume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalMyResumeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout personal_apply_record= ( LinearLayout) getActivity().findViewById(R.id.personal_apply_record);
+        personal_apply_record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalApplyRecordActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

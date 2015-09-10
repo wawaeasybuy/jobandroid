@@ -41,7 +41,7 @@
             android:layout_weight="1"
             style="@style/text_title"
             android:layout_height="fill_parent"
-            android:text="@string/personal_my_quiz"
+            android:text="@string/personal_my_follow"
             android:textSize="20sp"/>
 
         <TextView
@@ -56,7 +56,7 @@
 
     <!-- Content -->
     <LinearLayout
-        android:id="@+id/personal_question"
+        android:id="@+id/personal_my_follow_q"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
