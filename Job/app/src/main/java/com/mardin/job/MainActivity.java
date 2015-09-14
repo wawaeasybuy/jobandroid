@@ -26,19 +26,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView home_jobMarketT;
     private TextView homePersonalT;
 
+  /*
     private static MainActivity defaultActivity = null;
     public static MainActivity getDefault() {
 
         return defaultActivity;
     }
-
+*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_main);
 
-        defaultActivity = this;
+      //  defaultActivity = this;
 
         homePositionT= (TextView) findViewById(R.id.homePositionT);
         home_jobMarketT= (TextView) findViewById(R.id.home_jobMarketT);
@@ -55,6 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
+   /*
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -62,6 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             defaultActivity = null;
         }
     }
+    */
 
     private void initView() {
 

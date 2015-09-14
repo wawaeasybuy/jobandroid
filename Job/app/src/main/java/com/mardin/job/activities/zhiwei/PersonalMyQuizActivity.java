@@ -52,7 +52,7 @@ public class PersonalMyQuizActivity extends Activity {
 
             public void onClick(View v) {
 
-                new AlertDialog.Builder(PersonalMyQuizActivity.this)//.setTitle("系统提示")
+                new AlertDialog.Builder(PersonalMyQuizActivity.this)
 
                         .setMessage("Do You Want To Delete This Quiz?")
 
