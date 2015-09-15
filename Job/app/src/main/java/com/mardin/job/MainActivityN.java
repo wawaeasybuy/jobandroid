@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mardin.job.activities.job.EditResumeActivity;
 import com.mardin.job.activities.job.LoginActivity;
 import com.mardin.job.activities.job.PersonalEditDataActivity;
+import com.mardin.job.activities.job.PersonalSettingActivity;
 
 
 public class MainActivityN extends Activity {
@@ -18,14 +20,14 @@ public class MainActivityN extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_center);
+        setContentView(R.layout.activity_personal_center_logined);
 
-        LinearLayout login= (LinearLayout) findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener() {
+        LinearLayout edit_data= (LinearLayout) findViewById(R.id.edit_data);
+        edit_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivityN.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivityN.this, PersonalEditDataActivity.class);
                 startActivity(intent);
             }
         });
@@ -35,13 +37,33 @@ public class MainActivityN extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivityN.this, PersonalEditDataActivity.class);
+                Intent intent = new Intent(MainActivityN.this, PersonalSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView personal_login= (TextView) findViewById(R.id.personal_login);
+        personal_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivityN.this,  LoginActivity.class);
                 startActivity(intent);
             }
         });
 
         LinearLayout resume_edit= (LinearLayout) findViewById(R.id.resume_edit);
         resume_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivityN.this, EditResumeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView turn_right= (ImageView) findViewById(R.id.turn_right);
+        turn_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

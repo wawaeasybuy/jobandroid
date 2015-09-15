@@ -29,7 +29,7 @@
                 android:layout_height="fill_parent"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:text="@string/personal_center" />
+                android:text="@string/personal_my_resume_edit" />
 
         </LinearLayout>
 
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="fill_parent"
-            android:text="@string/personal_login"
+            android:text="@string/personal_job_intention"
             android:textSize="20sp"/>
 
         <TextView
@@ -58,54 +58,65 @@
             android:paddingRight="15dp"
             android:textSize="16sp"
             android:gravity="center"
-            android:text="@string/personal_register" />
+            android:text="@string/base_data_save" />
 
     </LinearLayout>
 
     <!--  Content -->
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="#ffffff"
-        android:hint="@string/input_phone_num"/>
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="#ffffff"
-        android:hint="@string/input_password"/>
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:background="#BDBDBD"
-        android:text="@string/personal_login"
-        android:textColor="#ffffff" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="#dedede"
+            android:hint="@string/intention_expect_trade"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="#dedede"
+            android:hint="@string/intention_expect_position"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="#dedede"
+            android:hint="@string/intention_expect_place"/>
+
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/forget_password"
-        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:text="@string/forget_password" />
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#dedede"
+        android:text="@string/base_data_save_next"/>
 
 </LinearLayout>

@@ -181,7 +181,26 @@
             android:name=".activities.job.EditResumeActivity"
             android:label="@string/personal_my_resume_edit" >
         </activity>
-
+        <activity
+            android:name=".activities.job.BaseDataActivity"
+            android:label="@string/personal_base_info" >
+        </activity>
+        <activity
+            android:name=".activities.job.JobIntentionActivity"
+            android:label="@string/personal_job_intention" >
+        </activity>
+        <activity
+            android:name=".activities.job.ImportantInfoActivity"
+            android:label="@string/personal_important_info" >
+        </activity>
+        <activity
+            android:name=".activities.job.EducationInfoActivity"
+            android:label="@string/personal_education" >
+        </activity>
+        <activity
+            android:name=".activities.job.PersonalSettingActivity"
+            android:label="@string/personal_setting" >
+        </activity>
     </application>
 
 </manifest>

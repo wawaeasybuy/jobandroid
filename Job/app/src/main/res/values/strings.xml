@@ -320,11 +320,11 @@
     <string name="personal_unnamed_resume">未命名简历</string>
     <string name="personal_add_name">输入名称</string>
     <string name="personal_info">个人信息</string>
-    <string name="personal_job_intension">求职意向</string>
+    <string name="personal_job_intention">求职意向</string>
     <string name="personal_self_evaluate">自我评价</string>
     <string name="personal_completed">完整</string>
     <string name="personal_important_info">重要信息</string>
-    <string name="personal_education">教育背景</string>
+    <string name="personal_education">教育信息</string>
     <string name="personal_work_experience">工作经验</string>
     <string name="personal_apply_position"> 产品运营</string>
     <string name="personal_position_area"> 杭州/滨江区</string>
@@ -360,6 +360,26 @@
     <string name="real_name">真实姓名</string>
     <string name="change_portrait">修改头像</string>
     <string name="change_password">修改密码</string>
+    <string name="personal_setting_about_us">关于我们</string>
+    <string name="personal_setting_feedback">反馈</string>
+    <string name="personal_setting_massage">推送信息</string>
+    <string name="personal_setting_log_out">退出登录</string>
     <string name="resume_name">简历名称</string>
-
+    <string name="base_data_save">保存</string>
+    <string name="base_data_name">姓名</string>
+    <string name="base_data_sex">性别</string>
+    <string name="base_data_contact_info">联系方式</string>
+    <string name="base_data_residence">居住地</string>
+    <string name="base_data_birth_date">出生年月</string>
+    <string name="base_data_save_next">保存并填写下一项</string>
+    <string name="intention_expect_trade">期望行业</string>
+    <string name="intention_expect_position">期望职位</string>
+    <string name="intention_expect_place">期望工作地点</string>
+    <string name="resume_school_name">学校名称</string>
+    <string name="resume_major_name">专业名称</string>
+    <string name="resume_graduate_time">毕业时间</string>
+    <string name="resume_grade_range">成绩排名</string>
+    <string name="resume_experience">学校里获得过的证书/拿过的奖学金/学生干部任职经历/活动经历（选填）</string>
+    <string name="resume_practice_experience">实习经历</string>
+    <string name="resume_work">简历作品（可用网盘形式附上链接）</string>
 </resources>
