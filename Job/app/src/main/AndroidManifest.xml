@@ -201,6 +201,10 @@
             android:name=".activities.job.PersonalSettingActivity"
             android:label="@string/personal_setting" >
         </activity>
+        <activity
+            android:name=".activities.job.FunctionScoreActivity"
+            android:label="@string/function_score" >
+        </activity>
     </application>
 
 </manifest>

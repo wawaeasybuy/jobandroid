@@ -382,4 +382,36 @@
     <string name="resume_experience">学校里获得过的证书/拿过的奖学金/学生干部任职经历/活动经历（选填）</string>
     <string name="resume_practice_experience">实习经历</string>
     <string name="resume_work">简历作品（可用网盘形式附上链接）</string>
+
+    <!-- Function Score -->
+    <string name="function_score_header">职能测评分</string>
+    <string name="function_score">78</string>
+    <string name="function_score_evaluate">能力不错</string>
+    <string name="function_evaluate_time">评估时间：</string>
+    <string name="function_evaluate_time_specific">05.09</string>
+    <string name="function_feedback">职能测评分是根据企业反馈</string>
+    <string name="function_expertise_level">专业水平</string>
+    <string name="function_language_express">语言表达</string>
+    <string name="function_compress_strain">抗压应变</string>
+    <string name="function_attitude_etiquette">态度礼仪</string>
+    <string name="function_analysis_thinking">分析思考</string>
+    <string name="function_firm_suggestion">公司建议</string>
+    <string name="function_suggestion_content">xxxxxxxxxxxxxxxxxx</string>
+    <string name="function_firm">xxx公司</string>
+    <string name="function_suggestion_time">05-09</string>
+    <string name="function_score_lack">由于缺少面试经历无法做出职能测评分</string>
+
+    <!-- Search Internships -->
+    <string name="header">找实习</string>
+    <string name="classify">IT/互联网</string>
+    <string name="position_recommend">职位推荐</string>
+    <string name="position_recommend_title">职位推荐</string>
+    <string name="position_recommend_up">顶</string>
+    <string name="position_recommend_urgent">急</string>
+    <string name="position_recommend_time">05-09</string>
+    <string name="position_recommend_place">西湖文三路</string>
+    <string name="position_recommend_salary">2000元</string>
+
+
+
 </resources>

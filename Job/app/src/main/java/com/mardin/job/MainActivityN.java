@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mardin.job.activities.job.EditResumeActivity;
+import com.mardin.job.activities.job.FunctionScoreActivity;
 import com.mardin.job.activities.job.LoginActivity;
 import com.mardin.job.activities.job.PersonalEditDataActivity;
 import com.mardin.job.activities.job.PersonalSettingActivity;
@@ -52,6 +53,16 @@ public class MainActivityN extends Activity {
             }
         });
 
+        ImageView turn_right= (ImageView) findViewById(R.id.turn_right);
+        turn_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivityN.this, EditResumeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         LinearLayout resume_edit= (LinearLayout) findViewById(R.id.resume_edit);
         resume_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,15 +73,16 @@ public class MainActivityN extends Activity {
             }
         });
 
-        ImageView turn_right= (ImageView) findViewById(R.id.turn_right);
-        turn_right.setOnClickListener(new View.OnClickListener() {
+        LinearLayout resume_release= (LinearLayout) findViewById(R.id.resume_release);
+        resume_release.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivityN.this, EditResumeActivity.class);
+                Intent intent = new Intent(MainActivityN.this, FunctionScoreActivity.class);
                 startActivity(intent);
             }
         });
+
 
     }
 
