@@ -217,7 +217,10 @@
             android:name=".activities.job.PositionSearchActivity"
             android:label="@string/position_search" >
         </activity>
-
+        <activity
+            android:name=".activities.job.PositionDetailActivity"
+            android:label="@string/position_detail" >
+        </activity>
     </application>
 
 </manifest>

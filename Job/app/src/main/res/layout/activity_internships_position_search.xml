@@ -66,11 +66,11 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_weight="1">
 
             <TextView
-                android:gravity="center"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="@string/position_area" />
@@ -80,6 +80,8 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_weight="1">
 
             <TextView
@@ -94,6 +96,8 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_weight="1">
 
             <TextView
@@ -109,7 +113,7 @@
 
     <!--  Position 1 -->
     <LinearLayout
-        android:id="@+id/position_recommend"
+        android:id="@+id/position_recommend1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
@@ -183,9 +187,10 @@
 
     <!--  Position 2 -->
     <LinearLayout
-        android:id="@+id/position_recommend"
+        android:id="@+id/position_recommend2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -220,12 +225,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/position_recommend_place" />
 
             <LinearLayout
                 android:id="@+id/position_special"
                 android:clickable="true"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -234,7 +240,6 @@
                     android:paddingLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:textSize="16sp"
                     android:gravity="center"
                     android:text="@string/position_special" />
 

@@ -187,7 +187,7 @@
 
     <!-- Position -->
     <string name="position_search">职位搜索</string>
-    <string name="position_search_content">输入关键字 职位/行业/公司</string>
+    <string name="position_search_content"> 职位/行业/公司</string>
     <string name="position_classify">职位类别</string>
     <string name="profession_classify">行业类别</string>
     <string name="working_place">工作地点</string>
@@ -224,7 +224,7 @@
     <string name="website_mama">www.mama.com</string>
     <string name="firm_address">公司地址</string>
     <string name="firm_address_mama">杭州市临安市创业孵化园区</string>
-    <string name="firm_introduce">公司介绍</string>
+    <string name="firm_introduce">公司简介</string>
     <string name="position_submit">提交</string>
     <string name="position_firm_owning">所属公司| xxxx公司</string>
     <string name="position_name">职位名称| 产品运营</string>
