@@ -405,13 +405,16 @@
     <string name="header">找实习</string>
     <string name="classify">IT/互联网</string>
     <string name="position_recommend">职位推荐</string>
-    <string name="position_recommend_title">职位推荐</string>
+    <string name="position_recommend_title">急聘xxxxxxx</string>
     <string name="position_recommend_up">顶</string>
     <string name="position_recommend_urgent">急</string>
     <string name="position_recommend_time">05-09</string>
     <string name="position_recommend_place">西湖文三路</string>
     <string name="position_recommend_salary">2000元</string>
-
+    <string name="internships_search">搜索</string>
+    <string name="internships_intelligent_sorting">智能排序</string>
+    <string name="position_special">职位特色</string>
+    <string name="more">更多</string>
 
 
 </resources>

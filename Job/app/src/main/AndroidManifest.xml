@@ -205,6 +205,19 @@
             android:name=".activities.job.FunctionScoreActivity"
             android:label="@string/function_score" >
         </activity>
+        <activity
+            android:name=".activities.job.SearchInternshipsActivity"
+            android:label="@string/header" >
+        </activity>
+        <activity
+            android:name=".activities.job.InternshipsSearchActivity"
+            android:label="@string/internships_search" >
+        </activity>
+        <activity
+            android:name=".activities.job.PositionSearchActivity"
+            android:label="@string/position_search" >
+        </activity>
+
     </application>
 
 </manifest>

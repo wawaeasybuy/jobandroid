@@ -13,6 +13,7 @@ import com.mardin.job.activities.job.FunctionScoreActivity;
 import com.mardin.job.activities.job.LoginActivity;
 import com.mardin.job.activities.job.PersonalEditDataActivity;
 import com.mardin.job.activities.job.PersonalSettingActivity;
+import com.mardin.job.activities.job.SearchInternshipsActivity;
 
 
 public class MainActivityN extends Activity {
@@ -38,7 +39,7 @@ public class MainActivityN extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivityN.this, PersonalSettingActivity.class);
+                Intent intent = new Intent(MainActivityN.this,SearchInternshipsActivity.class);
                 startActivity(intent);
             }
         });

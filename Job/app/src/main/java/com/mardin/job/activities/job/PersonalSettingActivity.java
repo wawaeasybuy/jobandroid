@@ -15,9 +15,9 @@ public class PersonalSettingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_internships);
+        setContentView(R.layout.activity_personal_setting);
 
-      /*
+
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +26,7 @@ public class PersonalSettingActivity extends Activity {
 
             }
         });
-      */
+
 
 
     }
