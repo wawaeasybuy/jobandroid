@@ -1,38 +1,44 @@
 package com.example.ryo.job_employer;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.ryo.job_employer.activities.EditInfoActivity;
+import com.example.ryo.job_employer.activities.MyScoreActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        setContentView(R.layout.activity_home);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        TextView edit = (TextView) findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+                Intent intent = new Intent(MainActivity.this, EditInfoActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        LinearLayout my_score = (LinearLayout) findViewById(R.id.my_score);
+        my_score.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        return super.onOptionsItemSelected(item);
+                Intent intent = new Intent( MainActivity.this, MyScoreActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
+
+

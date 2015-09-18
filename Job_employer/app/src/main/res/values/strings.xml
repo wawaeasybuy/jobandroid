@@ -1,6 +1,55 @@
 <resources>
     <string name="app_name">Job_employer</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <!-- Internships -->
+    <string name="internships">实习宝</string>
+    <string name="setting">设置</string>
+    <string name="click_login">点击登录</string>
+    <string name="x_position">xx职位</string>
+    <string name="to_edit">去编辑</string>
+    <string name="my_score">我的积分：</string>
+    <string name="my_score_num">59</string>
+    <string name="my_position">我的职位</string>
+    <string name="position_fit">职位匹配</string>
+    <string name="apply_person">申请的人</string>
+    <string name="interviewee">面试的人</string>
+    <string name="my_change">我的动态</string>
+    <string name="my_change_time">2小时前</string>
+    <string name="my_change_content1">收到来自xxx的简历</string>
+    <string name="my_change_content2">成功将xxx置顶</string>
+
+    <!-- Internships Edit Info -->
+    <string name="edit_info">编辑资料</string>
+    <string name="real_name">真实姓名</string>
+    <string name="change_portrait">修改头像</string>
+    <string name="change_password">修改密码</string>
+    <string name="hold_position">担任职位</string>
+    <string name="name">Ryo</string>
+    <string name="firm_info">公司信息</string>
+    <string name="password">000000</string>
+    <string name="add">添加</string>
+    <string name="save">保存</string>
+    <string name="netobcomplt">需完善</string>
+
+    <!-- Internships Firm Info -->
+    <string name="firm_name">公司名称</string>
+    <string name="firm_name_">杭州xxxxx公司</string>
+    <string name="main_business">主营业务</string>
+    <string name="main_business_">软件制作</string>
+    <string name="firm_website">公司网址</string>
+    <string name="detail_address">详细地址</string>
+    <string name="firm_intro">公司简介</string>
+    <string name="firm_intro_limit">不得少于100字</string>
+
+    <!-- Internships My Score -->
+    <string name="my_score_header">我的积分</string>
+    <string name="present_score">当前积分</string>
+    <string name="present_score_num">59</string>
+    <string name="evaluate_score">评价拿积分</string>
+    <string name="buy_score">购买积分</string>
+    <string name="score_ad">积分做推广</string>
+    <string name="ad_position">招交互设计实习生</string>
+    <string name="make_ad">去推广</string>
+
 </resources>

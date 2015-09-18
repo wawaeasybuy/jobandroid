@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.EditInfoActivity"
+            android:label="@string/edit_info" >
+        </activity>
+        <activity
+            android:name=".activities.FirmInfoActivity"
+            android:label="@string/firm_info" >
+        </activity>
+        <activity
+            android:name=".activities.MyScoreActivity"
+            android:label="@string/my_score" >
+        </activity>
     </application>
 
 </manifest>
