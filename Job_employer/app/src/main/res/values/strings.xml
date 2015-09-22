@@ -52,4 +52,78 @@
     <string name="ad_position">招交互设计实习生</string>
     <string name="make_ad">去推广</string>
 
+    <!-- Internships interviewee -->
+    <string name="internships_interviewee">面试的人</string>
+    <string name="interviewee_position">电子商务助理</string>
+    <string name="interviewee_name">Ryo</string>
+    <string name="interviewee_major">xxxx大学电子商务专业</string>
+    <string name="interviewee_before">未面试</string>
+    <string name="interviewee_to_evaluate">去评价</string>
+    <string name="interviewee_evaluated">已评价</string>
+    <string name="interviewee_view_evaluate">看评价</string>
+
+    <string name="interviewee_evaluate">评价</string>
+    <string name="expertise_level">专业水平</string>
+    <string name="analysis_thinking">分析思考</string>
+    <string name="language_express">语言表达</string>
+    <string name="compress_strain">抗压应变</string>
+    <string name="attitude_etiquette">态度礼仪</string>
+    <string name="interviewee_suggestion">建议：</string>
+
+    <!-- Internships apply_person -->
+    <string name="new_apply_person">新申请的人</string>
+    <string name="apply_time">2小时前</string>
+    <string name="delete">删除</string>
+    <string name="apply_person_name">Ryo</string>
+    <string name="apply_person_resume">的简历</string>
+    <string name="apply_person_sex">男</string>
+    <string name="apply_person_place">杭州</string>
+    <string name="apply_person_age">22岁</string>
+    <string name="apply_person_phone">电话：</string>
+    <string name="apply_person_num">12345678909</string>
+    <string name="apply_person_add">加入人才库</string>
+    <string name="education">教育信息</string>
+    <string name="self_evaluate">自我评价</string>
+    <string name="works">作品</string>
+    <string name="internships_experience">实习经历</string>
+
+    <!-- Internships my_position-->
+    <string name="internships_my_position">我的职位</string>
+    <string name="my_position_title">急求xxxxx</string>
+    <string name="my_position_update">更新于</string>
+    <string name="my_position_update_time">05-09</string>
+    <string name="my_position_limit">可发布</string>
+    <string name="edit">编辑</string>
+    <string name="my_position_open">公开</string>
+    <string name="my_position_ad">推广</string>
+    <string name="my_position_share">分享</string>
+    <string name="add_new_position">新增职位</string>
+
+    <!-- Internships edit position-->
+    <string name="edit_position">编辑职位</string>
+    <string name="position_name">职位名称</string>
+    <string name="position_name_">急招xxxxx</string>
+    <string name="classify">行业类别</string>
+    <string name="classify_">互联网</string>
+    <string name="position_classify">职位类别</string>
+    <string name="salary">薪资待遇</string>
+    <string name="salary_">2000+提成</string>
+    <string name="position_request">任职要求</string>
+    <string name="position_sp">职位特色</string>
+    <string name="position_sp_">1.大概描述该职位未来的培养方向
+                                   2.团队的精英力量
+                                   3.福利补贴（餐补，住宿等）</string>
+
+    <!-- Internships position ad -->
+    <string name="position_ad">职位推广</string>
+    <string name="position_up">职位置顶</string>
+    <string name="turn_on">开通</string>
+    <string name="position_urgent">职位加急</string>
+    <string name="already_turn_on">已开通</string>
+
+    <!-- Internships position  fit -->
+    <string name="fit_position">电子商务助理</string>
+    <string name="fit_person_name">Ryo</string>
+    <string name="fit_person_major">浙江xxxx大学电子商务专业</string>
+
 </resources>

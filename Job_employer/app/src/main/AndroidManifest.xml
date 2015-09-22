@@ -28,6 +28,38 @@
             android:name=".activities.MyScoreActivity"
             android:label="@string/my_score" >
         </activity>
+        <activity
+            android:name=".activities.MyPositionActivity"
+            android:label="@string/internships_my_position" >
+        </activity>
+        <activity
+            android:name=".activities.EditPositionActivity"
+            android:label="@string/edit_position" >
+        </activity>
+        <activity
+            android:name=".activities.PositionAdActivity"
+            android:label="@string/position_ad" >
+        </activity>
+        <activity
+            android:name=".activities.PositionFitActivity"
+            android:label="@string/position_fit" >
+        </activity>
+        <activity
+            android:name=".activities.ApplyPersonActivity"
+            android:label="@string/apply_person" >
+        </activity>
+        <activity
+            android:name=".activities.PersonalResumeActivity"
+            android:label="@string/apply_person_name" >
+        </activity>
+        <activity
+            android:name=".activities.IntervieweeActivity"
+            android:label="@string/internships_interviewee" >
+        </activity>
+        <activity
+            android:name=".activities.IntervieweeEvaluateActivity"
+            android:label="@string/interviewee_evaluate" >
+        </activity>
     </application>
 
 </manifest>

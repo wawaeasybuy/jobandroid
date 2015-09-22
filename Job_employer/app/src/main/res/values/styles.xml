@@ -5,4 +5,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Ryo -->
+    <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/room_rating_bar</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:maxHeight">24dp</item>
+    </style>
 </resources>
