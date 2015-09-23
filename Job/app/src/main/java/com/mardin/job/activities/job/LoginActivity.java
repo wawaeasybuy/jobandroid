@@ -19,14 +19,6 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_login);
 
-        LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
-        turn_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-
-            }
-        });
 
         TextView register= (TextView) findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
