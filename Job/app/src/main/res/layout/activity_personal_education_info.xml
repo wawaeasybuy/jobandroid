@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#f9f9f9"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -20,14 +20,15 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:textSize="16sp"
+                android:textColor="#f9f9f9"
                 android:gravity="center"
                 android:text="@string/personal_my_resume_edit" />
 
@@ -46,8 +47,8 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
-            android:textColor="#C9C9C9"
             android:textSize="16sp"
+            android:textColor="#f9f9f9"
             android:gravity="center"
             android:text="@string/personal_register" />
 
@@ -57,10 +58,16 @@
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
             android:textSize="16sp"
+            android:textColor="#0080fe"
             android:gravity="center"
             android:text="@string/base_data_save" />
 
     </LinearLayout>
+
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <!--  Content -->
     <LinearLayout
@@ -69,86 +76,192 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/resume_school_name"/>
+            android:paddingRight="10dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/resume_major_name"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/resume_graduate_time"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/resume_grade_range"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
-                android:height="100dp"
-                android:paddingTop="10dp"
-                android:gravity="top"
-                android:background="#dedede"
-                android:hint="@string/resume_experience"/>
+                android:paddingRight="10dp">
 
-        </ScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/resume_school_name"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#9b9b9b"
+                    android:text="@string/resume_school_name_"/>
+
+                <ImageView
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/turn_right1"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#f9f9f9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/resume_major_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#9b9b9b"
+                    android:text="@string/resume_major_name_"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#f9f9f9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/resume_graduate_time"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#9b9b9b"
+                    android:text="@string/resume_graduate_time_"/>
+
+                <ImageView
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/turn_right1"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:background="#f9f9f9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/resume_grade_range"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#9b9b9b"
+                    android:text="@string/resume_grade_range_"/>
+
+                <ImageView
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/turn_right1"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resume_practice"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:height="100dp"
+                    android:paddingTop="10dp"
+                    android:gravity="top"
+                    android:background="#ffffff"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="14sp"
+                    android:hint="@string/resume_practice_"/>
+
+            </ScrollView>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="#dedede"
+        android:background="@drawable/textview_button_border"
+        android:textColor="#0080fe"
         android:text="@string/base_data_save_next"/>
 
 </LinearLayout>

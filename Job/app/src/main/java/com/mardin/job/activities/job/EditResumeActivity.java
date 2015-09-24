@@ -38,6 +38,7 @@ public class EditResumeActivity extends Activity {
             }
         });
 
+
         LinearLayout job_intention= (LinearLayout) findViewById(R.id.job_intention);
         job_intention.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,8 +49,9 @@ public class EditResumeActivity extends Activity {
             }
         });
 
-        LinearLayout personal_education= (LinearLayout) findViewById(R.id.personal_education);
-        personal_education.setOnClickListener(new View.OnClickListener() {
+
+        LinearLayout education_info= (LinearLayout) findViewById(R.id.education_info);
+        education_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -58,8 +60,9 @@ public class EditResumeActivity extends Activity {
             }
         });
 
-        LinearLayout personal_important_info= (LinearLayout) findViewById(R.id.personal_important_info);
-        personal_important_info.setOnClickListener(new View.OnClickListener() {
+
+        LinearLayout important_info= (LinearLayout) findViewById(R.id.important_info);
+        important_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -67,6 +70,7 @@ public class EditResumeActivity extends Activity {
                 startActivity(intent);
             }
         });
+
 
     }
 }
