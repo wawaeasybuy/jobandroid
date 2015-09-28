@@ -8,15 +8,14 @@ import android.widget.LinearLayout;
 import com.mardin.job.R;
 
 /**
- * Created by Ryo on 2015/9/15.
+ * Created by Ryo on 2015/9/27.
  */
-public class BaseDataActivity extends Activity {
+public class SettingFeedbackActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_base_data);
-
+        setContentView(R.layout.activity_setting_feedback);
 
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
@@ -26,8 +25,5 @@ public class BaseDataActivity extends Activity {
 
             }
         });
-
     }
-
-
 }

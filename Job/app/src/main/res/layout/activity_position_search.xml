@@ -5,81 +5,88 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        style="@style/header"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/header">
+        android:gravity="center_vertical"
+        android:background="#f8f8f8"
+        android:layout_height="50dp">
 
-        <ImageView
-            android:paddingLeft="5dp"
-            android:clickable="true"
-            android:src="@drawable/turn_left1"
+        <LinearLayout
             android:id="@+id/turn_left"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
-
-    <!--    <TextView
+            android:clickable="true"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/position_search_result"
-            android:textColor="#ffffff" />    -->
-
-        <EditText
-            android:id="@+id/position_search"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#ffffff"
-            android:text=""
             android:layout_height="wrap_content"
-            android:hint="@string/position_search_content"
-            android:textSize="13sp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <!--   <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="fill_parent"
-             android:textSize="16sp"
-             android:gravity="center"
-             android:text="@string/position_search_result"
-             android:textColor="#0070ee" />  -->
+            <ImageView
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"/>
 
+        </LinearLayout>
 
-        <ImageView
-               android:layout_marginRight="10dp"
-               android:clickable="true"
-               android:src="@drawable/u10"
-               android:id="@+id/position_header_search"
-               android:layout_width="20dp"
-               android:layout_height="20dp" />
+        <LinearLayout
+            android:id="@+id/search"
+            android:clickable="true"
+            android:layout_weight="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/search_layout"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@drawable/search"
+                android:paddingLeft="10dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:paddingLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:background="#aaddff"
+                android:gravity="center_vertical"
+                android:text="@string/position_search_content" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-   <!-- <TextView
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+   <!-- content -->
+    <TextView
+        android:id="@+id/search_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:paddingLeft="10dp"
-        android:gravity="center_vertical"
-        android:text="@string/search_history" />  -->
+        android:text="@string/search_history" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/search_history1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:text="@string/search_history1" />
@@ -87,14 +94,14 @@
         <ImageView
             android:background="#EAEAEA"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp" />
+            android:layout_height="1dp" />
 
         <TextView
             android:id="@+id/search_history2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
             android:text="@string/search_history2" />
@@ -102,15 +109,15 @@
         <ImageView
             android:background="#EAEAEA"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp" />
+            android:layout_height="1dp" />
 
         <LinearLayout
             android:id="@+id/search_history_delete"
             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -126,8 +133,6 @@
                 android:text="@string/search_history_delete" />
 
         </LinearLayout>
-
-
 
     </LinearLayout>
 

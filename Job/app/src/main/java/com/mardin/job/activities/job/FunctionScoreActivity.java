@@ -88,14 +88,14 @@ public class FunctionScoreActivity extends Activity implements View.OnClickListe
 
             case R.id.changeone:
 
-              setSelect(0);
+                setSelect(0);
 
                 break;
             case R.id.changetwo:
                 setSelect(1);
         }
 
-        }
+    }
 
 
 //    @Override
@@ -104,5 +104,5 @@ public class FunctionScoreActivity extends Activity implements View.OnClickListe
 //
 //    }
 
-    }
+}
 

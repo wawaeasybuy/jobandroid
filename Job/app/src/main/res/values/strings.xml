@@ -187,7 +187,7 @@
 
     <!-- Position -->
     <string name="position_search">职位搜索</string>
-    <string name="position_search_content"> 职位/行业/公司</string>
+    <string name="position_search_content"> 请输入职位/行业/公司</string>
     <string name="position_classify">职位类别</string>
     <string name="profession_classify">行业类别</string>
     <string name="working_place">工作地点</string>
@@ -306,7 +306,7 @@
     <string name="personal_quiz_answer_num">6</string>
     <string name="personal_quiz_answer">个回答</string>
     <string name="personal_my_resume_create">新建简历</string>
-    <string name="personal_my_resume_id">的个人简历</string>
+    <string name="personal_my_resume_id">的简历</string>
     <string name="personal_my_resume_delete">删除</string>
     <string name="personal_my_resume_update">更新于</string>
     <string name="personal_my_resume_update_time">2015-08-15</string>
@@ -331,6 +331,9 @@
     <string name="personal_deliver_success">投递成功</string>
     <string name="personal_deliver_success_time">05-09 11:18</string>
     <string name="personal_resume_viewed">被查看</string>
+    <string name="click_edit">点击编辑</string>
+    <string name="click_create_resume">点击创建简历</string>
+    <string name="click_create_resume_">你也可以是人生赢家</string>
 
 
     <!-- Activity Label -->
@@ -342,9 +345,11 @@
     <!-- Personal -->
     <string name="personal_center">个人中心</string>
     <string name="personal_setting">设置</string>
+    <string name="personal_school">xxxx大学</string>
     <string name="personal_click_login">点击登录</string>
-    <string name="personal_view_apply_record">查看申请记录</string>
-    <string name="personal_change">我的动态</string>
+    <string name="personal_view_apply_record">申请记录</string>
+    <string name="personal_message_info">消息通知</string>
+    <string name="personal_message_info_time">最近一个月</string>
     <string name="personal_change_time">2小时前</string>
     <string name="personal_change_content1">xxx公司查看了你的简历</string>
     <string name="personal_change_content2">xxx公司对你的面试做了新评价</string>
@@ -362,38 +367,46 @@
     <string name="re_input_password">请重新输入密码</string>
     <string name="edit_data">编辑资料</string>
     <string name="real_name">真实姓名</string>
+    <string name="real_name_">Ryo</string>
     <string name="change_portrait">修改头像</string>
     <string name="change_password">修改密码</string>
+    <string name="old_password">123456</string>
     <string name="personal_setting_about_us">关于我们</string>
     <string name="personal_setting_feedback">反馈</string>
+    <string name="feedback_important">您的建议十分重要</string>
     <string name="personal_setting_massage">推送信息</string>
+    <string name="setting_massage_off">点击关闭</string>
     <string name="personal_setting_log_out">退出登录</string>
     <string name="resume_name">简历名称</string>
     <string name="resume_name_">点击输入名称</string>
     <string name="base_data_save">保存</string>
-    <string name="base_data_name">姓名：</string>
+    <string name="base_data_name">姓名</string>
     <string name="base_data_sex">性别</string>
-    <string name="base_data_contact_info">联系方式：</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="base_data_contact_info">手机号码</string>
     <string name="base_data_contact_info_">13333333333</string>
-    <string name="base_data_residence">居住地：</string>
+    <string name="base_data_residence">居住地</string>
     <string name="base_data_residence_">未填写</string>
-    <string name="base_data_birth_date">出生年月：</string>
+    <string name="base_data_birth_date">出生年月</string>
     <string name="base_data_birth_date_">未填写</string>
     <string name="base_data_save_next">保存并填写下一项</string>
     <string name="intention_expect_trade">期望行业</string>
-    <string name="intention_expect_trade_">：互联网</string>
+    <string name="intention_expect_trade_">互联网</string>
     <string name="intention_expect_position">期望职位</string>
-    <string name="intention_expect_position_">：UI设计师</string>
+    <string name="intention_expect_position_">UI设计师</string>
     <string name="intention_expect_place">期望工作地点</string>
-    <string name="intention_expect_place_">：杭州</string>
+    <string name="intention_expect_place_">杭州</string>
     <string name="resume_school_name">学校名称</string>
-    <string name="resume_school_name_">：浙江xx学校</string>
+    <string name="info_school_name">学校名称</string>
+    <string name="resume_school_name_">浙江xx学校</string>
+    <string name="info_school_name_">浙江xx学校</string>
     <string name="resume_major_name">专业名称</string>
-    <string name="resume_major_name_">：电子商务</string>
+    <string name="resume_major_name_">电子商务</string>
     <string name="resume_graduate_time">毕业时间</string>
-    <string name="resume_graduate_time_">：2016</string>
+    <string name="resume_graduate_time_">2016</string>
     <string name="resume_grade_range">专业成绩排名</string>
-    <string name="resume_grade_range_">：前15%</string>
+    <string name="resume_grade_range_">前15%</string>
     <string name="resume_practice">在校实践（选填）</string>
     <string name="resume_practice__">在校实践:</string>
     <string name="resume_practice_">例举在校时参加的与职位相关的实践活动或者比赛经历。大概描述自己的角色与职责。</string>
@@ -408,9 +421,15 @@
     <string name="internships_experience_actual_num">0</string>
     <string name="internships_experience_limit_num">/200字</string>
     <string name="work_attach">作品附件</string>
+    <string name="unfilled">未填写</string>
+    <string name="send">发送</string>
+    <string name="setting_feedback_info">反馈信息</string>
+    <string name="setting_feedback_info_">您的建议对我们来说十分宝贵！</string>
+
+
 
     <!-- Function Score -->
-    <string name="function_score_header">职能测评分</string>
+    <string name="function_score_header">能力测评</string>
     <string name="function_score">78</string>
     <string name="function_score_evaluate">能力不错</string>
     <string name="function_evaluate_time">评估时间：</string>
@@ -428,8 +447,9 @@
     <string name="function_score_lack">由于缺少面试经历无法做出职能测评分</string>
 
     <!-- Search Internships -->
-    <string name="header">找实习</string>
+    <string name="home">首页</string>
     <string name="classify">IT/互联网</string>
+    <string name="search_hint">搜索感兴趣的职位和公司</string>
     <string name="position_recommend">职位推荐</string>
     <string name="position_recommend_title">急聘xxxxxxx</string>
     <string name="position_recommend_up">顶</string>

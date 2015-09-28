@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#f9f9f9"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -20,16 +20,17 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
 
-            <TextView
+         <!--   <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:textSize="16sp"
+                android:textColor="#f9f9f9"
                 android:gravity="center"
-                android:text="@string/personal_my_resume_edit" />
+                android:text="@string/personal_my_resume_edit" />   -->
 
         </LinearLayout>
 
@@ -39,84 +40,158 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="fill_parent"
+            android:paddingLeft="20dp"
             android:text="@string/personal_job_intention"
             android:textSize="20sp"/>
 
-        <TextView
+      <!--  <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
-            android:textColor="#C9C9C9"
             android:textSize="16sp"
+            android:textColor="#f9f9f9"
             android:gravity="center"
-            android:text="@string/personal_register" />
+            android:text="@string/personal_register" />  -->
 
         <TextView
-            android:id="@+id/register"
+            android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
             android:textSize="16sp"
+            android:textColor="#0080fe"
             android:gravity="center"
             android:text="@string/base_data_save" />
 
     </LinearLayout>
 
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <!--  Content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:layout_weight="1"
         android:orientation="vertical">
 
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/intention_expect_trade"/>
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/intention_expect_trade"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/intention_expect_trade_"/>
+
+            <ImageView
+                android:src="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#f9f9f9" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/intention_expect_position"/>
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/intention_expect_position"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/intention_expect_position_"/>
+
+            <ImageView
+                android:src="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#f9f9f9" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/intention_expect_place"/>
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/intention_expect_place"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/intention_expect_place_"/>
+
+            <ImageView
+                android:src="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="#dedede"
+        android:background="@drawable/textview_button_border"
+        android:textColor="#0080fe"
         android:text="@string/base_data_save_next"/>
 
 </LinearLayout>

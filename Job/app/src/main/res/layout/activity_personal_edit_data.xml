@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <!--  Header -->
     <LinearLayout
         android:orientation="horizontal"
         style="@style/header"
+        android:background="#f8f8f8"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -20,16 +21,9 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="@string/personal_center" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
 
         </LinearLayout>
 
@@ -42,84 +36,152 @@
             android:text="@string/edit_data"
             android:textSize="20sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textColor="#C9C9C9"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/personal_register" />
 
         <TextView
-            android:id="@+id/register"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
             android:textSize="16sp"
-            android:textColor="#C9C9C9"
+            android:textColor="#f9f9f9"
             android:gravity="center"
             android:text="@string/personal_register" />
 
     </LinearLayout>
 
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <!--  Content -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/real_name"/>
+        android:paddingRight="20dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/info_school_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="@string/info_school_name_"/>
+
+        <ImageView
+            android:src="@drawable/turn_right1"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#f9f9f9" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/real_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="@string/real_name_"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#f9f9f9" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:text="@string/change_portrait"/>
 
-        <com.mardin.job.job.CircleImageView
+        <ImageView
             android:layout_gravity="center"
-            android:layout_marginRight="20dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/photo" />
+            android:src="@drawable/touxiang" />
 
     </LinearLayout>
 
-
-
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#f9f9f9" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/change_password"/>
+        android:paddingRight="20dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/change_password"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:text="@string/old_password"/>
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
-
-
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#f9f9f9" />
 
 </LinearLayout>

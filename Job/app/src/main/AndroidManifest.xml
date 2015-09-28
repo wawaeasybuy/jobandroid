@@ -206,10 +206,6 @@
             android:label="@string/function_score" >
         </activity>
         <activity
-            android:name=".activities.job.SearchInternshipsActivity"
-            android:label="@string/header" >
-        </activity>
-        <activity
             android:name=".activities.job.InternshipsSearchActivity"
             android:label="@string/internships_search" >
         </activity>
@@ -220,6 +216,10 @@
         <activity
             android:name=".activities.job.PositionDetailActivity"
             android:label="@string/position_detail" >
+        </activity>
+        <activity
+            android:name=".activities.job.SettingFeedbackActivity"
+            android:label="@string/personal_setting_feedback" >
         </activity>
     </application>
 

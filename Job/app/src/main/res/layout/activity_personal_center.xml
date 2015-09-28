@@ -6,9 +6,10 @@
     
     <!-- Header -->
     <LinearLayout
+        style="@style/header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/header"
+        android:background="#f8f8f8"
         android:orientation="horizontal">
 
         <TextView
@@ -17,7 +18,7 @@
             android:paddingRight="10dp"
             android:text="@string/personal_setting"
             android:textSize="16sp"
-            android:textColor="#C9C9C9"/>
+            android:textColor="#f8f8f8"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,358 +36,93 @@
             android:paddingRight="10dp"
             android:layout_gravity="center"
             android:gravity="center"
+            android:textColor="#0080fe"
             android:text="@string/personal_setting"
             android:textSize="16sp"/>
 
-
     </LinearLayout>
+
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <!-- Content| Login -->
     <LinearLayout
         android:id="@+id/login"
+        android:background="@drawable/round_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:orientation="horizontal">
 
-        <com.mardin.job.job.CircleImageView
-            android:paddingLeft="20dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/photo" />
+        <ImageView
+            android:paddingRight="20dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/tx" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
             android:text="@string/personal_click_login"
             android:textSize="16sp"/>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:paddingRight="20dp"
             android:src="@drawable/turn_right1" />
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
+
 
     <!-- Content| Resume -->
     <LinearLayout
+        android:id="@+id/job_intention"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="20dp"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingLeft="10dp"
-                android:text="@string/personal_my_resume"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingRight="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/personal_view_apply_record"
-                android:textSize="16sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="vertical"
-            android:background="#dedede" >
-
-            <!-- 1 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/personal_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/personal_name"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/personal_my_resume_id"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:id="@+id/resume_delete"
-                    style="@style/home_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/personal_my_resume_delete"
-                    android:textSize="12sp"/>
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@drawable/header" />
-
-            <!-- 2 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/resume_update"
-                            style="@style/home_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="@string/personal_my_resume_update"
-                            android:textSize="12sp"/>
-
-                        <TextView
-                            android:id="@+id/update_time"
-                            style="@style/home_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="@string/personal_my_resume_update_time"
-                            android:textSize="12sp"/>
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/resume_delivery"
-                        style="@style/home_time"
-                        android:paddingTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/personal_my_resume_delivery"
-                        android:textSize="12sp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/resume_preview"
-                        style="@style/home_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/personal_my_resume_preview"
-                        android:textSize="12sp"/>
-
-                    <ImageView
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/turn_right1"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@drawable/header" />
-
-            <!-- 3 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/resume_edit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <!--    <ImageView
-                          android:layout_width="15dp"
-                          android:layout_height="15dp" />   -->
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/edit" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="0.5dp"
-                    android:layout_height="match_parent"
-                    android:background="#C9C9C9"/>
-
-                <LinearLayout
-                    android:id="@+id/resume_release"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                <!--    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />   -->
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/personal_my_resume_release" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
-
-    <!-- Content| Change -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:orientation="vertical">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/add"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="@string/personal_change"
-            android:textSize="16sp"/>
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:text="@string/click_create_resume"/>
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:text="@string/personal_change_content1"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:text="@string/personal_change_time"
-                android:textSize="16sp"/>
-
-        </LinearLayout>
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:textSize="18sp"
+            android:text="@string/click_create_resume_"/>
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingTop="5dp"
-            android:text="@string/personal_change_content2"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="@string/personal_change_time"
-            android:textSize="16sp"/>
-
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
 
 
 </LinearLayout>

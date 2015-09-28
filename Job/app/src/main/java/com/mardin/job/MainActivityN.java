@@ -1,91 +1,122 @@
 package com.mardin.job;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mardin.job.activities.job.EditResumeActivity;
-import com.mardin.job.activities.job.FunctionScoreActivity;
-import com.mardin.job.activities.job.LoginActivity;
-import com.mardin.job.activities.job.PersonalEditDataActivity;
-import com.mardin.job.activities.job.PersonalSettingActivity;
-import com.mardin.job.activities.job.SearchInternshipsActivity;
+
+import com.mardin.job.fragments.job.AbilityFragment;
+import com.mardin.job.fragments.job.InternshipsFragment;
+import com.mardin.job.fragments.job.PersonalCenterFragment;
 
 
-public class MainActivityN extends Activity {
+public class MainActivityN extends Activity implements View.OnClickListener{
 
+    private LinearLayout home;
+    private LinearLayout personal;
+    private LinearLayout ability;
+
+    private TextView home_t;
+    private TextView personal_t;
+    private TextView ability_t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_center_logined);
+        setContentView(R.layout.activity_job_main);
 
-        LinearLayout edit_data= (LinearLayout) findViewById(R.id.edit_data);
-        edit_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //  defaultActivity = this;
 
-                Intent intent = new Intent(MainActivityN.this, PersonalEditDataActivity.class);
-                startActivity(intent);
-            }
-        });
+        home_t= (TextView) findViewById(R.id.home_t);
+        personal_t= (TextView) findViewById(R.id.personal_t);
+        ability_t= (TextView) findViewById(R.id.ability_t);
 
-        TextView personal_setting= (TextView) findViewById(R.id.personal_setting);
-        personal_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        initView();
 
-                Intent intent = new Intent(MainActivityN.this,SearchInternshipsActivity.class);
-                startActivity(intent);
-            }
-        });
+        home.setOnClickListener(this);
+        personal.setOnClickListener(this);
+        ability.setOnClickListener(this);
 
-        TextView personal_login= (TextView) findViewById(R.id.personal_login);
-        personal_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        setSelect(0);
 
-                Intent intent = new Intent(MainActivityN.this,  LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
 
-        ImageView turn_right= (ImageView) findViewById(R.id.turn_right);
-        turn_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void initView() {
 
-                Intent intent = new Intent(MainActivityN.this, EditResumeActivity.class);
-                startActivity(intent);
-            }
-        });
+        home= (LinearLayout) findViewById(R.id.home);
+        personal= (LinearLayout) findViewById(R.id.personal);
+        ability=(LinearLayout)findViewById(R.id.ability);
 
-        LinearLayout resume_edit= (LinearLayout) findViewById(R.id.resume_edit);
-        resume_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivityN.this, EditResumeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        LinearLayout resume_release= (LinearLayout) findViewById(R.id.resume_release);
-        resume_release.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivityN.this, FunctionScoreActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        //homeTopic=(TextView)findViewById(R.id.homeTopic);
 
     }
 
 
+//Usage
+
+    public void setSelect(int i){
+
+        FragmentManager fm=getFragmentManager();
+        FragmentTransaction transaction=fm.beginTransaction();
+        //hide(transaction);
+        switch(i){
+
+            case 0:
+
+                InternshipsFragment home= new InternshipsFragment();
+                transaction.replace(R.id.main, home);
+
+                home_t.setTextColor(0xff0080fe);
+                personal_t.setTextColor(0xFF000000);
+                ability_t.setTextColor(0xff000000);
+
+                break;
+            case 1:
+
+                PersonalCenterFragment personal=new PersonalCenterFragment();
+                transaction.replace(R.id.main,personal);
+
+                home_t.setTextColor(0xFF000000);
+                personal_t.setTextColor(0xff0080fe);
+                ability_t.setTextColor(0xff000000);
+
+                break;
+            case 2:
+
+                AbilityFragment ability=new AbilityFragment();
+                transaction.replace(R.id.main,ability);
+
+                home_t.setTextColor(0xff000000);
+                personal_t.setTextColor(0xff000000);
+                ability_t.setTextColor(0xFF0080fe);
+
+                break;
+        }
+        transaction.commit();
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+
+            case R.id.home:
+
+                setSelect(0);
+
+                break;
+            case R.id.ability:
+                setSelect(2);
+
+                break;
+            case R.id.personal:
+                setSelect(1);
+        }
+    }
 }

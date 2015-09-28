@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#f9f9f9"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -20,16 +20,9 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="@string/personal_my_resume_edit" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
 
         </LinearLayout>
 
@@ -39,120 +32,242 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="fill_parent"
+            android:paddingLeft="20dp"
             android:text="@string/personal_base_info"
             android:textSize="20sp"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textColor="#C9C9C9"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/personal_register" />
-
-        <TextView
-            android:id="@+id/register"
+            android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
             android:textSize="16sp"
+            android:textColor="#0080fe"
             android:gravity="center"
             android:text="@string/base_data_save" />
 
     </LinearLayout>
 
-    <!--  Content -->
-
-    <LinearLayout
-        android:id="@+id/login"
+    <ImageView
+        android:background="#0080fe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp" />
+
+    <!--  Content -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center"
+        android:src="@drawable/tx" />
+
+    <!-- name & sex -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <com.mardin.job.job.CircleImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:src="@drawable/photo" />
-
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="#EEEEEE"
-            android:hint="@string/base_data_name" />
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:text="@string/real_name"/>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f9f9f9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/male"
+                android:layout_width="0dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#0080fe"
+                android:orientation="horizontal">
+
+                <ImageView
+                      android:layout_width="15dp"
+                      android:layout_height="15dp"
+                      android:src="@drawable/male"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:text="@string/male" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f9f9f9"/>
+
+            <LinearLayout
+                android:id="@+id/female"
+                android:layout_width="0dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/female"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:text="@string/female" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <!-- phone & residence & birth_date -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/base_data_sex"/>
+            android:paddingLeft="20dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/base_data_contact_info"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/base_data_contact_info"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/base_data_residence"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/base_data_contact_info_"/>
 
-        <EditText
+            <ImageView
+                android:src="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f9f9f9" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#dedede"
-            android:hint="@string/base_data_birth_date"/>
+            android:paddingLeft="20dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/base_data_residence"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/base_data_residence_"/>
+
+            <ImageView
+                android:src="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f9f9f9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/base_data_birth_date"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/base_data_birth_date_"/>
+
+            <ImageView
+                android:src="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="#dedede"
+        android:background="@drawable/textview_button_border"
+        android:textColor="#0080fe"
         android:text="@string/base_data_save_next"/>
 
 </LinearLayout>

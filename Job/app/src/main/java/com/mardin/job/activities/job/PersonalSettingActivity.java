@@ -1,6 +1,7 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -27,7 +28,15 @@ public class PersonalSettingActivity extends Activity {
             }
         });
 
+        LinearLayout feedback= (LinearLayout) findViewById(R.id.feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(PersonalSettingActivity.this, SettingFeedbackActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
