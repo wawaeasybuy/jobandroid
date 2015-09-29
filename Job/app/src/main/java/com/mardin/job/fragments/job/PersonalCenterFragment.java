@@ -15,6 +15,7 @@ import com.mardin.job.activities.job.EditResumeActivity;
 import com.mardin.job.activities.job.FunctionScoreActivity;
 import com.mardin.job.activities.job.PersonalEditDataActivity;
 import com.mardin.job.activities.job.PersonalSettingActivity;
+import com.mardin.job.activities.job.aaa;
 
 /**
  * Created by Ryo on 2015/9/27.
@@ -54,7 +55,7 @@ public class PersonalCenterFragment extends Fragment {
         personal_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),PersonalSettingActivity.class);
+                Intent intent=new Intent(getActivity(),aaa.class);
                 startActivity(intent);
             }
         });

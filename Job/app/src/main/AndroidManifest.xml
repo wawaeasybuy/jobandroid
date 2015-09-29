@@ -221,6 +221,10 @@
             android:name=".activities.job.SettingFeedbackActivity"
             android:label="@string/personal_setting_feedback" >
         </activity>
+        <activity
+            android:name=".activities.job.aaa"
+            android:label="@string/personal_setting_feedback" >
+        </activity>
     </application>
 
 </manifest>

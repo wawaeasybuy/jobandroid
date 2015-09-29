@@ -3,43 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--  Header -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:orientation="horizontal"
         style="@style/header"
-        android:background="@drawable/header">
+        android:layout_width="match_parent"
+        android:background="#f8f8f8"
+        android:layout_height="50dp">
 
         <TextView
-            android:layout_gravity="center"
             android:gravity="center"
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
             android:text="@string/function_score_header"
             android:textSize="20sp"/>
 
     </LinearLayout>
 
-    <!--
-    <ScrollView
+    <ImageView
+        android:background="#0080fe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="1dp" />
 
-
-
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/change"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="4"
-        android:gravity="center">
-
-
-
-    </LinearLayout>
-    -->
+    <!--  Content -->
     <LinearLayout
         android:id="@+id/change"
         android:layout_width="match_parent"
@@ -100,13 +88,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:background="@drawable/u6"
+        android:background="#f8f8f8"
         android:orientation="vertical">
 
         <TextView
             android:paddingLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/function_firm_suggestion" />
@@ -116,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
             android:background="#FFFFFF"
             android:orientation="vertical">
 

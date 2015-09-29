@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#f8f8f8"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -19,11 +19,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/turn_left1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"/>
+                android:paddingLeft="10dp"
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
 
         </LinearLayout>
 
@@ -36,15 +35,12 @@
             android:text="@string/position_detail"
             android:textSize="20sp"/>
 
-       <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:paddingRight="10dp"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:text="@string/more" />
-
     </LinearLayout>
+
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <!--  Content -->
     <ScrollView
@@ -55,6 +51,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#ffffff"
             android:orientation="vertical">
 
             <LinearLayout
@@ -76,6 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textSize="16sp"
                         android:text="@string/position_recommend_title" />
 
                     <TextView
@@ -100,42 +98,146 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/firm_address_mama" />
+                        android:text="@string/detail" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="#ff0000"
                         android:text="@string/position_salary" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:background="#C9C9C9"
-                android:text="@string/position_request" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#f9f9f9">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:background="#C9C9C9"
-                android:text="@string/position_special" />
+                <!-- address -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-            <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text="@string/firm_address_mama" />
+
+                </LinearLayout>
+
+                <!-- website -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text="@string/website_mama" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:background="#C9C9C9"
-                android:text="@string/firm_introduce" />
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0080fe"
+                    android:textSize="15sp"
+                    android:text="@string/position_special" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/position_special_" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0080fe"
+                    android:textSize="15sp"
+                    android:text="@string/position_request" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/position_request_" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0080fe"
+                    android:textSize="15sp"
+                    android:text="@string/firm_introduce" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/firm_introduce_" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9"/>
 
         </LinearLayout>
 
@@ -143,14 +245,26 @@
 
 
     <!-- Bottom -->
-    <Button
-        android:id="@+id/position_apply"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:background="#868686"
-        android:text="@string/position_apply"
-        android:textColor="#ffffff" />
+        android:layout_height="wrap_content"
+        android:background="#f9f9f9">
+
+        <Button
+            android:id="@+id/position_apply"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:background="@drawable/textview_button_border"
+            android:text="@string/position_apply"
+            android:textColor="#0080fe" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
 

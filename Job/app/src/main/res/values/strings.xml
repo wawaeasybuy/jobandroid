@@ -216,6 +216,7 @@
     <string name="position_welfare">职位福利</string>
     <string name="position_welfare_content">五险一金、带薪休假、股票期权、五险一金、带薪休假、股票期权</string>
     <string name="position_request">任职要求</string>
+    <string name="position_request_">1.任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求\n2.求任职要求任职要求任职要求任职要求任职要\n3.求任职要求任职要求任职要求任职要求任职要</string>
     <string name="firm_detail">公司详情</string>
     <string name="firm_classify">APP开发/网站制作开发</string>
     <string name="verified">已验证</string>
@@ -223,8 +224,10 @@
     <string name="firm_website">公司网站</string>
     <string name="website_mama">www.mama.com</string>
     <string name="firm_address">公司地址</string>
+    <string name="detail">电子商务/互联网，APP制作</string>
     <string name="firm_address_mama">杭州市临安市创业孵化园区</string>
     <string name="firm_introduce">公司简介</string>
+    <string name="firm_introduce_">公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介</string>
     <string name="position_submit">提交</string>
     <string name="position_firm_owning">所属公司| xxxx公司</string>
     <string name="position_name">职位名称| 产品运营</string>
@@ -445,6 +448,7 @@
     <string name="function_firm">xxx公司</string>
     <string name="function_suggestion_time">05-09</string>
     <string name="function_score_lack">由于缺少面试经历无法做出职能测评分</string>
+    <string name="to_send_resume">快去投简历吧</string>
 
     <!-- Search Internships -->
     <string name="home">首页</string>
@@ -460,6 +464,7 @@
     <string name="internships_search">搜索</string>
     <string name="internships_intelligent_sorting">智能排序</string>
     <string name="position_special">职位特色</string>
+    <string name="position_special_">1.职位特色职位特色职位特色职位特色职位特色职位特色职位特色职位特色职位特色职位特色\n2.职位特色职位特色职位特色职位特色职位特色职位特色职位特色职位特色职位特色职位特色</string>
     <string name="more">更多</string>
 
 
