@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#FBFBFB"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -20,7 +20,7 @@
 
 
             <ImageView
-                android:src="@drawable/turn_left1"
+                android:src="@drawable/turn_left_blue"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
@@ -48,7 +48,7 @@
 
         <ImageView
             android:id="@+id/search"
-            android:src="@drawable/u10"
+            android:src="@drawable/zc_search"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:paddingRight="10dp"
@@ -56,11 +56,17 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:background="#0080fe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
     <!--  Content -->
     <!--  Select -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="#F8F8F8"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -77,6 +83,11 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"/>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -92,6 +103,11 @@
                 android:text="@string/position_classify" />
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -111,6 +127,11 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"/>
+
     <!--  Position 1 -->
     <LinearLayout
         android:id="@+id/position_recommend1"
@@ -120,7 +141,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingRight="10dp"
-        android:background="#C9C9C9"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
         <LinearLayout
@@ -131,6 +152,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:text="@string/position_recommend_title" />
 
             <LinearLayout
@@ -143,8 +165,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
                     android:gravity="center"
-                    android:background="@drawable/u76"
+                    android:background="#0080fe"
+                    android:textColor="#ffffff"
                     android:text="@string/position_recommend_up" />
 
                 <TextView
@@ -152,7 +177,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:background="@drawable/u76"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:background="#aaddff"
+                    android:textColor="#ffffff"
                     android:text="@string/position_recommend_urgent" />
 
             </LinearLayout>
@@ -179,23 +207,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#ff0000"
                 android:text="@string/position_recommend_salary" />
 
         </LinearLayout>
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"/>
+
     <!--  Position 2 -->
     <LinearLayout
         android:id="@+id/position_recommend2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingRight="10dp"
-        android:background="#C9C9C9"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
         <LinearLayout
@@ -207,6 +240,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="16sp"
                 android:text="@string/position_recommend_title" />
 
             <TextView
@@ -231,9 +265,11 @@
                 android:id="@+id/position_special"
                 android:clickable="true"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+               android:gravity="center"
+                android:paddingBottom="5dp"
+                android:background="@drawable/position_sp_shape"
                 android:orientation="horizontal">
 
                 <TextView
@@ -241,24 +277,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center"
+                    android:textColor="#ff0000"
                     android:text="@string/position_special" />
 
                 <ImageView
-                    android:src="@drawable/turn_down"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/turn_down_red"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
                     android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#ff0000"
                 android:text="@string/position_recommend_salary" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 
 </LinearLayout>
