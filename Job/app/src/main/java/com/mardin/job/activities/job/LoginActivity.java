@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mardin.job.MainActivityN;
 import com.mardin.job.R;
 
 /**
@@ -25,7 +27,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -40,6 +42,15 @@ public class LoginActivity extends Activity {
             }
         });
 
+        Button login= (Button) findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LoginActivity.this,MainActivityN.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

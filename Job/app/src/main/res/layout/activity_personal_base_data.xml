@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="#f9f9f9"
+        android:background="#FBFBFB"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -103,11 +103,13 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/male_p"
                       android:layout_width="15dp"
                       android:layout_height="15dp"
                       android:src="@drawable/male"/>
 
                 <TextView
+                    android:id="@+id/male_t"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp"
@@ -132,11 +134,13 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/female_p"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:src="@drawable/female"/>
 
                 <TextView
+                    android:id="@+id/female_t"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp"

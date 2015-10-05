@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,10 @@ public class MainActivityN extends Activity implements View.OnClickListener{
     private TextView personal_t;
     private TextView ability_t;
 
+    private ImageView home_p;
+    private ImageView personal_p;
+    private ImageView ability_p;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,10 @@ public class MainActivityN extends Activity implements View.OnClickListener{
         home_t= (TextView) findViewById(R.id.home_t);
         personal_t= (TextView) findViewById(R.id.personal_t);
         ability_t= (TextView) findViewById(R.id.ability_t);
+
+        home_p= (ImageView) findViewById(R.id.home_p);
+        personal_p= (ImageView) findViewById(R.id.personal_p);
+        ability_p= (ImageView) findViewById(R.id.ability_p);
 
         initView();
 
@@ -74,6 +83,10 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                 personal_t.setTextColor(0xFF000000);
                 ability_t.setTextColor(0xff000000);
 
+                home_p.setImageResource(R.drawable.sxb_home_blue);
+                personal_p.setImageResource(R.drawable.sxb_gerenzhongxin_gray);
+                ability_p.setImageResource(R.drawable.sxb_gerenpince_gray);
+
                 break;
             case 1:
 
@@ -84,6 +97,11 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                 personal_t.setTextColor(0xff0080fe);
                 ability_t.setTextColor(0xff000000);
 
+                home_p.setImageResource(R.drawable.sxb_home_gray);
+                personal_p.setImageResource(R.drawable.sxb_gerenzhongxin_blue);
+                ability_p.setImageResource(R.drawable.sxb_gerenpince_gray);
+
+
                 break;
             case 2:
 
@@ -93,6 +111,11 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                 home_t.setTextColor(0xff000000);
                 personal_t.setTextColor(0xff000000);
                 ability_t.setTextColor(0xFF0080fe);
+
+                home_p.setImageResource(R.drawable.sxb_home_gray);
+                personal_p.setImageResource(R.drawable.sxb_gerenzhongxin_gray);
+                ability_p.setImageResource(R.drawable.sxb_gerenpince_blue);
+
 
                 break;
         }

@@ -8,7 +8,7 @@
         android:orientation="horizontal"
         style="@style/header"
         android:layout_width="match_parent"
-        android:background="#f8f8f8"
+        android:background="#FBFBFB"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -114,20 +114,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#f9f9f9">
+                android:background="#FBFBFB">
 
                 <!-- address -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:src="@drawable/sxb_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:text="@string/firm_address_mama" />
 
                 </LinearLayout>
@@ -136,13 +142,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:src="@drawable/sxb_wangzhi" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:text="@string/website_mama" />
 
                 </LinearLayout>
@@ -248,7 +261,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f9f9f9">
+        android:background="#FBFBFB">
 
         <Button
             android:id="@+id/position_apply"
