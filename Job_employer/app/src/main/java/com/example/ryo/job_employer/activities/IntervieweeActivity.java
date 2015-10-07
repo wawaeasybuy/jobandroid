@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.ryo.job_employer.R;
 
@@ -27,7 +28,7 @@ public class IntervieweeActivity extends Activity {
             }
         });
 
-        LinearLayout interviewee_to_evaluate = (LinearLayout) findViewById(R.id.interviewee_to_evaluate);
+        TextView interviewee_to_evaluate = (TextView) findViewById(R.id.interviewee_to_evaluate);
         interviewee_to_evaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

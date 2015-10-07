@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#fbfbfb"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -21,9 +21,9 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
 
         </LinearLayout>
 
@@ -37,43 +37,35 @@
             android:textSize="20sp"/>
 
 
-        <TextView
-            android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textSize="16sp"
-            android:textColor="#C9C9C9"
-            android:gravity="center"
-            android:text="@string/save" />
-
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0080fe"/>
 
     <!--  Content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:background="#30d6e4d6" >
+        android:background="@drawable/round_layout" >
 
         <!-- 1 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:padding="15dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:text="@string/my_position_title" />
 
             <TextView
@@ -86,8 +78,8 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@drawable/header" />
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
 
         <!-- 2 -->
         <LinearLayout
@@ -95,8 +87,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -126,7 +118,7 @@
 
                 <TextView
                     android:id="@+id/my_position_limit"
-                    android:paddingTop="5dp"
+                    android:paddingTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/my_position_limit" />
@@ -160,8 +152,8 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@drawable/header" />
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
 
         <!-- 3 -->
         <LinearLayout
@@ -177,20 +169,24 @@
                 android:id="@+id/open"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <!--    <ImageView
-                      android:layout_width="15dp"
-                      android:layout_height="15dp" />   -->
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/sxbz_shuo_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
                     android:text="@string/my_position_open" />
 
             </LinearLayout>
@@ -211,13 +207,17 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <!--    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />   -->
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/sxbz_tuiguang_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
                     android:text="@string/my_position_ad" />
 
             </LinearLayout>
@@ -238,13 +238,17 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <!--    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />   -->
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/sxbz_fengxiang_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
                     android:text="@string/my_position_share" />
 
             </LinearLayout>
@@ -252,6 +256,226 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/round_layout" >
+
+        <!-- 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:text="@string/my_position_title" />
+
+            <TextView
+                android:id="@+id/position_delete2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/delete" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
+
+        <!-- 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/resume_update2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/my_position_update" />
+
+                    <TextView
+                        android:id="@+id/update_time2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/my_position_update_time" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/my_position_limit2"
+                    android:paddingTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="#ff0000"
+                    android:text="@string/my_position_nc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/resume_preview2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/edit" />
+
+                <ImageView
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/turn_right1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
+
+        <!-- 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/open2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/sxbz_shuo_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:text="@string/my_position_open" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#C9C9C9"/>
+
+            <LinearLayout
+                android:id="@+id/ad2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/sxbz_tuiguang_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:text="@string/my_position_ad" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#C9C9C9"/>
+
+            <LinearLayout
+                android:id="@+id/share2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/sxbz_fengxiang_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:text="@string/my_position_share" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/sxbz_tianjia"/>
 
 
 </LinearLayout>

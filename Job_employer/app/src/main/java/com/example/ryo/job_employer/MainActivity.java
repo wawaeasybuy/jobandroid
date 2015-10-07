@@ -11,8 +11,8 @@ import com.example.ryo.job_employer.activities.ApplyPersonActivity;
 import com.example.ryo.job_employer.activities.EditInfoActivity;
 import com.example.ryo.job_employer.activities.IntervieweeActivity;
 import com.example.ryo.job_employer.activities.MyPositionActivity;
-import com.example.ryo.job_employer.activities.MyScoreActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
+import com.example.ryo.job_employer.activities.ScoreActivity;
 
 
 public class MainActivity extends Activity {
@@ -22,8 +22,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        TextView edit = (TextView) findViewById(R.id.edit);
-        edit.setOnClickListener(new View.OnClickListener() {
+        LinearLayout base_data = (LinearLayout) findViewById(R.id.base_data);
+        base_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -32,15 +32,17 @@ public class MainActivity extends Activity {
             }
         });
 
-        LinearLayout my_score = (LinearLayout) findViewById(R.id.my_score);
-        my_score.setOnClickListener(new View.OnClickListener() {
+
+        LinearLayout score = (LinearLayout) findViewById(R.id.score);
+        score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent( MainActivity.this, MyScoreActivity.class);
+                Intent intent = new Intent( MainActivity.this, ScoreActivity.class);
                 startActivity(intent);
             }
         });
+
 
         LinearLayout my_position = (LinearLayout) findViewById(R.id.my_position);
         my_position.setOnClickListener(new View.OnClickListener() {

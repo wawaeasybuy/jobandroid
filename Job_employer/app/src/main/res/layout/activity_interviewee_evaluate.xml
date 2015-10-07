@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#FBFBFB"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -21,9 +21,9 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
 
         </LinearLayout>
 
@@ -44,9 +44,15 @@
             android:paddingRight="15dp"
             android:textSize="16sp"
             android:gravity="center"
+            android:textColor="#0080fe"
             android:text="@string/save" />
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0080fe"/>
 
     <!--  Content -->
     <LinearLayout
@@ -55,18 +61,20 @@
         android:orientation="vertical"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="40dp">
+        android:gravity="center"
+        android:background="#E5EEF5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
+                android:textSize="16sp"
                 android:text="@string/expertise_level" />
 
             <RatingBar
@@ -75,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
-                android:rating="4"
+                android:rating="1"
                 android:layout_marginLeft="20dp" >
             </RatingBar>
 
@@ -85,12 +93,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
+                android:textSize="16sp"
                 android:text="@string/analysis_thinking" />
 
             <RatingBar
@@ -109,12 +119,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
+                android:textSize="16sp"
                 android:text="@string/language_express" />
 
             <RatingBar
@@ -133,12 +145,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
+                android:textSize="16sp"
                 android:text="@string/compress_strain" />
 
             <RatingBar
@@ -157,12 +171,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
+                android:textSize="16sp"
                 android:text="@string/attitude_etiquette" />
 
             <RatingBar
@@ -182,14 +198,18 @@
     <!-- Suggestion -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp"
+            android:textColor="#0080fe"
+            android:textSize="16sp"
             android:text="@string/interviewee_suggestion" />
 
         <ScrollView
@@ -204,8 +224,10 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:gravity="top"
-                android:background="#ffffff"
-                android:height="150dp" />
+                android:background="@drawable/layout_resume"
+                android:height="150dp"
+                android:textSize="14sp"
+                android:hint="@string/interviewee_suggestion_hint"/>
 
         </ScrollView>
 

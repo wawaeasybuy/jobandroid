@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="horizontal"
         style="@style/header"
-        android:background="#f9f9f9"
+        android:background="#fbfbfb"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -34,16 +34,6 @@
             android:layout_height="fill_parent"
             android:text="@string/personal_my_resume_edit"
             android:textSize="20sp"/>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textSize="16sp"
-            android:textColor="#f9f9f9"
-            android:gravity="center"
-            android:text="@string/personal_register" />
 
     </LinearLayout>
 

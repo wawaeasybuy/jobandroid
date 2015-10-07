@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#FBFBFB"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -21,9 +21,9 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
 
         </LinearLayout>
 
@@ -36,32 +36,29 @@
             android:text="@string/apply_person"
             android:textSize="20sp"/>
 
-
-        <TextView
-            android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textSize="16sp"
-            android:textColor="#C9C9C9"
-            android:gravity="center"
-            android:text="@string/save" />
-
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0080fe"/>
 
     <!--  Content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:gravity="center"
+        android:background="#FAFAFA"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="5dp"
+            android:textSize="16sp"
+            android:textColor="#0080fe"
             android:text="@string/new_apply_person" />
 
         <ImageView
@@ -73,135 +70,173 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
+        android:layout_height="1dp"
+        android:background="#c9c9c9" />
 
     <LinearLayout
-        android:id="@+id/resume"
+        android:id="@+id/resume1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
+        android:padding="15dp"
+        android:background="#ffffff"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
             android:paddingBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/interviewee_name" />
+                android:textSize="16sp"
+                android:text="@string/fit_person_name" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/apply_time" />
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:textColor="#ff0000"
+                android:text="@string/fit_person_score" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#0080fe"
+                android:text="@string/fit_person_view_resume" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/interviewee_to_evaluate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/interviewee_major" />
+                android:paddingRight="5dp"
+                android:text="@string/fit_person_school" />
 
             <ImageView
-                android:src="@drawable/turn_right1"
+                android:background="#c9c9c9"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:text="@string/fit_person_major" />
 
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:text="@string/delete" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:text="@string/fit_person_position" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="14sp"
+                android:text="@string/fit_person_ignore" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <ImageView
+        android:background="#c9c9c9"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
+        android:layout_height="1dp" />
 
     <LinearLayout
+        android:id="@+id/resume2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
+        android:padding="15dp"
+        android:background="#ffffff"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
             android:paddingBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:layout_weight="1"
-                android:text="@string/interviewee_name" />
+                android:text="@string/fit_person_name" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/apply_time" />
+                android:textSize="16sp"
+                android:textColor="#0080fe"
+                android:text="@string/fit_person_view_resume" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/interviewee_major" />
+                android:orientation="horizontal">
 
-            <ImageView
-                android:src="@drawable/turn_right1"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="@string/fit_person_school" />
+
+                <ImageView
+                    android:background="#c9c9c9"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="@string/fit_person_major" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:textSize="14sp"
+                android:text="@string/fit_person_ignore" />
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:text="@string/delete" />
 
     </LinearLayout>
 
     <ImageView
+        android:background="#c9c9c9"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
+        android:layout_height="1dp" />
 
 </LinearLayout>

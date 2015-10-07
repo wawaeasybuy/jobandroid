@@ -25,10 +25,6 @@
             android:label="@string/firm_info" >
         </activity>
         <activity
-            android:name=".activities.MyScoreActivity"
-            android:label="@string/my_score" >
-        </activity>
-        <activity
             android:name=".activities.MyPositionActivity"
             android:label="@string/internships_my_position" >
         </activity>
@@ -47,6 +43,10 @@
         <activity
             android:name=".activities.ApplyPersonActivity"
             android:label="@string/apply_person" >
+        </activity>
+        <activity
+            android:name=".activities.ScoreActivity"
+            android:label="@string/my_score_header" >
         </activity>
         <activity
             android:name=".activities.PersonalResumeActivity"

@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@drawable/header"
+        android:background="#FBFBFB"
         android:layout_height="50dp">
 
         <LinearLayout
@@ -21,9 +21,9 @@
 
             <ImageView
                 android:paddingLeft="10dp"
-                android:src="@drawable/turn_left1"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:src="@drawable/turn_left_blue"
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
 
         </LinearLayout>
 
@@ -37,16 +37,6 @@
             android:textSize="20sp"/>
 
 
-        <TextView
-            android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textSize="16sp"
-            android:textColor="#C9C9C9"
-            android:gravity="center"
-            android:text="@string/save" />
-
     </LinearLayout>
 
     <!--  Content -->
@@ -54,12 +44,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
+        android:paddingBottom="15dp"
+        android:background="#0080fe"
         android:gravity="center">
 
-        <com.example.ryo.job_employer.self_defining.CircleImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/touxiang" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.example.ryo.job_employer.self_defining.CircleImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:src="@drawable/sxbz_jfbg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="35dp"
+                android:textColor="#0080fe"
+                android:textSize="25sp"
+                android:text="@string/present_score_num" />
+
+        </FrameLayout>
+
+
 
     </LinearLayout>
 
@@ -67,97 +79,218 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="#006ace">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
             android:text="@string/evaluate_score" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
             android:text="@string/buy_score" />
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
         android:text="@string/score_ad" />
 
-
+<!--  Up -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="10dp">
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/score_round">
 
-        <TextView
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="70dp"
+            android:src="@drawable/sxbz_zhiding" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:text="@string/ad_position" />
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:text="@string/ad_up" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/ad_up_detail" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="10dp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/sxbz_shenglv"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/ad_last_time" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12sp"
+                    android:text="@string/ad_time" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#C9C9C9"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:background="@drawable/score_change"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:gravity="center"
-            android:text="@string/make_ad" />
+            android:textSize="14sp"
+            android:textColor="#0080fe"
+            android:text="@string/change" />
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
-
+<!-- Urgent -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="10dp">
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/score_round">
 
-        <TextView
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="70dp"
+            android:src="@drawable/sxbz_jiaji" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:text="@string/ad_position" />
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:text="@string/ad_urgent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/ad_urgent_detail" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="10dp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/sxbz_shenglv"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/ad_last_time" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12sp"
+                    android:text="@string/ad_time" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:background="#C9C9C9"
+            android:background="@drawable/score_change"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:gravity="center"
-            android:text="@string/make_ad" />
+            android:textSize="14sp"
+            android:textColor="#0080fe"
+            android:text="@string/change" />
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
 
 </LinearLayout>

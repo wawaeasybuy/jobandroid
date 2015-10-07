@@ -27,8 +27,18 @@ public class ApplyPersonActivity extends Activity {
             }
         });
 
-        LinearLayout resume = (LinearLayout) findViewById(R.id.resume);
-        resume.setOnClickListener(new View.OnClickListener() {
+        LinearLayout resume1 = (LinearLayout) findViewById(R.id.resume1);
+        resume1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent( ApplyPersonActivity.this, PersonalResumeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout resume2 = (LinearLayout) findViewById(R.id.resume2);
+        resume2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
