@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   >
 
     <!-- Header -->
     <LinearLayout
@@ -46,12 +47,22 @@
 
     <!-- Content| Login -->
     <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+    <LinearLayout
+
         android:id="@+id/edit_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:paddingLeft="20dp"
+       android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -122,10 +133,11 @@
 
     <!-- Content| 2 -->
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -218,55 +230,132 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
-
-    <!-- Content| Change -->
-    <LinearLayout
+    </LinearLayout>
+    <RelativeLayout
+        android:background="@drawable/round"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:id="@+id/MyScore">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/jifen"
+            android:src="@drawable/sxbz_jifen"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:text="积分"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/jifen"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <ImageView
+            android:layout_centerVertical="true"
+            android:src="@drawable/turn_right1"
+            android:id="@+id/turn_left"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:text="100分"
+            android:layout_toLeftOf="@id/turn_left"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content" />
+
+
+
+    </RelativeLayout>
+    <!-- Content| Change -->
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/round"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:orientation="vertical">
 
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/xiaoxi"
+        android:paddingLeft="10dp"
+        android:src="@drawable/sxbz_xiaoxi"
+        android:layout_width="27dp"
+        android:layout_height="27dp" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/xiaoxi"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
             android:text="@string/my_change" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <TextView
+            android:layout_centerVertical="true"
+            android:text="最近一个月"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:text="@string/my_change_content1" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:text="@string/my_change_time" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@drawable/header" />
+<RelativeLayout
 
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:paddingLeft="10dp"
+        android:text="收到杭某某的简历"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="09-10"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/header" />
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
@@ -290,10 +379,6 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@drawable/header" />
-
+    </LinearLayout>
 
 </LinearLayout>
