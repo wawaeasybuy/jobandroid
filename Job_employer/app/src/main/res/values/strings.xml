@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Job_employer</string>
 
 
@@ -13,6 +13,7 @@
     <string name="position_fit">职位匹配</string>
     <string name="apply_person">申请的人</string>
     <string name="interviewee">面试的人</string>
+
     <string name="my_message">我的消息</string>
     <string name="my_message_time">最近一个月</string>
     <string name="my_message_receive">收到</string>
@@ -22,6 +23,7 @@
     <string name="my_message_succeed">成功将</string>
     <string name="my_message_position">xx职位</string>
     <string name="my_message_up">置顶</string>
+
 
     <!-- Internships Edit Info -->
     <string name="edit_info">编辑资料</string>
