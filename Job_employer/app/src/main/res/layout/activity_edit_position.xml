@@ -98,7 +98,7 @@
             android:gravity="center"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:paddingRight="20dp"
+            android:paddingRight="15dp"
             android:paddingLeft="20dp">
 
             <TextView
@@ -134,7 +134,7 @@
             android:orientation="horizontal"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:paddingRight="20dp"
+            android:paddingRight="15dp"
             android:paddingLeft="20dp">
 
             <TextView
@@ -151,6 +151,7 @@
                 android:text="@string/position_classify_"/>
 
             <ImageView
+                android:paddingLeft="5dp"
                 android:src="@drawable/turn_right1"
                 android:layout_width="25dp"
                 android:layout_height="25dp" />
@@ -200,8 +201,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
             android:paddingRight="10dp"
             android:paddingLeft="10dp">
 
@@ -220,8 +221,7 @@
                 android:gravity="top"
                 android:height="80dp"
                 android:hint="@string/position_request_"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
+                android:padding="10dp"
                 android:textSize="13sp"
                 android:background="@drawable/layout_resume" />
 
@@ -232,8 +232,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="5dp"
+
             android:paddingRight="10dp"
             android:paddingLeft="10dp">
 
@@ -265,8 +265,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="top"
                 android:height="80dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
+                android:padding="10dp"
                 android:textSize="13sp"
                 android:hint="@string/position_sp_"
                 android:background="@drawable/layout_resume" />

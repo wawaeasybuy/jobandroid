@@ -10,22 +10,16 @@
         android:background="#FBFBFB"
         android:layout_height="50dp">
 
-        <LinearLayout
-            android:id="@+id/turn_left"
-            android:clickable="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <ImageView
+                android:id="@+id/turn_left"
+                android:clickable="true"
                 android:paddingLeft="10dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/turn_left_blue"
                 android:layout_width="28dp"
                 android:layout_height="28dp"/>
 
-        </LinearLayout>
+
 
         <TextView
             android:gravity="center"
@@ -35,6 +29,10 @@
             android:layout_height="fill_parent"
             android:text="@string/position_fit"
             android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

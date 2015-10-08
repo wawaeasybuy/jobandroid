@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.ryo.job_employer.R;
@@ -18,7 +19,7 @@ public class MyPositionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_position);
 
-        LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
+        ImageView turn_left = (ImageView) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -60,6 +60,11 @@
             android:name=".activities.IntervieweeEvaluateActivity"
             android:label="@string/interviewee_evaluate" >
         </activity>
+        <activity
+            android:name=".activities.PositionTuiguangActivity"
+            android:label="@string/interviewee_evaluate" >
+        </activity>
+
     </application>
 
 </manifest>
