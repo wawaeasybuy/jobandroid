@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
 
     <!-- Header -->
     <LinearLayout
@@ -12,7 +11,7 @@
         android:background="#FBFBFB"
         android:orientation="horizontal">
 
-    <TextView
+        <TextView
             android:id="@+id/personal_login"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -49,16 +48,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#0080fe
+        android:background="#0080fe"/>
     
 
     <!-- Content -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <!-- Content| ID -->
-        <LinearLayout
+
+    <!-- Content| ID -->
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -124,8 +121,10 @@
                     android:layout_height="1dp"
                     android:background="#c9c9c9" />
 
-                <!-- Content| 2 -->
-                <LinearLayout
+            </LinearLayout>
+
+           <!-- Content| 2 -->
+           <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_layout"
@@ -221,16 +220,13 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
-
-            </LinearLayout>
+           </LinearLayout>
 
 
-            <!-- Content| Score -->
-            <LinearLayout
+           <!-- Content| Score -->
+           <LinearLayout
                 android:id="@+id/score"
                 android:layout_width="match_parent"
-     
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingRight="10dp"
@@ -267,7 +263,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/turn_right1" />
 
-            </LinearLayout>
+           </LinearLayout>
 
             <!-- Content| Message -->
             <LinearLayout
@@ -388,15 +384,16 @@
                 </LinearLayout>
 
             </LinearLayout>
+    </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@drawable/header" />
-<RelativeLayout
 
 
-    </ScrollView>
+
+
 
 
     
