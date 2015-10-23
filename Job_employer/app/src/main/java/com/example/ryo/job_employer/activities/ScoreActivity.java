@@ -14,13 +14,14 @@ import com.example.ryo.job_employer.R;
  * Created by Ryo on 2015/10/7.
  */
 public class ScoreActivity extends Activity {
-
+public RelativeLayout position_ad;
+    public ImageView turn_left;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_score);
+        initView();
 
-        RelativeLayout position_ad= (RelativeLayout) findViewById(R.id.position_ad);
         position_ad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,8 +29,6 @@ public class ScoreActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        ImageView turn_left = (ImageView) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,8 +37,10 @@ public class ScoreActivity extends Activity {
             }
         });
 
+    }
 
-
-
+    private void initView() {
+        position_ad= (RelativeLayout) findViewById(R.id.position_ad);
+        turn_left = (ImageView) findViewById(R.id.turn_left);
     }
 }

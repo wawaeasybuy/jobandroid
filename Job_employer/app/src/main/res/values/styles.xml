@@ -11,4 +11,11 @@
         <item name="android:minHeight">40dp</item>
         <item name="android:maxHeight">40dp</item>
     </style>
+    <style name="header">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">#0080fe</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50.0dp</item>
+    </style>
 </resources>

@@ -14,13 +14,15 @@ import com.example.ryo.job_employer.R;
  * Created by Ryo on 2015/9/22.
  */
 public class IntervieweeActivity extends Activity {
-
+    public  ImageView turn_left;
+    public TextView interviewee_to_evaluate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internships_interviewee);
 
-        ImageView turn_left = (ImageView) findViewById(R.id.turn_left);
+        initView();
+
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,7 +31,6 @@ public class IntervieweeActivity extends Activity {
             }
         });
 
-        TextView interviewee_to_evaluate = (TextView) findViewById(R.id.interviewee_to_evaluate);
         interviewee_to_evaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +40,9 @@ public class IntervieweeActivity extends Activity {
             }
         });
 
-
+    }
+    private void initView() {
+        turn_left = (ImageView) findViewById(R.id.turn_left);
+        interviewee_to_evaluate = (TextView) findViewById(R.id.interviewee_to_evaluate);
     }
 }

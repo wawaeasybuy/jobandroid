@@ -12,13 +12,12 @@ import com.example.ryo.job_employer.R;
  * Created by Ryo on 2015/9/22.
  */
 public class PositionFitActivity extends Activity {
-
+public ImageView turn_left;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_position_fit);
-
-        ImageView turn_left = (ImageView) findViewById(R.id.turn_left);
+        initView();
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,5 +29,9 @@ public class PositionFitActivity extends Activity {
 
 
 
+    }
+
+    private void initView() {
+        turn_left = (ImageView) findViewById(R.id.turn_left);
     }
 }

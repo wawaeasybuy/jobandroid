@@ -12,42 +12,53 @@ import com.example.ryo.job_employer.R;
 /**
  * Created by Ryo on 2015/9/22.
  */
-public class ApplyPersonActivity extends Activity {
-
+public class ApplyPersonActivity extends Activity implements View.OnClickListener {
+    public  ImageView turn_left;
+    public  LinearLayout resume1;
+    public LinearLayout resume2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_person);
 
-        ImageView turn_left = (ImageView) findViewById(R.id.turn_left);
-        turn_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        initView();
+        initAction();
+    }
+
+    private void initAction() {
+
+        turn_left.setOnClickListener(this);
+        resume1.setOnClickListener(this);
+        resume2.setOnClickListener(this);
+
+    }
+
+    private void initView() {
+
+        turn_left = (ImageView) findViewById(R.id.turn_left);
+        resume1 = (LinearLayout) findViewById(R.id.resume1);
+        resume2 = (LinearLayout) findViewById(R.id.resume2);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+
+            case R.id.turn_left:
                 finish();
-
-            }
-        });
-
-        LinearLayout resume1 = (LinearLayout) findViewById(R.id.resume1);
-        resume1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                break;
+            case R.id.resume1:
                 Intent intent = new Intent( ApplyPersonActivity.this, PersonalResumeActivity.class);
                 startActivity(intent);
-            }
-        });
+                break;
+            case R.id.resume2:
+                Intent intent1 = new Intent( ApplyPersonActivity.this, PersonalResumeActivity.class);
+                startActivity(intent1);
+                break;
 
-        LinearLayout resume2 = (LinearLayout) findViewById(R.id.resume2);
-        resume2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent( ApplyPersonActivity.this, PersonalResumeActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        }
 
     }
 }

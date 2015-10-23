@@ -34,7 +34,13 @@
 
 
    <TextView
-       android:layout_width="38dp"
+       android:layout_width="wrap_content"
+       android:text="@string/save"
+       android:gravity="center"
+       android:clickable="true"
+       android:layout_gravity="center_vertical"
+       android:textSize="15dp"
+       android:layout_marginRight="10dp"
        android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -68,10 +74,15 @@
                 android:textSize="16sp"
                 android:text="@string/real_name"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/name"
+                android:background="#ffffff"
+                android:hint="@string/name"
+                android:clickable="true"
+                android:textSize="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/name"/>
+                />
 
         </LinearLayout>
 
