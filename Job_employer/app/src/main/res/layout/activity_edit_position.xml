@@ -39,6 +39,7 @@
 
         <TextView
             android:id="@+id/save"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
@@ -77,10 +78,12 @@
                 android:textSize="16sp"
                 android:text="@string/position_name"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/positionName"
+                android:background="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/position_name_"/>
+                android:hint="@string/position_name_"/>
 
         </LinearLayout>
 
@@ -182,10 +185,12 @@
                 android:textSize="16sp"
                 android:text="@string/salary"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/salary"
+                android:background="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/salary_"/>
+                android:hint="@string/salary_"/>
 
         </LinearLayout>
 
@@ -216,6 +221,7 @@
                 android:text="@string/position_request"/>
 
             <EditText
+                android:id="@+id/requirement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
@@ -267,6 +273,7 @@
                 android:height="80dp"
                 android:padding="10dp"
                 android:textSize="13sp"
+                android:id="@+id/positionCharacter"
                 android:hint="@string/position_sp_"
                 android:background="@drawable/layout_resume" />
 

@@ -39,6 +39,7 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
     public LinearLayout firm_info ;
     public TextView save;
     public EditText name;
+    public Employer GolEmployer=GlobalProvider.getInstance().employer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,12 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_edit_info);
         initView();
         initAction();
+        if(GolEmployer.name!=null){name.setText(GolEmployer.getName());}
 
     }
 
     private void initAction() {
+        save.setOnClickListener(this);
         turn_left.setOnClickListener(this);
         firm_info.setOnClickListener(this);
 
@@ -67,7 +70,7 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
           doSave();
           break;
       case R.id.turn_left:
-          this.setResult(RESULT_OK);
+          //this.setResult(RESULT_OK);
           this.finish();
           break;
       case R.id.firm_info:
@@ -90,10 +93,11 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
             String URL= Constants.personalInfo+"/"+GlobalProvider.getInstance().employerId;
-            globalProvider.post(this, URL, entity, "application/json", new RequestListener() {
+            globalProvider.put(this, URL, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    Toast.makeText(EditInfoActivity.this, "±£¥Ê≥…π¶£°", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditInfoActivity.this, "‰øùÂ≠òÊàêÂäüÔºÅ", Toast.LENGTH_SHORT).show();
+                    doResult();
                     //parseLoginResult(new String(responseBody));
                 }
 
@@ -110,6 +114,12 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
             e.printStackTrace();
         }
     }
+
+    private void doResult() {
+        this.setResult(RESULT_OK);
+        this.finish();
+    }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {

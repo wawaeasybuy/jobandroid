@@ -145,7 +145,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
-           Employer employer = (Employer) objectMapper.readValue(jsonParser, Employer.class);
+            Employer employer = (Employer) objectMapper.readValue(jsonParser, Employer.class);
+            //接受全局employer
+            GlobalProvider.getInstance().employer=employer;
             if(employer.name!=null){name.setText(employer.getName());}else{name.setText("请填写名字");}
             if(employer.companyname!=null){companyName.setText(employer.getCompanyname());}else{companyName.setText("请填写公司名字");}
             myScore.setText(employer.score+"");

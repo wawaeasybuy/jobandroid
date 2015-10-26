@@ -11,6 +11,7 @@ import com.example.ryo.job_employer.models.Http.AsyncHttpClient;
 import com.example.ryo.job_employer.models.Http.AsyncHttpResponseHandler;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
+import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.network.Constants;
 
 import org.apache.http.Header;
@@ -24,12 +25,12 @@ public class GlobalProvider {
     private static GlobalProvider instance;
     private AsyncHttpClient client;
     public Employer employer=new Employer();
+    public Job job=new Job();
     public String employerId;
 
     private GlobalProvider() {
         client = new AsyncHttpClient();
     }
-
     public static GlobalProvider getInstance() {
         if(instance == null) {
             instance = new GlobalProvider();
@@ -62,7 +63,22 @@ public class GlobalProvider {
             }
         });
     }
+    public void get(final Context context,String url, RequestParams params, final RequestListener listener) {
 
+        addHeaderToken(context);
+        client.get(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                listener.onSuccess(statusCode, headers, responseBody);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                baseFail(context, statusCode, headers, responseBody, error);
+                listener.onFailure(statusCode, headers, responseBody, error);
+            }
+        });
+    }
     public void post(final Context context, String url, HttpEntity entity, String contentType, final RequestListener listener) {
 
         addHeaderToken(context);

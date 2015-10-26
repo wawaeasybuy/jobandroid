@@ -11,11 +11,14 @@ import com.example.ryo.job_employer.helper.GlobalProvider;
  */
 public class Constants {
 
-    static public String baseUrlStr = "http://10.0.2.2:9000/";//≤‚ ‘URL
+    static public String baseUrlStr = "http://115.236.84.183:9000/";//≤‚ ‘URL
     //static public String baseUrlStr = "http://192.168.1.103:8080/";
     static public String personalInfo = baseUrlStr + "api/employers";
     static public String RegisterStr=baseUrlStr+"api/candidates";
-    //static public String UpdateStr=baseUrlStr+"api/can"
+    static public String PositionStr=baseUrlStr+"api/jobs";
+    static public String DeleteJobStr=baseUrlStr+"api/jobs";
+    static public String UpdateJobStr=baseUrlStr+"api/jobs";
+    static public String CreateJobStr=baseUrlStr+"api/jobs";
     static public String loginUrlStr = baseUrlStr + "auth/local";
 
     static public String tokenStr = "token";
@@ -23,6 +26,8 @@ public class Constants {
 
     public static final int LoginIntent = 90;
     public static final int UpdateInfoIntent=91;
+    public static final int EditJobIntent=92;
+
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager

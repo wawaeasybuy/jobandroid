@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
+import com.example.ryo.job_employer.models.Employer;
 
 /**
  * Created by Ryo on 2015/9/18.
@@ -25,6 +26,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
     public TextView save;
     public EditText name;
     public EditText mainBusiness;
+    public EditText description;
+    public Employer GoEmployer=GlobalProvider.getInstance().employer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,9 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_firm_info);
         initView();
         initAction();
+        if(GoEmployer.companyname!=null){name.setText(GoEmployer.getCompanyname());}
+        if(GoEmployer.mianBusiness!=null){mainBusiness.setText(GoEmployer.getMianBusiness());}
+        if(GoEmployer.companyInfo!=null){description.setText(GoEmployer.getCompanyInfo());}
 
     }
     private void initAction() {
@@ -44,6 +50,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         save= (TextView) findViewById(R.id.save);
         name= (EditText) findViewById(R.id.name);
         mainBusiness= (EditText) findViewById(R.id.main_business);
+        description= (EditText) findViewById(R.id.description);
 
     }
     @Override
@@ -61,7 +68,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
     private void doSave() {
         GlobalProvider.getInstance().employer.setCompanyname(name.getText().toString());
         GlobalProvider.getInstance().employer.setMianBusiness(mainBusiness.getText().toString());
-        Toast.makeText(FirmInfoActivity.this,"±£¥Ê≥…π¶",Toast.LENGTH_SHORT).show();
+        GlobalProvider.getInstance().employer.setCompanyInfo(description.getText().toString());
+        Toast.makeText(FirmInfoActivity.this,"‰øùÂ≠òÊàêÂäü",Toast.LENGTH_SHORT).show();
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
