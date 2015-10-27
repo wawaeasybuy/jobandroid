@@ -4,61 +4,226 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ryo.job_employer.R;
+import com.example.ryo.job_employer.adapter.PositionFitAllAdapter;
+import com.example.ryo.job_employer.adapter.PositionFitHeaderAdapter;
+import com.example.ryo.job_employer.helper.GlobalProvider;
+import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.Http.RequestParams;
+import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
+import com.example.ryo.job_employer.models.JobFitList;
+import com.example.ryo.job_employer.models.Resume;
+import com.example.ryo.job_employer.network.Constants;
+
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ryo on 2015/9/22.
  */
 public class ApplyPersonActivity extends Activity implements View.OnClickListener {
-    public  ImageView turn_left;
-    public  LinearLayout resume1;
-    public LinearLayout resume2;
+    public ImageView turn_left;
+    public LinearLayout applyHeader_layout;
+    public TextView applyHeader_text;
+    public ImageView applyHeader_Img;
+    public ListView lv_one;
+    public ListView lv_all;
+    public ListView lv_pull_down;
+
+    public PositionFitHeaderAdapter adapter;
+    public PositionFitAllAdapter adapterAll;
+    // public PositionFitOneAdapter adapterOne;
+    //public ArrayAdapter adapter;
+    public List<String> list;
+    public List<Resume> mItems;
+
+//    private Integer mPage;
+//    private Integer mItemsPerPage;
+
+    public String job="";
+    public Boolean isShowing=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_person);
-
         initView();
         initAction();
-    }
+//        mPage = 1;
+//        mItemsPerPage = 10;
 
+        list=new ArrayList<String>();
+        mItems=new ArrayList<Resume>();
+
+        adapter=new PositionFitHeaderAdapter(this,list);
+        adapterAll=new PositionFitAllAdapter(this,mItems);
+        //adapterOne=new PositionFitOneAdapter(this,mItems);
+
+        lv_pull_down.setAdapter(adapter);
+        lv_all.setAdapter(adapterAll);
+        //lv_one.setAdapter(adapterOne);
+
+        lv_all.setVisibility(View.VISIBLE);
+        lv_pull_down.setVisibility(View.GONE);
+        //lv_one.setVisibility(View.GONE);
+        applyHeader_text.setText("全部职位");
+        applyHeader_Img.setImageResource(R.drawable.turn_down);
+        applyHeader_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isShowing){
+                    lv_pull_down.setVisibility(View.VISIBLE);
+                    applyHeader_Img.setImageResource(R.drawable.turn_up);
+                }else{
+                    lv_pull_down.setVisibility(View.GONE);
+                    applyHeader_Img.setImageResource(R.drawable.turn_down);
+                }
+                isShowing=!isShowing;
+            }
+        });
+        LoadApplyList();
+    }
     private void initAction() {
-
         turn_left.setOnClickListener(this);
-        resume1.setOnClickListener(this);
-        resume2.setOnClickListener(this);
-
+        lv_pull_down.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position>0){
+                    job=list.get(position);
+                    applyHeader_text.setText(job);
+                }else{
+                    job="";
+                    applyHeader_text.setText("全部职位");
+                }
+                lv_pull_down.setVisibility(View.GONE);
+                applyHeader_Img.setImageResource(R.drawable.turn_down);
+                isShowing=false;
+                LoadApplyList();
+            }
+        });
     }
-
     private void initView() {
-
         turn_left = (ImageView) findViewById(R.id.turn_left);
-        resume1 = (LinearLayout) findViewById(R.id.resume1);
-        resume2 = (LinearLayout) findViewById(R.id.resume2);
+        lv_one= (ListView) findViewById(R.id.lv_one);
+        lv_all= (ListView) findViewById(R.id.lv_all);
+        lv_pull_down= (ListView) findViewById(R.id.lv_pull_down);
+        applyHeader_layout= (LinearLayout) findViewById(R.id.applyHeader_layout);
+        applyHeader_Img= (ImageView) findViewById(R.id.applyHeader_Img);
+        applyHeader_text= (TextView) findViewById(R.id.applyHeader_text);
 
     }
-
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
-
             case R.id.turn_left:
                 finish();
                 break;
-            case R.id.resume1:
-                Intent intent = new Intent( ApplyPersonActivity.this, PersonalResumeActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.resume2:
-                Intent intent1 = new Intent( ApplyPersonActivity.this, PersonalResumeActivity.class);
-                startActivity(intent1);
-                break;
-
         }
+    }
+    public void LoadApplyList(){
+        //RequestParams params = new RequestParams();
+//        params.put("page", mPage);
+//        params.put("itemsPerPage", mItemsPerPage);
+//        params.put("id", GlobalProvider.getInstance().employerId);
+//        if(!job.equals("")){
+//            params.put("job",job);
+//        }
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        String Url=Constants.ApplyPersonStr+"/"+GlobalProvider.getInstance().employerId;
+        globalProvider.get(this, Constants.ApplyPersonStr, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseApplyList(new String(responseBody));
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
+            }
+        });
+    }
+    private void parseApplyList(String json) {
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            JobFitList jobFitList = (JobFitList) objectMapper.readValue(jsonParser, JobFitList.class);
+            this.mItems.clear();
+            this.mItems.addAll(jobFitList.resumes);
+
+            if(list.size()==0){
+                list.add("全部职位");
+                for(int i=0;i<jobFitList.jobs.size();i++){
+                    list.add(jobFitList.jobs.get(i).getPositionName());
+                }
+                //this.list.addAll(jobFitList.jobs);
+            }
+            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+            adapter.notifyDataSetChanged();
+            adapterAll.notifyDataSetChanged();
+            //do something
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void PositionFitUpdate(final Resume resume){
+        RequestParams params = new RequestParams();
+        params.put("id",GlobalProvider.getInstance().employerId );
+
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        String Url=Constants.PositionFitUpdateStr+"/"+resume.get_id();
+        globalProvider.put(this, Url, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Intent intent=new Intent(ApplyPersonActivity.this,PersonalResumeActivity.class);
+                intent.putExtra("resume",resume);
+                startActivity(intent);
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+    public void PositionFitIgnore(final String id){
+        RequestParams params = new RequestParams();
+        params.put("id",id );
+        params.put("_employer",GlobalProvider.getInstance().employerId);
+
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.put(this, Constants.PositionFitStr, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                LoadApplyList();
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
     }
 }

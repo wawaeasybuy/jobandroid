@@ -118,7 +118,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
               job.setSalary(Integer.parseInt(salary.getText().toString()));
               job.setRequirement(requirement.getText().toString());
               job.setPositionCharacter(positionCharacter.getText().toString());
-               update();
+              update();
           }else{
               job=new Job();
               job.setPositionName(positionName.getText().toString());
