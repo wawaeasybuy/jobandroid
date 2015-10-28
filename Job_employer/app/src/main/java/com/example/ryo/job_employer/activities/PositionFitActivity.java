@@ -51,7 +51,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
     public PositionFitAllAdapter adapterAll;
    // public PositionFitOneAdapter adapterOne;
     //public ArrayAdapter adapter;
-    public List<String> list;
+    public List<Job> list;
     public List<Resume> mItems;
 
     private Integer mPage;
@@ -68,7 +68,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         mPage = 1;
         mItemsPerPage = 10;
 
-        list=new ArrayList<String>();
+        list=new ArrayList<Job>();
         mItems=new ArrayList<Resume>();
 
         adapter=new PositionFitHeaderAdapter(this,list);
@@ -105,8 +105,8 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
-                 job=list.get(position);
-                 fitHeader_text.setText(job);
+                 job=list.get(position-1).getIndustryCategory();
+                 fitHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                  job="";
                  fitHeader_text.setText("全部职位");
@@ -170,9 +170,8 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             this.mItems.addAll(jobFitList.resumes);
 
             if(list.size()==0){
-                list.add("全部职位");
                 for(int i=0;i<jobFitList.jobs.size();i++){
-                    list.add(jobFitList.jobs.get(i).getPositionName());
+                    list.add(jobFitList.jobs.get(i));
                 }
                 //this.list.addAll(jobFitList.jobs);
             }
@@ -214,7 +213,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         params.put("_employer",GlobalProvider.getInstance().employerId);
 
         GlobalProvider globalProvider = GlobalProvider.getInstance();
-        globalProvider.put(this, Constants.PositionFitStr, params, new RequestListener() {
+        globalProvider.put(this, Constants.PositionFitIgnoreStr, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 LoadResumeList();

@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class PositionFitHeaderAdapter extends BaseAdapter{
     public Context context;
-    public List<String> Data;
+    public List<Job> Data;
 
     public PositionFitHeaderAdapter(Context context,List Data){
         this.context=context;
@@ -50,7 +50,8 @@ public class PositionFitHeaderAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.job.setText(Data.get(position));
+        if(position==0){holder.job.setText("全部职位");}
+        else{holder.job.setText(Data.get(position-1).getPositionName());}
         return convertView;
     }
     class ViewHolder {

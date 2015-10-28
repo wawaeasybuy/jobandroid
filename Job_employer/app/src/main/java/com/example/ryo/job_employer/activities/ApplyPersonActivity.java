@@ -11,12 +11,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ryo.job_employer.R;
+import com.example.ryo.job_employer.adapter.ApplyPersonAdapter;
 import com.example.ryo.job_employer.adapter.PositionFitAllAdapter;
 import com.example.ryo.job_employer.adapter.PositionFitHeaderAdapter;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
+import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.models.JobFitList;
 import com.example.ryo.job_employer.models.Resume;
 import com.example.ryo.job_employer.network.Constants;
@@ -44,10 +46,10 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
     public ListView lv_pull_down;
 
     public PositionFitHeaderAdapter adapter;
-    public PositionFitAllAdapter adapterAll;
+    public ApplyPersonAdapter adapterAll;
     // public PositionFitOneAdapter adapterOne;
     //public ArrayAdapter adapter;
-    public List<String> list;
+    public List<Job> list;
     public List<Resume> mItems;
 
 //    private Integer mPage;
@@ -64,11 +66,11 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
 //        mPage = 1;
 //        mItemsPerPage = 10;
 
-        list=new ArrayList<String>();
+        list=new ArrayList<Job>();
         mItems=new ArrayList<Resume>();
 
         adapter=new PositionFitHeaderAdapter(this,list);
-        adapterAll=new PositionFitAllAdapter(this,mItems);
+        adapterAll=new ApplyPersonAdapter(this,mItems);
         //adapterOne=new PositionFitOneAdapter(this,mItems);
 
         lv_pull_down.setAdapter(adapter);
@@ -101,8 +103,8 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
-                    job=list.get(position);
-                    applyHeader_text.setText(job);
+                    job=list.get(position-1).getIndustryCategory();
+                    applyHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                     job="";
                     applyHeader_text.setText("全部职位");
@@ -133,16 +135,16 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
         }
     }
     public void LoadApplyList(){
-        //RequestParams params = new RequestParams();
+        RequestParams params = new RequestParams();
 //        params.put("page", mPage);
 //        params.put("itemsPerPage", mItemsPerPage);
 //        params.put("id", GlobalProvider.getInstance().employerId);
-//        if(!job.equals("")){
-//            params.put("job",job);
-//        }
+        if(!job.equals("")){
+            params.put("job",job);
+        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         String Url=Constants.ApplyPersonStr+"/"+GlobalProvider.getInstance().employerId;
-        globalProvider.get(this, Constants.ApplyPersonStr, new RequestListener() {
+        globalProvider.get(this,Url,params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parseApplyList(new String(responseBody));
@@ -167,9 +169,8 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
             this.mItems.addAll(jobFitList.resumes);
 
             if(list.size()==0){
-                list.add("全部职位");
                 for(int i=0;i<jobFitList.jobs.size();i++){
-                    list.add(jobFitList.jobs.get(i).getPositionName());
+                    list.add(jobFitList.jobs.get(i));
                 }
                 //this.list.addAll(jobFitList.jobs);
             }
@@ -181,37 +182,37 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
             e.printStackTrace();
         }
     }
-    public void PositionFitUpdate(final Resume resume){
-        RequestParams params = new RequestParams();
-        params.put("id",GlobalProvider.getInstance().employerId );
-
-        GlobalProvider globalProvider = GlobalProvider.getInstance();
-        String Url=Constants.PositionFitUpdateStr+"/"+resume.get_id();
-        globalProvider.put(this, Url, params, new RequestListener() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Intent intent=new Intent(ApplyPersonActivity.this,PersonalResumeActivity.class);
-                intent.putExtra("resume",resume);
-                startActivity(intent);
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                //Log.v("err", new String(responseBody));
-
-            }
-            @Override
-            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
-
-            }
-        });
-    }
-    public void PositionFitIgnore(final String id){
+//    public void ApplyPersonUpdate(final Resume resume){
+//        RequestParams params = new RequestParams();
+//        params.put("id",GlobalProvider.getInstance().employerId );
+//
+//        GlobalProvider globalProvider = GlobalProvider.getInstance();
+//        String Url=Constants.PositionFitUpdateStr+"/"+resume.get_id();
+//        globalProvider.put(this, Url, params, new RequestListener() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                Intent intent=new Intent(ApplyPersonActivity.this,PersonalResumeActivity.class);
+//                intent.putExtra("resume",resume);
+//                startActivity(intent);
+//            }
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+//                //Log.v("err", new String(responseBody));
+//
+//            }
+//            @Override
+//            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+//
+//            }
+//        });
+//    }
+    public void ApplyPersonIgnore(final String id){
         RequestParams params = new RequestParams();
         params.put("id",id );
         params.put("_employer",GlobalProvider.getInstance().employerId);
 
         GlobalProvider globalProvider = GlobalProvider.getInstance();
-        globalProvider.put(this, Constants.PositionFitStr, params, new RequestListener() {
+        globalProvider.delete(this, Constants.ApplyPersonIgnoreStr, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 LoadApplyList();

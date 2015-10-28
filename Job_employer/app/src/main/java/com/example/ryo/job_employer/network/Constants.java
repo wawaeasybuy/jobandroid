@@ -23,6 +23,7 @@ public class Constants {
     static public String PositionFitUpdateStr=baseUrlStr+"api/resumes";
     static public String PositionFitIgnoreStr=baseUrlStr+"api/resumes";
     static public String ApplyPersonStr=baseUrlStr+"api/publicresumes";
+    static public String ApplyPersonIgnoreStr=baseUrlStr+"api/publicresumes";
     static public String loginUrlStr = baseUrlStr + "auth/local";
 
     static public String tokenStr = "token";
