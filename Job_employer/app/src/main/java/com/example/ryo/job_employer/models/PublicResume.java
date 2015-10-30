@@ -10,6 +10,15 @@ import java.util.Date;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PublicResume implements Serializable {
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String _id;
     public String _employer;
     public String _candidate;
     public String _job;
@@ -28,6 +37,15 @@ public class PublicResume implements Serializable {
     public String works;
     public String schoolName;
 
+    public int getTestValue() {
+        return testValue;
+    }
+
+    public void setTestValue(int testValue) {
+        this.testValue = testValue;
+    }
+
+    public int testValue;
     public String getProfessional() {
         return professional;
     }

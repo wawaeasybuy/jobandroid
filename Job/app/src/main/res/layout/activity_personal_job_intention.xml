@@ -58,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
+            android:clickable="true"
             android:textSize="16sp"
             android:textColor="#0080fe"
             android:gravity="center"
@@ -94,16 +95,14 @@
                 android:layout_weight="1"
                 android:text="@string/intention_expect_trade"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/expect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
-                android:text="@string/intention_expect_trade_"/>
+                android:hint="@string/intention_expect_trade_"/>
 
-            <ImageView
-                android:src="@drawable/turn_right1"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+
 
         </LinearLayout>
 

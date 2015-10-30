@@ -224,6 +224,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:gravity="top"
+                android:id="@+id/adviceText"
                 android:background="@drawable/layout_resume"
                 android:height="150dp"
                 android:textSize="14sp"

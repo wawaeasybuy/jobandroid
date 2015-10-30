@@ -25,6 +25,7 @@
 
             <TextView
                 android:gravity="center"
+                android:id="@+id/name"
                 android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -115,6 +116,7 @@
 
                         <TextView
                             android:textSize="11dp"
+                            android:id="@+id/birth"
                             android:layout_width="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_height="wrap_content"
@@ -138,6 +140,7 @@
 
                             <TextView
                                 android:textSize="11dp"
+                                android:id="@+id/address"
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -161,6 +164,7 @@
                             android:text="@string/apply_person_phone" />
 
                         <TextView
+                            android:id="@+id/tel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="11dp"
@@ -173,6 +177,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:gravity="center"
+                        android:id="@+id/add_talent"
+                        android:clickable="true"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="3dp"
                         android:layout_marginBottom="5dp"
@@ -248,11 +254,13 @@
                         android:orientation="horizontal">
 
                         <TextView
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/school_name"/>
 
                         <TextView
+                            android:id="@+id/schoolName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
@@ -273,6 +281,7 @@
                             android:text="@string/major_name"/>
 
                         <TextView
+                            android:id="@+id/professional"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
@@ -293,6 +302,7 @@
                             android:text="@string/graduate_time"/>
 
                         <TextView
+                            android:id="@+id/graduationTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
@@ -313,6 +323,7 @@
                             android:text="@string/grade_range"/>
 
                         <TextView
+                            android:id="@+id/grade"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
@@ -333,6 +344,7 @@
                             android:text="@string/school_experience"/>
 
                         <TextView
+                            android:id="@+id/experience"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp" />
@@ -393,7 +405,11 @@
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
                     android:orientation="vertical">
-
+                <TextView
+                    android:background="#ffffff"
+                    android:id="@+id/selfEvaluation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
 
                 </LinearLayout>
@@ -449,7 +465,11 @@
                     android:paddingTop="10dp"
                     android:orientation="vertical">
 
-
+                    <TextView
+                        android:background="#ffffff"
+                        android:id="@+id/internshipExprience"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
 

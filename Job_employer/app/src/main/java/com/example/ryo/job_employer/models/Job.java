@@ -19,6 +19,16 @@ public class Job implements Serializable {
     }
 
     public String _id;
+
+
+    public String get_employer() {
+        return _employer;
+    }
+
+    public void set_employer(String _employer) {
+        this._employer = _employer;
+    }
+
     public String _employer;
     public String employerName;
     public String positionName;
@@ -29,13 +39,7 @@ public class Job implements Serializable {
     public String positionCharacter;
     public String city;
 
-    public String get_employer() {
-        return _employer;
-    }
 
-    public void set_employer(String _employer) {
-        this._employer = _employer;
-    }
 
     public String getEmployerName() {
         return employerName;

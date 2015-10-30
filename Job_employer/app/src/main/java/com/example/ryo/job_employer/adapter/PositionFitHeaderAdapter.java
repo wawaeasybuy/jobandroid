@@ -50,8 +50,8 @@ public class PositionFitHeaderAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if(position==0){holder.job.setText("全部职位");}
-        else{holder.job.setText(Data.get(position-1).getPositionName());}
+        //if(position==0){holder.job.setText("鍏ㄩ儴鑱屼綅");}
+        holder.job.setText(Data.get(position).getPositionName());
         return convertView;
     }
     class ViewHolder {

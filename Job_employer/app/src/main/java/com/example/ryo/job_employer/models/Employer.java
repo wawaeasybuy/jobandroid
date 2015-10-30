@@ -3,6 +3,7 @@ package com.example.ryo.job_employer.models;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/10/23.
@@ -23,13 +24,6 @@ public class Employer  implements Serializable {
         this.mianBusiness = mianBusiness;
     }
 
-    public String getCompanyAdress() {
-        return companyAdress;
-    }
-
-    public void setCompanyAdress(String companyAdress) {
-        this.companyAdress = companyAdress;
-    }
 
     public String getCompanyURL() {
         return companyURL;
@@ -73,7 +67,16 @@ public class Employer  implements Serializable {
 
     public String mianBusiness;
     public String companyURL;
-    public String companyAdress;
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public String companyAddress;
     public int score;
     public int UrTicket;
 
@@ -121,6 +124,6 @@ public class Employer  implements Serializable {
     public String _user;
     public String _id;
     public Boolean pubResume;
-    public EmpMessage message;
+    public List<EmpMessage>  EmpMessage;
 
 }

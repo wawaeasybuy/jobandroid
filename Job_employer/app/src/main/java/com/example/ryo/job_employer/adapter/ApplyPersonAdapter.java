@@ -12,6 +12,8 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.activities.ApplyPersonActivity;
 import com.example.ryo.job_employer.activities.PersonalResumeActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
+import com.example.ryo.job_employer.helper.GlobalProvider;
+import com.example.ryo.job_employer.models.PublicResume;
 import com.example.ryo.job_employer.models.Resume;
 
 import java.text.DateFormat;
@@ -23,7 +25,7 @@ import java.util.List;
  * Created by Administrator on 2015/10/28.
  */
 public class ApplyPersonAdapter extends BaseAdapter{
-    private List<Resume> Data;
+    private List<PublicResume> Data;
     private Context context;
     public ApplyPersonAdapter(Context context,List Data){
         this.context=context;
@@ -45,7 +47,7 @@ public class ApplyPersonAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder holder = null;
-        final Resume resume=Data.get(position);
+        final PublicResume resume=Data.get(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.position_fit_all_list_item, null);
             holder = new ViewHolder();
@@ -60,14 +62,15 @@ public class ApplyPersonAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
         holder.name.setText(resume.getName());
-        holder.testValue.setText("÷∞“µ≤‚∆¿∑÷ £∫"+resume.getTestValue());
+        holder.testValue.setText("ËÅå‰∏öÊµãËØÑÂàÜ Ôºö"+resume.getTestValue());
         holder.schoolName.setText(resume.getSchoolName());
         holder.professional.setText(resume.getProfessional());
         holder.chakan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalProvider.getInstance().isAllowToTalent=true;
                 Intent intent=new Intent(context,PersonalResumeActivity.class);
-                intent.putExtra("resume",resume);
+                intent.putExtra("Pubresume", resume);
                 context.startActivity(intent);
                 //((PositionFitActivity) context).PositionFitUpdate(resume);
             }

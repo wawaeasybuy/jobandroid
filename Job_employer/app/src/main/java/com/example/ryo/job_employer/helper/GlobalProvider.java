@@ -26,7 +26,8 @@ public class GlobalProvider {
     private AsyncHttpClient client;
     public Employer employer=new Employer();
     public Job job=new Job();
-    public String employerId;
+    public String employerId="";
+    public Boolean isAllowToTalent=false;
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

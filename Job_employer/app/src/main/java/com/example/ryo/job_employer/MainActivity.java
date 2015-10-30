@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ryo.job_employer.activities.ApplyPersonActivity;
 import com.example.ryo.job_employer.activities.EditInfoActivity;
@@ -41,6 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public TextView name;
     public TextView companyName;
     public TextView myScore;
+    public TextView setting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         position_fit.setOnClickListener(this);
         apply_person.setOnClickListener(this);
         interviewee.setOnClickListener(this);
+        setting.setOnClickListener(this);
 
     }
 
@@ -70,6 +73,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         name= (TextView) findViewById(R.id.name);
         companyName= (TextView) findViewById(R.id.companyName);
         myScore= (TextView) findViewById(R.id.Myscore);
+        setting= (TextView) findViewById(R.id.setting);
 
     }
     @Override
@@ -101,9 +105,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Intent intent5 = new Intent( MainActivity.this, IntervieweeActivity.class);
                 startActivity(intent5);
                 break;
+            case  R.id.setting:
+                doLogout();
 
         }
     }
+
+    private void doLogout() {
+                if (Constants.getToken(this).equals("")) {
+                    Toast.makeText(this, "you have not logged in", Toast.LENGTH_SHORT).show();
+                }else {
+                    Constants.setToken(this, "");
+                    Toast.makeText(this, "you have successfully logged out", Toast.LENGTH_SHORT).show();
+                    GlobalProvider.getInstance().employerId="";
+                    LoadPersonalInfo();
+                }
+            }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case Constants.LoginIntent:

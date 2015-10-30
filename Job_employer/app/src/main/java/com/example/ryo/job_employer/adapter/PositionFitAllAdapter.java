@@ -65,7 +65,7 @@ public class PositionFitAllAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
             holder.name.setText(resume.getName());
-            holder.testValue.setText("Ö°Òµ²âÆÀ·Ö £º"+resume.getTestValue());
+            holder.testValue.setText("èŒä¸šæµ‹è¯„åˆ† ï¼š"+resume.getTestValue());
             holder.schoolName.setText(resume.getSchoolName());
             holder.professional.setText(resume.getProfessional());
             holder.chakan.setOnClickListener(new View.OnClickListener() {

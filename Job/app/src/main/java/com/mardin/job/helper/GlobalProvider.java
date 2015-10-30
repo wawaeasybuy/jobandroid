@@ -11,6 +11,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.activities.LoginActivity;
+import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
@@ -23,6 +24,7 @@ import org.apache.http.HttpResponse;
 public class GlobalProvider {
     private static GlobalProvider instance;
     private AsyncHttpClient client;
+    public Resume resume=new Resume();
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

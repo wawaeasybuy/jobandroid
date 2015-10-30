@@ -39,6 +39,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     public LinearLayout turn_left;
     public TextView save;
     public EditText positionName;
+    public EditText industry;
     public EditText salary;
     public EditText requirement;
     public EditText positionCharacter;
@@ -54,6 +55,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         {
             job = (Job)intent.getSerializableExtra("job");
             if(job.getPositionName()!=null){positionName.setText(job.getPositionName());}
+            if(job.getIndustryCategory()!=null){industry.setText(job.getIndustryCategory());}
             if(job.getRequirement()!=null){requirement.setText(job.getRequirement());}
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
             salary.setText(job.getSalary()+"");
@@ -69,6 +71,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         turn_left = (LinearLayout) findViewById(R.id.turn_left);
         save= (TextView) findViewById(R.id.save);
         positionName= (EditText) findViewById(R.id.positionName);
+        industry= (EditText) findViewById(R.id.industry);
         positionCharacter= (EditText) findViewById(R.id.positionCharacter);
         salary= (EditText) findViewById(R.id.salary);
         requirement= (EditText) findViewById(R.id.requirement);
@@ -92,6 +95,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                     public void onClick(DialogInterface dialog, int which) {
                         if(job!=null){
                             job.setPositionName(positionName.getText().toString());
+                            job.setIndustryCategory(industry.getText().toString());
                             job.setSalary(Integer.parseInt(salary.getText().toString()));
                             job.setRequirement(requirement.getText().toString());
                             job.setPositionCharacter(positionCharacter.getText().toString());
@@ -99,6 +103,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                         }else{
                             job=new Job();
                             job.setPositionName(positionName.getText().toString());
+                            job.setIndustryCategory(industry.getText().toString());
                             job.setSalary(Integer.parseInt(salary.getText().toString()));
                             job.setRequirement(requirement.getText().toString());
                             job.setPositionCharacter(positionCharacter.getText().toString());
@@ -115,6 +120,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     public void doSave(){
            if(job!=null){
               job.setPositionName(positionName.getText().toString());
+               job.setIndustryCategory(industry.getText().toString());
               job.setSalary(Integer.parseInt(salary.getText().toString()));
               job.setRequirement(requirement.getText().toString());
               job.setPositionCharacter(positionCharacter.getText().toString());
@@ -122,6 +128,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
           }else{
               job=new Job();
               job.setPositionName(positionName.getText().toString());
+              job.setIndustryCategory(industry.getText().toString());
               job.setSalary(Integer.parseInt(salary.getText().toString()));
               job.setRequirement(requirement.getText().toString());
               job.setPositionCharacter(positionCharacter.getText().toString());

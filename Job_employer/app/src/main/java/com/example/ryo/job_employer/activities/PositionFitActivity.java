@@ -54,6 +54,8 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
     public List<Job> list;
     public List<Resume> mItems;
 
+    public Job JOB;
+
     private Integer mPage;
     private Integer mItemsPerPage;
 
@@ -105,12 +107,13 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
-                 job=list.get(position-1).getIndustryCategory();
-                 fitHeader_text.setText(list.get(position-1).getPositionName());
+                 job=list.get(position).getIndustryCategory();
+                 //fitHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                  job="";
-                 fitHeader_text.setText("全部职位");
+                 //fitHeader_text.setText("全部职位");
                 }
+                fitHeader_text.setText(list.get(position).getPositionName());
                 lv_pull_down.setVisibility(View.GONE);
                 fitHeader_Img.setImageResource(R.drawable.turn_down);
                 isShowing=false;
@@ -170,6 +173,11 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             this.mItems.addAll(jobFitList.resumes);
 
             if(list.size()==0){
+                if(JOB==null){
+                    JOB=new Job();
+                    JOB.setPositionName("全部职位");
+                }
+                list.add(JOB);
                 for(int i=0;i<jobFitList.jobs.size();i++){
                     list.add(jobFitList.jobs.get(i));
                 }
@@ -192,6 +200,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         globalProvider.put(this, Url, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                GlobalProvider.getInstance().isAllowToTalent=false;
                 Intent intent=new Intent(PositionFitActivity.this,PersonalResumeActivity.class);
                 intent.putExtra("resume",resume);
                 startActivity(intent);
