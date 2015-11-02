@@ -60,7 +60,6 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
             salary.setText(job.getSalary()+"");
         }
-
     }
     private void initAction() {
         turn_left.setOnClickListener(this);

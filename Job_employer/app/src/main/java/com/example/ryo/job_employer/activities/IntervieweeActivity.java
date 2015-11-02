@@ -35,7 +35,7 @@ import java.util.List;
  * Created by Ryo on 2015/9/22.
  */
 public class IntervieweeActivity extends Activity implements View.OnClickListener {
-    public  ImageView turn_left;
+    public ImageView turn_left;
     public TextView interviewee_to_evaluate;
     public ListView lv_pull_down_position_name;
     public ListView lv_pull_down_interview;

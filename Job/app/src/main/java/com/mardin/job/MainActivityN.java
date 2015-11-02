@@ -3,6 +3,7 @@ package com.mardin.job;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.mardin.job.fragments.job.AbilityFragment;
 import com.mardin.job.fragments.job.InternshipsFragment;
 import com.mardin.job.fragments.job.PersonalCenterFragment;
+import com.mardin.job.network.Constants;
 
 
 public class MainActivityN extends Activity implements View.OnClickListener{
@@ -122,8 +124,20 @@ public class MainActivityN extends Activity implements View.OnClickListener{
         transaction.commit();
 
     }
-
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.UPECANDIDATE_INTENT:
+                if (resultCode == RESULT_OK) {
+                    setSelect(1);
+                }
+                break;
+            case Constants.LoginIntent:
+                if (resultCode == RESULT_OK) {
+                    setSelect(1);
+                }
+                break;
+        }
+    }
     @Override
     public void onClick(View v) {
 

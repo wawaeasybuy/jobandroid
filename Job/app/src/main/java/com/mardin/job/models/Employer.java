@@ -10,8 +10,7 @@ import java.util.Date;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employer implements Serializable {
-    public String _id;
-    public EmployerProfile _employerProfile;
+   public Date timeUpdate;
 
     public String get_id() {
         return _id;
@@ -21,11 +20,13 @@ public class Employer implements Serializable {
         this._id = _id;
     }
 
-    public EmployerProfile get_employerProfile() {
-        return _employerProfile;
+    public Date getTimeUpdate() {
+        return timeUpdate;
     }
 
-    public void set_employerProfile(EmployerProfile _employerProfile) {
-        this._employerProfile = _employerProfile;
+    public void setTimeUpdate(Date timeUpdate) {
+        this.timeUpdate = timeUpdate;
     }
+
+    public String _id;
 }

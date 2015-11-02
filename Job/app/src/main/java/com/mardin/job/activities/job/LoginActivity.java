@@ -91,7 +91,9 @@ public class LoginActivity extends Activity {
             globalProvider.post(this, Constants.loginUrlStr, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    GlobalProvider.getInstance().isLoging=true;
                     parseLoginResult(new String(responseBody));
+
                 }
 
                 @Override
@@ -109,7 +111,6 @@ public class LoginActivity extends Activity {
 
         //Toast.makeText(LoginActivity.this, usernameStr , Toast.LENGTH_SHORT).show();
         //显示用户名
-
     }
     public void parseLoginResult(String json) {
 
@@ -126,8 +127,7 @@ public class LoginActivity extends Activity {
             //Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
             //显示token信息
             Log.v("err", token);
-            Intent intent = new Intent(LoginActivity.this,MainActivityN.class);
-            startActivity(intent);
+            this.setResult(Activity.RESULT_OK);
             this.finish();
 //            this.setResult(Activity.RESULT_OK);//为结果绑定Activity.RESULT_OK
 //            this.finish();//完成

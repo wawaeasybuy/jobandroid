@@ -39,12 +39,13 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
             android:textSize="16sp"
-            android:textColor="#f9f9f9"
+            android:id="@+id/save"
+            android:clickable="true"
             android:gravity="center"
-            android:text="@string/personal_register" />
+            android:text="@string/save" />
 
     </LinearLayout>
 
@@ -70,16 +71,12 @@
             android:layout_weight="1"
             android:text="@string/info_school_name"/>
 
-        <TextView
+        <EditText
+            android:id="@+id/schoolName"
+            android:layout_marginRight="10dp"
+            android:textSize="13dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dp"
-            android:text="@string/info_school_name_"/>
-
-        <ImageView
-            android:src="@drawable/turn_right1"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -107,11 +104,12 @@
             android:layout_weight="1"
             android:text="@string/real_name"/>
 
-        <TextView
+        <EditText
+            android:id="@+id/name"
+            android:layout_marginRight="10dp"
+            android:textSize="13dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dp"
-            android:text="@string/real_name_"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -139,6 +137,7 @@
             android:text="@string/change_portrait"/>
 
         <ImageView
+            android:id="@+id/touxiang"
             android:layout_gravity="center"
             android:layout_width="40dp"
             android:layout_height="40dp"

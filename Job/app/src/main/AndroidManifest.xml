@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activities.job.LoginActivity"
+            android:name=".MainActivityN"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,57 +17,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name=".MainActivityN"
+            android:name=".activities.job.LoginActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity
-            android:name=".activities.AddJobActivity"
-            android:label="@string/title_activity_add_job" >
-        </activity>
-        <activity
-            android:name=".activities.JobPageActivity"
-            android:label="@string/title_activity_job_page" >
-        </activity>
-        <activity
-            android:name=".activities.JobDetailActivity"
-            android:label="@string/title_activity_job_detail" >
-        </activity>
-    <!--    <activity
+        <!--    <activity
             android:name=".activities.CollectedJobsActivity"
             android:label="@string/title_activity_collected_jobs" >
         </activity>   -->
-        <activity
-            android:name=".activities.CollectedJobListActivity"
-            android:label="@string/title_activity_collected_job_list" >
-        </activity>
-        <activity
-            android:name=".activities.PostedJobListActivity"
-            android:label="@string/title_activity_posted_job_list" >
-        </activity>
-        <activity
-            android:name=".activities.UpdateEmployerActivity"
-            android:label="@string/title_activity_update_employer" >
-        </activity>
-        <activity
-            android:name=".activities.UpdateCanActivity"
-            android:label="@string/title_activity_update_can" >
-        </activity>
-        <activity
-            android:name=".activities.WebActivity"
-            android:label="@string/title_activity_web" >
-        </activity>
-        <activity
-            android:name=".activities.RegisterEmployeeActivity"
-            android:label="@string/title_activity_register_employee" >
-        </activity>
-        <activity
-            android:name=".activities.RegEmployerActivity"
-            android:label="@string/title_activity_reg_employer" >
-        </activity>
 
 
         <!-- Ryo -->

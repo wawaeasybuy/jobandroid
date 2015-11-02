@@ -18,12 +18,12 @@ public class Constants {
     static public String jobCollectUrlStr = baseUrlStr + "api/jobs";
     static public String meUrlStr = baseUrlStr + "api/users/me";
     static public String updateEmployerStr = baseUrlStr + "api/employers";
-    static public String updateCanStr = baseUrlStr + "api/candidates";
-    static public String regCanStr = baseUrlStr + "api/candidates";
-    static public String regEmpStr = baseUrlStr + "api/employers";
 
+    static public String regEmpStr = baseUrlStr + "api/employers";
     static  public  String createResumeStr=baseUrlStr+"api/resumes";
 
+    static public String regCanStr = baseUrlStr + "api/candidates";
+    static public String updateCanStr = baseUrlStr + "api/candidates";
 
     static public String employer = "employer";
     static public String candidate = "candidate";
