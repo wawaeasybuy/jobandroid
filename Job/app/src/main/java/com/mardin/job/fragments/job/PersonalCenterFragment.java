@@ -39,6 +39,7 @@ import java.io.IOException;
 public class PersonalCenterFragment extends Fragment implements View.OnClickListener {
 
     public LinearLayout ID;
+    public LinearLayout noLoginID;
     public ImageView turn_right;
     public ImageView addResume;
     public TextView personal_setting;
@@ -52,6 +53,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public LinearLayout noLogin;
     public LinearLayout resume_edit;
     public LinearLayout resume_release;
+    public LinearLayout change;
+    public LinearLayout resumeLayout;
+
 
     public Boolean isLoging;
     public Resume resume;
@@ -68,8 +72,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         super.onActivityCreated(savedInstanceState);
         initView();
         initAction();
-        //main.setVisibility(View.GONE);
-        //noLogin.setVisibility(View.GONE);
         LoadCandidateInfo();
 
     }
@@ -79,14 +81,18 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parseInfo(new String(responseBody));
-                main.setVisibility(View.VISIBLE);
+                change.setVisibility(View.VISIBLE);
+                resumeLayout.setVisibility(View.VISIBLE);
+                ID.setVisibility(View.VISIBLE);
                 noLogin.setVisibility(View.GONE);
                 isLoging=true;
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-//                main.setVisibility(View.GONE);
-//                noLogin.setVisibility(View.VISIBLE);
+                 change.setVisibility(View.GONE);
+                 resumeLayout.setVisibility(View.GONE);
+                 ID.setVisibility(View.GONE);
+                 noLogin.setVisibility(View.VISIBLE);
                  isLoging=false;
             }
             @Override
@@ -117,6 +123,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     }
     public void initView(){
         ID= (LinearLayout) getActivity().findViewById(R.id.ID);
+        noLoginID= (LinearLayout) getActivity().findViewById(R.id.noLoginID);
         turn_right= (ImageView) getActivity().findViewById(R.id.turn_right);
         addResume= (ImageView) getActivity().findViewById(R.id.addResume);
         personal_setting= (TextView) getActivity().findViewById(R.id.personal_setting);
@@ -129,9 +136,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         resume_release= (LinearLayout) getActivity().findViewById(R.id.resume_release);
         main= (LinearLayout) getActivity().findViewById(R.id.main);
         noLogin= (LinearLayout) getActivity().findViewById(R.id.noLogin);
+        change= (LinearLayout) getActivity().findViewById(R.id.change);
+        resumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
     }
     public void initAction(){
         ID.setOnClickListener(this);
+        noLoginID.setOnClickListener(this);
         turn_right.setOnClickListener(this);
         personal_setting.setOnClickListener(this);
         resume_edit.setOnClickListener(this);
@@ -142,15 +152,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ID:
-                if(isLoging){
                     Intent intent = new Intent(getActivity(), PersonalEditDataActivity.class);
                     intent.putExtra("candidate", candidate);
                     getActivity().startActivityForResult(intent, Constants.UPECANDIDATE_INTENT);
                     //startActivity(intent);
-                }else{
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    getActivity().startActivityForResult(intent, Constants.LoginIntent);
-                }
+                break;
+            case R.id.noLoginID:
+                Intent intent_login = new Intent(getActivity(), LoginActivity.class);
+                getActivity().startActivityForResult(intent_login, Constants.LoginIntent);
                 break;
             case R.id.turn_right:
                 Intent intent1=new Intent(getActivity(),  EditResumeActivity.class);
