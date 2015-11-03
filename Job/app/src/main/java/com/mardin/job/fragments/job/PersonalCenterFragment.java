@@ -113,8 +113,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 name.setText(candidate.getName());
             }
             if(candidate.getSchoolName()!=null){schoolName.setText(candidate.getSchoolName());}
-            if(candidate.resume.getUpdateEdit()!=null){updateTime.setText(candidate.resume.getUpdateEdit().toString());}
-            if(candidate.resume!=null){this.resume=candidate.resume;}
+            if(candidate.resume!=null){
+                this.resume=candidate.resume;
+                GlobalProvider.getInstance().resume=candidate.resume;
+                if(candidate.resume.getUpdateEdit()!=null){
+                    updateTime.setText(candidate.resume.getUpdateEdit().toString());
+                }
+            }
 //            adapter.notifyDataSetChanged();
             //do something
         }catch (IOException e) {
@@ -163,7 +168,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 break;
             case R.id.turn_right:
                 Intent intent1=new Intent(getActivity(),  EditResumeActivity.class);
-                startActivity(intent1);
+                //intent1.putExtra("resume", resume);
+                getActivity().startActivityForResult(intent1, Constants.UPDATERESUME);
                 break;
             case R.id.personal_setting:
                 Intent intent2=new Intent(getActivity(),PersonalSettingActivity.class);

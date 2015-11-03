@@ -5,11 +5,14 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mardin.job.R;
+import com.mardin.job.helper.GlobalProvider;
+import com.mardin.job.models.Resume;
 
 /**
  * Created by Ryo on 2015/9/15.
@@ -18,12 +21,22 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
 
     private LinearLayout male;
     private LinearLayout female;
+    public LinearLayout turn_left;
 
     private TextView male_t;
     private TextView female_t;
+    public TextView save;
 
     private ImageView male_p;
     private ImageView female_p;
+
+    public EditText name;
+    public EditText tel;
+    public EditText address;
+    public EditText birth;
+
+    public Resume resume;
+
 
 
     @Override
@@ -31,53 +44,54 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_base_data);
 
-
-        LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
-        turn_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-
-            }
-        });
-
-        male_t= (TextView) findViewById(R.id.male_t);
-        female_t= (TextView) findViewById(R.id.female_t);
-
-        male_p= (ImageView) findViewById(R.id.male_p);
-        female_p= (ImageView) findViewById(R.id.female_p);
-
         initView();
-
-        male.setOnClickListener(this);
-        female.setOnClickListener(this);
-
+        initAction();
         setSelect(0);
 
-    }
+        this.resume= GlobalProvider.getInstance().resume;
+        if(resume.getName()!=null){name.setText(resume.getName());}
+        if(resume.getBirth()!=null){birth.setText(resume.getBirth());}
+        if(resume.getAddress()!=null){address.setText(resume.getAddress());}
+        if(resume.getTel()!=null){tel.setText(resume.getTel());}
 
+    }
+public void initAction(){
+    turn_left.setOnClickListener(this);
+    male.setOnClickListener(this);
+    female.setOnClickListener(this);
+    save.setOnClickListener(this);
+}
     private void initView() {
 
         male= (LinearLayout) findViewById(R.id.male);
         female=(LinearLayout)findViewById(R.id.female);
+        turn_left = (LinearLayout) findViewById(R.id.turn_left);
+
+        male_t= (TextView) findViewById(R.id.male_t);
+        female_t= (TextView) findViewById(R.id.female_t);
+        save= (TextView) findViewById(R.id.save);
+
+        male_p= (ImageView) findViewById(R.id.male_p);
+        female_p= (ImageView) findViewById(R.id.female_p);
+
+        name= (EditText) findViewById(R.id.name);
+        address= (EditText) findViewById(R.id.address);
+        tel= (EditText) findViewById(R.id.tel);
+        birth= (EditText) findViewById(R.id.birth);
 
     }
-
-
-//Usage
+    public void doSave(){
+        GlobalProvider.getInstance().resume.setName(name.getText().toString());
+        GlobalProvider.getInstance().resume.setAddress(address.getText().toString());
+        GlobalProvider.getInstance().resume.setTel(tel.getText().toString());
+        this.setResult(Activity.RESULT_OK);
+        this.finish();
+    }
 
     public void setSelect(int i){
-
-        FragmentManager fm=getFragmentManager();
-        FragmentTransaction transaction=fm.beginTransaction();
-        //hide(transaction);
         switch(i){
 
             case 0:
-
-              //  InternshipsFragment home= new InternshipsFragment();
-                //transaction.replace(R.id.main, home);
-
                 female_t.setTextColor(0xff0080fe);
                 male_t.setTextColor(0xFF000000);
 
@@ -89,10 +103,6 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
 
                 break;
             case 1:
-
-               // PersonalCenterFragment personal=new PersonalCenterFragment();
-                //transaction.replace(R.id.main,personal);
-
                 female_t.setTextColor(0xFF000000);
                 male_t.setTextColor(0xff0080fe);
 
@@ -105,23 +115,23 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
                 break;
 
         }
-        transaction.commit();
-
     }
-
-
     @Override
     public void onClick(View v) {
 
         switch (v.getId()){
-
             case R.id.male:
-
                 setSelect(0);
-
                 break;
             case R.id.female:
                 setSelect(1);
+                break;
+            case R.id.turn_left:
+                finish();
+                break;
+            case R.id.save:
+                doSave();
+                break;
         }
     }
 

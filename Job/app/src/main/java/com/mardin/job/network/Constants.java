@@ -33,10 +33,12 @@ public class Constants {
     static public boolean needReflesh = false;
 
     public static final int LoginIntent = 90;
-    public static final int UPEMPLOYER_INTENT = 91;
-    public static final int UPECANDIDATE_INTENT = 92;
-    public static final int REGEMPLOYEEINTENT = 93;
-    public static final int REGEMPLOYERINTENT = 94;
+    public static final int UPECANDIDATE_INTENT = 91;
+    public static final int UPDATERESUMEINTEND=92;
+    public static final int UPDATERESUMEDUCATION = 93;
+    public static final int UPDATERESUMEBASEINFO = 94;
+    public static final int UPDATERESUMEIMPORTANTE = 95;
+    public static final int UPDATERESUME= 96;
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager

@@ -79,13 +79,13 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
             }else{
                 add_talent.setVisibility(View.VISIBLE);
             }
-            if(Pubresume.getName()!=null){name.setText(resume.getName());}
+            //if(Pubresume.getName()!=null){name.setText(resume.getName());}
             if(Pubresume.getBirth()!=null){birth.setText(resume.getBirth().toString());}
-            if(Pubresume.getAddress()!=null){address.setText(resume.getAddress());}
-            if(Pubresume.getTel()!=null){tel.setText(resume.getTel());}
-            if(Pubresume.getExperience()!=null){experience.setText(resume.getExperience());}
-            if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}
-            if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}
+            //if(Pubresume.getAddress()!=null){address.setText(resume.getAddress());}
+            //if(Pubresume.getTel()!=null){tel.setText(resume.getTel());}
+            //if(Pubresume.getExperience()!=null){experience.setText(resume.getExperience());}
+            //if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}
+            //if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}
         }
     }
     private void initView() {
@@ -108,7 +108,6 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
            }
        });
     }
-
     private void addToTalent() {
         AddTalentBody body=new AddTalentBody();
         body.setId(Pubresume.get_id());

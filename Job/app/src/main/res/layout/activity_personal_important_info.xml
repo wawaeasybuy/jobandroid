@@ -40,10 +40,10 @@
         <TextView
             android:id="@+id/save"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
             android:textSize="16sp"
-            android:textColor="#f9f9f9"
+            android:textColor="#0080fe"
             android:gravity="center"
             android:text="@string/base_data_save" />
 
@@ -79,6 +79,7 @@
             android:layout_weight="1">
 
             <EditText
+                android:id="@+id/selfEvaluation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:height="100dp"
@@ -152,6 +153,7 @@
             android:layout_weight="1">
 
             <EditText
+                android:id="@+id/experience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:height="80dp"
@@ -224,6 +226,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/works"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:height="40dp"

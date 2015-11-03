@@ -53,7 +53,8 @@
             android:text="@string/personal_register" />
 
         <TextView
-            android:id="@+id/register"
+            android:id="@+id/save"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:paddingRight="15dp"
@@ -101,17 +102,14 @@
                     android:layout_weight="1"
                     android:text="@string/resume_school_name"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#9b9b9b"
-                    android:text="@string/resume_school_name_"/>
-
-                <ImageView
-                    android:paddingLeft="10dp"
-                    android:src="@drawable/turn_right1"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp" />
+               <EditText
+                   android:id="@+id/schoolName"
+                   android:layout_marginRight="15dp"
+                   android:background="#ffffff"
+                   android:textSize="14dp"
+                   android:hint="@string/base_data_residence_"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -136,11 +134,14 @@
                     android:layout_weight="1"
                     android:text="@string/resume_major_name"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/professional"
+                    android:layout_marginRight="15dp"
+                    android:background="#ffffff"
+                    android:textSize="14dp"
+                    android:hint="@string/base_data_residence_"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#9b9b9b"
-                    android:text="@string/resume_major_name_"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -165,17 +166,14 @@
                     android:layout_weight="1"
                     android:text="@string/resume_graduate_time"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/graduationTime"
+                    android:layout_marginRight="15dp"
+                    android:background="#ffffff"
+                    android:textSize="14dp"
+                    android:hint="@string/base_data_residence_"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#9b9b9b"
-                    android:text="@string/resume_graduate_time_"/>
-
-                <ImageView
-                    android:paddingLeft="10dp"
-                    android:src="@drawable/turn_right1"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -200,17 +198,14 @@
                     android:layout_weight="1"
                     android:text="@string/resume_grade_range"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/grade"
+                    android:layout_marginRight="15dp"
+                    android:background="#ffffff"
+                    android:textSize="14dp"
+                    android:hint="@string/base_data_residence_"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#9b9b9b"
-                    android:text="@string/resume_grade_range_"/>
-
-                <ImageView
-                    android:paddingLeft="10dp"
-                    android:src="@drawable/turn_right1"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -235,6 +230,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/internshipExprience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:height="100dp"

@@ -83,6 +83,72 @@
 
             </LinearLayout>
 
+            <!--  no_base_info -->
+            <LinearLayout
+                android:id="@+id/no_personal_base_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/personal_base_info"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:textColor="#0080fe"
+                        android:text="@string/unfilled"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f9f9f9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/add"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:text="@string/click_edit"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
             <!--  base_info -->
             <LinearLayout
                 android:id="@+id/personal_base_info"
@@ -110,6 +176,112 @@
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
                         android:text="@string/personal_base_info"/>
+
+                    <TextView
+                        android:id="@+id/clickToFillBaseInfo"
+                        android:text="(点击完善)"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/personal_base_info_nofill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:textColor="#0080fe"
+                        android:text="@string/unfilled"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f9f9f9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="13dp"
+                            android:paddingBottom="5dp"
+                            android:text="aksdkjash"
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textSize="13dp"
+                            android:text="aksdkjash"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:id="@+id/tel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textSize="13dp"
+                            android:text="aksdkjash"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textSize="13dp"
+                            android:text="aksdkjash"
+                            android:paddingTop="5dp"
+                            android:id="@+id/birth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_marginRight="15dp"
+                        android:background="#666666"
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--  no job_intention -->
+            <LinearLayout
+                android:id="@+id/no_job_intention"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/personal_job_intention"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -177,6 +349,90 @@
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
                         android:text="@string/personal_job_intention"/>
+                    <TextView
+                        android:id="@+id/clickToFillJobIntent"
+                        android:text="(点击完善)"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/job_intention_nofill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:textColor="#0080fe"
+                        android:text="@string/unfilled"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f9f9f9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="20dp"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:paddingBottom="5dp"
+                        android:textSize="13dp"
+                        android:text="aksdkjash"
+                        android:id="@+id/expectedIndustry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textSize="13dp"
+                        android:text="aksdkjash"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:id="@+id/expectedPosition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textSize="13dp"
+                        android:text="aksdkjash"
+                        android:paddingTop="5dp"
+                        android:id="@+id/expectedAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--  no education_info -->
+            <LinearLayout
+                android:id="@+id/no_education_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/personal_education"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -216,7 +472,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
             <!--  education_info -->
             <LinearLayout
                 android:id="@+id/education_info"
@@ -244,6 +499,106 @@
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
                         android:text="@string/personal_education"/>
+                    <TextView
+                        android:id="@+id/clickToFillEducationInfo"
+                        android:text="(点击完善)"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/education_info_nofill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:textColor="#0080fe"
+                        android:text="@string/unfilled"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f9f9f9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/schoolName"
+                        android:text="sfsdfsdf"
+                        android:paddingBottom="5dp"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="sfsdfsdf"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="13dp"
+                        android:id="@+id/professional"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="sfsdfsdf"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="13dp"
+                        android:id="@+id/graduationTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="sfsdfsdf"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="13dp"
+                        android:id="@+id/grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="sfsdfsdf"
+                        android:paddingTop="5dp"
+                        android:textSize="13dp"
+                        android:id="@+id/internshipExprience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--  no important_info -->
+            <LinearLayout
+                android:id="@+id/no_important_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/personal_important_info"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -312,8 +667,14 @@
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
                         android:text="@string/personal_important_info"/>
-
                     <TextView
+                        android:id="@+id/clickToFillImportanteInfo"
+                        android:text="(点击完善)"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/important_info_nofill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -331,22 +692,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
+                    android:paddingLeft="10dp"
                     android:paddingBottom="20dp"
-                    android:gravity="center"
+
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/add"
-                        android:layout_weight="1" />
-
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingTop="20dp"
-                        android:text="@string/click_edit"/>
+                        android:paddingBottom="5dp"
+                        android:textSize="13dp"
+                        android:text="sdsdfsdf"
+                        android:id="@+id/selfEvaluation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="13dp"
+                        android:text="sdsdfsdf"
+                        android:id="@+id/experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:textSize="13dp"
+                        android:text="sdsdfsdf"
+                        android:id="@+id/works"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 

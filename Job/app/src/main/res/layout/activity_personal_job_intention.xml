@@ -96,7 +96,9 @@
                 android:text="@string/intention_expect_trade"/>
 
             <EditText
-                android:id="@+id/expect"
+                android:id="@+id/expectedIndustry"
+                android:background="#ffffff"
+                android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
@@ -129,16 +131,14 @@
                 android:layout_weight="1"
                 android:text="@string/intention_expect_position"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/expectedPosition"
+                android:background="#ffffff"
+                android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
-                android:text="@string/intention_expect_position_"/>
-
-            <ImageView
-                android:src="@drawable/turn_right1"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                android:hint="@string/intention_expect_trade_"/>
 
         </LinearLayout>
 
@@ -165,22 +165,21 @@
                 android:layout_weight="1"
                 android:text="@string/intention_expect_place"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/expectedAddress"
+                android:background="#ffffff"
+                android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
-                android:text="@string/intention_expect_place_"/>
-
-            <ImageView
-                android:src="@drawable/turn_right1"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                android:hint="@string/intention_expect_trade_"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/clickSaveToNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
