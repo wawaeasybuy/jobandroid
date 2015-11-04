@@ -11,10 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.ryo.job_employer.R;
+import com.example.ryo.job_employer.activities.IntervieweeActivity;
 import com.example.ryo.job_employer.activities.IntervieweeEvaluateActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
 import com.example.ryo.job_employer.models.Resume;
 import com.example.ryo.job_employer.models.Talent;
+import com.example.ryo.job_employer.network.Constants;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -84,12 +86,15 @@ public class TalentAdapter extends BaseAdapter{
         holder.go_to_evaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,IntervieweeEvaluateActivity.class);
-                intent.putExtra("talent",talent);
-                context.startActivity(intent);
+                doEvaluate(talent);
             }
         });
         return convertView;
+    }
+    public void doEvaluate(Talent talent){
+        Intent intent=new Intent(context,IntervieweeEvaluateActivity.class);
+        intent.putExtra("talent",talent);
+        ((IntervieweeActivity)context).startActivityForResult(intent, Constants.EVALUATEINTENT);
     }
     public static String ConverToString(Date date)
     {

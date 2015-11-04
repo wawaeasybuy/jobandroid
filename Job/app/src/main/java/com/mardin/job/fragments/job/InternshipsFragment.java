@@ -17,8 +17,10 @@ import com.mardin.job.activities.job.PositionSearchActivity;
 /**
  * Created by Ryo on 2015/9/27.
  */
-public class InternshipsFragment extends Fragment {
-
+public class InternshipsFragment extends Fragment implements View.OnClickListener {
+    public LinearLayout search;
+    public LinearLayout classify;
+    public LinearLayout position_recommend;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,35 +31,34 @@ public class InternshipsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        LinearLayout search= ( LinearLayout) getActivity().findViewById(R.id.search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        initView();
+        initAction();
+    }
+    public void initView(){
+       search= ( LinearLayout) getActivity().findViewById(R.id.search);
+       classify= (LinearLayout) getActivity().findViewById(R.id.classify);
+       position_recommend= (LinearLayout) getActivity().findViewById(R.id.position_recommend);
+    }
+    public void initAction(){
+        search.setOnClickListener(this);
+        classify.setOnClickListener(this);
+        position_recommend.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.search:
                 Intent intent = new Intent(getActivity(), InternshipsSearchActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        LinearLayout classify= (LinearLayout) getActivity().findViewById(R.id.classify);
-        classify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PositionSearchActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        LinearLayout position_recommend= (LinearLayout) getActivity().findViewById(R.id.position_recommend);
-        position_recommend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PositionDetailActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
+                break;
+            case R.id.classify:
+                Intent intent1 = new Intent(getActivity(), PositionSearchActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.position_recommend:
+                Intent intent2 = new Intent(getActivity(), PositionDetailActivity.class);
+                startActivity(intent2);
+                break;
+        }
     }
 }

@@ -56,6 +56,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public LinearLayout change;
     public LinearLayout resumeLayout;
 
+    public LinearLayout ResumeLayout;
+    public LinearLayout noResumeLayout;
+    public ImageView createResume;
+
 
     public Boolean isLoging;
     public Resume resume;
@@ -80,18 +84,20 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         globalProvider.get(getActivity(), Constants.regCanStr, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                parseInfo(new String(responseBody));
                 change.setVisibility(View.VISIBLE);
                 resumeLayout.setVisibility(View.VISIBLE);
                 ID.setVisibility(View.VISIBLE);
                 noLogin.setVisibility(View.GONE);
                 isLoging=true;
+                parseInfo(new String(responseBody));
+
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                  change.setVisibility(View.GONE);
                  resumeLayout.setVisibility(View.GONE);
                  ID.setVisibility(View.GONE);
+                 noResumeLayout.setVisibility(View.GONE);
                  noLogin.setVisibility(View.VISIBLE);
                  isLoging=false;
             }
@@ -107,6 +113,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
+            GlobalProvider.getInstance().candidate=candidate;
             this.candidate=candidate;
             if(candidate.getName()!=null){
                 personalName.setText(candidate.getName());
@@ -116,9 +123,15 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             if(candidate.resume!=null){
                 this.resume=candidate.resume;
                 GlobalProvider.getInstance().resume=candidate.resume;
+                noResumeLayout.setVisibility(View.GONE);
+                resumeLayout.setVisibility(View.VISIBLE);
                 if(candidate.resume.getUpdateEdit()!=null){
                     updateTime.setText(candidate.resume.getUpdateEdit().toString());
                 }
+            }else{
+                GlobalProvider.getInstance().resume=new Resume();
+                noResumeLayout.setVisibility(View.VISIBLE);
+                resumeLayout.setVisibility(View.GONE);
             }
 //            adapter.notifyDataSetChanged();
             //do something
@@ -143,6 +156,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         noLogin= (LinearLayout) getActivity().findViewById(R.id.noLogin);
         change= (LinearLayout) getActivity().findViewById(R.id.change);
         resumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
+
+        //ResumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
+        noResumeLayout= (LinearLayout) getActivity().findViewById(R.id.noResume);
+        createResume= (ImageView) getActivity().findViewById(R.id.createResume);
     }
     public void initAction(){
         ID.setOnClickListener(this);
@@ -152,6 +169,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         resume_edit.setOnClickListener(this);
         addResume.setOnClickListener(this);
         resume_release.setOnClickListener(this);
+        createResume.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -186,6 +204,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             case R.id.resume_release:
                 Intent intent4=new Intent(getActivity(),FunctionScoreActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.createResume:
+                Intent intent6=new Intent(getActivity(),  EditResumeActivity.class);
+                //intent1.putExtra("resume", resume);
+                getActivity().startActivityForResult(intent6, Constants.UPDATERESUME);
                 break;
         }
     }

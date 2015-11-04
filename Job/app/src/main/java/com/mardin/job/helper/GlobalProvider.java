@@ -10,6 +10,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
+import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
@@ -25,6 +26,7 @@ public class GlobalProvider {
     private AsyncHttpClient client;
     public Resume resume=new Resume();
     public Boolean isLoging;
+    public Candidate candidate=new Candidate();
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

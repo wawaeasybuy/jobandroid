@@ -32,6 +32,7 @@ public class Constants {
     public static final int LoginIntent = 90;
     public static final int UpdateInfoIntent=91;
     public static final int EditJobIntent=92;
+    public static final int EVALUATEINTENT=93;
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager

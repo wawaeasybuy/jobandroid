@@ -79,13 +79,16 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
             }else{
                 add_talent.setVisibility(View.VISIBLE);
             }
-            //if(Pubresume.getName()!=null){name.setText(resume.getName());}
-            if(Pubresume.getBirth()!=null){birth.setText(resume.getBirth().toString());}
-            //if(Pubresume.getAddress()!=null){address.setText(resume.getAddress());}
-            //if(Pubresume.getTel()!=null){tel.setText(resume.getTel());}
-            //if(Pubresume.getExperience()!=null){experience.setText(resume.getExperience());}
-            //if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}
-            //if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}
+            if(Pubresume.getName()!=null){name.setText(Pubresume.getName());}
+            if(Pubresume.getBirth()!=null){birth.setText(Pubresume.getBirth().toString());}
+            if(Pubresume.getAddress()!=null){address.setText(Pubresume.getAddress());}
+            if(Pubresume.getTel()!=null){tel.setText(Pubresume.getTel());}
+            if(Pubresume.getExperience()!=null){experience.setText(Pubresume.getExperience());}
+            if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(Pubresume.getInternshipExprience());}
+            if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(Pubresume.getSelfEvaluation());}
+
+
+
         }
     }
     private void initView() {

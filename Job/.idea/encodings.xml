@@ -3,5 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/mardin/job/activities/job/EditResumeActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/mardin/job/activities/job/PersonalEditDataActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mardin/job/activities/job/PositionDetailActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mardin/job/activities/job/PositionSearchActivity.java" charset="UTF-8" />
   </component>
 </project>

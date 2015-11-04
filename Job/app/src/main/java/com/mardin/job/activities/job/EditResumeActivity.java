@@ -1,16 +1,32 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
 import com.mardin.job.helper.GlobalProvider;
+import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
+
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.entity.ByteArrayEntity;
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
+
+import java.io.IOException;
 
 
 /**
@@ -57,7 +73,10 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
     public LinearLayout no_education_info;
     public LinearLayout no_important_info;
 
+
+
     public Resume resume;
+    public TextView save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +89,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
     public void onClick(View v) {
     switch (v.getId()){
         case R.id.turn_left:
-            this.setResult(Activity.RESULT_OK);
-            this.finish();
+            doExist();
             break;
         case R.id.no_personal_base_info:
             Intent intent = new Intent( EditResumeActivity.this,BaseDataActivity.class);
@@ -106,9 +124,91 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             Intent intent7 = new Intent( EditResumeActivity.this,ImportantInfoActivity.class);
             startActivityForResult(intent7, Constants.UPDATERESUMEIMPORTANTE);
             break;
+        case R.id.save:
+            doSave();
+            break;
 
     }
+    }
+    public void doExist(){
+        new AlertDialog.Builder(this)
+                .setMessage("是否保存当前编辑？")
+                .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        doResult();
+                    }
+                })
+                .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        doSave();
 
+                    }
+                }).show();
+    }
+    public void doSave(){
+        Resume resumeUpdate=GlobalProvider.getInstance().resume;
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
+        String json = "";
+        try {
+            json = ow.writeValueAsString(resumeUpdate);
+            ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+            GlobalProvider globalProvider = GlobalProvider.getInstance();
+            if(resumeUpdate.get_id()!=null){
+                String Url=Constants.createResumeStr+"/"+resumeUpdate.get_id();
+                globalProvider.put(this, Url, entity, "application/json", new RequestListener() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        Toast.makeText(EditResumeActivity.this,"保存成功！", Toast.LENGTH_SHORT).show();
+                        doResult();
+//                    GlobalProvider.getInstance().isLoging=true;
+//                    parseLoginResult(new String(responseBody));
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+                    }
+                });
+            }else{
+                String Url=Constants.createResumeStr+"/"+GlobalProvider.getInstance().candidate.get_id();
+                globalProvider.post(this, Url, entity, "application/json", new RequestListener() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        Toast.makeText(EditResumeActivity.this, "创建成功！", Toast.LENGTH_SHORT).show();
+                        doResult();
+//                    GlobalProvider.getInstance().isLoging=true;
+//                    parseLoginResult(new String(responseBody));
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+                    }
+                });
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void doResult(){
+        this.setResult(Activity.RESULT_OK);
+        this.finish();
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -140,10 +240,10 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         if(resume.getName()!=null||resume.getTel()!=null||resume.getAddress()!=null||resume.getBirth()!=null){
             no_personal_base_info.setVisibility(View.GONE);
             personal_base_info.setVisibility(View.VISIBLE);
-            if(resume.getName()!=null){name.setText(resume.getName());}
-            if(resume.getTel()!=null){tel.setText(resume.getTel());}
-            if(resume.getAddress()!=null){address.setText(resume.getAddress());}
-            if(resume.getBirth()!=null){birth.setText(resume.getBirth());}
+            if(resume.getName()!=null){name.setText("姓名: "+resume.getName());}else{name.setText("姓名: 未填写");}
+            if(resume.getTel()!=null){tel.setText("联系方式: "+resume.getTel());}else{tel.setText("联系方式: 未填写");}
+            if(resume.getAddress()!=null){address.setText("居住地: "+resume.getAddress());}else{address.setText("居住地: 未填写");}
+            if(resume.getBirth()!=null){birth.setText("出生年月: "+resume.getBirth());}else{birth.setText("出生年月: 未填写");}
 
             if(resume.getName()!=null&&resume.getTel()!=null&&resume.getAddress()!=null&&resume.getBirth()!=null){
                 personal_base_info_nofill.setText("已完善");
@@ -162,9 +262,9 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         if(resume.getExpectedIndustry()!=null||resume.getExpectedPosition()!=null||resume.getExpectedAddress()!=null){
             no_job_intention.setVisibility(View.GONE);
             job_intention.setVisibility(View.VISIBLE);
-            if(resume.getExpectedIndustry()!=null){expectedIndustry.setText(resume.getExpectedIndustry());}
-            if(resume.getExpectedPosition()!=null){expectedPosition.setText(resume.getExpectedPosition());}
-            if(resume.getExpectedAddress()!=null){expectedAddress.setText(resume.getExpectedAddress());}
+            if(resume.getExpectedIndustry()!=null){expectedIndustry.setText("期望行业: "+resume.getExpectedIndustry());}else{expectedIndustry.setText("期望行业: 未填写");}
+            if(resume.getExpectedPosition()!=null){expectedPosition.setText("期望职位: "+resume.getExpectedPosition());}else{expectedPosition.setText("期望职位: 未填写");}
+            if(resume.getExpectedAddress()!=null){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress());}else{expectedAddress.setText("期望工作地点: 未填写");}
 
             if(resume.getExpectedIndustry()!=null&&resume.getExpectedPosition()!=null&&resume.getExpectedAddress()!=null){
                 job_intention_nofill.setText("已完善");
@@ -182,11 +282,11 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         if(resume.getSchoolName()!=null||resume.getProfessional()!=null||resume.getGraduationTime()!=null||resume.getGrade()!=null||resume.getInternshipExprience()!=null){
             no_education_info.setVisibility(View.GONE);
             education_info.setVisibility(View.VISIBLE);
-            if(resume.getSchoolName()!=null){schoolName.setText(resume.getSchoolName());}
-            if(resume.getProfessional()!=null){professional.setText(resume.getProfessional());}
-            if(resume.getGraduationTime()!=null){graduationTime.setText(resume.getGraduationTime());}
-            if(resume.getGrade()!=null){grade.setText(resume.getGrade());}
-            if(resume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}
+            if(resume.getSchoolName()!=null){schoolName.setText("学校名称: "+resume.getSchoolName());}else{schoolName.setText("学校名称: 未填写");}
+            if(resume.getProfessional()!=null){professional.setText("专业名称: "+resume.getProfessional());}else{professional.setText("学校名称: 未填写");}
+            if(resume.getGraduationTime()!=null){graduationTime.setText("毕业时间: "+resume.getGraduationTime());}else{graduationTime.setText("学校名称: 未填写");}
+            if(resume.getGrade()!=null){grade.setText("成绩排名: "+resume.getGrade());}else{grade.setText("学校名称: 未填写");}
+            if(resume.getInternshipExprience()!=null){internshipExprience.setText("在校实践: "+resume.getInternshipExprience());}else{internshipExprience.setText("学校名称: 未填写");}
 
             if(resume.getSchoolName()!=null&&resume.getProfessional()!=null&&resume.getGraduationTime()!=null&&resume.getGrade()!=null&&resume.getInternshipExprience()!=null){
                 education_info_nofill.setText("已完善");
@@ -205,9 +305,9 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         if(resume.getSelfEvaluation()!=null||resume.getExperience()!=null||resume.getWorks()!=null){
             important_info.setVisibility(View.VISIBLE);
             no_important_info.setVisibility(View.GONE);
-            if(resume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}
-            if(resume.getExperience()!=null){experience.setText(resume.getExperience());}
-            if(resume.getWorks()!=null){works.setText(resume.getWorks());}
+            if(resume.getSelfEvaluation()!=null){selfEvaluation.setText("自我评价: "+resume.getSelfEvaluation());}else{selfEvaluation.setText("自我评价: 未填写");}
+            if(resume.getExperience()!=null){experience.setText("实习经历: "+resume.getExperience());}
+            if(resume.getWorks()!=null){works.setText("作品附件: "+resume.getWorks());}
 
             if(resume.getSelfEvaluation()!=null&&resume.getExperience()!=null&&resume.getWorks()!=null){
                 important_info_nofill.setText("已完善");
@@ -240,6 +340,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         job_intention_nofill.setOnClickListener(this);
         important_info_nofill.setOnClickListener(this);
         education_info_nofill.setOnClickListener(this);
+        save.setOnClickListener(this);
 
     }
 
@@ -283,6 +384,10 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         clickToFillEducationInfo= (TextView) findViewById(R.id.clickToFillEducationInfo);
         clickToFillImportanteInfo= (TextView) findViewById(R.id.clickToFillImportanteInfo);
         clickToFillJobIntent= (TextView) findViewById(R.id.clickToFillJobIntent);
+
+
+
+        save= (TextView) findViewById(R.id.save);
 
     }
 

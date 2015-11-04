@@ -113,6 +113,20 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
             e.printStackTrace();
         }
     }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.EVALUATEINTENT:
+                if (resultCode == RESULT_OK) {
+                    LoadTalentList();
+                }
+                break;
+        }
+    }
+//    public void doEvaluate(Talent talent){
+//        Intent intent=new Intent(IntervieweeActivity.this,IntervieweeEvaluateActivity.class);
+//        intent.putExtra("talent",talent);
+//        this.startActivityForResult(intent, Constants.EVALUATEINTENT);
+//    }
     @Override
     public void onClick(View v) {
       switch (v.getId()){

@@ -62,11 +62,21 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
         final RatingBar star_bar3 = (RatingBar)findViewById(R.id.star_bar3);
         final RatingBar star_bar4 = (RatingBar)findViewById(R.id.star_bar4);
         final RatingBar star_bar5 = (RatingBar)findViewById(R.id.star_bar5);
+
+        if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}
+
         star_bar1.setRating(talent.getProfessionalLevel());
         star_bar2.setRating(talent.getAnalysis());
         star_bar3.setRating(talent.getExpression());
         star_bar4.setRating(talent.getCompression());
         star_bar5.setRating(talent.getAttitude());
+
+        body.setProfessionalLevel(talent.getProfessionalLevel());
+        body.setAnalysis(talent.getAnalysis());
+        body.setExpression(talent.getExpression());
+        body.setCompression(talent.getCompression());
+        body.setAttitude(talent.getAttitude());
+
         star_bar1.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
             public void onRatingChanged(RatingBar ratingBar, float rating,
@@ -124,7 +134,8 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
     public void onClick(View v) {
          switch (v.getId()){
            case R.id.turn_left:
-            finish();
+            this.setResult(Activity.RESULT_OK);
+            this.finish();
             break;
              case R.id.save:
             doEvaluete();

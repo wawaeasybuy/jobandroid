@@ -14,36 +14,6 @@ import java.util.Date;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Job implements Serializable{
-    public String _id;
-    public String jobtype;
-    public String jobname;
-    public int vacancynum;
-    public String education;
-    public String experienceyear;
-    public String wage;
-    public String description;
-    public ArrayList<String> _benefits = new ArrayList<String>();
-    public String companyname;
-    public float lon;
-    public float lat;
-    public String address;
-    public String city;
-    public String district;
-    public String contact;
-    public String phone;
-    public String email;
-    public String gender;
-    public String workinghour;
-    public int weight;
-    public Date createtime;
-    public String applylink;
-    //public Employer _employer;
-
-    public Job() {
-
-    }
-
-
     public String get_id() {
         return _id;
     }
@@ -52,100 +22,77 @@ public class Job implements Serializable{
         this._id = _id;
     }
 
-    public String getJobtype() {
-        return jobtype;
+    public String _id;
+    public String _employer;
+    public String employerName;
+    public String positionName;
+    public String positionCategory;
+    public String industryCategory;
+    public int salary;
+    public String requirement;
+
+    public String getPositionCharacter() {
+        return positionCharacter;
     }
 
-    public void setJobtype(String jobtype) {
-        this.jobtype = jobtype;
+    public void setPositionCharacter(String positionCharacter) {
+        this.positionCharacter = positionCharacter;
     }
 
-    public String getJobname() {
-        return jobname;
+    public String get_employer() {
+        return _employer;
     }
 
-    public void setJobname(String jobname) {
-        this.jobname = jobname;
+    public void set_employer(String _employer) {
+        this._employer = _employer;
     }
 
-    public int getVacancynum() {
-        return vacancynum;
+    public String getEmployerName() {
+        return employerName;
     }
 
-    public void setVacancynum(int vacancynum) {
-        this.vacancynum = vacancynum;
+    public void setEmployerName(String employerName) {
+        this.employerName = employerName;
     }
 
-    public String getEducation() {
-        return education;
+    public String getPositionName() {
+        return positionName;
     }
 
-    public void setEducation(String education) {
-        this.education = education;
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
     }
 
-    public String getExperienceyear() {
-        return experienceyear;
+    public String getPositionCategory() {
+        return positionCategory;
     }
 
-    public void setExperienceyear(String experienceyear) {
-        this.experienceyear = experienceyear;
+    public void setPositionCategory(String positionCategory) {
+        this.positionCategory = positionCategory;
     }
 
-    public String getWage() {
-        return wage;
+    public String getIndustryCategory() {
+        return industryCategory;
     }
 
-    public void setWage(String wage) {
-        this.wage = wage;
+    public void setIndustryCategory(String industryCategory) {
+        this.industryCategory = industryCategory;
     }
 
-    public String getDescription() {
-        return description;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
-    public ArrayList<String> get_benefits() {
-        return _benefits;
+    public String getRequirement() {
+        return requirement;
     }
 
-    public void set_benefits(ArrayList<String> _benefits) {
-        this._benefits = _benefits;
-    }
-
-    public String getCompanyname() {
-        return companyname;
-    }
-
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname;
-    }
-
-    public float getLon() {
-        return lon;
-    }
-
-    public void setLon(float lon) {
-        this.lon = lon;
-    }
-
-    public float getLat() {
-        return lat;
-    }
-
-    public void setLat(float lat) {
-        this.lat = lat;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setRequirement(String requirement) {
+        this.requirement = requirement;
     }
 
     public String getCity() {
@@ -156,151 +103,62 @@ public class Job implements Serializable{
         this.city = city;
     }
 
-    public String getDistrict() {
-        return district;
+    public Boolean getIsRelease() {
+        return isRelease;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setIsRelease(Boolean isRelease) {
+        this.isRelease = isRelease;
     }
 
-    public String getContact() {
-        return contact;
+    public Boolean getIsTop() {
+        return isTop;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setIsTop(Boolean isTop) {
+        this.isTop = isTop;
     }
 
-    public String getPhone() {
-        return phone;
+    public Boolean getIsUrg() {
+        return isUrg;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setIsUrg(Boolean isUrg) {
+        this.isUrg = isUrg;
     }
 
-    public String getEmail() {
-        return email;
+    public Date getTopTime() {
+        return topTime;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTopTime(Date topTime) {
+        this.topTime = topTime;
     }
 
-    public String getGender() {
-        return gender;
+    public Date getUrgTime() {
+        return UrgTime;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setUrgTime(Date urgTime) {
+        UrgTime = urgTime;
     }
 
-    public String getWorkinghour() {
-        return workinghour;
+    public Date getTimeUpdate() {
+        return timeUpdate;
     }
 
-    public void setWorkinghour(String workinghour) {
-        this.workinghour = workinghour;
+    public void setTimeUpdate(Date timeUpdate) {
+        this.timeUpdate = timeUpdate;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
-
-    public String getApplylink() {
-        return applylink;
-    }
-
-    public void setApplylink(String applylink) {
-        this.applylink = applylink;
-    }
-
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeString(_id);
-//        dest.writeString(jobtype);
-//        dest.writeString(jobname);
-//        dest.writeInt(vacancynum);
-//        dest.writeString(education);
-//        dest.writeString(experienceyear);
-//        dest.writeString(wage);
-//        dest.writeString(description);
-//        dest.writeStringList(_benefits);
-//        dest.writeString(companyname);
-//        dest.writeFloat(lon);
-//        dest.writeFloat(lat);
-//        dest.writeString(address);
-//        dest.writeString(city);
-//        dest.writeString(district);
-//        dest.writeString(contact);
-//        dest.writeString(phone);
-//        dest.writeString(email);
-//        dest.writeString(gender);
-//        dest.writeString(workinghour);
-//        dest.writeInt(weight);
-//        dest.writeSerializable(createtime);
-//        dest.writeString(applylink);
-//
-//    }
-//
-//    public static final Parcelable.Creator<Job> CREATOR
-//            = new Parcelable.Creator<Job>() {
-//
-//        @Override
-//        public Job createFromParcel(Parcel source) {
-//            return new Job(source);
-//        }
-//
-//        public Job[] newArray(int size) {
-//            return new Job[size];
-//        }
-//    };
-//
-//    private Job(Parcel in) {
-//        _id = in.readString();
-//        jobtype = in.readString();
-//        jobname = in.readString();
-//        vacancynum = in.readInt();
-//        education = in.readString();
-//        experienceyear = in.readString();
-//        wage = in.readString();
-//        description = in.readString();
-//        in.readStringList(_benefits);
-//        companyname = in.readString();
-//        lon = in.readFloat();
-//        lat = in.readFloat();
-//        address = in.readString();
-//        city = in.readString();
-//        district = in.readString();
-//        contact = in.readString();
-//        phone = in.readString();
-//        email = in.readString();
-//        gender = in.readString();
-//        workinghour = in.readString();
-//        weight = in.readInt();
-//        createtime = (Date)in.readSerializable();
-//        applylink = in.readString();
-//
-//    }
-
+    public String positionCharacter;
+    public String city;
+    public Boolean isRelease;
+    public Boolean isTop;
+    public Boolean isUrg;
+    public Date topTime;   //for employer msg
+    public Date UrgTime; //for employer msg
+    public Date timeUpdate;
 
 
 }

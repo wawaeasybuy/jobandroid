@@ -193,8 +193,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
     }
     public void PositionFitUpdate(final Resume resume){
         RequestParams params = new RequestParams();
-        params.put("id",GlobalProvider.getInstance().employerId );
-
+        params.put("employerId",GlobalProvider.getInstance().employerId );
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         String Url=Constants.PositionFitUpdateStr+"/"+resume.get_id();
         globalProvider.put(this, Url, params, new RequestListener() {
