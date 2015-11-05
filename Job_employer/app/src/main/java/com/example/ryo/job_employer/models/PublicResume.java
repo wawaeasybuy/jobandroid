@@ -20,7 +20,7 @@ public class PublicResume implements Serializable {
 
     public String _id;
     public String _employer;
-    public String _candidate;
+    public Candidate _candidate;
     public String _job;
     public int gender;
     public String companyName;
@@ -230,11 +230,11 @@ public class PublicResume implements Serializable {
         this._job = _job;
     }
 
-    public String get_candidate() {
+    public Candidate get_candidate() {
         return _candidate;
     }
 
-    public void set_candidate(String _candidate) {
+    public void set_candidate(Candidate _candidate) {
         this._candidate = _candidate;
     }
 

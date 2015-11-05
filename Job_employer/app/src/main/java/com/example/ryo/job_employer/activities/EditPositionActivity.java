@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.CreateJobBody;
 import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.Job;
@@ -43,7 +44,9 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     public EditText salary;
     public EditText requirement;
     public EditText positionCharacter;
+    public EditText positionCategory;
     public Job job;
+    public CreateJobBody jobBody;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
             if(job.getIndustryCategory()!=null){industry.setText(job.getIndustryCategory());}
             if(job.getRequirement()!=null){requirement.setText(job.getRequirement());}
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
+            if(job.getPositionCategory()!=null){positionCategory.setText(job.getPositionCategory());}
             salary.setText(job.getSalary()+"");
         }
     }
@@ -74,6 +78,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         positionCharacter= (EditText) findViewById(R.id.positionCharacter);
         salary= (EditText) findViewById(R.id.salary);
         requirement= (EditText) findViewById(R.id.requirement);
+        positionCategory= (EditText) findViewById(R.id.positionCategory);
     }
     @Override
     public void onClick(View v) {
@@ -98,14 +103,16 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                             job.setSalary(Integer.parseInt(salary.getText().toString()));
                             job.setRequirement(requirement.getText().toString());
                             job.setPositionCharacter(positionCharacter.getText().toString());
+                            job.setPositionCategory(positionCategory.getText().toString());
                             update();
                         }else{
-                            job=new Job();
-                            job.setPositionName(positionName.getText().toString());
-                            job.setIndustryCategory(industry.getText().toString());
-                            job.setSalary(Integer.parseInt(salary.getText().toString()));
-                            job.setRequirement(requirement.getText().toString());
-                            job.setPositionCharacter(positionCharacter.getText().toString());
+                            jobBody=new CreateJobBody();
+                            jobBody.setPositionName(positionName.getText().toString());
+                            jobBody.setIndustryCategory(industry.getText().toString());
+                            jobBody.setSalary(Integer.parseInt(salary.getText().toString()));
+                            jobBody.setRequirement(requirement.getText().toString());
+                            jobBody.setPositionCharacter(positionCharacter.getText().toString());
+                            jobBody.setPositionCategory(positionCategory.getText().toString());
                             createJob();
                         }
                     }
@@ -118,20 +125,22 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     }
     public void doSave(){
            if(job!=null){
-              job.setPositionName(positionName.getText().toString());
+               job.setPositionName(positionName.getText().toString());
                job.setIndustryCategory(industry.getText().toString());
-              job.setSalary(Integer.parseInt(salary.getText().toString()));
-              job.setRequirement(requirement.getText().toString());
-              job.setPositionCharacter(positionCharacter.getText().toString());
+               job.setSalary(Integer.parseInt(salary.getText().toString()));
+               job.setRequirement(requirement.getText().toString());
+               job.setPositionCharacter(positionCharacter.getText().toString());
+               job.setPositionCategory(positionCategory.getText().toString());
               update();
           }else{
-              job=new Job();
-              job.setPositionName(positionName.getText().toString());
-              job.setIndustryCategory(industry.getText().toString());
-              job.setSalary(Integer.parseInt(salary.getText().toString()));
-              job.setRequirement(requirement.getText().toString());
-              job.setPositionCharacter(positionCharacter.getText().toString());
-              createJob();
+               jobBody=new CreateJobBody();
+               jobBody.setPositionName(positionName.getText().toString());
+               jobBody.setIndustryCategory(industry.getText().toString());
+               jobBody.setSalary(Integer.parseInt(salary.getText().toString()));
+               jobBody.setRequirement(requirement.getText().toString());
+               jobBody.setPositionCharacter(positionCharacter.getText().toString());
+               jobBody.setPositionCategory(positionCategory.getText().toString());
+               createJob();
           }
     }
     public void update(){
@@ -171,7 +180,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
         try {
-            json = ow.writeValueAsString(job);
+            json = ow.writeValueAsString(jobBody);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
             globalProvider.post(this, Constants.CreateJobStr, entity, "application/json", new RequestListener() {

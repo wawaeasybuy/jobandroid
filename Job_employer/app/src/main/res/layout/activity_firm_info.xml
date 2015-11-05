@@ -152,16 +152,14 @@
                 android:textSize="16sp"
                 android:text="@string/firm_website"/>
 
-            <TextView
+            <EditText
+                android:background="#ffffff"
+                android:textSize="14dp"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add"/>
-
-            <ImageView
-                android:paddingLeft="5dp"
-                android:src="@drawable/turn_right1"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:id="@+id/companyURL"
+                android:hint="@string/firm_name_"/>
 
         </LinearLayout>
 
@@ -191,16 +189,14 @@
                 android:textSize="16sp"
                 android:text="@string/detail_address"/>
 
-            <TextView
+            <EditText
+                android:background="#ffffff"
+                android:textSize="14dp"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add"/>
-
-            <ImageView
-                android:paddingLeft="5dp"
-                android:src="@drawable/turn_right1"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:id="@+id/companyAddress"
+                android:hint="@string/firm_name_"/>
 
         </LinearLayout>
 

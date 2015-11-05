@@ -27,6 +27,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
     public EditText name;
     public EditText mainBusiness;
     public EditText description;
+    public EditText companyURL;
+    public EditText companyAddress;
     public Employer GoEmployer=GlobalProvider.getInstance().employer;
 
     @Override
@@ -38,6 +40,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         if(GoEmployer.companyname!=null){name.setText(GoEmployer.getCompanyname());}
         if(GoEmployer.mianBusiness!=null){mainBusiness.setText(GoEmployer.getMianBusiness());}
         if(GoEmployer.companyInfo!=null){description.setText(GoEmployer.getCompanyInfo());}
+        if(GoEmployer.companyAddress!=null){companyAddress.setText(GoEmployer.getCompanyAddress());}
+        if(GoEmployer.companyURL!=null){companyURL.setText(GoEmployer.getCompanyURL());}
 
     }
     private void initAction() {
@@ -51,6 +55,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         name= (EditText) findViewById(R.id.name);
         mainBusiness= (EditText) findViewById(R.id.main_business);
         description= (EditText) findViewById(R.id.description);
+        companyURL= (EditText) findViewById(R.id.companyURL);
+        companyAddress= (EditText) findViewById(R.id.companyAddress);
 
     }
     @Override
@@ -69,6 +75,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         GlobalProvider.getInstance().employer.setCompanyname(name.getText().toString());
         GlobalProvider.getInstance().employer.setMianBusiness(mainBusiness.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyInfo(description.getText().toString());
+        GlobalProvider.getInstance().employer.setCompanyAddress(companyAddress.getText().toString());
+        GlobalProvider.getInstance().employer.setCompanyURL(companyURL.getText().toString());
         Toast.makeText(FirmInfoActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
     }
     @Override

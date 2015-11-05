@@ -116,7 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:paddingLeft="8dp"
-        android:id="@+id/position_ad"
+        android:id="@+id/top"
         android:clickable="true"
         android:background="@drawable/score_round">
 
@@ -190,6 +190,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/top"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="8dp"
@@ -209,7 +210,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-
+        android:id="@+id/urg"
         android:paddingLeft="8dp"
 
         android:background="@drawable/score_round">
@@ -284,6 +285,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/urg"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="8dp"

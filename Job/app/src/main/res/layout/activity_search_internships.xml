@@ -51,12 +51,14 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:focusableInTouchMode="true"
                 android:src="@drawable/search"
                 android:paddingLeft="10dp"
                 android:layout_width="28dp"
                 android:layout_height="28dp" />
 
             <EditText
+
                 android:paddingLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"

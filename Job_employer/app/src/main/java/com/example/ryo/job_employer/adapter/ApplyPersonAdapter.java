@@ -62,7 +62,7 @@ public class ApplyPersonAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
         holder.name.setText(resume.getName());
-        holder.testValue.setText("职业测评分 ："+resume.getTestValue());
+        holder.testValue.setText("职业测评分 ："+resume._candidate.getTestValue());
         holder.schoolName.setText(resume.getSchoolName());
         holder.professional.setText(resume.getProfessional());
         holder.chakan.setOnClickListener(new View.OnClickListener() {

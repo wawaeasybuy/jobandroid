@@ -21,7 +21,7 @@ public class Resume implements Serializable {
     }
 
     public String _id;
-    public String _candidate;
+    public Candidate _candidate;
     public int gender;
     public String tel;
     public String address;
@@ -45,11 +45,11 @@ public class Resume implements Serializable {
         this.professional = professional;
     }
 
-    public String get_candidate() {
+    public Candidate get_candidate() {
         return _candidate;
     }
 
-    public void set_candidate(String _candidate) {
+    public void set_candidate(Candidate _candidate) {
         this._candidate = _candidate;
     }
 

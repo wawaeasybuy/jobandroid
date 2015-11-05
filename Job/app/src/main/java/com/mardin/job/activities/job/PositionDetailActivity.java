@@ -15,12 +15,15 @@ import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Job;
 import com.mardin.job.models.JobApplyBody;
+import com.mardin.job.models.JobList;
+import com.mardin.job.models.Job_delivered;
 import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.ByteArrayEntity;
 import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
@@ -47,8 +50,6 @@ public class PositionDetailActivity extends Activity {
                  doApply();
             }
         });
-
-
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +57,45 @@ public class PositionDetailActivity extends Activity {
                 finish();
             }
         });
+    }
+    public void getJobInfo(){
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        String Url=Constants.jobListUrlStr+"/"+job.get_id();
+        globalProvider.get(this, Url, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseInfo(new String(responseBody));
+            }
 
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+
+            }
+
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+
+    }
+    public void parseInfo(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            Job_delivered joblist = (Job_delivered) objectMapper.readValue(jsonParser, Job_delivered.class);
+
+
+//            this.mItems.clear();
+//            this.mItems.addAll(joblist.jobs);
+//            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+//            adapter.notifyDataSetChanged();
+            //do something
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void doApply(){
         JobApplyBody body=new JobApplyBody();

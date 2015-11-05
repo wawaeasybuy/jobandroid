@@ -9,7 +9,25 @@ import java.io.Serializable;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Candidate implements Serializable {
+    public String _id;
 
+    public int getTestValue() {
+        return testValue;
+    }
+
+    public void setTestValue(int testValue) {
+        this.testValue = testValue;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public int testValue;
 
 
 

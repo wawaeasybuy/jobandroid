@@ -8,14 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mardin.job.R;
-import com.mardin.job.models.Job;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2015/11/4.
+ * Created by Administrator on 2015/11/5.
  */
-public class AddressSelectListAdapter extends BaseAdapter{
+public class AddressSelectListAdapter_lv2 extends BaseAdapter{
     public List<String> Data;
     public Context context;
     private int i;
@@ -33,7 +32,7 @@ public class AddressSelectListAdapter extends BaseAdapter{
         this.mOnItemClickListener=mOnItemClickListener;
 
     }
-    public AddressSelectListAdapter(Context context,List data){
+    public AddressSelectListAdapter_lv2(Context context,List data){
         this.Data=data;
         this.context=context;
     }
@@ -66,7 +65,7 @@ public class AddressSelectListAdapter extends BaseAdapter{
         }
         if(i==position){
             holder.name.setTextColor(0xffee2400);
-           // myViewHoder.tv.setBackgroundColor(0xffffffff);
+            // myViewHoder.tv.setBackgroundColor(0xffffffff);
 
         }else{
 

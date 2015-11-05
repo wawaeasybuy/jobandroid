@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.activities.EditPositionActivity;
 import com.example.ryo.job_employer.activities.MyPositionActivity;
+import com.example.ryo.job_employer.activities.PositionAdActivity;
 import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.network.Constants;
 
@@ -76,6 +77,14 @@ public class PositionAdapter extends BaseAdapter{
             holder.updateTime.setText(ConverToString(job.getTimeUpdate()));
             //if(job.getIsRelease()){}else{}
 
+           holder.tuiguang.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent intent=new Intent(context, PositionAdActivity.class);
+                   intent.putExtra("job",job);
+                   ((MyPositionActivity)context).startActivityForResult(intent, Constants.TUIGUANGINTENT);
+               }
+           });
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

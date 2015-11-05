@@ -96,6 +96,11 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
                     loadjobList();
                 }
                 break;
+            case Constants.TUIGUANGINTENT:
+                if (resultCode == RESULT_OK) {
+                    loadjobList();
+                }
+                break;
         }
     }
     private void loadjobList() {

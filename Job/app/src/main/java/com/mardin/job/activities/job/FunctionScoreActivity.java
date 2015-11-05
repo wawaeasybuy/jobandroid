@@ -30,8 +30,8 @@ public class FunctionScoreActivity extends Activity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_function_score);
 
-        change1 = (ImageView) findViewById(R.id.change1);
-        change2 = (ImageView) findViewById(R.id.change2);
+//        change1 = (ImageView) findViewById(R.id.change1);
+//        change2 = (ImageView) findViewById(R.id.change2);
 
         initView();
 
@@ -44,8 +44,8 @@ public class FunctionScoreActivity extends Activity implements View.OnClickListe
 
     private void initView() {
 
-        changeone = (LinearLayout) findViewById(R.id.changeone);
-        changetwo = (LinearLayout) findViewById(R.id.changetwo);
+//        changeone = (LinearLayout) findViewById(R.id.changeone);
+//        changetwo = (LinearLayout) findViewById(R.id.changetwo);
 
     }
 
@@ -86,13 +86,13 @@ public class FunctionScoreActivity extends Activity implements View.OnClickListe
 
         switch (v.getId()) {
 
-            case R.id.changeone:
-
-                setSelect(0);
-
-                break;
-            case R.id.changetwo:
-                setSelect(1);
+//            case R.id.changeone:
+//
+//                setSelect(0);
+//
+//                break;
+//            case R.id.changetwo:
+//                setSelect(1);
         }
 
     }

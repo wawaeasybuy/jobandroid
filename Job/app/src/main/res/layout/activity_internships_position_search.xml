@@ -75,6 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_weight="1">
 
@@ -82,6 +83,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="@string/position_area" />
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/turn_one"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
         </LinearLayout>
 
@@ -94,6 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_weight="1">
 
@@ -103,6 +110,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="@string/position_classify" />
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/turn_two"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
         </LinearLayout>
 
@@ -115,6 +127,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_weight="1">
 
@@ -124,7 +137,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="@string/internships_intelligent_sorting" />
-
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/turn_three"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -135,10 +152,11 @@
         android:background="#eeeeee"/>
 
     <LinearLayout
+        android:background="#c7c7c7"
         android:id="@+id/selectAddress"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="200dp">
 
         <ListView
             android:id="@+id/lv1"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -12,6 +13,8 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
 import com.mardin.job.adapters.job.AddressSelectListAdapter;
+import com.mardin.job.adapters.job.AddressSelectListAdapter_lv2;
+import com.mardin.job.adapters.job.AddressSelectListAdapter_lv3;
 import com.mardin.job.adapters.job.JobListAdapter;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
@@ -46,7 +49,10 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public boolean lv3_showing=false;
 
     public AddressSelectListAdapter mAdapter;
+    public AddressSelectListAdapter_lv2 mAdapter_lv2;
+    public AddressSelectListAdapter_lv3 mAdapter_lv3;
     public ListView lv1,lv2,lv3;
+    public ImageView turn_one,turn_two,turn_three;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,15 +62,41 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         mItems=new ArrayList<Job>();
         adapter=new JobListAdapter(this,mItems);
         mAdapter=new AddressSelectListAdapter(this,Data());
+        mAdapter_lv2=new AddressSelectListAdapter_lv2(this,Data());
+        mAdapter_lv3=new AddressSelectListAdapter_lv3(this,Data());
         lv1.setAdapter(mAdapter);
+        lv2.setAdapter(mAdapter_lv2);
+        lv3.setAdapter(mAdapter_lv3);
         lv_job.setAdapter(adapter);
         page=1;
         itemsPerPage=10;
         selectAddress.setVisibility(View.GONE);
-        lv1.setVisibility(View.GONE);
-        lv2.setVisibility(View.GONE);
-        lv3.setVisibility(View.GONE);
+        turn_one.setImageResource(R.drawable.turn_down);
+        turn_two.setImageResource(R.drawable.turn_down);
+        turn_three.setImageResource(R.drawable.turn_down);
+//        lv1.setVisibility(View.GONE);
+//        lv2.setVisibility(View.GONE);
+//        lv3.setVisibility(View.GONE);
 
+        mAdapter.setOnItemClickListener(new AddressSelectListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                lv2.setVisibility(View.VISIBLE);
+                lv3.setVisibility(View.INVISIBLE);
+            }
+        });
+        mAdapter_lv2.setOnItemClickListener(new AddressSelectListAdapter_lv2.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                lv3.setVisibility(View.VISIBLE);
+            }
+        });
+        mAdapter_lv3.setOnItemClickListener(new AddressSelectListAdapter_lv3.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+            }
+        });
         lv_job.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -73,7 +105,6 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 startActivity(intent);
             }
         });
-
         LoadJobList();
     }
     public void LoadJobList(){
@@ -121,6 +152,9 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         lv2= (ListView) findViewById(R.id.lv2);
         lv3= (ListView) findViewById(R.id.lv3);
         selectAddress= (LinearLayout) findViewById(R.id.selectAddress);
+        turn_one= (ImageView) findViewById(R.id.turn_one);
+        turn_two= (ImageView) findViewById(R.id.turn_two);
+        turn_three= (ImageView) findViewById(R.id.turn_three);
     }
     public void initAction(){
         turn_left.setOnClickListener(this);
@@ -135,11 +169,21 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             case R.id.address:
                 if(lv1_showing)
                 {
-                  selectAddress.setVisibility(View.GONE);
-                  lv1.setVisibility(View.GONE);
+                    lv1.setVisibility(View.INVISIBLE);
+                    lv2.setVisibility(View.INVISIBLE);
+                    lv3.setVisibility(View.INVISIBLE);
+                    selectAddress.setVisibility(View.GONE);
+                    lv_job.setVisibility(View.VISIBLE);
+                    turn_one.setImageResource(R.drawable.turn_down);
+                  //lv1.setVisibility(View.GONE);
                 }else {
                   selectAddress.setVisibility(View.VISIBLE);
+                  lv_job.setVisibility(View.GONE);
                   lv1.setVisibility(View.VISIBLE);
+                  lv2.setVisibility(View.INVISIBLE);
+                  lv3.setVisibility(View.INVISIBLE);
+                  turn_one.setImageResource(R.drawable.turn_up);
+
                 }
                 lv1_showing=!lv1_showing;
                 break;
@@ -147,6 +191,13 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     }
     public List<String> Data(){
         List<String> list=new ArrayList<String>();
+        list.add("浙江");
+        list.add("浙江");
+        list.add("浙江");
+        list.add("浙江");
+        list.add("浙江");
+        list.add("浙江");
+        list.add("浙江");
         list.add("浙江");
         list.add("浙江");
         list.add("浙江");

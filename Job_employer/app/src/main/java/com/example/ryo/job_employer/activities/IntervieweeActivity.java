@@ -77,13 +77,11 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 //Log.v("err", new String(responseBody));
             }
-
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
             }
         });
-
     }
     private void parseTalentList(String json) {
         JsonFactory jsonFactory = new JsonFactory();

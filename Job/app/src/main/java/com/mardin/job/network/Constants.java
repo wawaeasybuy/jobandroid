@@ -14,7 +14,7 @@ public class Constants {
     static public String jobListUrlStr = baseUrlStr + "api/jobs";
     static public String loginUrlStr = baseUrlStr + "auth/local";
     static public String crePubResume = baseUrlStr + "api/publicresumes";
-    static public String jobDetailUrlStr = baseUrlStr + "api/jobs";
+    static public String talentStr = baseUrlStr + "api/talents";
     static public String jobCollectUrlStr = baseUrlStr + "api/jobs";
     static public String meUrlStr = baseUrlStr + "api/users/me";
     static public String updateEmployerStr = baseUrlStr + "api/employers";

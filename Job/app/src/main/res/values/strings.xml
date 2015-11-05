@@ -7,7 +7,11 @@
     <string name="title_section4">Home</string>
     <!--<string name="title_section3">Section 3</string>-->
 
-
+    <string name="expertise_level">专业水平</string>
+    <string name="analysis_thinking">分析思考</string>
+    <string name="language_express">语言表达</string>
+    <string name="compress_strain">抗压应变</string>
+    <string name="attitude_etiquette">态度礼仪</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
