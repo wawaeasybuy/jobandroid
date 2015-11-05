@@ -18,8 +18,8 @@ public class ChinaAlphabetComparator implements Comparator<String> {
 
     @Override
     public int compare(String obj1, String obj2) {
-        obj1 = obj1.replace("÷ÿ«Ï", "≥Á«Ï");
-        obj2 = obj2.replace("÷ÿ«Ï", "≥Á«Ï");
+        obj1 = obj1.replace("ÈáçÂ∫Ü", "Â¥áÂ∫Ü");
+        obj2 = obj2.replace("ÈáçÂ∫Ü", "Â¥áÂ∫Ü");
         CollationKey c1 = collator.getCollationKey(obj1);
         CollationKey c2 = collator.getCollationKey(obj2);
         // When sorting a list of Strings however, it is generally necessary to
