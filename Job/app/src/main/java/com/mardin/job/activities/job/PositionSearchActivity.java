@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
+import com.mardin.job.Utils.ChinaAlphabetComparator;
+import com.mardin.job.Utils.ChinaCityUtil;
 import com.mardin.job.adapters.job.AddressSelectListAdapter;
 import com.mardin.job.adapters.job.AddressSelectListAdapter_lv2;
 import com.mardin.job.adapters.job.AddressSelectListAdapter_lv3;
@@ -30,12 +33,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
  * Created by Ryo on 2015/9/17.
  */
-public class PositionSearchActivity extends Activity implements View.OnClickListener {
+public class PositionSearchActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
     public LinearLayout turn_left;
     public ListView lv_job;
     public List<Job> mItems;
@@ -52,21 +56,35 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public AddressSelectListAdapter_lv2 mAdapter_lv2;
     public AddressSelectListAdapter_lv3 mAdapter_lv3;
     public ListView lv1,lv2,lv3;
-    public ImageView turn_one,turn_two,turn_three;
+    public ImageView turn_one,turn_two,turn_three,img1,img2;
+
+    private ChinaAlphabetComparator comparator;
+    private Hashtable<String, Hashtable<String, String[]>> hashtable;
+    private String[] arrProvince, arrCity, arrRegion;
+    private String province, city, region;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internships_position_search);
         initView();
         initAction();
+
+        comparator = new ChinaAlphabetComparator();
+        hashtable = ChinaCityUtil.initChinaCitysHashtable();
+        arrProvince = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
+        AddressSelectListAdapter adapterProvince = getArrayAdapter(arrProvince);
+        lv1.setAdapter(adapterProvince);
+        lv1.setOnItemClickListener(this);
+        lv2.setOnItemClickListener(this);
+        lv3.setOnItemClickListener(this);
         mItems=new ArrayList<Job>();
         adapter=new JobListAdapter(this,mItems);
-        mAdapter=new AddressSelectListAdapter(this,Data());
-        mAdapter_lv2=new AddressSelectListAdapter_lv2(this,Data());
-        mAdapter_lv3=new AddressSelectListAdapter_lv3(this,Data());
-        lv1.setAdapter(mAdapter);
-        lv2.setAdapter(mAdapter_lv2);
-        lv3.setAdapter(mAdapter_lv3);
+//        mAdapter=new AddressSelectListAdapter(this,Data());
+//        mAdapter_lv2=new AddressSelectListAdapter_lv2(this,Data());
+//        mAdapter_lv3=new AddressSelectListAdapter_lv3(this,Data());
+//        lv1.setAdapter(mAdapter);
+//        lv2.setAdapter(mAdapter_lv2);
+//        lv3.setAdapter(mAdapter_lv3);
         lv_job.setAdapter(adapter);
         page=1;
         itemsPerPage=10;
@@ -78,25 +96,25 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
 //        lv2.setVisibility(View.GONE);
 //        lv3.setVisibility(View.GONE);
 
-        mAdapter.setOnItemClickListener(new AddressSelectListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                lv2.setVisibility(View.VISIBLE);
-                lv3.setVisibility(View.INVISIBLE);
-            }
-        });
-        mAdapter_lv2.setOnItemClickListener(new AddressSelectListAdapter_lv2.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                lv3.setVisibility(View.VISIBLE);
-            }
-        });
-        mAdapter_lv3.setOnItemClickListener(new AddressSelectListAdapter_lv3.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-
-            }
-        });
+//        mAdapter.setOnItemClickListener(new AddressSelectListAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                lv2.setVisibility(View.VISIBLE);
+//                lv3.setVisibility(View.INVISIBLE);
+//            }
+//        });
+//        mAdapter_lv2.setOnItemClickListener(new AddressSelectListAdapter_lv2.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                lv3.setVisibility(View.VISIBLE);
+//            }
+//        });
+//        mAdapter_lv3.setOnItemClickListener(new AddressSelectListAdapter_lv3.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//
+//            }
+//        });
         lv_job.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -107,6 +125,47 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         });
         LoadJobList();
     }
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        if (parent == lv1) {
+            province = arrProvince[position];
+            modifyCity(province);
+            lv2.setVisibility(View.VISIBLE);
+            lv3.setVisibility(View.INVISIBLE);
+            img1.setVisibility(View.VISIBLE);
+            img2.setVisibility(View.VISIBLE);
+        } else if (parent == lv2) {
+            city = arrCity[position];
+            modifyRegion(province, city);
+            lv3.setVisibility(View.VISIBLE);
+        } else if (parent == lv3) {
+            region = arrRegion[position];
+            //txtInfo.setText(province + " " + city + " " + region);
+        }
+
+    }
+
+    private void modifyCity(String province) {
+        arrCity = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_CITY, province);
+        AddressSelectListAdapter adapterCity = getArrayAdapter(arrCity);
+        lv2.setAdapter(adapterCity);
+    }
+
+    private void modifyRegion(String province, String city) {
+        arrRegion = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_REGION, province,
+                city);
+        AddressSelectListAdapter adapterRegion = getArrayAdapter(arrRegion);
+        lv3.setAdapter(adapterRegion);
+    }
+    private AddressSelectListAdapter getArrayAdapter(String[] arr) {
+        AddressSelectListAdapter adapter = new AddressSelectListAdapter(this,arr);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter.sort(comparator);
+        return adapter;
+    }
+
+
     public void LoadJobList(){
         RequestParams params = new RequestParams();
         params.put("page", page);
@@ -155,6 +214,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         turn_one= (ImageView) findViewById(R.id.turn_one);
         turn_two= (ImageView) findViewById(R.id.turn_two);
         turn_three= (ImageView) findViewById(R.id.turn_three);
+        img1= (ImageView) findViewById(R.id.img_1);
+        img2= (ImageView) findViewById(R.id.img_2);
     }
     public void initAction(){
         turn_left.setOnClickListener(this);
@@ -172,6 +233,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                     lv1.setVisibility(View.INVISIBLE);
                     lv2.setVisibility(View.INVISIBLE);
                     lv3.setVisibility(View.INVISIBLE);
+                    img1.setVisibility(View.INVISIBLE);
+                    img2.setVisibility(View.INVISIBLE);
                     selectAddress.setVisibility(View.GONE);
                     lv_job.setVisibility(View.VISIBLE);
                     turn_one.setImageResource(R.drawable.turn_down);
@@ -182,6 +245,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                   lv1.setVisibility(View.VISIBLE);
                   lv2.setVisibility(View.INVISIBLE);
                   lv3.setVisibility(View.INVISIBLE);
+                    img1.setVisibility(View.VISIBLE);
+                    img2.setVisibility(View.INVISIBLE);
                   turn_one.setImageResource(R.drawable.turn_up);
 
                 }
@@ -207,4 +272,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         list.add("浙江");
         return list;
     }
+
+
+
 }

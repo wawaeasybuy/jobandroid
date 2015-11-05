@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/4.
  */
 public class AddressSelectListAdapter extends BaseAdapter{
-    public List<String> Data;
+    public String[] Data;
     public Context context;
     private int i;
 
@@ -33,18 +33,18 @@ public class AddressSelectListAdapter extends BaseAdapter{
         this.mOnItemClickListener=mOnItemClickListener;
 
     }
-    public AddressSelectListAdapter(Context context,List data){
+    public AddressSelectListAdapter(Context context,String[] data){
         this.Data=data;
         this.context=context;
     }
     @Override
     public int getCount() {
-        return Data.size();
+        return Data.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return  Data.get(position);
+        return  Data[position];
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AddressSelectListAdapter extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        final String name=Data.get(position);
+        final String name=Data[position];
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.select_address_list_item, null);
             holder = new ViewHolder();
@@ -64,15 +64,15 @@ public class AddressSelectListAdapter extends BaseAdapter{
         } else {
             holder= (ViewHolder) convertView.getTag();
         }
-        if(i==position){
-            holder.name.setTextColor(0xffee2400);
-           // myViewHoder.tv.setBackgroundColor(0xffffffff);
-
-        }else{
-
-            holder.name.setTextColor(0xff666666);
-            //myViewHoder.tv.setBackgroundColor(0xfff8f8f8);
-        }
+//        if(i==position){
+//            holder.name.setTextColor(0xffee2400);
+//           // myViewHoder.tv.setBackgroundColor(0xffffffff);
+//
+//        }else{
+//
+//            holder.name.setTextColor(0xff666666);
+//            //myViewHoder.tv.setBackgroundColor(0xfff8f8f8);
+//        }
         holder.name.setText(name);
         if(mOnItemClickListener!=null){
 

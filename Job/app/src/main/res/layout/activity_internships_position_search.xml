@@ -156,28 +156,44 @@
         android:id="@+id/selectAddress"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="270dp">
 
         <ListView
             android:id="@+id/lv1"
             android:background="#ffffff"
             android:layout_width="0dp"
+            android:divider="#00000000"
+            android:dividerHeight="0dip"
             android:layout_weight="1"
             android:layout_height="match_parent">
 
         </ListView>
+        <ImageView
+            android:id="@+id/img_1"
+            android:background="#eaeaea"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent" />
         <ListView
             android:background="#ffffff"
             android:id="@+id/lv2"
             android:layout_width="0dp"
+            android:divider="#00000000"
+            android:dividerHeight="0dip"
             android:layout_weight="1"
             android:layout_height="match_parent">
 
         </ListView>
+        <ImageView
+            android:id="@+id/img_2"
+            android:background="#eaeaea"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent" />
         <ListView
             android:background="#ffffff"
             android:id="@+id/lv3"
             android:layout_width="0dp"
+            android:divider="#00000000"
+            android:dividerHeight="0dip"
             android:layout_weight="1"
             android:layout_height="match_parent">
 
