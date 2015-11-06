@@ -52,6 +52,22 @@ public class GlobalProvider {
         }
     }
 
+    public void delete(final Context context, String url, final RequestListener listener) {
+
+        addHeaderToken(context);
+        client.delete(context, url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                listener.onSuccess(statusCode, headers, responseBody);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                baseFail(context, statusCode, headers, responseBody, error);
+                listener.onFailure(statusCode, headers, responseBody, error);
+            }
+        });
+    }
     public void get(final Context context,String url,final RequestListener listener) {
         addHeaderToken(context);
         client.get(url, new AsyncHttpResponseHandler() {

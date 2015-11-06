@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
@@ -31,6 +32,10 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.zip.GZIPOutputStream;
 
 
 /**
@@ -88,19 +93,21 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 resumeLayout.setVisibility(View.VISIBLE);
                 ID.setVisibility(View.VISIBLE);
                 noLogin.setVisibility(View.GONE);
-                isLoging=true;
+                isLoging = true;
                 parseInfo(new String(responseBody));
 
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                 change.setVisibility(View.GONE);
-                 resumeLayout.setVisibility(View.GONE);
-                 ID.setVisibility(View.GONE);
-                 noResumeLayout.setVisibility(View.GONE);
-                 noLogin.setVisibility(View.VISIBLE);
-                 isLoging=false;
+                change.setVisibility(View.GONE);
+                resumeLayout.setVisibility(View.GONE);
+                ID.setVisibility(View.GONE);
+                noResumeLayout.setVisibility(View.GONE);
+                noLogin.setVisibility(View.VISIBLE);
+                isLoging = false;
             }
+
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
@@ -126,7 +133,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 noResumeLayout.setVisibility(View.GONE);
                 resumeLayout.setVisibility(View.VISIBLE);
                 if(candidate.resume.getUpdateEdit()!=null){
-                    updateTime.setText(candidate.resume.getUpdateEdit().toString());
+                    updateTime.setText(ConverToString(candidate.resume.getUpdateEdit()));
                 }
             }else{
                 GlobalProvider.getInstance().resume=new Resume();
@@ -138,6 +145,33 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void doDelete(){
+        GlobalProvider globalProvider=GlobalProvider.getInstance();
+        String Url=Constants.createResumeStr+"/"+resume.get_id();
+        globalProvider.delete(getActivity(),Url, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                LoadCandidateInfo();
+                Toast.makeText(getActivity(), "删除成功！", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+    public static String ConverToString(Date date)
+    {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+        return df.format(date);
     }
     public void initView(){
         ID= (LinearLayout) getActivity().findViewById(R.id.ID);
@@ -170,15 +204,16 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         addResume.setOnClickListener(this);
         resume_release.setOnClickListener(this);
         createResume.setOnClickListener(this);
+        resume_delete.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ID:
-                    Intent intent = new Intent(getActivity(), PersonalEditDataActivity.class);
-                    intent.putExtra("candidate", candidate);
-                    getActivity().startActivityForResult(intent, Constants.UPECANDIDATE_INTENT);
-                    //startActivity(intent);
+                Intent intent = new Intent(getActivity(), PersonalEditDataActivity.class);
+                intent.putExtra("candidate", candidate);
+                getActivity().startActivityForResult(intent, Constants.UPECANDIDATE_INTENT);
+                //startActivity(intent);
                 break;
             case R.id.noLoginID:
                 Intent intent_login = new Intent(getActivity(), LoginActivity.class);
@@ -191,11 +226,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 break;
             case R.id.personal_setting:
                 Intent intent2=new Intent(getActivity(),PersonalSettingActivity.class);
-                startActivity(intent2);
+                getActivity().startActivityForResult(intent2, Constants.GOTOLOGOUT);
                 break;
             case R.id.resume_edit:
                 Intent intent3=new Intent(getActivity(),EditResumeActivity.class);
-                startActivity(intent3);
+                getActivity().startActivityForResult(intent3, Constants.UPDATERESUME);
                 break;
             case R.id.addResume:
                 Intent intent5=new Intent(getActivity(),EditResumeActivity.class);
@@ -209,6 +244,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Intent intent6=new Intent(getActivity(),  EditResumeActivity.class);
                 //intent1.putExtra("resume", resume);
                 getActivity().startActivityForResult(intent6, Constants.UPDATERESUME);
+                break;
+            case R.id.resume_delete:
+                doDelete();
                 break;
         }
     }

@@ -182,5 +182,5 @@
             android:label="@string/personal_setting_feedback" >
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 </manifest>

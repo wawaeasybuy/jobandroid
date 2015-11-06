@@ -1,8 +1,11 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,6 +20,8 @@ import com.mardin.job.models.Job;
 import com.mardin.job.models.JobApplyBody;
 import com.mardin.job.models.JobList;
 import com.mardin.job.models.Job_delivered;
+import com.mardin.job.models.PublicResume;
+import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
@@ -47,7 +52,7 @@ public class PositionDetailActivity extends Activity {
         position_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 doApply();
+                doApply();
             }
         });
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
@@ -86,11 +91,52 @@ public class PositionDetailActivity extends Activity {
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Job_delivered joblist = (Job_delivered) objectMapper.readValue(jsonParser, Job_delivered.class);
-
-
 //            this.mItems.clear();
 //            this.mItems.addAll(joblist.jobs);
 //            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+//            adapter.notifyDataSetChanged();
+            //do something
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.GOCREATEPUB:
+                if (resultCode == RESULT_OK) {
+                    doLoadCandidateInfo();
+                }
+                break;
+        }
+    }
+    public void doLoadCandidateInfo(){
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.regCanStr, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseCandidateInfo(new String(responseBody));
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+
+    public void parseCandidateInfo(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
+            GlobalProvider.getInstance().candidate=candidate;
 //            adapter.notifyDataSetChanged();
             //do something
         }catch (IOException e) {
@@ -114,7 +160,7 @@ public class PositionDetailActivity extends Activity {
             globalProvider.post(this, Constants.crePubResume, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
+                    parseResult(new String(responseBody));
 //                    GlobalProvider.getInstance().isLoging=true;
 //                    parseLoginResult(new String(responseBody));
 
@@ -123,6 +169,25 @@ public class PositionDetailActivity extends Activity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(PositionDetailActivity.this)
+                            .setMessage("您还没登录，请先登录")
+                            .setPositiveButton("去登陆", new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.i("alertdialog", " 保存数据");
+                                    Intent intent=new Intent(PositionDetailActivity.this,LoginActivity.class);
+                                    startActivityForResult(intent,Constants.GOCREATEPUB);
+                                }
+
+                            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+//                            MainActivity.getDefault().setSelect(2);
+                        }
+
+                    }).show();
                 }
 
                 @Override
@@ -132,6 +197,32 @@ public class PositionDetailActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void parseResult(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            PublicResume  resume = (PublicResume) objectMapper.readValue(jsonParser, PublicResume.class);
+            if(resume.getMsg()==null){
+                Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
+            }else{
+                new AlertDialog.Builder(this)
+                        .setMessage("简历已投递过！不能再次投递！")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("alertdialog", " 保存数据");
+                            }
+
+                        }).show();
+            }
+//            adapter.notifyDataSetChanged();
+            //do something
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
+

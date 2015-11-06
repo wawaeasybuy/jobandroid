@@ -146,6 +146,11 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                     setSelect(1);
                 }
                 break;
+            case Constants.GOTOLOGOUT:
+                if (resultCode == RESULT_OK) {
+                    setSelect(1);
+                }
+                break;
         }
     }
     @Override

@@ -39,6 +39,8 @@ public class Constants {
     public static final int UPDATERESUMEBASEINFO = 94;
     public static final int UPDATERESUMEIMPORTANTE = 95;
     public static final int UPDATERESUME= 96;
+    public static  final int GOCREATEPUB=97;
+    public static  final int GOTOLOGOUT=98;
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager
