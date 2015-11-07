@@ -27,9 +27,11 @@ import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.entity.ByteArrayEntity;
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -76,6 +78,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public View no_resume_layout;
     public View resume_layout;
     public View change_layout;
+
+    public ImageView img_release;
+    public TextView release;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -143,6 +148,15 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             }
             if(candidate.getSchoolName()!=null){schoolName.setText(candidate.getSchoolName());}
             if(candidate.resume!=null){
+
+                if(candidate.resume.getBeOpen()==null||!candidate.resume.getBeOpen()){
+                    candidate.resume.setBeOpen(false);
+                    img_release.setImageResource(R.drawable.unlocked);
+                    release.setText("公开");
+                }else{
+                    img_release.setImageResource(R.drawable.locked);
+                    release.setText("已公开");
+                }
                 this.resume=candidate.resume;
                 GlobalProvider.getInstance().resume=candidate.resume;
                 ID.addView(resume_layout);
@@ -189,6 +203,38 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             }
         });
     }
+    public void doRelease(){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
+        String json = "";
+        if(resume.getBeOpen()){
+            resume.setBeOpen(false);
+        }else{
+            resume.setBeOpen(true);
+        }
+        try {
+            json = ow.writeValueAsString(resume);
+            ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+            GlobalProvider globalProvider = GlobalProvider.getInstance();
+            globalProvider.put(getActivity(), Constants.createResumeStr, entity, "application/json", new RequestListener() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    LoadCandidateInfo();
+                    Toast.makeText(getActivity(), "更改成功！", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static String ConverToString(Date date)
     {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -224,6 +270,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         //ResumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
         //noResumeLayout= (LinearLayout) getActivity().findViewById(R.id.noResume);
         createResume= (ImageView) no_resume_layout.findViewById(R.id.createResume);
+
+        img_release= (ImageView) resume_layout.findViewById(R.id.img_release);
+        release= (TextView) resume_layout.findViewById(R.id.release);
 
 
 
@@ -273,8 +322,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 //                startActivity(intent5);
 //                break;
             case R.id.resume_release:
-                Intent intent4=new Intent(getActivity(),FunctionScoreActivity.class);
-                startActivity(intent4);
+//                Intent intent4=new Intent(getActivity(),FunctionScoreActivity.class);
+//                startActivity(intent4);
+                doRelease();
                 break;
             case R.id.createResume:
                 Intent intent6=new Intent(getActivity(),  EditResumeActivity.class);
