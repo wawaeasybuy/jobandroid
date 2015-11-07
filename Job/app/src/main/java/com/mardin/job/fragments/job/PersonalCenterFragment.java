@@ -69,11 +69,20 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public Boolean isLoging;
     public Resume resume;
     public Candidate candidate;
+
+
+    public View login_id_layout;
+    public View no_login_id_layout;
+    public View no_resume_layout;
+    public View resume_layout;
+    public View change_layout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_personal_center_logined, container, false);
+        View view=inflater.inflate(R.layout.activity_personal_center_logined, container, false);
+
+        return view;
 
     }
     @Override
@@ -81,6 +90,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         super.onActivityCreated(savedInstanceState);
         initView();
         initAction();
+        ID.removeAllViews();
+        ID.addView(no_login_id_layout);
+        ID.addView(no_resume_layout);
         LoadCandidateInfo();
 
     }
@@ -89,23 +101,26 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         globalProvider.get(getActivity(), Constants.regCanStr, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                change.setVisibility(View.VISIBLE);
-                resumeLayout.setVisibility(View.VISIBLE);
-                ID.setVisibility(View.VISIBLE);
-                noLogin.setVisibility(View.GONE);
-                isLoging = true;
+                ID.removeAllViews();
+                ID.addView(login_id_layout);
+                //ID.addView(resume_layout);
+//                change.setVisibility(View.VISIBLE);
+//                resumeLayout.setVisibility(View.VISIBLE);
+//                ID.setVisibility(View.VISIBLE);
+//                noLogin.setVisibility(View.GONE);
+//                isLoging = true;
                 parseInfo(new String(responseBody));
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                change.setVisibility(View.GONE);
-                resumeLayout.setVisibility(View.GONE);
-                ID.setVisibility(View.GONE);
-                noResumeLayout.setVisibility(View.GONE);
-                noLogin.setVisibility(View.VISIBLE);
-                isLoging = false;
+//                change.setVisibility(View.GONE);
+//                resumeLayout.setVisibility(View.GONE);
+//                ID.setVisibility(View.GONE);
+//                noResumeLayout.setVisibility(View.GONE);
+//                noLogin.setVisibility(View.VISIBLE);
+//                isLoging = false;
             }
 
             @Override
@@ -123,23 +138,30 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             GlobalProvider.getInstance().candidate=candidate;
             this.candidate=candidate;
             if(candidate.getName()!=null){
-                personalName.setText(candidate.getName());
+                //personalName.setText(candidate.getName());
                 name.setText(candidate.getName());
             }
             if(candidate.getSchoolName()!=null){schoolName.setText(candidate.getSchoolName());}
             if(candidate.resume!=null){
                 this.resume=candidate.resume;
                 GlobalProvider.getInstance().resume=candidate.resume;
-                noResumeLayout.setVisibility(View.GONE);
-                resumeLayout.setVisibility(View.VISIBLE);
+                ID.addView(resume_layout);
+                if(candidate.getName()!=null){
+                    //personalName.setText(candidate.getName());
+                    personalName.setText(candidate.getName());
+                }
+//                noResumeLayout.setVisibility(View.GONE);
+//                resumeLayout.setVisibility(View.VISIBLE);
                 if(candidate.resume.getUpdateEdit()!=null){
                     updateTime.setText(ConverToString(candidate.resume.getUpdateEdit()));
                 }
             }else{
+                ID.addView(no_resume_layout);
                 GlobalProvider.getInstance().resume=new Resume();
-                noResumeLayout.setVisibility(View.VISIBLE);
-                resumeLayout.setVisibility(View.GONE);
+//                noResumeLayout.setVisibility(View.VISIBLE);
+//                resumeLayout.setVisibility(View.GONE);
             }
+            ID.addView(change_layout);
 //            adapter.notifyDataSetChanged();
             //do something
         }catch (IOException e) {
@@ -174,34 +196,58 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         return df.format(date);
     }
     public void initView(){
+
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        login_id_layout= inflater.inflate(R.layout.login_id, null);
+        no_login_id_layout=inflater.inflate(R.layout.no_login_id, null);
+        no_resume_layout= inflater.inflate(R.layout.no_resume, null);
+        resume_layout= inflater.inflate(R.layout.resume, null);
+        change_layout=inflater.inflate(R.layout.change, null);
+
         ID= (LinearLayout) getActivity().findViewById(R.id.ID);
-        noLoginID= (LinearLayout) getActivity().findViewById(R.id.noLoginID);
-        turn_right= (ImageView) getActivity().findViewById(R.id.turn_right);
-        addResume= (ImageView) getActivity().findViewById(R.id.addResume);
+        //noLoginID= (LinearLayout) getActivity().findViewById(R.id.noLoginID);
+        turn_right= (ImageView) resume_layout.findViewById(R.id.turn_right);
+        //addResume= (ImageView) getActivity().findViewById(R.id.addResume);
         personal_setting= (TextView) getActivity().findViewById(R.id.personal_setting);
-        personalName= (TextView) getActivity().findViewById(R.id.personal_name);
-        name= (TextView) getActivity().findViewById(R.id.name);
-        schoolName= (TextView) getActivity().findViewById(R.id.schoolName);
-        resume_delete= (TextView) getActivity().findViewById(R.id.resume_delete);
-        updateTime= (TextView) getActivity().findViewById(R.id.update_time);
-        resume_edit= (LinearLayout) getActivity().findViewById(R.id.resume_edit);
-        resume_release= (LinearLayout) getActivity().findViewById(R.id.resume_release);
-        main= (LinearLayout) getActivity().findViewById(R.id.main);
-        noLogin= (LinearLayout) getActivity().findViewById(R.id.noLogin);
-        change= (LinearLayout) getActivity().findViewById(R.id.change);
-        resumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
+        personalName= (TextView)resume_layout.findViewById(R.id.personal_name);
+        name= (TextView) login_id_layout.findViewById(R.id.name);
+        schoolName= (TextView) login_id_layout.findViewById(R.id.schoolName);
+        resume_delete= (TextView) resume_layout.findViewById(R.id.resume_delete);
+        updateTime= (TextView) resume_layout.findViewById(R.id.update_time);
+        resume_edit= (LinearLayout) resume_layout.findViewById(R.id.resume_edit);
+        resume_release= (LinearLayout) resume_layout.findViewById(R.id.resume_release);
+        //main= (LinearLayout) getActivity().findViewById(R.id.main);
+        //noLogin= (LinearLayout) getActivity().findViewById(R.id.noLogin);
+        change= (LinearLayout) change_layout.findViewById(R.id.change);
+        //resumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
 
         //ResumeLayout= (LinearLayout) getActivity().findViewById(R.id.resume);
-        noResumeLayout= (LinearLayout) getActivity().findViewById(R.id.noResume);
-        createResume= (ImageView) getActivity().findViewById(R.id.createResume);
+        //noResumeLayout= (LinearLayout) getActivity().findViewById(R.id.noResume);
+        createResume= (ImageView) no_resume_layout.findViewById(R.id.createResume);
+
+
+
     }
     public void initAction(){
-        ID.setOnClickListener(this);
-        noLoginID.setOnClickListener(this);
+        login_id_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonalEditDataActivity.class);
+                intent.putExtra("candidate", candidate);
+                getActivity().startActivityForResult(intent, Constants.UPECANDIDATE_INTENT);
+            }
+        });
+        no_login_id_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_login = new Intent(getActivity(), LoginActivity.class);
+                getActivity().startActivityForResult(intent_login, Constants.LoginIntent);
+            }
+        });
         turn_right.setOnClickListener(this);
         personal_setting.setOnClickListener(this);
         resume_edit.setOnClickListener(this);
-        addResume.setOnClickListener(this);
+        //addResume.setOnClickListener(this);
         resume_release.setOnClickListener(this);
         createResume.setOnClickListener(this);
         resume_delete.setOnClickListener(this);
@@ -209,16 +255,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.ID:
-                Intent intent = new Intent(getActivity(), PersonalEditDataActivity.class);
-                intent.putExtra("candidate", candidate);
-                getActivity().startActivityForResult(intent, Constants.UPECANDIDATE_INTENT);
-                //startActivity(intent);
-                break;
-            case R.id.noLoginID:
-                Intent intent_login = new Intent(getActivity(), LoginActivity.class);
-                getActivity().startActivityForResult(intent_login, Constants.LoginIntent);
-                break;
             case R.id.turn_right:
                 Intent intent1=new Intent(getActivity(),  EditResumeActivity.class);
                 //intent1.putExtra("resume", resume);
@@ -232,10 +268,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Intent intent3=new Intent(getActivity(),EditResumeActivity.class);
                 getActivity().startActivityForResult(intent3, Constants.UPDATERESUME);
                 break;
-            case R.id.addResume:
-                Intent intent5=new Intent(getActivity(),EditResumeActivity.class);
-                startActivity(intent5);
-                break;
+//            case R.id.addResume:
+//                Intent intent5=new Intent(getActivity(),EditResumeActivity.class);
+//                startActivity(intent5);
+//                break;
             case R.id.resume_release:
                 Intent intent4=new Intent(getActivity(),FunctionScoreActivity.class);
                 startActivity(intent4);

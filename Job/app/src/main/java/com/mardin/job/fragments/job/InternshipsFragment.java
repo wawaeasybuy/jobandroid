@@ -29,8 +29,10 @@ import com.mardin.job.activities.job.PositionSearchActivity;
 import com.mardin.job.adapters.job.JobListAdapter;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
+import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Job;
 import com.mardin.job.models.JobList;
+import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
@@ -88,7 +90,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         Address mAddress = getAddressbyGeoPoint(getActivity(), gp);
 //        address.setText("Address: " + mAddress.getCountryName() + ","
 //                + mAddress.getLocality() + "," + mAddress.getThoroughfare());
-        address.setText(mAddress.getThoroughfare());
+//        address.setText(mAddress.getThoroughfare());
         search_edit.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -111,9 +113,9 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
             }
         });
-        if(GlobalProvider.getInstance().resume.get_id()!=null){
-            LoadRecJobList();
-        }
+        rec.setText("您还未登录，请前往登录！");
+        rec.setTextColor(0xff666666);
+        LoadCandidateInfo();
     }
     public void initView(){
         lv_rec= (ListView) getActivity().findViewById(R.id.lv_rec);
@@ -142,34 +144,35 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         if(GlobalProvider.getInstance().resume.getExpectedPosition()!=null){
             retrieval=GlobalProvider.getInstance().resume.getExpectedPosition();
             params.put("retrieval",retrieval);
-        }
-        GlobalProvider globalProvider = GlobalProvider.getInstance();
-        globalProvider.get(getActivity(), Constants.jobListUrlStr, params, new RequestListener() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                parseJobList(new String(responseBody));
+            GlobalProvider globalProvider = GlobalProvider.getInstance();
+            globalProvider.get(getActivity(), Constants.jobListUrlStr, params, new RequestListener() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    parseJobList(new String(responseBody));
 //                noLogin.setVisibility(View.GONE);
 //                lv_rec.setVisibility(View.VISIBLE);
-                rec.setText("职位推荐");
-                rec.setTextColor(0xffee2400);
+                    rec.setText("职位推荐");
+                    rec.setTextColor(0xffee2400);
 
-            }
+                }
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                //Log.v("err", new String(responseBody));
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    //Log.v("err", new String(responseBody));
 //                noLogin.setVisibility(View.VISIBLE);
 //                lv_rec.setVisibility(View.GONE);
-                rec.setText("您还未登录，请前往登录！");
-                rec.setTextColor(0xff666666);
+                }
 
-            }
+                @Override
+                public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
-            @Override
-            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+                }
+            });
+        }else{
+            rec.setText("暂无可推荐职位！");
+            rec.setTextColor(0xffee2400);
+        }
 
-            }
-        });
     }
     public void parseJobList(String json){
         JsonFactory jsonFactory = new JsonFactory();
@@ -182,6 +185,39 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
             //GlobalProvider.getInstance().shangpingListDefault=mItems;
             adapter.notifyDataSetChanged();
             //do something
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void LoadCandidateInfo(){
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(getActivity(), Constants.regCanStr, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseInfo(new String(responseBody));
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+    public void parseInfo(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
+            if(candidate.resume!=null){
+                GlobalProvider.getInstance().resume=candidate.resume;
+            }
+            LoadRecJobList();
         }catch (IOException e) {
             e.printStackTrace();
         }
