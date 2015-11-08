@@ -76,11 +76,13 @@
         android:background="#c9c9c9" />
     <ListView
     android:id="@+id/lv_pull_down"
+        android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"></ListView>
 
    <ListView
        android:id="@+id/lv_all"
+
        android:layout_width="match_parent"
        android:layout_height="wrap_content"></ListView>
 

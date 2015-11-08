@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * Created by Ryo on 2015/10/7.
  */
-public class ScoreActivity extends Activity {
+public class ScoreActivity extends Activity implements View.OnClickListener {
 public RelativeLayout position_ad;
     public ImageView turn_left;
     public RelativeLayout urg;
@@ -40,7 +40,7 @@ public RelativeLayout position_ad;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_score);
         initView();
-
+        initAction();
         top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +64,17 @@ public RelativeLayout position_ad;
         turn_left = (ImageView) findViewById(R.id.turn_left);
         top= (RelativeLayout) findViewById(R.id.top);
         urg= (RelativeLayout) findViewById(R.id.urg);
+    }
+    public void initAction(){
+        turn_left.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View v) {
+   switch (v.getId()){
+       case R.id.turn_left:
+           finish();
+           break;
+   }
     }
     public void doChange(){
         RequestParams params = new RequestParams();
@@ -89,4 +100,6 @@ public RelativeLayout position_ad;
 
 
     }
+
+
 }

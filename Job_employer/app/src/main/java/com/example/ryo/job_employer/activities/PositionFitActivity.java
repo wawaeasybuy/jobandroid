@@ -91,9 +91,11 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             public void onClick(View v) {
                 if(!isShowing){
                     lv_pull_down.setVisibility(View.VISIBLE);
+                    lv_all.setVisibility(View.GONE);
                     fitHeader_Img.setImageResource(R.drawable.turn_up);
                 }else{
                     lv_pull_down.setVisibility(View.GONE);
+                    lv_all.setVisibility(View.VISIBLE);
                     fitHeader_Img.setImageResource(R.drawable.turn_down);
                 }
                 isShowing=!isShowing;
@@ -115,6 +117,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
                 }
                 fitHeader_text.setText(list.get(position).getPositionName());
                 lv_pull_down.setVisibility(View.GONE);
+                lv_all.setVisibility(View.VISIBLE);
                 fitHeader_Img.setImageResource(R.drawable.turn_down);
                 isShowing=false;
                 LoadResumeList();

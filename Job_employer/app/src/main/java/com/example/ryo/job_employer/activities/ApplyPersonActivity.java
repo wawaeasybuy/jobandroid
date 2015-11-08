@@ -54,6 +54,7 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
     //public ArrayAdapter adapter;
     public List<Job> list;
     public List<PublicResume> mItems;
+    public List<PublicResume> mItems_all;
 
     public Job JOB;
 //    private Integer mPage;
@@ -72,6 +73,7 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
 
         list=new ArrayList<Job>();
         mItems=new ArrayList<PublicResume>();
+        mItems_all=new ArrayList<PublicResume>();
 
         adapter=new PositionFitHeaderAdapter(this,list);
         adapterAll=new ApplyPersonAdapter(this,mItems);
@@ -91,9 +93,11 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
             public void onClick(View v) {
                 if(!isShowing){
                     lv_pull_down.setVisibility(View.VISIBLE);
+                    lv_all.setVisibility(View.GONE);
                     applyHeader_Img.setImageResource(R.drawable.turn_up);
                 }else{
                     lv_pull_down.setVisibility(View.GONE);
+                    lv_all.setVisibility(View.VISIBLE);
                     applyHeader_Img.setImageResource(R.drawable.turn_down);
                 }
                 isShowing=!isShowing;
@@ -106,18 +110,29 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
         lv_pull_down.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mItems.clear();
                 if(position>0){
-                    job=list.get(position).get_id();
+                    //job=list.get(position).get_id();
+                    for(int i=0;i<mItems_all.size();i++){
+                        if(list.get(position).get_id().equals(mItems_all.get(i)._job)){
+                            mItems.add(mItems_all.get(i));
+                        }
+                    }
                     //applyHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
-                    job="";
+                    //job="";
+                    for(int i=0;i<mItems_all.size();i++){
+                        mItems.add(mItems_all.get(i));
+                    }
                     //applyHeader_text.setText("全部职位");
                 }
                 applyHeader_text.setText(list.get(position).getPositionName());
                 lv_pull_down.setVisibility(View.GONE);
+                lv_all.setVisibility(View.VISIBLE);
                 applyHeader_Img.setImageResource(R.drawable.turn_down);
                 isShowing=false;
-                LoadApplyList();
+                adapterAll.notifyDataSetChanged();
+                //LoadApplyList();
             }
         });
     }
@@ -170,9 +185,13 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             ApplyPersonList applyPersonList = (ApplyPersonList) objectMapper.readValue(jsonParser, ApplyPersonList.class);
-            this.mItems.clear();
-            this.mItems.addAll(applyPersonList.resumes);
-
+//            this.mItems.clear();
+//            this.mItems.addAll(applyPersonList.resumes);
+            if(this.mItems_all.size()==0){
+                this.mItems_all.clear();
+                this.mItems_all.addAll(applyPersonList.resumes);
+                this.mItems.addAll(applyPersonList.resumes);
+            }
             if(list.size()==0){
                 if(JOB==null){JOB=new Job();JOB.setPositionName("全部职位");}
                 list.add(JOB);

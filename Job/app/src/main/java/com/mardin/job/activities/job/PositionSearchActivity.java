@@ -62,13 +62,17 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     private Hashtable<String, Hashtable<String, String[]>> hashtable;
     private String[] arrProvince, arrCity, arrRegion;
     private String province, city, region;
+    public String industryCategory="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internships_position_search);
         initView();
         initAction();
-
+        Intent intent = this.getIntent();
+        if(intent.getSerializableExtra("industryCategory")!=null){
+            industryCategory= (String) intent.getSerializableExtra("industryCategory");
+        }
         comparator = new ChinaAlphabetComparator();
         hashtable = ChinaCityUtil.initChinaCitysHashtable();
         arrProvince = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
@@ -170,6 +174,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         RequestParams params = new RequestParams();
         params.put("page", page);
         params.put("itemsPerPage", itemsPerPage);
+        params.put("industryCategory", industryCategory);
 
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {

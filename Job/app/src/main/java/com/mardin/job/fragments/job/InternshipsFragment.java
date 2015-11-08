@@ -68,6 +68,8 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
     public EditText search_edit;
     public TextView address;
+    public TextView IT;
+    public String industryCategory;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -126,6 +128,8 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
         search= ( LinearLayout) getActivity().findViewById(R.id.search);
         classify= (LinearLayout) headerView.findViewById(R.id.classify);
+        IT= (TextView) headerView.findViewById(R.id.IT);
+
         rec= (TextView) headerView.findViewById(R.id.rec);
         search_edit= (EditText) getActivity().findViewById(R.id.search_edit);
         address= (TextView) getActivity().findViewById(R.id.address);
@@ -230,7 +234,9 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.classify:
+                industryCategory="XIAOZHANG";
                 Intent intent1 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent1.putExtra("industryCategory",industryCategory);
                 startActivity(intent1);
                 break;
 //            case R.id.position_recommend:

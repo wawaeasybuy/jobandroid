@@ -49,6 +49,7 @@
                     android:layout_height="40dp" />
 
                 <TextView
+                    android:id="@+id/IT"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"

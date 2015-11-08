@@ -63,8 +63,10 @@ public class InternshipsSearchActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!input.getText().toString().equals("")) {
                     retrieval = input.getText().toString();
-                    LoadRecJobList();
+                }else{
+                    retrieval="";
                 }
+                LoadRecJobList();
             }
 
             @Override
