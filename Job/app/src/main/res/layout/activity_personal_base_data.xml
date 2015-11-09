@@ -97,8 +97,7 @@
             <LinearLayout
                 android:id="@+id/male"
                 android:layout_width="0dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
+
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -112,9 +111,11 @@
                       android:src="@drawable/male"/>
 
                 <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/male_t"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:text="@string/male" />
 
@@ -128,11 +129,10 @@
             <LinearLayout
                 android:id="@+id/female"
                 android:layout_width="0dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
+
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_gravity="center"
+
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -143,9 +143,11 @@
                     android:src="@drawable/female"/>
 
                 <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/female_t"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:text="@string/female" />
 
@@ -183,6 +185,7 @@
                 android:id="@+id/tel"
                 android:background="#ffffff"
                 android:hint="@string/base_data_residence_"
+                android:textSize="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -215,6 +218,7 @@
                 android:id="@+id/address"
                 android:background="#ffffff"
                 android:hint="@string/base_data_residence_"
+                android:textSize="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -247,6 +251,7 @@
                 android:id="@+id/birth"
                 android:background="#ffffff"
                 android:hint="@string/base_data_residence_"
+                android:textSize="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

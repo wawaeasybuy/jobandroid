@@ -14,6 +14,7 @@
         <LinearLayout
             android:id="@+id/turn_left"
             android:clickable="true"
+            android:paddingLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -137,7 +138,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/add"
+                        android:src="@drawable/jiahao"
                         android:layout_weight="1" />
 
                     <TextView
@@ -309,7 +310,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/add"
+                        android:src="@drawable/jiahao"
                         android:layout_weight="1" />
 
                     <TextView
@@ -460,7 +461,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/add"
+                        android:src="@drawable/jiahao"
                         android:layout_weight="1" />
 
                     <TextView
@@ -626,7 +627,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/add"
+                        android:src="@drawable/jiahao"
                         android:layout_weight="1" />
 
                     <TextView

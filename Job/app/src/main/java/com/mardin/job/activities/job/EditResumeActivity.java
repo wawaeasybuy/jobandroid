@@ -242,15 +242,15 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
 
     public void doUpdateResume(){
         resume= GlobalProvider.getInstance().resume;
-        if(resume.getName()!=null||resume.getTel()!=null||resume.getAddress()!=null||resume.getBirth()!=null){
+        if((resume.getName()!=null&&!resume.getName().equals(""))||(resume.getTel()!=null&&!resume.getTel().equals(""))||(resume.getAddress()!=null&&!resume.getAddress().equals(""))||(resume.getBirth()!=null&&!resume.getBirth().equals(""))){
             no_personal_base_info.setVisibility(View.GONE);
             personal_base_info.setVisibility(View.VISIBLE);
-            if(resume.getName()!=null){name.setText("姓名: "+resume.getName());}else{name.setText("姓名: 未填写");}
-            if(resume.getTel()!=null){tel.setText("联系方式: "+resume.getTel());}else{tel.setText("联系方式: 未填写");}
-            if(resume.getAddress()!=null){address.setText("居住地: "+resume.getAddress());}else{address.setText("居住地: 未填写");}
-            if(resume.getBirth()!=null){birth.setText("出生年月: "+resume.getBirth());}else{birth.setText("出生年月: 未填写");}
+            if(resume.getName()!=null&&!resume.getName().equals("")){name.setText("姓名: "+resume.getName());}else{name.setText("姓名: 未填写");}
+            if(resume.getTel()!=null&&!resume.getTel().equals("")){tel.setText("联系方式: "+resume.getTel());}else{tel.setText("联系方式: 未填写");}
+            if(resume.getAddress()!=null&&!resume.getAddress().equals("")){address.setText("居住地: "+resume.getAddress());}else{address.setText("居住地: 未填写");}
+            if(resume.getBirth()!=null&&!resume.getBirth().equals("")){birth.setText("出生年月: "+resume.getBirth());}else{birth.setText("出生年月: 未填写");}
 
-            if(resume.getName()!=null&&resume.getTel()!=null&&resume.getAddress()!=null&&resume.getBirth()!=null){
+            if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")){
                 personal_base_info_nofill.setText("已完善");
                 clickToFillBaseInfo.setText("(点击修改)");
                 //personal_base_info_nofill.setClickable(true);
@@ -264,14 +264,14 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             no_personal_base_info.setVisibility(View.VISIBLE);
             personal_base_info.setVisibility(View.GONE);
         }
-        if(resume.getExpectedIndustry()!=null||resume.getExpectedPosition()!=null||resume.getExpectedAddress()!=null){
+        if((resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals(""))||(resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals(""))||(resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals(""))){
             no_job_intention.setVisibility(View.GONE);
             job_intention.setVisibility(View.VISIBLE);
-            if(resume.getExpectedIndustry()!=null){expectedIndustry.setText("期望行业: "+resume.getExpectedIndustry());}else{expectedIndustry.setText("期望行业: 未填写");}
-            if(resume.getExpectedPosition()!=null){expectedPosition.setText("期望职位: "+resume.getExpectedPosition());}else{expectedPosition.setText("期望职位: 未填写");}
-            if(resume.getExpectedAddress()!=null){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress());}else{expectedAddress.setText("期望工作地点: 未填写");}
+            if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")){expectedIndustry.setText("期望行业: "+resume.getExpectedIndustry());}else{expectedIndustry.setText("期望行业: 未填写");}
+            if(resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")){expectedPosition.setText("期望职位: "+resume.getExpectedPosition());}else{expectedPosition.setText("期望职位: 未填写");}
+            if(resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress());}else{expectedAddress.setText("期望工作地点: 未填写");}
 
-            if(resume.getExpectedIndustry()!=null&&resume.getExpectedPosition()!=null&&resume.getExpectedAddress()!=null){
+            if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")){
                 job_intention_nofill.setText("已完善");
                 clickToFillJobIntent.setText("(点击修改)");
                 //job_intention_nofill.setClickable(false);
@@ -284,16 +284,16 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             no_job_intention.setVisibility(View.VISIBLE);
             job_intention.setVisibility(View.GONE);
         }
-        if(resume.getSchoolName()!=null||resume.getProfessional()!=null||resume.getGraduationTime()!=null||resume.getGrade()!=null||resume.getInternshipExprience()!=null){
+        if((resume.getSchoolName()!=null&&!resume.getSchoolName().equals(""))||(resume.getProfessional()!=null&&!resume.getProfessional().equals(""))||(resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals(""))||(resume.getGrade()!=null&&!resume.getGrade().equals(""))||(resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals(""))){
             no_education_info.setVisibility(View.GONE);
             education_info.setVisibility(View.VISIBLE);
-            if(resume.getSchoolName()!=null){schoolName.setText("学校名称: "+resume.getSchoolName());}else{schoolName.setText("学校名称: 未填写");}
-            if(resume.getProfessional()!=null){professional.setText("专业名称: "+resume.getProfessional());}else{professional.setText("学校名称: 未填写");}
-            if(resume.getGraduationTime()!=null){graduationTime.setText("毕业时间: "+resume.getGraduationTime());}else{graduationTime.setText("学校名称: 未填写");}
-            if(resume.getGrade()!=null){grade.setText("成绩排名: "+resume.getGrade());}else{grade.setText("学校名称: 未填写");}
-            if(resume.getInternshipExprience()!=null){internshipExprience.setText("在校实践: "+resume.getInternshipExprience());}else{internshipExprience.setText("学校名称: 未填写");}
+            if(resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")){schoolName.setText("学校名称: "+resume.getSchoolName());}else{schoolName.setText("学校名称: 未填写");}
+            if(resume.getProfessional()!=null&&!resume.getProfessional().equals("")){professional.setText("专业名称: "+resume.getProfessional());}else{professional.setText("学校名称: 未填写");}
+            if(resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")){graduationTime.setText("毕业时间: "+resume.getGraduationTime());}else{graduationTime.setText("毕业时间: 未填写");}
+            if(resume.getGrade()!=null&&!resume.getGrade().equals("")){grade.setText("成绩排名: "+resume.getGrade());}else{grade.setText("成绩排名: 未填写");}
+            if(resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")){internshipExprience.setText("在校实践: "+resume.getInternshipExprience());}else{internshipExprience.setText("在校实践: 未填写");}
 
-            if(resume.getSchoolName()!=null&&resume.getProfessional()!=null&&resume.getGraduationTime()!=null&&resume.getGrade()!=null&&resume.getInternshipExprience()!=null){
+            if(resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")){
                 education_info_nofill.setText("已完善");
                 clickToFillEducationInfo.setText("(点击修改)");
                 //education_info_nofill.setClickable(false);
@@ -307,14 +307,14 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             no_education_info.setVisibility(View.VISIBLE);
             education_info.setVisibility(View.GONE);
         }
-        if(resume.getSelfEvaluation()!=null||resume.getExperience()!=null||resume.getWorks()!=null){
+        if((resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals(""))||(resume.getExperience()!=null&&!resume.getExperience().equals(""))||(resume.getWorks()!=null&&!resume.getWorks().equals(""))){
             important_info.setVisibility(View.VISIBLE);
             no_important_info.setVisibility(View.GONE);
-            if(resume.getSelfEvaluation()!=null){selfEvaluation.setText("自我评价: "+resume.getSelfEvaluation());}else{selfEvaluation.setText("自我评价: 未填写");}
-            if(resume.getExperience()!=null){experience.setText("实习经历: "+resume.getExperience());}
-            if(resume.getWorks()!=null){works.setText("作品附件: "+resume.getWorks());}
+            if(resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){selfEvaluation.setText("自我评价: "+resume.getSelfEvaluation());}else{selfEvaluation.setText("自我评价: 未填写");}
+            if(resume.getExperience()!=null&&!resume.getExperience().equals("")){experience.setText("实习经历: "+resume.getExperience());}
+            if(resume.getWorks()!=null&&!resume.getWorks().equals("")){works.setText("作品附件: "+resume.getWorks());}
 
-            if(resume.getSelfEvaluation()!=null&&resume.getExperience()!=null&&resume.getWorks()!=null){
+            if(resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")&&resume.getExperience()!=null&&!resume.getExperience().equals("")&&resume.getWorks()!=null&&!resume.getWorks().equals("")){
                 important_info_nofill.setText("已完善");
                 clickToFillImportanteInfo.setText("(点击修改)");
                 //important_info_nofill.setClickable(false);

@@ -22,14 +22,17 @@ import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.models.JobFitList;
 import com.example.ryo.job_employer.models.JobList;
+import com.example.ryo.job_employer.models.PositionFitUpdateBody;
 import com.example.ryo.job_employer.models.Resume;
 import com.example.ryo.job_employer.network.Constants;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.entity.ByteArrayEntity;
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -74,7 +77,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         mItems=new ArrayList<Resume>();
 
         adapter=new PositionFitHeaderAdapter(this,list);
-        adapterAll=new PositionFitAllAdapter(this,mItems);
+        adapterAll=new PositionFitAllAdapter(this,mItems,list);
         //adapterOne=new PositionFitOneAdapter(this,mItems);
 
         lv_pull_down.setAdapter(adapter);
@@ -195,11 +198,19 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         }
     }
     public void PositionFitUpdate(final Resume resume){
-        RequestParams params = new RequestParams();
-        params.put("employerId",GlobalProvider.getInstance().employerId );
+        PositionFitUpdateBody body=new PositionFitUpdateBody();
+        body.setEmployerId(GlobalProvider.getInstance().employerId);
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
+        String json = "";
+        try {
+            json = ow.writeValueAsString(body);
+            ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         String Url=Constants.PositionFitUpdateStr+"/"+resume.get_id();
-        globalProvider.put(this, Url, params, new RequestListener() {
+        globalProvider.put(this, Url, entity,"application/json", new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 GlobalProvider.getInstance().isAllowToTalent=false;
@@ -217,6 +228,9 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
 
             }
         });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void PositionFitIgnore(final String id){
         RequestParams params = new RequestParams();

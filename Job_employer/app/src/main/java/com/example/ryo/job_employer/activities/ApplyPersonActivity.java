@@ -233,15 +233,17 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
 //        });
 //    }
     public void ApplyPersonIgnore(final String id){
-        RequestParams params = new RequestParams();
-        params.put("id",id );
-        params.put("_employer",GlobalProvider.getInstance().employerId);
-
+        //params.put("_employer",GlobalProvider.getInstance().employerId);
         GlobalProvider globalProvider = GlobalProvider.getInstance();
-        globalProvider.delete(this, Constants.ApplyPersonIgnoreStr, params, new RequestListener() {
+        String Url=Constants.ApplyPersonStr+"/"+id;
+        globalProvider.delete(this, Url,new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                mItems_all.clear();
+                mItems.clear();
+                list.clear();
                 LoadApplyList();
+
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {

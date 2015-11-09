@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.DoReleaseBody;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.Job;
@@ -19,6 +20,12 @@ import com.example.ryo.job_employer.network.Constants;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.entity.ByteArrayEntity;
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
+
+import java.io.IOException;
 
 /**
  * Created by Ryo on 2015/9/22.
@@ -30,6 +37,8 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
     public TextView topOpen;
     public TextView urgOpen;
     public int state;
+    public int stateTop;
+    public int stateUrg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,31 +64,37 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
             if (job.getIsTop()) {
                 topOpen.setText("已开通");
                 topOpen.setTextColor(0xff666666);
-                topOpen.setClickable(false);
+                stateTop=1;
+                //topOpen.setClickable(false);
             } else {
                 topOpen.setText("开通");
                 topOpen.setTextColor(0xff0080fe);
-                topOpen.setClickable(true);
+                stateTop=0;
+                //topOpen.setClickable(true);
             }
         }else{
             topOpen.setText("开通");
             topOpen.setTextColor(0xff0080fe);
-            topOpen.setClickable(true);
+            stateTop=0;
+            //topOpen.setClickable(true);
         }
         if(job.getIsUrg()!=null) {
             if (job.getIsUrg()) {
                 urgOpen.setText("已开通");
                 urgOpen.setTextColor(0xff666666);
-                urgOpen.setClickable(false);
+                stateUrg=1;
+                //urgOpen.setClickable(false);
             } else {
                 urgOpen.setText("开通");
                 urgOpen.setTextColor(0xff0080fe);
-                urgOpen.setClickable(true);
+                stateUrg=0;
+                //urgOpen.setClickable(true);
             }
         }else {
             urgOpen.setText("开通");
             urgOpen.setTextColor(0xff0080fe);
-            urgOpen.setClickable(true);
+            stateUrg=0;
+            //urgOpen.setClickable(true);
         }
 
     }
@@ -98,38 +113,55 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
         switch (v.getId()){
             case R.id.topOpen:
                 key="top";
-                state=1;
+                //state=1;
+                state=stateTop;
                 doExcute();
                 break;
             case R.id.urgOpen:
                 key="urg";
-                state=1;
+                state=stateUrg;
+                //state=1;
                 doExcute();
                 break;
         }
     }
     public void doExcute(){
-            RequestParams params = new RequestParams();
-            params.put("key",key );
-            params.put("state",state);
+        DoReleaseBody body=new DoReleaseBody();
+        body.setKey(key);
+        body.setState(state);
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
+        String json = "";
+        try {
+            json = ow.writeValueAsString(body);
+            ByteArrayEntity entity = new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
-            String url=Constants.PositionStr+"/"+job.get_id();
-            globalProvider.put(this,url, params, new RequestListener() {
+            String URL = Constants.PositionStr + "/" + job.get_id();
+            globalProvider.put(this, URL, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    Toast.makeText(PositionAdActivity.this,"推广成功",Toast.LENGTH_SHORT).show();
-                    setResult(Activity.RESULT_OK);
-                    finish();
+                    Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+                    //parseLoginResult(new String(responseBody));
+                    //loadjobList();
+                    doResult();
                 }
+
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    //Log.v("err", new String(responseBody));
+                    //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
+
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
-
                 }
             });
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void doResult(){
+        this.setResult(Activity.RESULT_OK);
+        this.finish();
     }
 }

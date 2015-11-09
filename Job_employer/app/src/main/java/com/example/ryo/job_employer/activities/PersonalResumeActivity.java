@@ -41,10 +41,16 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
     public Resume resume;
     public PublicResume Pubresume;
     public TextView name;
+    public TextView name_one;
     public TextView birth;
     public TextView address;
     public TextView tel;
     public TextView add_talent;
+
+    public TextView schoolName;
+    public TextView professional;
+    public TextView graduationTime;
+    public TextView grade;
     public TextView experience;
     public TextView selfEvaluation;
     public TextView internshipExprience;
@@ -65,13 +71,23 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
         {
             add_talent.setVisibility(View.GONE);
             resume = (Resume)intent.getSerializableExtra("resume");
-            if(resume.getName()!=null){name.setText(resume.getName());}
+            if(resume.getName()!=null){
+                name.setText(resume.getName());
+                name_one.setText(resume.getName());
+            }else{
+                name.setText("Œ¥ÃÓ–¥");
+                name_one.setText("Œ¥ÃÓ–¥");
+            }
             if(resume.getBirth()!=null){birth.setText(resume.getBirth().toString());}
             if(resume.getAddress()!=null){address.setText(resume.getAddress());}
             if(resume.getTel()!=null){tel.setText(resume.getTel());}
-            if(resume.getExperience()!=null){experience.setText(resume.getExperience());}
-            if(resume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}
-            if(resume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}
+            if(resume.getSchoolName()!=null) {schoolName.setText(resume.getSchoolName());}else{schoolName.setText("");}
+            if(resume.getGraduationTime()!=null){graduationTime.setText(resume.getGraduationTime());}else{graduationTime.setText("");}
+            if(resume.getProfessional()!=null){professional.setText(resume.getProfessional());}else{professional.setText("");}
+            if(resume.getGrade()!=null){grade.setText(resume.getGrade());}else{grade.setText("");}
+            if(resume.getExperience()!=null){experience.setText(resume.getExperience());}else{experience.setText("");}
+            if(resume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}else{internshipExprience.setText("");}
+            if(resume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}else{selfEvaluation.setText("");}
         }else{
             Pubresume = (PublicResume)intent.getSerializableExtra("Pubresume");
             if(Pubresume.getIsTalent()){
@@ -79,14 +95,31 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
             }else{
                 add_talent.setVisibility(View.VISIBLE);
             }
-            if(Pubresume.getName()!=null){name.setText(Pubresume.getName());}
+//            if(Pubresume.getName()!=null){name.setText(Pubresume.getName());}
+//            if(Pubresume.getBirth()!=null){birth.setText(Pubresume.getBirth().toString());}
+//            if (Pubresume.getAddress()!=null){address.setText(Pubresume.getAddress());}
+//            if (Pubresume.getTel()!=null){tel.setText(Pubresume.getTel());}
+//            if(Pubresume.getExperience()!=null){experience.setText(Pubresume.getExperience());}
+//            if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(Pubresume.getInternshipExprience());}
+//            if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(Pubresume.getSelfEvaluation());}
+
+            if(Pubresume.getName()!=null){
+                name.setText(Pubresume.getName());
+                name_one.setText(Pubresume.getName());
+            }else{
+                name.setText("Œ¥ÃÓ–¥");
+                name_one.setText("Œ¥ÃÓ–¥");
+            }
             if(Pubresume.getBirth()!=null){birth.setText(Pubresume.getBirth().toString());}
             if(Pubresume.getAddress()!=null){address.setText(Pubresume.getAddress());}
             if(Pubresume.getTel()!=null){tel.setText(Pubresume.getTel());}
-            if(Pubresume.getExperience()!=null){experience.setText(Pubresume.getExperience());}
-            if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(Pubresume.getInternshipExprience());}
-            if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(Pubresume.getSelfEvaluation());}
-
+            if(Pubresume.getSchoolName()!=null) {schoolName.setText(Pubresume.getSchoolName());}else{schoolName.setText("");}
+            if(Pubresume.getGraduationTime()!=null){graduationTime.setText(Pubresume.getGraduationTime());}else{graduationTime.setText("");}
+            if(Pubresume.getProfessional()!=null){professional.setText(Pubresume.getProfessional());}else{professional.setText("");}
+            if(Pubresume.getGrade()!=null){grade.setText(Pubresume.getGrade());}else{grade.setText("");}
+            if(Pubresume.getExperience()!=null){experience.setText(Pubresume.getExperience());}else{experience.setText("");}
+            if(Pubresume.getInternshipExprience()!=null){internshipExprience.setText(Pubresume.getInternshipExprience());}else{internshipExprience.setText("");}
+            if(Pubresume.getSelfEvaluation()!=null){selfEvaluation.setText(Pubresume.getSelfEvaluation());}else{selfEvaluation.setText("");}
 
 
         }
@@ -94,10 +127,15 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
     private void initView() {
         turn_left = (ImageView) findViewById(R.id.turn_left);
         name= (TextView) findViewById(R.id.name);
+        name_one= (TextView) findViewById(R.id.name_one);
         birth= (TextView) findViewById(R.id.birth);
         address= (TextView) findViewById(R.id.address);
         tel= (TextView) findViewById(R.id.tel);
         add_talent= (TextView) findViewById(R.id.add_talent);
+        schoolName= (TextView) findViewById(R.id.schoolName);
+        professional= (TextView) findViewById(R.id.professional);
+        graduationTime= (TextView) findViewById(R.id.graduationTime);
+        grade= (TextView) findViewById(R.id.grade);
         experience= (TextView) findViewById(R.id.experience);
         internshipExprience= (TextView) findViewById(R.id.internshipExprience);
         selfEvaluation= (TextView) findViewById(R.id.selfEvaluation);

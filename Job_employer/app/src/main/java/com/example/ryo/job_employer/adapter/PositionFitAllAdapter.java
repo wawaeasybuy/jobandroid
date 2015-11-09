@@ -29,10 +29,12 @@ import java.util.List;
  */
 public class PositionFitAllAdapter extends BaseAdapter{
     private List<Resume> Data;
+    private List<Job> list;
     private Context context;
-    public PositionFitAllAdapter(Context context,List Data){
+    public PositionFitAllAdapter(Context context,List Data,List list){
         this.context=context;
         this.Data=Data;
+        this.list=list;
     }
     @Override
     public int getCount() {
@@ -55,6 +57,7 @@ public class PositionFitAllAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.position_fit_all_list_item, null);
             holder = new ViewHolder();
             holder.name= (TextView) convertView.findViewById(R.id.name);
+            holder.positionName= (TextView) convertView.findViewById(R.id.positionName);
             holder.testValue= (TextView) convertView.findViewById(R.id.testValue);
             holder.schoolName= (TextView) convertView.findViewById(R.id.schoolName);
             holder.chakan= (TextView) convertView.findViewById(R.id.chakan);
@@ -64,6 +67,11 @@ public class PositionFitAllAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+            for(int i=1;i<list.size();i++){
+                if(resume.getExpectedIndustry().equals(list.get(i).getIndustryCategory())){
+                    holder.positionName.setText("急求"+list.get(i).getPositionName());
+                }
+            }
             holder.name.setText(resume.getName());
             holder.testValue.setText("职业测评分 ："+resume._candidate.getTestValue());
             holder.schoolName.setText(resume.getSchoolName());
@@ -90,6 +98,7 @@ public class PositionFitAllAdapter extends BaseAdapter{
     }
     class ViewHolder {
         public TextView name;
+        public TextView positionName;
         public TextView testValue;
         public TextView schoolName;
         public TextView chakan;

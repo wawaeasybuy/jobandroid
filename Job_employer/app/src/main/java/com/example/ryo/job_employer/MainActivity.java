@@ -87,7 +87,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.score:
                 Intent intent1 = new Intent( MainActivity.this, ScoreActivity.class);
-                startActivity(intent1);
+                startActivityForResult(intent1, Constants.SCOREINTENT);
                 break;
             case R.id.my_position:
                 Intent intent2 = new Intent( MainActivity.this, MyPositionActivity.class);
@@ -130,6 +130,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case Constants.UpdateInfoIntent:
+                if(resultCode == RESULT_OK){
+                    LoadPersonalInfo();
+                }
+                break;
+            case Constants.SCOREINTENT:
                 if(resultCode == RESULT_OK){
                     LoadPersonalInfo();
                 }

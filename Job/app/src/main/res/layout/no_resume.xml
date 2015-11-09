@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/sxbz_tianjia"/>
+            android:src="@drawable/jiahao"/>
         <TextView
             android:text="点击创建简历"
             android:paddingTop="10dp"

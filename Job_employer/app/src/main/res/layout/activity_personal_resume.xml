@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textSize="13dp"
-
+                        android:id="@+id/name_one"
                         android:text="@string/apply_person_name" />
 
                     <LinearLayout
@@ -226,10 +226,7 @@
                         android:textColor="#0080fe"
                         android:text="@string/education"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/my_position_nc"/>
+
 
                 </LinearLayout>
 
@@ -386,10 +383,7 @@
                         android:textColor="#0080fe"
                         android:text="@string/self_evaluate"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/my_position_nc"/>
+
 
                 </LinearLayout>
 
@@ -445,10 +439,7 @@
                         android:textColor="#0080fe"
                         android:text="@string/internship_experience"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/my_position_nc"/>
+
 
                 </LinearLayout>
 

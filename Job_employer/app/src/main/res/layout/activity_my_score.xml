@@ -59,6 +59,7 @@
                 android:src="@drawable/sxbz_jfbg" />
 
             <TextView
+                android:id="@+id/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
