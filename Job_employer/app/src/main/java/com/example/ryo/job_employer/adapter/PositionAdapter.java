@@ -30,6 +30,7 @@ import java.util.List;
 public class PositionAdapter extends BaseAdapter{
     private List<Job> Data;
     private Context context;
+    public int state;
 
     public PositionAdapter(Context context,List data){
     this.Data=data;
@@ -67,15 +68,24 @@ public class PositionAdapter extends BaseAdapter{
             holder.tuiguang= (LinearLayout) convertView.findViewById(R.id.tuiguang);
             holder.fenxiang= (LinearLayout) convertView.findViewById(R.id.fenxiang);
             holder.openImg= (ImageView) convertView.findViewById(R.id.openImg);
+            holder.openText= (TextView) convertView.findViewById(R.id.openText);
             holder.tuiguangImg= (ImageView) convertView.findViewById(R.id.tuiguangImg);
             holder.fenxiangImg= (ImageView) convertView.findViewById(R.id.fenxiangImg);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-            holder.positionName.setText("急求"+job.getPositionName());
+            holder.positionName.setText("急求" + job.getPositionName());
             holder.updateTime.setText(ConverToString(job.getTimeUpdate()));
             //if(job.getIsRelease()){}else{}
+
+        if(job.getIsRelease()){
+            holder.openImg.setImageResource(R.drawable.locked);
+            holder.openText.setText("已公开");
+        }else{
+            holder.openImg.setImageResource(R.drawable.unlocked);
+            holder.openText.setText("公开");
+        }
 
            holder.tuiguang.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -83,6 +93,17 @@ public class PositionAdapter extends BaseAdapter{
                    Intent intent=new Intent(context, PositionAdActivity.class);
                    intent.putExtra("job",job);
                    ((MyPositionActivity)context).startActivityForResult(intent, Constants.TUIGUANGINTENT);
+               }
+           });
+           holder.open.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   if(job.getIsRelease()==null||!job.getIsRelease()){
+                       state=0;
+                   }else{
+                       state=1;
+                   }
+                   ((MyPositionActivity)context).doRelease(job.get_id(),state);
                }
            });
             holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +141,7 @@ public class PositionAdapter extends BaseAdapter{
         public ImageView openImg;
         public ImageView tuiguangImg;
         public ImageView fenxiangImg;
+        public TextView openText;
     }
 
 }

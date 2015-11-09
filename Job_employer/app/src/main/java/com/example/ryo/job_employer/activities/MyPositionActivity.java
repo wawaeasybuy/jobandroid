@@ -163,6 +163,31 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             }
         });
     }
+    public void doRelease(String id,int state){
+        RequestParams params = new RequestParams();
+        params.put("key", "release");
+        params.put("state", state);
 
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        String Url=Constants.CreateJobStr+"/"+id;
+        globalProvider.put(this, Url, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                parseRelease(new String(responseBody));
+                loadjobList();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+
+            }
+
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
 
 }

@@ -148,7 +148,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.v("err", new String(responseBody));
+                //Log.v("err", new String(responseBody));
                 //mSwipeRefreshlayout.setRefreshing(false);
             }
             @Override
