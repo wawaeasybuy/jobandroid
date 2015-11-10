@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.google.android.maps.GeoPoint;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
+import com.mardin.job.Utils.PositionIndustryUtil;
 import com.mardin.job.activities.job.InternshipsSearchActivity;
 import com.mardin.job.activities.job.PositionDetailActivity;
 import com.mardin.job.activities.job.PositionSearchActivity;
@@ -43,6 +45,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,8 +71,22 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
     public EditText search_edit;
     public TextView address;
-    public TextView IT;
+    public LinearLayout IT;
+    public LinearLayout bank;
+    public LinearLayout house;
+    public LinearLayout industry;
+    public LinearLayout hospital;
+    public LinearLayout ad;
+    public LinearLayout outBuy;
+    public LinearLayout other;
+
+
+
     public String industryCategory;
+
+    public String[] arr;
+    public String[] array;
+    public Hashtable<String,String[]> hashtable;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -86,7 +103,9 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         adapter=new JobListAdapter(getActivity(),mItems);
         initView();
         initAction();
-
+//        hashtable= PositionIndustryUtil.initPositionIndustryHashtable();
+//        arr= PositionIndustryUtil.getIndustryCategory(hashtable);
+//        array=PositionIndustryUtil.getPositionCategory(hashtable,arr[1]);
         Location mLocation = getLocation(getActivity());
         GeoPoint gp = getGeoByLocation(mLocation);
         Address mAddress = getAddressbyGeoPoint(getActivity(), gp);
@@ -97,12 +116,12 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    Intent intent=new Intent(getActivity(),InternshipsSearchActivity.class);
+                    Intent intent = new Intent(getActivity(), InternshipsSearchActivity.class);
                     startActivity(intent);
                 }
             }
         });
-        lv_rec.addHeaderView(headerView);
+        lv_rec.addHeaderView(headerView, null, true);
         lv_rec.setAdapter(adapter);
         lv_rec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -115,6 +134,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
             }
         });
+        lv_rec.setHeaderDividersEnabled(false);
         rec.setText("您还未登录，请前往登录！");
         rec.setTextColor(0xff666666);
         LoadCandidateInfo();
@@ -128,7 +148,17 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
         search= ( LinearLayout) getActivity().findViewById(R.id.search);
         classify= (LinearLayout) headerView.findViewById(R.id.classify);
-        IT= (TextView) headerView.findViewById(R.id.IT);
+        IT= (LinearLayout) headerView.findViewById(R.id.IT);
+        bank= (LinearLayout) headerView.findViewById(R.id.bank);
+        house= (LinearLayout) headerView.findViewById(R.id.house);
+        industry= (LinearLayout) headerView.findViewById(R.id.industry);
+        hospital= (LinearLayout) headerView.findViewById(R.id.hospital);
+        ad= (LinearLayout) headerView.findViewById(R.id.ad);
+        outBuy= (LinearLayout) headerView.findViewById(R.id.outBuy);
+        other= (LinearLayout) headerView.findViewById(R.id.other);
+
+
+
 
         rec= (TextView) headerView.findViewById(R.id.rec);
         search_edit= (EditText) getActivity().findViewById(R.id.search_edit);
@@ -138,7 +168,19 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
     }
     public void initAction(){
         search.setOnClickListener(this);
-        classify.setOnClickListener(this);
+        IT.setOnClickListener(this);
+        bank.setOnClickListener(this);
+        house.setOnClickListener(this);
+        industry.setOnClickListener(this);
+        hospital.setOnClickListener(this);
+        ad.setOnClickListener(this);
+        outBuy.setOnClickListener(this);
+        other.setOnClickListener(this);
+
+
+
+
+        //classify.setOnClickListener(this);
         // position_recommend.setOnClickListener(this);
     }
     public void LoadRecJobList(){
@@ -233,11 +275,59 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 Intent intent = new Intent(getActivity(), InternshipsSearchActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.classify:
-                industryCategory="XIAOZHANG";
-                Intent intent1 = new Intent(getActivity(), PositionSearchActivity.class);
-                intent1.putExtra("industryCategory",industryCategory);
-                startActivity(intent1);
+//            case R.id.classify:
+//                industryCategory="XIAOZHANG";
+//                Intent intent1 = new Intent(getActivity(), PositionSearchActivity.class);
+//                intent1.putExtra("industryCategory",industryCategory);
+//                startActivity(intent1);
+//                break;
+            case R.id.IT:
+                industryCategory="IT|互联网|通信";
+                Intent intent2 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent2.putExtra("industryCategory",industryCategory);
+                startActivity(intent2);
+                break;
+            case R.id.bank:
+                industryCategory="金融";
+                Intent intent3 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent3.putExtra("industryCategory",industryCategory);
+                startActivity(intent3);
+                break;
+            case R.id.house:
+                industryCategory="房产|建筑|物业管理";
+                Intent intent4 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent4.putExtra("industryCategory",industryCategory);
+                startActivity(intent4);
+                break;
+            case R.id.industry:
+                industryCategory="生产|制造";
+                Intent intent5 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent5.putExtra("industryCategory",industryCategory);
+                startActivity(intent5);
+                break;
+            case R.id.hospital:
+                industryCategory="服务业";
+                Intent intent6 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent6.putExtra("industryCategory",industryCategory);
+                startActivity(intent6);
+                break;
+            case R.id.ad:
+                industryCategory="传媒|印刷|艺术|设计";
+                Intent intent7 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent7.putExtra("industryCategory",industryCategory);
+                startActivity(intent7);
+                break;
+            case R.id.outBuy:
+                industryCategory="服务业";
+                Intent intent8 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent8.putExtra("industryCategory",industryCategory);
+                startActivity(intent8);
+                break;
+            case R.id.other:
+                industryCategory="兼职|实习|社工|其他";
+                Intent intent9 = new Intent(getActivity(), PositionSearchActivity.class);
+                intent9.putExtra("industryCategory",industryCategory);
+                startActivity(intent9);
                 break;
 //            case R.id.position_recommend:
 //                Intent intent2 = new Intent(getActivity(), PositionDetailActivity.class);

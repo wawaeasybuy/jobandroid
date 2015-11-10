@@ -80,12 +80,13 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/expectedIndustry_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:paddingRight="20dp"
+
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -95,15 +96,19 @@
                 android:layout_weight="1"
                 android:text="@string/intention_expect_trade"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/expectedIndustry"
                 android:background="#ffffff"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="10dp"
-                android:hint="@string/intention_expect_trade_"/>
-
+                android:layout_marginRight="5dp"
+                />
+             <ImageView
+                 android:layout_marginRight="10dp"
+                android:background="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
 
         </LinearLayout>
@@ -116,12 +121,13 @@
             android:background="#f9f9f9" />
 
         <LinearLayout
+            android:id="@+id/expectedPosition_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:paddingRight="20dp"
+
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -131,15 +137,19 @@
                 android:layout_weight="1"
                 android:text="@string/intention_expect_position"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/expectedPosition"
                 android:background="#ffffff"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="10dp"
-                android:hint="@string/intention_expect_trade_"/>
-
+                android:layout_marginRight="5dp"
+                />
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:background="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
         </LinearLayout>
 
         <ImageView
@@ -150,12 +160,13 @@
             android:background="#f9f9f9" />
 
         <LinearLayout
+            android:id="@+id/expectedAddress_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:paddingRight="20dp"
+
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -169,10 +180,11 @@
                 android:id="@+id/expectedAddress"
                 android:background="#ffffff"
                 android:textSize="14dp"
+                android:hint="点击输入"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="10dp"
-                android:hint="@string/intention_expect_trade_"/>
+                android:layout_marginRight="20dp"
+               />
 
         </LinearLayout>
 

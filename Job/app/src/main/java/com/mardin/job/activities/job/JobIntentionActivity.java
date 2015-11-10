@@ -1,7 +1,9 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.MotionEvent;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
+import com.mardin.job.Utils.PositionIndustryUtil;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Resume;
@@ -27,25 +30,95 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
 /**
  * Created by Ryo on 2015/9/15.
  */
 public class JobIntentionActivity extends Activity {
-    public EditText expectedIndustry;
-    public EditText expectedPosition;
+    public TextView expectedIndustry;
+    public TextView expectedPosition;
     public EditText expectedAddress;
+
+    public LinearLayout expectedIndustry_layout;
+    public LinearLayout expectedPosition_layout;
+    public LinearLayout expectedAddress_layout;
     public TextView save;
      public Resume resume;
+
+    public Hashtable<String,String[]> hashtable;
+    public String[] industry_arr;
+    public String[] position_arr;
+
+    public int chooseItem_industry;
+    public int getChooseItem_position;
     //public static String employerId="5628474a583221f00507653b";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_job_intention);
-        expectedIndustry= (EditText) findViewById(R.id.expectedIndustry);
-        expectedPosition= (EditText) findViewById(R.id.expectedPosition);
+
+        hashtable= PositionIndustryUtil.initPositionIndustryHashtable();
+        industry_arr=PositionIndustryUtil.getIndustryCategory(hashtable);
+
+        expectedIndustry= (TextView) findViewById(R.id.expectedIndustry);
+        expectedPosition= (TextView) findViewById(R.id.expectedPosition);
         expectedAddress= (EditText) findViewById(R.id.expectedAddress);
-        save= (TextView) findViewById(R.id.save);
+
+        expectedAddress_layout= (LinearLayout) findViewById(R.id.expectedAddress_layout);
+        expectedIndustry_layout= (LinearLayout) findViewById(R.id.expectedIndustry_layout);
+        expectedPosition_layout= (LinearLayout) findViewById(R.id.expectedPosition_layout);
+
+        expectedIndustry_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(JobIntentionActivity.this)
+                        .setSingleChoiceItems(industry_arr, 0,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        chooseItem_industry = which;
+                                    }
+                                }
+                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        expectedIndustry.setText(industry_arr[chooseItem_industry]);
+                        expectedPosition.setText("");
+                        //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                        //shipingAdress_Str=items_shiping[chooseItem_one];
+                    }
+                }).setNegativeButton("取消",null)
+                        .show();
+            }
+        });
+        expectedPosition_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                position_arr=PositionIndustryUtil.getPositionCategory(hashtable,expectedIndustry.getText().toString());
+                new AlertDialog.Builder(JobIntentionActivity.this)
+                        .setSingleChoiceItems(position_arr, 0,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        getChooseItem_position = which;
+                                    }
+                                }
+                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        expectedPosition.setText(position_arr[getChooseItem_position]);
+                        //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                        //shipingAdress_Str=items_shiping[chooseItem_one];
+                    }
+                }).setNegativeButton("取消",null)
+                        .show();
+            }
+        });
+
+       save= (TextView) findViewById(R.id.save);
 
         this.resume=GlobalProvider.getInstance().resume;
         if(resume.getExpectedAddress()!=null){expectedAddress.setText(resume.getExpectedAddress());}

@@ -114,7 +114,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         RequestParams params = new RequestParams();
         params.put("page", mPage);
         params.put("itemsPerPage", mItemsPerPage);
-        params.put("id", GlobalProvider.getInstance().employerId);
+        params.put("employerId", GlobalProvider.getInstance().employerId);
 
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.PositionStr, params, new RequestListener() {

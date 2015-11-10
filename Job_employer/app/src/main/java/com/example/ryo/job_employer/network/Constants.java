@@ -11,7 +11,7 @@ import com.example.ryo.job_employer.helper.GlobalProvider;
  */
 public class Constants {
 
-    static public String baseUrlStr = "http://192.168.1.100:9000/";//≤‚ ‘URL
+    static public String baseUrlStr = "http://192.168.1.101:9000/";//≤‚ ‘URL
     //static public String baseUrlStr = "http://192.168.1.103:8080/";
     static public String personalInfo = baseUrlStr + "api/employers";
     static public String RegisterStr=baseUrlStr+"api/candidates";

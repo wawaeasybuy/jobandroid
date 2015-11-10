@@ -420,7 +420,6 @@ public class ChinaCityUtil {
         tmpCity.put("西双版纳傣族自治州", new String[] { "景洪市", "勐海县" });
         tmpCity.put("玉溪市", new String[] { "红塔区" });
         tmpCity.put("昭通市", new String[] { "昭阳区" });
-        tmpCity.put("", new String[] {});
         tmpProvince.put("云南省", tmpCity);
         // 浙江省
         tmpCity = new Hashtable<String, String[]>();
