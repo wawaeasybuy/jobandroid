@@ -124,6 +124,6 @@ public class Employer  implements Serializable {
     public String _user;
     public String _id;
     public Boolean pubResume;
-    public List<EmpMessage>  EmpMessage;
+    public List<EmpMessage>  message;
 
 }

@@ -99,10 +99,11 @@
             android:background="#c9c9c9" />
 
         <RelativeLayout
+            android:id="@+id/industry_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
+
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:paddingLeft="20dp">
@@ -113,15 +114,24 @@
                 android:textSize="16sp"
                 android:text="@string/classify"/>
 
-            <EditText
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/industry_img"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                android:id="@+id/industry"
+                android:background="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:layout_centerVertical="true"
+               android:layout_toLeftOf="@id/industry_img"
+                android:id="@+id/industry_text"
                 android:textSize="15dp"
                 android:background="#ffffff"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="5dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/position_name_"/>
+                />
 
 
 
@@ -135,6 +145,7 @@
             android:background="#c9c9c9"/>
 
         <RelativeLayout
+            android:id="@+id/position_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -148,15 +159,24 @@
                 android:textSize="16sp"
                 android:text="@string/position_classify"/>
 
-            <EditText
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/position_img"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                android:id="@+id/positionCategory"
-                android:background="#ffffff"
+                android:background="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/position_img"
+                android:id="@+id/position_text"
                 android:textSize="15dp"
-                android:layout_marginRight="15dp"
+                android:background="#ffffff"
                 android:layout_width="wrap_content"
+                android:layout_marginRight="5dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/position_name_"/>
+                />
 
         </RelativeLayout>
 
@@ -187,7 +207,7 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/salary"
                 android:background="#ffffff"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="10dp"
                 android:textSize="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

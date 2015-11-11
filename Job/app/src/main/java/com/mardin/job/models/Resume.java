@@ -11,7 +11,7 @@ import java.util.List;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Resume implements Serializable {
-    public List<Employer> employer;
+    public List<CanMsg> employer;
     public Boolean beOpen;
     public int gender;
     public String tel;

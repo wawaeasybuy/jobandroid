@@ -71,13 +71,18 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public Boolean isLoging;
     public Resume resume;
     public Candidate candidate;
-
+    public LayoutInflater inflater;
 
     public View login_id_layout;
     public View no_login_id_layout;
     public View no_resume_layout;
     public View resume_layout;
     public View change_layout;
+
+    public LinearLayout message_layout;
+    public TextView message_name;
+    public TextView message_date;
+    public View message_view;
 
     public ImageView img_release;
     public TextView release;
@@ -169,12 +174,27 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 if(candidate.resume.getUpdateEdit()!=null){
                     updateTime.setText(ConverToString(candidate.resume.getUpdateEdit()));
                 }
+
+                if(resume.employer.size()>0){
+                    for(int i=resume.employer.size()-1;i>=0;i--) {
+                        if (resume.employer.get(i).getName() != null) {
+                            message_view = inflater.inflate(R.layout.message_layout, null);
+                            message_name = (TextView) message_view.findViewById(R.id.message_name);
+                            message_date = (TextView) message_view.findViewById(R.id.message_date);
+                            message_name.setText(resume.employer.get(i).getName() + "公司查看了你的简历");
+                            message_date.setText(ConverToString(resume.employer.get(i).getTimeUpdate()));
+                            message_layout.addView(message_view);
+                        }
+                    }
+                }
+
             }else{
                 ID.addView(no_resume_layout);
                 GlobalProvider.getInstance().resume=new Resume();
 //                noResumeLayout.setVisibility(View.VISIBLE);
 //                resumeLayout.setVisibility(View.GONE);
             }
+
             ID.addView(change_layout);
 //            adapter.notifyDataSetChanged();
             //do something
@@ -182,6 +202,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             e.printStackTrace();
         }
     }
+
     public void doDelete(){
         GlobalProvider globalProvider=GlobalProvider.getInstance();
         String Url=Constants.createResumeStr+"/"+resume.get_id();
@@ -243,12 +264,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     }
     public void initView(){
 
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        inflater = LayoutInflater.from(getActivity());
         login_id_layout= inflater.inflate(R.layout.login_id, null);
         no_login_id_layout=inflater.inflate(R.layout.no_login_id, null);
         no_resume_layout= inflater.inflate(R.layout.no_resume, null);
         resume_layout= inflater.inflate(R.layout.resume, null);
         change_layout=inflater.inflate(R.layout.change, null);
+        //
+        //message_view=inflater.inflate(R.layout.message_layout,null);
 
         ID= (LinearLayout) getActivity().findViewById(R.id.ID);
         //noLoginID= (LinearLayout) getActivity().findViewById(R.id.noLoginID);
@@ -274,6 +297,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         img_release= (ImageView) resume_layout.findViewById(R.id.img_release);
         release= (TextView) resume_layout.findViewById(R.id.release);
 
+        message_layout= (LinearLayout) change_layout.findViewById(R.id.message);
 
 
     }

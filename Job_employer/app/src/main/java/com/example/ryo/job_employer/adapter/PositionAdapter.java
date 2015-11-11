@@ -103,7 +103,7 @@ public class PositionAdapter extends BaseAdapter{
                    }else{
                        state=1;
                    }
-                   ((MyPositionActivity)context).doRelease(job.get_id(),state);
+                   ((MyPositionActivity)context).doRelease(job.get_id(), state);
                }
            });
             holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +118,12 @@ public class PositionAdapter extends BaseAdapter{
                     Intent intent = new Intent(context, EditPositionActivity.class);
                     intent.putExtra("job", job);
                     ((Activity) context).startActivityForResult(intent, Constants.EditJobIntent);
+                }
+            });
+            holder.fenxiang.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MyPositionActivity)context).doShare(job);
                 }
             });
         return convertView;

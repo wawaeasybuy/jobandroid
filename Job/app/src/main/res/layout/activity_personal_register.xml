@@ -4,58 +4,45 @@
     android:layout_height="match_parent">
 
     <!--  Header -->
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
-        style="@style/header"
+        android:background="#0080fe"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
-        <LinearLayout
-            android:id="@+id/turn_left"
-            android:clickable="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <ImageView
+
+        <ImageView
+               android:layout_centerVertical="true"
+                android:id="@+id/turn_left"
                 android:paddingLeft="10dp"
                 android:src="@drawable/turn_left"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:paddingRight="15dp"
-                android:textSize="16sp"
-                android:textColor="#0080fe"
-                android:gravity="center"
-                android:text="@string/personal_register" />
 
-        </LinearLayout>
 
         <TextView
-            android:gravity="center"
-            android:layout_gravity="center_vertical"
+
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+           android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
             android:text="@string/personal_register"
             android:textColor="#ffffff"
             android:textSize="20sp"/>
 
 
         <TextView
+            android:layout_alignParentRight="true"
             android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:paddingRight="15dp"
-            android:textSize="16sp"
-            android:textColor="#0080fe"
-            android:gravity="center"
-            android:text="@string/personal_register" />
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
 
-    </LinearLayout>
+
+            />
+
+    </RelativeLayout>
 
     <!--  Content -->
     <EditText

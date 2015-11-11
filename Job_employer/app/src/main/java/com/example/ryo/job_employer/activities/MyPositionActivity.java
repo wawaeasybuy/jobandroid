@@ -37,6 +37,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 /**
  * Created by Ryo on 2015/9/22.
  */
@@ -51,12 +54,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
     public List<Job> list;
     private Integer mPage;
     private Integer mItemsPerPage;
+    public OnekeyShare onekeyShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_position);
-
+        ShareSDK.initSDK(getApplicationContext());
         initView();
         initAction();
         mPage = 1;
@@ -209,5 +213,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             e.printStackTrace();
         }
 
+    }
+    public void doShare(Job job){
+        if(onekeyShare==null){
+            onekeyShare=new OnekeyShare();
+        }
+        onekeyShare.setTitle(job.getPositionName());
+        onekeyShare.setText(job.getIndustryCategory());
+        onekeyShare.show(MyPositionActivity.this);
     }
 }

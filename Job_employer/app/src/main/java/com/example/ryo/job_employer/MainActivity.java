@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +16,10 @@ import com.example.ryo.job_employer.activities.IntervieweeActivity;
 import com.example.ryo.job_employer.activities.MyPositionActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
 import com.example.ryo.job_employer.activities.ScoreActivity;
+import com.example.ryo.job_employer.adapter.MessageAdapter;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.EmpMessage;
 import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
@@ -30,6 +33,8 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -43,12 +48,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public TextView companyName;
     public TextView myScore;
     public TextView setting;
+
+    public MessageAdapter adapter;
+    public List<EmpMessage> item;
+    public ListView lv_msg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initView();
         initAction();
+        item=new ArrayList<EmpMessage>();
+        adapter=new MessageAdapter(this,item);
+        lv_msg.setAdapter(adapter);
         LoadPersonalInfo();
     }
 
@@ -74,6 +87,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         companyName= (TextView) findViewById(R.id.companyName);
         myScore= (TextView) findViewById(R.id.Myscore);
         setting= (TextView) findViewById(R.id.setting);
+        lv_msg= (ListView) findViewById(R.id.lv_msg);
 
     }
     @Override
@@ -175,6 +189,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if(employer.companyname!=null){companyName.setText(employer.getCompanyname());}else{companyName.setText("请填写公司名字");}
             myScore.setText(employer.score+"");
             GlobalProvider.getInstance().employerId=employer._id;
+
+            this.item.clear();
+            this.item.addAll(employer.message);
+
+            adapter.notifyDataSetChanged();
+
             //do something
         }catch (IOException e) {
             e.printStackTrace();

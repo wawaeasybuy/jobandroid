@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/round_layout">
+                android:background="@drawable/round_top">
 
                 <LinearLayout
                     android:id="@+id/base_data"
@@ -120,10 +120,7 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#c9c9c9" />
+
 
             </LinearLayout>
 
@@ -131,7 +128,7 @@
            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_layout"
+                    android:background="@drawable/round_bottom"
                     android:paddingTop="25dp"
                     android:paddingBottom="15dp"
                     android:orientation="horizontal">
@@ -271,15 +268,16 @@
            </LinearLayout>
 
             <!-- Content| Message -->
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@drawable/round_layout">
+            <!--<LinearLayout-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical"-->
+                <!--android:background="@drawable/round_layout">-->
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="15dp"
@@ -287,6 +285,7 @@
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
                     android:gravity="center"
+                    android:background="@drawable/round_layout"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -310,84 +309,16 @@
 
                 </LinearLayout>
 
-                <ImageView
+                <ListView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/lv_msg"
+                    android:background="@drawable/round_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#c9c9c9"/>
+                    android:layout_height="wrap_content"></ListView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/my_message_receive"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:textSize="16sp"
-                        android:text="@string/my_message_applier"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="@string/my_message_resume"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/my_message_receive_time"/>
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#c9c9c9"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/my_message_succeed"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:textSize="16sp"
-                        android:text="@string/my_message_position"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="@string/my_message_up"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/my_message_receive_time"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            <!--</LinearLayout>-->
     </LinearLayout>
 </LinearLayout>
