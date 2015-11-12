@@ -46,7 +46,7 @@ public class GlobalProvider {
     }
 
     public void addHeaderToken(Context context) {
-        if (Constants.getToken(context) != null ) {
+        if (context!=null&&Constants.getToken(context) != null ) {
             client.addHeader("Authorization", Constants.getToken(context));
 
         }
