@@ -85,6 +85,7 @@
                 android:layout_marginRight="15dp"
                 android:background="#ffffff"
                 android:textSize="15dp"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/position_name_"/>
@@ -207,8 +208,9 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/salary"
                 android:background="#ffffff"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:textSize="15dp"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/salary_"/>

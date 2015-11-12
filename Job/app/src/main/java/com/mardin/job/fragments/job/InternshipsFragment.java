@@ -260,6 +260,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
+            GlobalProvider.getInstance().candidate=candidate;
             if(candidate.resume!=null){
                 GlobalProvider.getInstance().resume=candidate.resume;
             }

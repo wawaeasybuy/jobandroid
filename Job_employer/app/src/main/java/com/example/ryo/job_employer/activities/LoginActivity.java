@@ -92,7 +92,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
 
                 @Override

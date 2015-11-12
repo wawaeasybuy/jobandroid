@@ -14,6 +14,7 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.activities.IntervieweeActivity;
 import com.example.ryo.job_employer.activities.IntervieweeEvaluateActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
+import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.models.Resume;
 import com.example.ryo.job_employer.models.Talent;
 import com.example.ryo.job_employer.network.Constants;
@@ -28,10 +29,12 @@ import java.util.List;
  */
 public class TalentAdapter extends BaseAdapter{
     private List<Talent> Data;
+    private List<Job> data;
     private Context context;
-    public TalentAdapter(Context context,List Data){
+    public TalentAdapter(Context context,List Data,List data){
         this.context=context;
         this.Data=Data;
+        this.data=data;
     }
     @Override
     public int getCount() {
@@ -65,8 +68,17 @@ public class TalentAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        for(int i=0;i<data.size();i++){
+            if(Data.get(position).get_job().equals(data.get(i).get_id())){
+                if(data.get(i).getPositionName()!=null) {
+                    holder.positionName.setText("急求"+data.get(i).getPositionName());
+                }
+            }
+        }
         holder.name.setText(talent.getName());
         holder.testValue.setText("职业测评分 ："+talent.getTestValue());
+        if(Data.get(position).getSchoolName()!=null){holder.schoolName.setText(talent.getSchoolName());}
+        if(Data.get(position).getProfessional()!=null){holder.professional.setText(talent.getProfessional());}
         //holder.schoolName.setText(talent.getSchoolName());
        // holder.professional.setText(talent.getProfessional());
         if(!talent.getIsInterview()){

@@ -22,6 +22,7 @@ import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.models.JobFitList;
 import com.example.ryo.job_employer.models.JobList;
+import com.example.ryo.job_employer.models.LoginBody;
 import com.example.ryo.job_employer.models.PositionFitUpdateBody;
 import com.example.ryo.job_employer.models.Resume;
 import com.example.ryo.job_employer.network.Constants;
@@ -105,6 +106,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             }
         });
         LoadResumeList();
+        LoadJobList();
     }
     private void initAction() {
         turn_left.setOnClickListener(this);
@@ -113,17 +115,19 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
                  job=list.get(position).getIndustryCategory();
+                    LoadResumeByIndustryCategory();
                  //fitHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                  job="";
                  //fitHeader_text.setText("全部职位");
+                 LoadResumeList();
                 }
                 fitHeader_text.setText(list.get(position).getPositionName());
                 lv_pull_down.setVisibility(View.GONE);
                 lv_all.setVisibility(View.VISIBLE);
                 fitHeader_Img.setImageResource(R.drawable.turn_down);
                 isShowing=false;
-                LoadResumeList();
+
             }
         });
     }
@@ -145,14 +149,91 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
                 break;
         }
     }
+    public void LoadJobList(){
+        RequestParams params = new RequestParams();
+        params.put("id", GlobalProvider.getInstance().employerId);
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.personalInfo, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseJobList(new String(responseBody));
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+            }
+
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+    private void parseJobList(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            JobList jobList = (JobList) objectMapper.readValue(jsonParser, JobList.class);
+            if(list.size()==0){
+                if(JOB==null){JOB=new Job();JOB.setPositionName("全部职位");}
+                list.add(JOB);
+                for(int i=0;i<jobList.jobs.size();i++){
+                    list.add(jobList.jobs.get(i));
+                }
+                //this.list.addAll(jobFitList.jobs);
+            }
+
+//            if(list.size()==0){
+//                if(JOB==null){
+//                    JOB=new Job();
+//                    JOB.setPositionName("全部职位");
+//                }
+//                list.add(JOB);
+//                for(int i=0;i<jobFitList.jobs.size();i++){
+//                    list.add(jobFitList.jobs.get(i));
+//                }
+//                //this.list.addAll(jobFitList.jobs);
+//            }
+            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+            adapter.notifyDataSetChanged();
+            //adapterAll.notifyDataSetChanged();
+            //do something
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void LoadResumeList(){
         RequestParams params = new RequestParams();
         params.put("page", mPage);
         params.put("itemsPerPage", mItemsPerPage);
         params.put("id", GlobalProvider.getInstance().employerId);
-        if(!job.equals("")){
-            params.put("job",job);
-        }
+//        if(!job.equals("")){
+//            params.put("job",job);
+//        }
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.PositionFitStr, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseResumeList(new String(responseBody));
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+    public void LoadResumeByIndustryCategory(){
+        RequestParams params = new RequestParams();
+        params.put("page", mPage);
+        params.put("itemsPerPage", mItemsPerPage);
+        params.put("id", GlobalProvider.getInstance().employerId);
+        params.put("job",job);
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.PositionFitStr, params, new RequestListener() {
             @Override
@@ -178,19 +259,19 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             this.mItems.clear();
             this.mItems.addAll(jobFitList.resumes);
 
-            if(list.size()==0){
-                if(JOB==null){
-                    JOB=new Job();
-                    JOB.setPositionName("全部职位");
-                }
-                list.add(JOB);
-                for(int i=0;i<jobFitList.jobs.size();i++){
-                    list.add(jobFitList.jobs.get(i));
-                }
-                //this.list.addAll(jobFitList.jobs);
-            }
+//            if(list.size()==0){
+//                if(JOB==null){
+//                    JOB=new Job();
+//                    JOB.setPositionName("全部职位");
+//                }
+//                list.add(JOB);
+//                for(int i=0;i<jobFitList.jobs.size();i++){
+//                    list.add(jobFitList.jobs.get(i));
+//                }
+//                //this.list.addAll(jobFitList.jobs);
+//            }
             //GlobalProvider.getInstance().shangpingListDefault=mItems;
-            adapter.notifyDataSetChanged();
+            //adapter.notifyDataSetChanged();
             adapterAll.notifyDataSetChanged();
             //do something
         }catch (IOException e) {

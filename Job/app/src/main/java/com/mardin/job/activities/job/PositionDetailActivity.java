@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
@@ -33,6 +34,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Ryo on 2015/9/17.
@@ -40,14 +44,43 @@ import java.io.IOException;
 public class PositionDetailActivity extends Activity {
     public Job job;
     public Button position_apply;
+    public TextView job_name;
+    public TextView time_update;
+    public TextView companyName;
+    public TextView mianBusiness;
+    public TextView salary;
+    public TextView companyAddress;
+    public TextView companyUrl;
+    public TextView positionCharacter;
+    public TextView requirement;
+    public TextView companyInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internships_position_detail);
         position_apply= (Button) findViewById(R.id.position_apply);
+
+
+        job_name= (TextView) findViewById(R.id.job_name);
+        time_update= (TextView) findViewById(R.id.time_update);
+        salary= (TextView) findViewById(R.id.salary);
+        positionCharacter= (TextView) findViewById(R.id.positionCharacter);
+        requirement= (TextView) findViewById(R.id.requirement);
+
+        companyName= (TextView) findViewById(R.id.companyName);
+        mianBusiness= (TextView) findViewById(R.id.mainBusiness);
+        companyAddress= (TextView) findViewById(R.id.companyAddress);
+        companyUrl= (TextView) findViewById(R.id.companyUrl);
+        companyInfo= (TextView) findViewById(R.id.companyInfo);
         Intent intent = this.getIntent();
         if(intent.getSerializableExtra("job")!=null){
             job= (Job) intent.getSerializableExtra("job");
+
+            if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
+            if(job.getPositionName()!=null){job_name.setText(job.getPositionName());}
+            if(job.getTimeUpdate()!=null){time_update.setText(ConverToString(job.getTimeUpdate()));}
+            salary.setText("底薪"+job.getSalary()+"加提成");
+            if(job.getRequirement()!=null){requirement.setText(job.getRequirement());}
         }
         position_apply.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +95,15 @@ public class PositionDetailActivity extends Activity {
                 finish();
             }
         });
+        getEmployerInfo();
     }
-    public void getJobInfo(){
+    public static String ConverToString(Date date)
+    {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+        return df.format(date);
+    }
+    public void getEmployerInfo(){
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         String Url=Constants.jobListUrlStr+"/"+job.get_id();
         globalProvider.get(this, Url, new RequestListener() {
@@ -90,7 +130,12 @@ public class PositionDetailActivity extends Activity {
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
-            Job_delivered joblist = (Job_delivered) objectMapper.readValue(jsonParser, Job_delivered.class);
+            Job_delivered job = (Job_delivered) objectMapper.readValue(jsonParser, Job_delivered.class);
+            if(job._employer.getCompanyname()!=null){companyName.setText(job._employer.getCompanyname());}
+            if(job._employer.getCompanyAddress()!=null){companyAddress.setText(job._employer.getCompanyAddress());}
+            if(job._employer.getCompanyInfo()!=null){companyInfo.setText(job._employer.getCompanyInfo());}
+            if(job._employer.getCompanyURL()!=null){companyUrl.setText(job._employer.getCompanyURL());}
+            if(job._employer.getMianBusiness()!=null){mianBusiness.setText(job._employer.getMianBusiness());}
 //            this.mItems.clear();
 //            this.mItems.addAll(joblist.jobs);
 //            //GlobalProvider.getInstance().shangpingListDefault=mItems;

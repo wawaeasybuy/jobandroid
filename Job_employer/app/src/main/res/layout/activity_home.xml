@@ -144,7 +144,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/sxbz_wodezhiwei" />
+                            android:src="@drawable/one" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -166,7 +166,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/sxbz_shousuozhiwei" />
+                            android:src="@drawable/two" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -188,7 +188,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/sxbz_shenqderen" />
+                            android:src="@drawable/thr" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -210,7 +210,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/sxbz_rencaiku" />
+                            android:src="@drawable/four" />
 
                         <TextView
                             android:layout_width="wrap_content"

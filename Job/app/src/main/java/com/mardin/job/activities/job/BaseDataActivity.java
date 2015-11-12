@@ -41,7 +41,7 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
 
     public Resume resume;
 
-
+public TextView saveToNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,7 @@ public void initAction(){
     male.setOnClickListener(this);
     female.setOnClickListener(this);
     save.setOnClickListener(this);
+    saveToNext.setOnClickListener(this);
 }
     private void initView() {
 
@@ -82,6 +83,7 @@ public void initAction(){
         address= (EditText) findViewById(R.id.address);
         tel= (EditText) findViewById(R.id.tel);
         birth= (EditText) findViewById(R.id.birth);
+        saveToNext= (TextView) findViewById(R.id.saveToNext);
 
     }
     public void doSave(){
@@ -134,6 +136,9 @@ public void initAction(){
                 finish();
                 break;
             case R.id.save:
+                doSave();
+                break;
+            case R.id.saveToNext:
                 doSave();
                 break;
         }

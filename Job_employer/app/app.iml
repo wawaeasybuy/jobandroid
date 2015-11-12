@@ -97,11 +97,11 @@
     <orderEntry type="library" exported="" name="support-annotations-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-QQ-2.6.4" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.1" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.6.4" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Favorite-2.6.4" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.6.4" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-TencentWeibo-2.6.4" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Email-2.6.4" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Core-2.6.4" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Email-2.6.4" level="project" />
     <orderEntry type="library" exported="" name="MobCommons" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Core-2.6.4" level="project" />
   </component>

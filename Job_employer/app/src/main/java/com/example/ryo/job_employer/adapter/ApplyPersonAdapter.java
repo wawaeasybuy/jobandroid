@@ -13,6 +13,7 @@ import com.example.ryo.job_employer.activities.ApplyPersonActivity;
 import com.example.ryo.job_employer.activities.PersonalResumeActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
 import com.example.ryo.job_employer.helper.GlobalProvider;
+import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.models.PublicResume;
 import com.example.ryo.job_employer.models.Resume;
 
@@ -27,9 +28,11 @@ import java.util.List;
 public class ApplyPersonAdapter extends BaseAdapter{
     private List<PublicResume> Data;
     private Context context;
-    public ApplyPersonAdapter(Context context,List Data){
+    public List<Job> data;
+    public ApplyPersonAdapter(Context context,List Data,List data){
         this.context=context;
         this.Data=Data;
+        this.data=data;
     }
     @Override
     public int getCount() {
@@ -57,14 +60,22 @@ public class ApplyPersonAdapter extends BaseAdapter{
             holder.chakan= (TextView) convertView.findViewById(R.id.chakan);
             holder.professional= (TextView) convertView.findViewById(R.id.professional);
             holder.ignore= (TextView) convertView.findViewById(R.id.ignore);
+            holder.positionName= (TextView) convertView.findViewById(R.id.positionName);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.name.setText(resume.getName());
+        for(int i=0;i<data.size();i++){
+            if(Data.get(position).get_job().equals(data.get(i).get_id())){
+                if(data.get(i).getPositionName()!=null) {
+                    holder.positionName.setText("急求"+data.get(i).getPositionName());
+                }
+            }
+        }
+        if(resume.getName()!=null){holder.name.setText(resume.getName());}
         holder.testValue.setText("职业测评分 ："+resume._candidate.getTestValue());
-        holder.schoolName.setText(resume.getSchoolName());
-        holder.professional.setText(resume.getProfessional());
+        if(resume.getSchoolName()!=null){holder.schoolName.setText(resume.getSchoolName());}
+        if(resume.getProfessional()!=null) {holder.professional.setText(resume.getProfessional());}
         holder.chakan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,5 +107,6 @@ public class ApplyPersonAdapter extends BaseAdapter{
         public TextView chakan;
         public TextView professional;
         public TextView ignore;
+        public TextView positionName;
     }
 }

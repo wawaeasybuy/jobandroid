@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -53,6 +54,14 @@ public class InternshipsSearchActivity extends Activity {
         mItems=new ArrayList<Job>();
         adapter=new JobListAdapter(this,mItems);
         lv_job_search.setAdapter(adapter);
+        lv_job_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(InternshipsSearchActivity.this,PositionDetailActivity.class);
+                intent.putExtra("job",mItems.get(position));
+                startActivity(intent);
+            }
+        });
         input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

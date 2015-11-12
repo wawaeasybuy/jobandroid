@@ -176,12 +176,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 }
 
                 if(resume.employer.size()>0){
-                    for(int i=resume.employer.size()-1;i>=0;i--) {
+                    for(int i=0;i<resume.employer.size();i++) {
                         if (resume.employer.get(i).getName() != null) {
                             message_view = inflater.inflate(R.layout.message_layout, null);
                             message_name = (TextView) message_view.findViewById(R.id.message_name);
                             message_date = (TextView) message_view.findViewById(R.id.message_date);
-                            message_name.setText(resume.employer.get(i).getName() + "公司查看了你的简历");
+                            message_name.setText(resume.employer.get(i).getName() + "查看了你的简历");
                             message_date.setText(ConverToString(resume.employer.get(i).getTimeUpdate()));
                             message_layout.addView(message_view);
                         }

@@ -28,6 +28,7 @@ public class EducationInfoActivity extends Activity {
     public Resume resume;
 
     public TextView save;
+    public TextView saveToNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class EducationInfoActivity extends Activity {
         grade= (EditText) findViewById(R.id.grade);
         internshipExprience= (EditText) findViewById(R.id.internshipExprience);
         save= (TextView) findViewById(R.id.save);
+        saveToNext= (TextView) findViewById(R.id.saveToNext);
 
         this.resume= GlobalProvider.getInstance().resume;
         if(resume.getSchoolName()!=null){schoolName.setText(resume.getSchoolName());}
@@ -50,6 +52,18 @@ public class EducationInfoActivity extends Activity {
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
+        saveToNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GlobalProvider.getInstance().resume.setSchoolName(schoolName.getText().toString());
+                GlobalProvider.getInstance().resume.setProfessional(professional.getText().toString());
+                //GlobalProvider.getInstance().resume.setGraduationTime(graduationTime.getText().toString());
+                GlobalProvider.getInstance().resume.setGrade(grade.getText().toString());
+                GlobalProvider.getInstance().resume.setInternshipExprience(internshipExprience.getText().toString());
+                setResult(Activity.RESULT_OK);
                 finish();
             }
         });

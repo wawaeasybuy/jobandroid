@@ -108,7 +108,7 @@ public class PlatformGridView extends LinearLayout implements
 		float scrH = com.mob.tools.utils.R.getScreenHeight(getContext());
 		float whR = scrW / scrH;
 		if (whR < 0.63) {
-			COLUMN_PER_LINE = 3;
+			COLUMN_PER_LINE = 5;
 			LINE_PER_PAGE = 3;
 		} else if (whR < 0.75) {
 			COLUMN_PER_LINE = 3;
@@ -423,12 +423,13 @@ public class PlatformGridView extends LinearLayout implements
 			ll.setOrientation(LinearLayout.VERTICAL);
 
 			ImageView iv = new ImageView(context);
-			int dp_5 = com.mob.tools.utils.R.dipToPx(context, 5);
-			iv.setPadding(dp_5, dp_5, dp_5, dp_5);
+			int dp_5 = com.mob.tools.utils.R.dipToPx(context, 4);
+			int dp_4 = com.mob.tools.utils.R.dipToPx(context, 2);
+			iv.setPadding(dp_5, dp_5, dp_5, 0);
 			iv.setScaleType(ScaleType.CENTER_INSIDE);
 			LayoutParams lpIv = new LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-			lpIv.setMargins(dp_5, dp_5, dp_5, dp_5);
+			lpIv.setMargins(dp_4, dp_4, dp_4, dp_4);
 			lpIv.gravity = Gravity.CENTER_HORIZONTAL;
 			iv.setLayoutParams(lpIv);
 			iv.setImageBitmap(logo);
@@ -436,14 +437,14 @@ public class PlatformGridView extends LinearLayout implements
 
 			TextView tv = new TextView(context);
 			tv.setTextColor(0xff000000);
-			tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+			tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
 			tv.setSingleLine();
 			tv.setIncludeFontPadding(false);
 			LayoutParams lpTv = new LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			lpTv.gravity = Gravity.CENTER_HORIZONTAL;
 			lpTv.weight = 1;
-			lpTv.setMargins(dp_5, 0, dp_5, dp_5);
+			lpTv.setMargins(dp_4, 0, dp_4, dp_4);
 			tv.setLayoutParams(lpTv);
 			tv.setText(label);
 			ll.addView(tv);

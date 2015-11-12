@@ -66,9 +66,9 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         initView();
         initAction();
         mItems=new ArrayList<Talent>();
-        mItems_all=new ArrayList<Talent>();
+       // mItems_all=new ArrayList<Talent>();
         items=new ArrayList<Job>();
-        mAdapter=new TalentAdapter(this,mItems);
+        mAdapter=new TalentAdapter(this,mItems,items);
         adapter=new PositionFitHeaderAdapter(this,items);
         lv_main.setAdapter(mAdapter);
        // lv_pull_down_interview.setAdapter(adapter);
@@ -81,20 +81,13 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         lv_pull_down_position_name.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mItems.clear();
                 if(position>0){
                     //job=list.get(position).get_id();
-                    for(int i=0;i<mItems_all.size();i++){
-                        if(items.get(position).get_id().equals(mItems_all.get(i)._job)){
-                            mItems.add(mItems_all.get(i));
-                        }
-                    }
+                    LoadTalentListByJobId(items.get(position).get_id());
                     //applyHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                     //job="";
-                    for(int i=0;i<mItems_all.size();i++){
-                        mItems.add(mItems_all.get(i));
-                    }
+                   LoadTalentList();
                     //applyHeader_text.setText("全部职位");
                 }
                 turn_text.setText(items.get(position).getPositionName());
@@ -214,17 +207,38 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
             }
         });
     }
+    private void LoadTalentListByJobId(String jobId) {
+        RequestParams params = new RequestParams();
+        params.put("page", mPage);
+        params.put("itemsPerPage", mItemsPerPage);
+        params.put("id", GlobalProvider.getInstance().employerId);
+        params.put("jobId", jobId);
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.TalentStr, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseTalentList(new String(responseBody));
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
     private void parseTalentList(String json) {
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             TalentList jobFitList = (TalentList) objectMapper.readValue(jsonParser, TalentList.class);
-            if(this.mItems_all.size()==0){
-                this.mItems_all.clear();
-                this.mItems_all.addAll(jobFitList.talents);
-                this.mItems.addAll(jobFitList.talents);
-            }
+            this.mItems.clear();
+            this.mItems.addAll(jobFitList.talents);
+
 
 //            if(list.size()==0){
 //                if(JOB==null){

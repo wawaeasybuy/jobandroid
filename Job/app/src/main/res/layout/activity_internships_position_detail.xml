@@ -34,6 +34,9 @@
             android:layout_height="fill_parent"
             android:text="@string/position_detail"
             android:textSize="20sp"/>
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="10dp" />
 
     </LinearLayout>
 
@@ -70,6 +73,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/job_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -77,6 +81,7 @@
                         android:text="@string/position_recommend_title" />
 
                     <TextView
+                        android:id="@+id/time_update"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/position_recommend_time" />
@@ -84,6 +89,8 @@
                 </LinearLayout>
 
                 <TextView
+                    android:paddingTop="10dp"
+                    android:id="@+id/companyName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/position_firm" />
@@ -95,16 +102,18 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/mainBusiness"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/detail" />
+                        android:text="" />
 
                     <TextView
+                        android:id="@+id/salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#ff0000"
-                        android:text="@string/position_salary" />
+                        android:text="" />
 
                 </LinearLayout>
 
@@ -131,6 +140,7 @@
                         android:src="@drawable/sxb_location" />
 
                     <TextView
+                        android:id="@+id/companyAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
@@ -153,6 +163,7 @@
                         android:src="@drawable/sxb_wangzhi" />
 
                     <TextView
+                        android:id="@+id/companyUrl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
@@ -179,11 +190,12 @@
                     android:text="@string/position_special" />
 
                 <TextView
+                    android:id="@+id/positionCharacter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="5dp"
                     android:paddingTop="10dp"
-                    android:text="@string/position_special_" />
+                    android:text="" />
 
             </LinearLayout>
 
@@ -209,11 +221,12 @@
                     android:text="@string/position_request" />
 
                 <TextView
+                    android:id="@+id/requirement"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="5dp"
                     android:paddingTop="10dp"
-                    android:text="@string/position_request_" />
+                    android:text="" />
 
             </LinearLayout>
 
@@ -239,11 +252,12 @@
                     android:text="@string/firm_introduce" />
 
                 <TextView
+                    android:id="@+id/companyInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="5dp"
                     android:paddingTop="10dp"
-                    android:text="@string/firm_introduce_" />
+                    android:text="" />
 
             </LinearLayout>
 

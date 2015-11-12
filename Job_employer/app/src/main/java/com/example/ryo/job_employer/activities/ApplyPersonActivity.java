@@ -76,7 +76,7 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
         mItems_all=new ArrayList<PublicResume>();
 
         adapter=new PositionFitHeaderAdapter(this,list);
-        adapterAll=new ApplyPersonAdapter(this,mItems);
+        adapterAll=new ApplyPersonAdapter(this,mItems,list);
         //adapterOne=new PositionFitOneAdapter(this,mItems);
 
         lv_pull_down.setAdapter(adapter);
