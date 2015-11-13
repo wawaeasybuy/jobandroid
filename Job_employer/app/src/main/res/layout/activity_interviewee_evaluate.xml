@@ -20,7 +20,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:paddingLeft="10dp"
+                android:paddingLeft="15dp"
                 android:src="@drawable/turn_left_blue"
                 android:layout_width="28dp"
                 android:layout_height="28dp"/>
@@ -41,7 +41,7 @@
             android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:paddingRight="15dp"
+            android:paddingRight="10dp"
             android:textSize="16sp"
             android:gravity="center"
             android:textColor="#0080fe"
@@ -68,12 +68,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
+
                 android:textSize="16sp"
                 android:text="@string/expertise_level" />
 
@@ -93,13 +95,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
+
                 android:textSize="16sp"
                 android:text="@string/analysis_thinking" />
 
@@ -119,13 +122,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
+
                 android:textSize="16sp"
                 android:text="@string/language_express" />
 
@@ -145,13 +149,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
+
                 android:textSize="16sp"
                 android:text="@string/compress_strain" />
 
@@ -171,13 +176,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:paddingBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
+
                 android:textSize="16sp"
                 android:text="@string/attitude_etiquette" />
 
