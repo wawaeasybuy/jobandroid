@@ -104,7 +104,7 @@ public class AbilityFragment extends Fragment  {
             star_bar3.setRating(talent.getExpression());
             star_bar4.setRating(talent.getCompression());
             star_bar5.setRating(talent.getAttitude());
-            if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}else{adviceText.setText("暂无任何公司评价");}
+            if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}else{adviceText.setText("鏆傛棤浠讳綍鍏徃璇勪环");}
             if(talent.getCompanyName()!=null){companyName.setText(talent.getCompanyName());}
             if(talent.getEvaluationTime()!=null){evaluationTime.setText(ConverToString(talent.getEvaluationTime()));}
 //            adapter.notifyDataSetChanged();
