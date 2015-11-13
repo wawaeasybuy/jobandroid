@@ -16,12 +16,12 @@ public class Employer  implements Serializable {
     public String companyname;
     public String companyInfo;
 
-    public String getMianBusiness() {
-        return mianBusiness;
+    public String getMainBusiness() {
+        return mainBusiness;
     }
 
-    public void setMianBusiness(String mianBusiness) {
-        this.mianBusiness = mianBusiness;
+    public void setMainBusiness(String mainBusiness) {
+        this.mainBusiness = mainBusiness;
     }
 
 
@@ -65,7 +65,7 @@ public class Employer  implements Serializable {
         this.name = name;
     }
 
-    public String mianBusiness;
+    public String mainBusiness;
     public String companyURL;
 
     public String getCompanyAddress() {

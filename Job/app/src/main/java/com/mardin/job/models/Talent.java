@@ -3,6 +3,7 @@ package com.mardin.job.models;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2015/11/5.
@@ -64,4 +65,24 @@ public class Talent implements Serializable{
     public int compression;
     public int attitude;
     public String adviceText;
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String companyName;
+
+    public Date getEvaluationTime() {
+        return evaluationTime;
+    }
+
+    public void setEvaluationTime(Date evaluationTime) {
+        this.evaluationTime = evaluationTime;
+    }
+
+    public Date evaluationTime;
 }

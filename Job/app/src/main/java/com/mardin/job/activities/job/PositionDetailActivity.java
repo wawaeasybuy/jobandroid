@@ -47,7 +47,7 @@ public class PositionDetailActivity extends Activity {
     public TextView job_name;
     public TextView time_update;
     public TextView companyName;
-    public TextView mianBusiness;
+    public TextView mainBusiness;
     public TextView salary;
     public TextView companyAddress;
     public TextView companyUrl;
@@ -68,7 +68,7 @@ public class PositionDetailActivity extends Activity {
         requirement= (TextView) findViewById(R.id.requirement);
 
         companyName= (TextView) findViewById(R.id.companyName);
-        mianBusiness= (TextView) findViewById(R.id.mainBusiness);
+        mainBusiness= (TextView) findViewById(R.id.mainBusiness);
         companyAddress= (TextView) findViewById(R.id.companyAddress);
         companyUrl= (TextView) findViewById(R.id.companyUrl);
         companyInfo= (TextView) findViewById(R.id.companyInfo);
@@ -135,7 +135,7 @@ public class PositionDetailActivity extends Activity {
             if(job._employer.getCompanyAddress()!=null){companyAddress.setText(job._employer.getCompanyAddress());}
             if(job._employer.getCompanyInfo()!=null){companyInfo.setText(job._employer.getCompanyInfo());}
             if(job._employer.getCompanyURL()!=null){companyUrl.setText(job._employer.getCompanyURL());}
-            if(job._employer.getMianBusiness()!=null){mianBusiness.setText(job._employer.getMianBusiness());}
+            if(job._employer.getMainBusiness()!=null){mainBusiness.setText(job._employer.getMainBusiness());}
 //            this.mItems.clear();
 //            this.mItems.addAll(joblist.jobs);
 //            //GlobalProvider.getInstance().shangpingListDefault=mItems;

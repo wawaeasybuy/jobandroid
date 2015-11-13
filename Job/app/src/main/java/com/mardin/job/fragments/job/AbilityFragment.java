@@ -29,6 +29,9 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Ryo on 2015/9/27.
@@ -46,6 +49,8 @@ public class AbilityFragment extends Fragment  {
     private RatingBar star_bar4;
     private RatingBar star_bar5;
     private TextView adviceText;
+    public TextView companyName;
+    public TextView evaluationTime;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,20 +68,25 @@ public class AbilityFragment extends Fragment  {
         star_bar4 = (RatingBar)getActivity().findViewById(R.id.star_bar4);
         star_bar5 = (RatingBar)getActivity().findViewById(R.id.star_bar5);
         adviceText= (TextView) getActivity().findViewById(R.id.adviceText);
+        companyName= (TextView) getActivity().findViewById(R.id.companyName);
+        evaluationTime= (TextView) getActivity().findViewById(R.id.evaluationTime);
+
         getTalent();
     }
     public void getTalent(){
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         String Url=Constants.talentStr+"/"+GlobalProvider.getInstance().candidate.get_id();
-        globalProvider.get(getActivity(),Url, new RequestListener() {
+        globalProvider.get(getActivity(), Url, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parseInfo(new String(responseBody));
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
             }
+
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
@@ -94,11 +104,19 @@ public class AbilityFragment extends Fragment  {
             star_bar3.setRating(talent.getExpression());
             star_bar4.setRating(talent.getCompression());
             star_bar5.setRating(talent.getAttitude());
-            adviceText.setText(talent.getAdviceText());
+            if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}else{adviceText.setText("暂无任何公司评价");}
+            if(talent.getCompanyName()!=null){companyName.setText(talent.getCompanyName());}
+            if(talent.getEvaluationTime()!=null){evaluationTime.setText(ConverToString(talent.getEvaluationTime()));}
 //            adapter.notifyDataSetChanged();
             //do something
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public static String ConverToString(Date date)
+    {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+        return df.format(date);
     }
 }

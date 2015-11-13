@@ -75,10 +75,10 @@ public class TalentAdapter extends BaseAdapter{
                 }
             }
         }
-        holder.name.setText(talent.getName());
+        if(talent.getName()!=null){holder.name.setText(talent.getName());}
         holder.testValue.setText("职业测评分 ："+talent.getTestValue());
-        if(Data.get(position).getSchoolName()!=null){holder.schoolName.setText(talent.getSchoolName());}
-        if(Data.get(position).getProfessional()!=null){holder.professional.setText(talent.getProfessional());}
+        if(talent.getSchoolName()!=null){holder.schoolName.setText(talent.getSchoolName());}
+        if(talent.getProfessional()!=null){holder.professional.setText(talent.getProfessional());}
         //holder.schoolName.setText(talent.getSchoolName());
        // holder.professional.setText(talent.getProfessional());
         if(!talent.getIsInterview()){

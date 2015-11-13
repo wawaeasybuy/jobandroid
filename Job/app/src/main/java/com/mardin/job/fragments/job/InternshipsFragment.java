@@ -111,7 +111,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         Address mAddress = getAddressbyGeoPoint(getActivity(), gp);
 //        address.setText("Address: " + mAddress.getCountryName() + ","
 //                + mAddress.getLocality() + "," + mAddress.getThoroughfare());
-//        address.setText(mAddress.getThoroughfare());
+        address.setText(mAddress.getThoroughfare());
         search_edit.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

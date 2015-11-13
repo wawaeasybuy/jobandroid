@@ -66,6 +66,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     private String[] arrProvince, arrCity, arrRegion;
     private String province, city, region;
     public String industryCategory="";
+    public String PositionCategory="";
     public String[] positionCategory;
     public Hashtable hashtable_position;
     public ListView lv_position_pull;
@@ -75,6 +76,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public PositionFitHeaderAdapter Adapter;
     public Boolean ishowing=false;
     public TextView industry;
+    public ImageView search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,6 +158,15 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 lv_job.setVisibility(View.VISIBLE);
                 turn_one.setImageResource(R.drawable.turn_down);
                 ishowing=false;
+
+                page=1;
+                if(position>0){
+                    PositionCategory=positionCategory[position];
+                    LoadJobListByPositionCategory();
+                }else{
+                    LoadJobList();
+                }
+
             }
         });
 //        lv1.setVisibility(View.GONE);
@@ -255,6 +266,30 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             }
         });
     }
+    private void LoadJobListByPositionCategory(){
+        RequestParams params = new RequestParams();
+        params.put("page", page);
+        params.put("itemsPerPage", itemsPerPage);
+        params.put("industryCategory", industryCategory);
+        params.put("positionCategory",PositionCategory);
+
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseJobList(new String(responseBody));
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
     private void parseJobList(String json) {
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -289,10 +324,12 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         position_Img= (ImageView) findViewById(R.id.position_Img);
         position_Text= (TextView) findViewById(R.id.position_Text);
         industry= (TextView) findViewById(R.id.industry);
+        search= (ImageView) findViewById(R.id.search);
     }
     public void initAction(){
         turn_left.setOnClickListener(this);
         address.setOnClickListener(this);
+        search.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -327,6 +364,10 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 lv_position_pull.setVisibility(View.GONE);
                 ishowing=false;
                 lv1_showing=!lv1_showing;
+                break;
+            case R.id.search:
+                Intent intent=new Intent(PositionSearchActivity.this,InternshipsSearchActivity.class);
+                startActivity(intent);
                 break;
         }
     }

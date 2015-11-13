@@ -49,7 +49,7 @@ public class PositionFitHeaderAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //if(position==0){holder.job.setText("全部职位");}
+        if(position==0){holder.name.setTextColor(0xffee2400);}
         holder.name.setText(Data[position]);
         return convertView;
     }

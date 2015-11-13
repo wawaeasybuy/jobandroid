@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,20 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
     public EditText companyAddress;
     public Employer GoEmployer=GlobalProvider.getInstance().employer;
 
+    public LinearLayout address_layout;
+    public TextView address;
+    public ImageView address_img;
+
+    public LinearLayout address_select_layout;
+    public RelativeLayout layout1;
+    public RelativeLayout layout2;
+    public RelativeLayout layout3;
+
+    public TextView layout1_txt;
+    public TextView layout2_txt;
+    public TextView layout3_txt;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +53,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         initView();
         initAction();
         if(GoEmployer.companyname!=null){name.setText(GoEmployer.getCompanyname());}
-        if(GoEmployer.mianBusiness!=null){mainBusiness.setText(GoEmployer.getMianBusiness());}
+        if(GoEmployer.mainBusiness!=null){mainBusiness.setText(GoEmployer.getMainBusiness());}
         if(GoEmployer.companyInfo!=null){description.setText(GoEmployer.getCompanyInfo());}
         if(GoEmployer.companyAddress!=null){companyAddress.setText(GoEmployer.getCompanyAddress());}
         if(GoEmployer.companyURL!=null){companyURL.setText(GoEmployer.getCompanyURL());}
@@ -58,6 +73,20 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         companyURL= (EditText) findViewById(R.id.companyURL);
         companyAddress= (EditText) findViewById(R.id.companyAddress);
 
+//        address_layout= (LinearLayout) findViewById(R.id.address_layout);
+//        address= (TextView) findViewById(R.id.address);
+//        address_img= (ImageView) findViewById(R.id.address_img);
+//
+//       address_select_layout= (LinearLayout) findViewById(R.id.address_select_layout);
+//       layout1=findViewById(R.id.layout1)
+//        layout2;
+//        layout3;
+//
+//        layout1_txt;
+//        layout2_txt;
+//        layout3_txt;
+
+
     }
     @Override
     public void onClick(View v) {
@@ -73,7 +102,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
 
     private void doSave() {
         GlobalProvider.getInstance().employer.setCompanyname(name.getText().toString());
-        GlobalProvider.getInstance().employer.setMianBusiness(mainBusiness.getText().toString());
+        GlobalProvider.getInstance().employer.setMainBusiness(mainBusiness.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyInfo(description.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyAddress(companyAddress.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyURL(companyURL.getText().toString());

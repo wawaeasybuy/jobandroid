@@ -64,4 +64,14 @@ public class EvaluateBody implements Serializable{
     public float compression;
     public float attitude;
     public String adviceText;
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String companyName;
 }

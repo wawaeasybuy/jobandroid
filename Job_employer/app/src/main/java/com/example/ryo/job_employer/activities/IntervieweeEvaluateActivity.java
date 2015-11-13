@@ -148,6 +148,7 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
         body.setAdviceText(adviceText.getText().toString());
+        if(GlobalProvider.getInstance().employer.getCompanyname()!=null){body.setCompanyName(GlobalProvider.getInstance().employer.getCompanyname());}
         try {
             json = ow.writeValueAsString(body);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
@@ -160,12 +161,10 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
                     //doResult();
                     //parseLoginResult(new String(responseBody));
                 }
-
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
-
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
                 }
