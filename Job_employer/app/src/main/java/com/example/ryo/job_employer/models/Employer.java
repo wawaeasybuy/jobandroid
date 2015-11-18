@@ -77,6 +77,34 @@ public class Employer  implements Serializable {
     }
 
     public String companyAddress;
+    public String province;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String city;
+    public String region;
     public int score;
     public int UrTicket;
 

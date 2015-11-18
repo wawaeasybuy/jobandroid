@@ -36,6 +36,9 @@
             android:text="@string/personal_setting"
             android:textSize="20sp"/>
 
+        <TextView
+            android:layout_width="31dp"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <ImageView

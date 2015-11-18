@@ -64,7 +64,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     private ChinaAlphabetComparator comparator;
     private Hashtable<String, Hashtable<String, String[]>> hashtable;
     private String[] arrProvince, arrCity, arrRegion;
-    private String province, city, region;
+    private String province="", city="", region="";
     public String industryCategory="";
     public String PositionCategory="";
     public String[] positionCategory;
@@ -162,11 +162,10 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 page=1;
                 if(position>0){
                     PositionCategory=positionCategory[position];
-                    LoadJobListByPositionCategory();
                 }else{
-                    LoadJobList();
+                    PositionCategory="";
                 }
-
+                LoadJobListByCondition();
             }
         });
 //        lv1.setVisibility(View.GONE);
@@ -218,17 +217,21 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             lv3.setVisibility(View.VISIBLE);
         } else if (parent == lv3) {
             region = arrRegion[position];
+            lv1.setVisibility(View.GONE);
+            lv2.setVisibility(View.GONE);
+            lv3.setVisibility(View.GONE);
+            selectAddress.setVisibility(View.GONE);
+            lv_job.setVisibility(View.VISIBLE);
+            turn_one.setImageResource(R.drawable.turn_down);
+            LoadJobListByCondition();
             //txtInfo.setText(province + " " + city + " " + region);
         }
-
     }
-
     private void modifyCity(String province) {
         arrCity = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_CITY, province);
         AddressSelectListAdapter adapterCity = getArrayAdapter(arrCity);
         lv2.setAdapter(adapterCity);
     }
-
     private void modifyRegion(String province, String city) {
         arrRegion = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_REGION, province,
                 city);
@@ -241,8 +244,6 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         //adapter.sort(comparator);
         return adapter;
     }
-
-
     public void LoadJobList(){
         RequestParams params = new RequestParams();
         params.put("page", page);
@@ -266,13 +267,19 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             }
         });
     }
-    private void LoadJobListByPositionCategory(){
+    private void LoadJobListByCondition(){
         RequestParams params = new RequestParams();
         params.put("page", page);
         params.put("itemsPerPage", itemsPerPage);
         params.put("industryCategory", industryCategory);
-        params.put("positionCategory",PositionCategory);
-
+        if(!PositionCategory.equals("")) {
+            params.put("positionCategory", PositionCategory);
+        }
+        if(!region.equals("")){
+            params.put("province",province);
+            params.put("city",city);
+            params.put("region",region);
+        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
             @Override

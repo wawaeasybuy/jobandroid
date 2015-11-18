@@ -107,12 +107,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     }
     public void LoadCandidateInfo(){
+
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(getActivity(), Constants.regCanStr, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 ID.removeAllViews();
                 ID.addView(login_id_layout);
+                message_layout.removeAllViews();
                 //ID.addView(resume_layout);
 //                change.setVisibility(View.VISIBLE);
 //                resumeLayout.setVisibility(View.VISIBLE);

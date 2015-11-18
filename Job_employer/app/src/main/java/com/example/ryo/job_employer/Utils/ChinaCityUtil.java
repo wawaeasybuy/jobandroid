@@ -299,7 +299,7 @@ public class ChinaCityUtil {
         tmpCity.put("乌兰察布市", new String[] { "集宁区" });
         tmpCity.put("锡林郭勒盟", new String[] { "锡林浩特市" });
         tmpCity.put("兴安盟", new String[] { "乌兰浩特市" });
-        tmpCity.put("", new String[] {});
+        //tmpCity.put("", new String[] {});
         tmpProvince.put("内蒙古自治区", tmpCity);
         // 宁夏回族自治区
         tmpCity = new Hashtable<String, String[]>();

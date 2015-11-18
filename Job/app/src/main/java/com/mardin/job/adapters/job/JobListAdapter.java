@@ -62,7 +62,7 @@ public class JobListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         if(job.getPositionName()!=null){holder.positionName.setText(job.getPositionName());}
-        if(job.getCity()!=null){holder.city.setText(job.getCity());}
+        if(job.getCompanyAddress()!=null){holder.city.setText(job.getCompanyAddress());}
         holder.salary.setText(job.getSalary()+"");
         if(job.getTimeUpdate()!=null){holder.timeUpdate.setText(ConverToString(job.getTimeUpdate()));}
         return convertView;

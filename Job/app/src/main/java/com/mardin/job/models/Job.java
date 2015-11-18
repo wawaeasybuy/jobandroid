@@ -159,6 +159,33 @@ public class Job implements Serializable{
     public Date topTime;   //for employer msg
     public Date UrgTime; //for employer msg
     public Date timeUpdate;
+    public String companyAddress;
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public String province;
+    public String region;
 
 }
