@@ -29,6 +29,7 @@ import com.mardin.job.activities.job.InternshipsSearchActivity;
 import com.mardin.job.activities.job.PositionDetailActivity;
 import com.mardin.job.activities.job.PositionSearchActivity;
 import com.mardin.job.adapters.job.JobListAdapter;
+import com.mardin.job.adapters.job.JobRecAdapter;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
@@ -63,7 +64,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
     public ListView lv_rec;
     public  View headerView;
-    public JobListAdapter adapter;
+    public JobRecAdapter adapter;
     public int page;
     public int itemsPerPage;
     public List<Job> mItems;
@@ -100,7 +101,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         page=1;
         itemsPerPage=10;
         mItems=new ArrayList<Job>();
-        adapter=new JobListAdapter(getActivity(),mItems);
+        adapter=new JobRecAdapter(getActivity(),mItems);
         initView();
         initAction();
 //        hashtable= PositionIndustryUtil.initPositionIndustryHashtable();

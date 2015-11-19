@@ -11,7 +11,12 @@
     <string name="password">密码</string>
     <string name="name">姓名</string>
     <string name="ok">确定</string>
-
+    <string name="personal_setting_about_us">关于我们</string>
+    <string name="personal_setting_feedback">反馈</string>
+    <string name="feedback_important">您的建议十分重要</string>
+    <string name="personal_setting_massage">推送信息</string>
+    <string name="setting_massage_off">点击关闭</string>
+    <string name="personal_setting_log_out">退出登录</string>
     <!-- Internships -->
 
     <string name="internships">实习宝</string>

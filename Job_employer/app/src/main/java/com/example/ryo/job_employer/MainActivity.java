@@ -16,6 +16,7 @@ import com.example.ryo.job_employer.activities.IntervieweeActivity;
 import com.example.ryo.job_employer.activities.MyPositionActivity;
 import com.example.ryo.job_employer.activities.PositionFitActivity;
 import com.example.ryo.job_employer.activities.ScoreActivity;
+import com.example.ryo.job_employer.activities.SettingActivity;
 import com.example.ryo.job_employer.adapter.MessageAdapter;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
@@ -126,14 +127,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void doLogout() {
-                if (Constants.getToken(this).equals("")) {
-                    Toast.makeText(this, "you have not logged in", Toast.LENGTH_SHORT).show();
-                }else {
-                    Constants.setToken(this, "");
-                    Toast.makeText(this, "you have successfully logged out", Toast.LENGTH_SHORT).show();
-                    GlobalProvider.getInstance().employerId="";
-                    LoadPersonalInfo();
-                }
+        Intent intent=new Intent(MainActivity.this, SettingActivity.class);
+        startActivityForResult(intent,Constants.LOGOUT);
+//                if (Constants.getToken(this).equals("")) {
+//                    Toast.makeText(this, "you have not logged in", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Constants.setToken(this, "");
+//                    Toast.makeText(this, "you have successfully logged out", Toast.LENGTH_SHORT).show();
+//                    GlobalProvider.getInstance().employerId="";
+//                    LoadPersonalInfo();
+//                }
             }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -149,6 +152,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case Constants.SCOREINTENT:
+                if(resultCode == RESULT_OK){
+                    LoadPersonalInfo();
+                }
+                break;
+            case Constants.LOGOUT:
                 if(resultCode == RESULT_OK){
                     LoadPersonalInfo();
                 }

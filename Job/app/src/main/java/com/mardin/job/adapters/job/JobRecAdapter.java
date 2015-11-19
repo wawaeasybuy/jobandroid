@@ -22,11 +22,11 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/4.
  */
-public class JobListAdapter extends BaseAdapter {
+public class JobRecAdapter extends BaseAdapter {
     private List<Job> Data;
     private Context context;
 
-    public JobListAdapter(Context context,List data){
+    public JobRecAdapter(Context context,List data){
         this.Data=data;
         this.context=context;
     }
@@ -52,16 +52,16 @@ public class JobListAdapter extends BaseAdapter {
         ViewHolder holder = null;
         final Job job=Data.get(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.position_list_item, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.job_rec_list_item, null);
             holder = new ViewHolder();
             holder.positionName= (TextView) convertView.findViewById(R.id.positionName);
             holder.timeUpdate= (TextView) convertView.findViewById(R.id.timeUpdate);
             holder.city= (TextView) convertView.findViewById(R.id.city);
             holder.salary=(TextView) convertView.findViewById(R.id.salary);
-            holder.job_character_pull= (LinearLayout) convertView.findViewById(R.id.job_character_pull);
-            holder.turn_img= (ImageView) convertView.findViewById(R.id.turn_img);
-            holder.job_character_layout= (LinearLayout) convertView.findViewById(R.id.job_character_layout);
-            holder.job_character= (TextView) convertView.findViewById(R.id.job_character);
+//            holder.job_character_pull= (LinearLayout) convertView.findViewById(R.id.job_character_pull);
+//            holder.turn_img= (ImageView) convertView.findViewById(R.id.turn_img);
+//            holder.job_character_layout= (LinearLayout) convertView.findViewById(R.id.job_character_layout);
+//            holder.job_character= (TextView) convertView.findViewById(R.id.job_character);
             holder.top= (TextView) convertView.findViewById(R.id.top);
             holder.urg= (TextView) convertView.findViewById(R.id.urg);
 
@@ -72,28 +72,28 @@ public class JobListAdapter extends BaseAdapter {
 
         final ViewHolder finalHolder = holder;
         final ViewHolder finalHolder1 = holder;
-        holder.job_character_pull.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!ishowing[0]){
-                    finalHolder.job_character_layout.setVisibility(View.VISIBLE);
-                    finalHolder1.turn_img.setImageResource(R.drawable.turn_up_red);
-                }else{
-                    finalHolder.job_character_layout.setVisibility(View.GONE);
-                    finalHolder1.turn_img.setImageResource(R.drawable.turn_down_red);
-                }
-                ishowing[0] =!ishowing[0];
-            }
-        });
+//        holder.job_character_pull.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(!ishowing[0]){
+//                    finalHolder.job_character_layout.setVisibility(View.VISIBLE);
+//                    finalHolder1.turn_img.setImageResource(R.drawable.turn_up_red);
+//                }else{
+//                    finalHolder.job_character_layout.setVisibility(View.GONE);
+//                    finalHolder1.turn_img.setImageResource(R.drawable.turn_down_red);
+//                }
+//                ishowing[0] =!ishowing[0];
+//            }
+//        });
 
         if(job.getIsTop()){holder.top.setVisibility(View.VISIBLE);}else{holder.top.setVisibility(View.GONE);}
         if(job.getIsUrg()){holder.urg.setVisibility(View.VISIBLE);}else{holder.urg.setVisibility(View.GONE);}
-        holder.job_character_layout.setVisibility(View.GONE);
+//        holder.job_character_layout.setVisibility(View.GONE);
         if(job.getPositionName()!=null){holder.positionName.setText(job.getPositionName());}
         if(job.getCompanyAddress()!=null){holder.city.setText(job.getCompanyAddress());}
         holder.salary.setText(job.getSalary()+"");
         if(job.getTimeUpdate()!=null){holder.timeUpdate.setText(ConverToString(job.getTimeUpdate()));}
-        if(job.getPositionCharacter()!=null&&!job.getPositionCharacter().equals("")){holder.job_character.setText(job.getPositionCharacter());}else{holder.job_character.setText("鏆傛棤鑱屼綅鐗硅壊");}
+        //if(job.getPositionCharacter()!=null&&!job.getPositionCharacter().equals("")){holder.job_character.setText(job.getPositionCharacter());}else{holder.job_character.setText("暂无职位特色");}
         return convertView;
     }
     public static String ConverToString(Date date)
@@ -107,10 +107,7 @@ public class JobListAdapter extends BaseAdapter {
         public TextView timeUpdate;
         public TextView city;
         public TextView salary;
-        public LinearLayout job_character_pull;
-        public ImageView turn_img;
-        public LinearLayout job_character_layout;
-        public TextView job_character;
+
 
         public TextView top;
         public TextView urg;

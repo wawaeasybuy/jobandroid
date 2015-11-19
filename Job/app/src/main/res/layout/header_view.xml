@@ -49,8 +49,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/one"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
                 <TextView
                     android:gravity="center"
@@ -73,8 +73,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/two"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
                 <TextView
                     android:gravity="center"
@@ -97,8 +97,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/three"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
 
                 <TextView
@@ -122,8 +122,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/four"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
 
                 <TextView
@@ -157,8 +157,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/five"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
 
                 <TextView
@@ -182,8 +182,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/six"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
 
                 <TextView
@@ -207,8 +207,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/seven"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
 
                 <TextView
@@ -232,8 +232,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/eight"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
 
 
                 <TextView
