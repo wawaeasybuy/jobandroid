@@ -152,10 +152,14 @@
             android:label="@string/personal_job_intention" >
         </activity>
         <activity
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".activities.job.ImportantInfoActivity"
             android:label="@string/personal_important_info" >
         </activity>
         <activity
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:configChanges="orientation|keyboardHidden"
             android:name=".activities.job.EducationInfoActivity"
             android:label="@string/personal_education" >
         </activity>

@@ -1,6 +1,7 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -9,14 +10,18 @@ import android.os.IBinder;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mardin.job.R;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.models.Resume;
+
+import java.util.Calendar;
 
 /**
  * Created by Ryo on 2015/9/15.
@@ -26,6 +31,7 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
     private LinearLayout male;
     private LinearLayout female;
     public LinearLayout turn_left;
+    public LinearLayout birth_select_layout;
 
     private TextView male_t;
     private TextView female_t;
@@ -37,11 +43,13 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
     public EditText name;
     public EditText tel;
     public EditText address;
-    public EditText birth;
+    public TextView birth;
 
     public Resume resume;
+    public String Str_data="";
 
 public TextView saveToNext;
+    public int gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +58,30 @@ public TextView saveToNext;
 
         initView();
         initAction();
-        setSelect(0);
 
         this.resume= GlobalProvider.getInstance().resume;
         if(resume.getName()!=null){name.setText(resume.getName());}
-        if(resume.getBirth()!=null){birth.setText(resume.getBirth());}
+        if(resume.getBirth()!=null){birth.setText(resume.getBirth());Str_data=resume.getBirth();}
+        this.gender=resume.getGender();
+        setSelect(gender);
         if(resume.getAddress()!=null){address.setText(resume.getAddress());}
         if(resume.getTel()!=null){tel.setText(resume.getTel());}
-
+        final Calendar c = Calendar.getInstance();
+        birth_select_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePicker = new DatePickerDialog(BaseDataActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // TODO Auto-generated method stub
+                            Toast.makeText(BaseDataActivity.this, year + "-" + (monthOfYear + 1) + "-" + dayOfMonth, Toast.LENGTH_SHORT).show();
+                            Str_data = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                            birth.setText(Str_data);
+                    }
+                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                datePicker.show();
+            }
+        });
     }
 public void initAction(){
     turn_left.setOnClickListener(this);
@@ -65,6 +89,7 @@ public void initAction(){
     female.setOnClickListener(this);
     save.setOnClickListener(this);
     saveToNext.setOnClickListener(this);
+
 }
     private void initView() {
 
@@ -82,14 +107,17 @@ public void initAction(){
         name= (EditText) findViewById(R.id.name);
         address= (EditText) findViewById(R.id.address);
         tel= (EditText) findViewById(R.id.tel);
-        birth= (EditText) findViewById(R.id.birth);
+        birth= (TextView) findViewById(R.id.birth);
         saveToNext= (TextView) findViewById(R.id.saveToNext);
+        birth_select_layout= (LinearLayout) findViewById(R.id.birth_select_layout);
 
     }
     public void doSave(){
         GlobalProvider.getInstance().resume.setName(name.getText().toString());
         GlobalProvider.getInstance().resume.setAddress(address.getText().toString());
         GlobalProvider.getInstance().resume.setTel(tel.getText().toString());
+        GlobalProvider.getInstance().resume.setBirth(Str_data);
+        GlobalProvider.getInstance().resume.setGender(gender);
         this.setResult(Activity.RESULT_OK);
         this.finish();
     }
@@ -106,7 +134,7 @@ public void initAction(){
 
                 male.setBackgroundColor(0xff0080fe);
                 female.setBackgroundColor(0xffffffff);
-
+                this.gender=0;
                 break;
             case 1:
                 female_t.setTextColor(0xFF000000);
@@ -117,7 +145,7 @@ public void initAction(){
 
                 female.setBackgroundColor(0xff0080fe);
                 male.setBackgroundColor(0xffffffff);
-
+                this.gender=1;
                 break;
 
         }

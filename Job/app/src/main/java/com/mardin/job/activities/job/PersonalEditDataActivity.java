@@ -1,10 +1,15 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -42,6 +47,10 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
     public EditText name;
     public ImageView touxiang;
     public Candidate candidate;
+    public LinearLayout img_layout;
+    private final String IMAGE_TYPE = "image/*";
+
+    private final int IMAGE_CODE = 0;   //这里的IMAGE_CODE是自己任意定义的
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +65,11 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
             if(candidate.getName()!=null){name.setText(candidate.getName());}
         }
     }
+
     private void initAction() {
         turn_left.setOnClickListener(this);
         save.setOnClickListener(this);
+        img_layout.setOnClickListener(this);
     }
     private void initView() {
         turn_left = (LinearLayout) findViewById(R.id.turn_left);
@@ -66,6 +77,7 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
         schoolName= (EditText) findViewById(R.id.schoolName);
         name= (EditText) findViewById(R.id.name);
         touxiang= (ImageView) findViewById(R.id.touxiang);
+        img_layout= (LinearLayout) findViewById(R.id.img_layout);
     }
     @Override
     public void onClick(View v) {
@@ -76,6 +88,37 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
             case  R.id.save:
                 doUpdateResume();
                 break;
+            case  R.id.img_layout:
+                setImage();
+                break;
+        }
+    }
+    private void setImage() {
+        // TODO Auto-generated method stub
+        //使用intent调用系统提供的相册功能，使用startActivityForResult是为了获取用户选择的图片
+        Intent getAlbum = new Intent(Intent.ACTION_GET_CONTENT);
+        getAlbum.setType(IMAGE_TYPE);
+        startActivityForResult(getAlbum, IMAGE_CODE);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode != RESULT_OK) {        //此处的 RESULT_OK 是系统自定义得一个常量
+            Log.e("TAG->onresult", "ActivityResult resultCode error");
+            return;
+        }
+        Bitmap bm = null;
+        //外界的程序访问ContentProvider所提供数据 可以通过ContentResolver接口
+        ContentResolver resolver = getContentResolver();
+        //此处的用于判断接收的Activity是不是你想要的那个
+        if (requestCode == IMAGE_CODE) {
+            try {
+                Uri originalUri = data.getData();        //获得图片的uri
+                bm = MediaStore.Images.Media.getBitmap(resolver, originalUri);
+                //显得到bitmap图片
+                touxiang.setImageBitmap(bm);
+            }catch (IOException e) {
+                Log.e("TAG-->Error", e.toString());
+            }
         }
     }
     private void doUpdateResume() {

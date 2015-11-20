@@ -112,6 +112,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_base_info"/>
 
                     <TextView
@@ -178,6 +179,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_base_info"/>
 
                     <TextView
@@ -284,6 +286,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_job_intention"/>
 
                     <TextView
@@ -351,6 +354,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_job_intention"/>
                     <TextView
                         android:id="@+id/clickToFillJobIntent"
@@ -435,6 +439,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_education"/>
 
                     <TextView
@@ -503,6 +508,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_education"/>
                     <TextView
                         android:id="@+id/clickToFillEducationInfo"
@@ -603,6 +609,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_important_info"/>
 
                     <TextView
@@ -671,6 +678,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:text="@string/personal_important_info"/>
                     <TextView
                         android:id="@+id/clickToFillImportanteInfo"

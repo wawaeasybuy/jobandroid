@@ -25,7 +25,6 @@
                 android:layout_height="28dp" />
 
 
-
         </LinearLayout>
 
         <TextView
@@ -73,10 +72,6 @@
             android:textSize="16sp"
             android:text="@string/personal_self_evaluate"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
 
             <EditText
                 android:id="@+id/selfEvaluation"
@@ -89,8 +84,6 @@
                 android:textColorHint="#9b9b9b"
                 android:textSize="14sp"
                 android:hint="@string/self_evaluate_hint"/>
-
-        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -147,11 +140,6 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
             <EditText
                 android:id="@+id/experience"
                 android:layout_width="match_parent"
@@ -164,7 +152,6 @@
                 android:textSize="14sp"
                 android:hint="@string/internships_experience_hint"/>
 
-        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -221,9 +208,6 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/works"
@@ -237,7 +221,6 @@
                 android:textSize="14sp"
                 android:hint="@string/resume_work_"/>
 
-        </ScrollView>
 
     </LinearLayout>
 

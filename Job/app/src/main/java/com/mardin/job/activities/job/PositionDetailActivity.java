@@ -85,7 +85,22 @@ public class PositionDetailActivity extends Activity {
         position_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doApply();
+                if(GlobalProvider.getInstance().resume.isdelivered){
+                    doApply();
+                }else{
+                    new AlertDialog.Builder(PositionDetailActivity.this)
+                            .setMessage("您的简历还没完善，暂时还不能投递！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.i("alertdialog", " 保存数据");
+
+                                }
+
+                            }).show();
+                }
+
             }
         });
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);

@@ -86,6 +86,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     public ImageView img_release;
     public TextView release;
+
+    public TextView resume_delivery;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -163,6 +165,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 }else{
                     img_release.setImageResource(R.drawable.locked);
                     release.setText("已公开");
+                }
+                if(candidate.resume.isdelivered){
+                    resume_delivery.setText("可投递");
+                }else{
+                    resume_delivery.setText("不可投递");
                 }
                 this.resume=candidate.resume;
                 GlobalProvider.getInstance().resume=candidate.resume;
@@ -301,6 +308,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
         message_layout= (LinearLayout) change_layout.findViewById(R.id.message);
 
+        resume_delivery= (TextView) resume_layout.findViewById(R.id.resume_delivery);
 
     }
     public void initAction(){

@@ -25,6 +25,16 @@ public class Resume implements Serializable {
     public String experience;
     public String works;
 
+    public boolean isdelivered() {
+        return isdelivered;
+    }
+
+    public void setIsdelivered(boolean isdelivered) {
+        this.isdelivered = isdelivered;
+    }
+
+    public boolean isdelivered;
+
     public Boolean getBeOpen() {
         return beOpen;
     }

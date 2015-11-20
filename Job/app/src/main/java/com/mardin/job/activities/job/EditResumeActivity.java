@@ -134,7 +134,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             startActivityForResult(intent7, Constants.UPDATERESUMEIMPORTANTE);
             break;
         case R.id.save:
-            doSave();
+            doExist();
             break;
 
     }
@@ -156,20 +156,38 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         return false;
     }
     public void doExist(){
-        new AlertDialog.Builder(this)
-                .setMessage("是否保存当前编辑？")
-                .setNegativeButton("否", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        doResult();
-                    }
-                })
-                .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        doSave();
+        if(adjustToSave()){
+            new AlertDialog.Builder(this)
+                    .setMessage("简历可投递，是否保存当前编辑？")
+                    .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            GlobalProvider.getInstance().resume.setIsdelivered(true);
+                            doSave();
 
-                    }
-                }).show();
+                        }
+                    }).show();
+        }else{
+            new AlertDialog.Builder(this)
+                    .setMessage("简历不可投递，还有待完善，是否保存？")
+                    .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            GlobalProvider.getInstance().resume.setIsdelivered(false);
+                            doSave();
+                        }
+                    }).show();
+        }
     }
     public void doSave(){
         Resume resumeUpdate=GlobalProvider.getInstance().resume;
@@ -347,6 +365,13 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         }else{
             important_info.setVisibility(View.GONE);
             no_important_info.setVisibility(View.VISIBLE);
+        }
+    }
+    public boolean adjustToSave(){
+        if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")&&resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")&&resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")&&resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){
+            return true;
+        }else{
+            return false;
         }
     }
     private void initAction() {

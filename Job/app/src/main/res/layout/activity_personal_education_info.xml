@@ -106,6 +106,7 @@
                    android:id="@+id/schoolName"
                    android:layout_marginRight="15dp"
                    android:background="#ffffff"
+                   android:gravity="right"
                    android:textSize="14dp"
                    android:hint="@string/base_data_residence_"
                    android:layout_width="wrap_content"
@@ -139,6 +140,7 @@
                     android:layout_marginRight="15dp"
                     android:background="#ffffff"
                     android:textSize="14dp"
+                    android:gravity="right"
                     android:hint="@string/base_data_residence_"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -155,6 +157,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
+                android:id="@+id/graduationTime_select_layout"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
                 android:paddingLeft="10dp"
@@ -166,14 +169,24 @@
                     android:layout_weight="1"
                     android:text="@string/resume_graduate_time"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/graduationTime"
-                    android:layout_marginRight="15dp"
-                    android:background="#ffffff"
-                    android:textSize="14dp"
-                    android:hint="@string/base_data_residence_"
+                    android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@drawable/turn_right1"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+                <!--<EditText-->
+                    <!--android:id="@+id/graduationTime"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:background="#ffffff"-->
+                    <!--android:textSize="14dp"-->
+                    <!--android:hint="@string/base_data_residence_"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
             </LinearLayout>
 
@@ -204,6 +217,7 @@
                     android:background="#ffffff"
                     android:textSize="14dp"
                     android:hint="@string/base_data_residence_"
+                    android:gravity="right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -225,9 +239,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/resume_practice"/>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+
 
                 <EditText
                     android:id="@+id/internshipExprience"
@@ -241,7 +253,7 @@
                     android:textSize="14sp"
                     android:hint="@string/resume_practice_"/>
 
-            </ScrollView>
+
 
         </LinearLayout>
 

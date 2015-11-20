@@ -76,6 +76,7 @@
             android:id="@+id/schoolName"
             android:layout_marginRight="15dp"
             android:textSize="13dp"
+            android:gravity="right"
             android:hint="点击输入"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -109,9 +110,10 @@
         <EditText
             android:background="#ffffff"
             android:id="@+id/name"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:textSize="13dp"
             android:hint="点击输入"
+            android:gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -128,7 +130,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-
+        android:id="@+id/img_layout"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:gravity="center"
@@ -174,6 +176,7 @@
             android:text="@string/change_password"/>
 
         <TextView
+            android:gravity="right"
             android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
