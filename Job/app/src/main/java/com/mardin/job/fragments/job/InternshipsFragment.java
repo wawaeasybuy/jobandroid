@@ -132,7 +132,6 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                     intent.putExtra("job", mItems.get(position - 1));
                     getActivity().startActivity(intent);
                 }
-
             }
         });
         lv_rec.setHeaderDividersEnabled(false);
@@ -146,7 +145,6 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 (Context.LAYOUT_INFLATER_SERVICE);
         headerView=inflater.inflate(R.layout.header_view,lv_rec, false);
 
-
         search= ( LinearLayout) getActivity().findViewById(R.id.search);
         classify= (LinearLayout) headerView.findViewById(R.id.classify);
         IT= (LinearLayout) headerView.findViewById(R.id.IT);
@@ -158,14 +156,10 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         outBuy= (LinearLayout) headerView.findViewById(R.id.outBuy);
         other= (LinearLayout) headerView.findViewById(R.id.other);
 
-
-
-
         rec= (TextView) headerView.findViewById(R.id.rec);
         search_edit= (EditText) getActivity().findViewById(R.id.search_edit);
         address= (TextView) getActivity().findViewById(R.id.address);
         //position_recommend= (LinearLayout) getActivity().findViewById(R.id.position_recommend);
-
     }
     public void initAction(){
         search.setOnClickListener(this);
@@ -177,9 +171,6 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         ad.setOnClickListener(this);
         outBuy.setOnClickListener(this);
         other.setOnClickListener(this);
-
-
-
 
         //classify.setOnClickListener(this);
         // position_recommend.setOnClickListener(this);
@@ -198,9 +189,6 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                     parseJobList(new String(responseBody));
 //                noLogin.setVisibility(View.GONE);
 //                lv_rec.setVisibility(View.VISIBLE);
-                    rec.setText("职位推荐");
-                    rec.setTextColor(0xffee2400);
-
                 }
 
                 @Override
@@ -216,10 +204,8 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 }
             });
         }else{
-            rec.setText("暂无可推荐职位！");
-            rec.setTextColor(0xffee2400);
-        }
 
+        }
     }
     public void parseJobList(String json){
         JsonFactory jsonFactory = new JsonFactory();
@@ -227,6 +213,13 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             JobList joblist = (JobList) objectMapper.readValue(jsonParser, JobList.class);
+            if(joblist.jobs.size()>0){
+                rec.setText("职位推荐");
+                rec.setTextColor(0xffee2400);
+            }else{
+                rec.setText("暂无可推荐职位！");
+                rec.setTextColor(0xffee2400);
+            }
             this.mItems.clear();
             this.mItems.addAll(joblist.jobs);
             //GlobalProvider.getInstance().shangpingListDefault=mItems;
@@ -236,7 +229,6 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
             e.printStackTrace();
         }
     }
-
     public void LoadCandidateInfo(){
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(getActivity(), Constants.regCanStr, new RequestListener() {
