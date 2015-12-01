@@ -204,7 +204,8 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 }
             });
         }else{
-
+            rec.setText("暂无可推荐职位！");
+            rec.setTextColor(0xffee2400);
         }
     }
     public void parseJobList(String json){
