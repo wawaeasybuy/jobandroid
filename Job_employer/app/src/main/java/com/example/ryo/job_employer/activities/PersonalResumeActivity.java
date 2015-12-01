@@ -78,7 +78,7 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
                 name.setText("Œ¥ÃÓ–¥");
                 name_one.setText("Œ¥ÃÓ–¥");
             }
-            if(resume.getBirth()!=null){birth.setText(resume.getBirth().toString());}
+            if(resume.getBirth()!=null){birth.setText(resume.getBirth());}
             if(resume.getAddress()!=null){address.setText(resume.getAddress());}
             if(resume.getTel()!=null){tel.setText(resume.getTel());}
             if(resume.getSchoolName()!=null) {schoolName.setText(resume.getSchoolName());}else{schoolName.setText("");}
@@ -110,7 +110,7 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
                 name.setText("Œ¥ÃÓ–¥");
                 name_one.setText("Œ¥ÃÓ–¥");
             }
-            if(Pubresume.getBirth()!=null){birth.setText(Pubresume.getBirth().toString());}
+            if(Pubresume.getBirth()!=null){birth.setText(Pubresume.getBirth());}
             if(Pubresume.getAddress()!=null){address.setText(Pubresume.getAddress());}
             if(Pubresume.getTel()!=null){tel.setText(Pubresume.getTel());}
             if(Pubresume.getSchoolName()!=null) {schoolName.setText(Pubresume.getSchoolName());}else{schoolName.setText("");}

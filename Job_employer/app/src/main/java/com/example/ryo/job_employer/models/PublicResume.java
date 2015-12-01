@@ -27,7 +27,7 @@ public class PublicResume implements Serializable {
     public String tel;
     public String address;
     public String name;
-    public Date birth;
+    public String birth;
     public String imgName;
     public String expectedIndustry;
     public String expectedPosition;
@@ -174,11 +174,11 @@ public class PublicResume implements Serializable {
         this.imgName = imgName;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 

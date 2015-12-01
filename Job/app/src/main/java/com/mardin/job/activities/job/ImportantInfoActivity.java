@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,6 +26,8 @@ public class ImportantInfoActivity extends Activity {
     public EditText works;
     public TextView save;
     public Resume resume;
+    public TextView text_length;
+    public TextView text_length_two;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +36,53 @@ public class ImportantInfoActivity extends Activity {
         selfEvaluation= (EditText) findViewById(R.id.selfEvaluation);
         experience= (EditText) findViewById(R.id.experience);
         works= (EditText) findViewById(R.id.works);
+        text_length= (TextView) findViewById(R.id.text_length);
+        text_length_two= (TextView) findViewById(R.id.text_length_two);
+        selfEvaluation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                String content = selfEvaluation.getText().toString();
+                text_length.setText(content.length()+"");
+            }
+
+        });
+        experience.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                String content = experience.getText().toString();
+                text_length_two.setText(content.length()+"");
+            }
+
+        });
         save= (TextView) findViewById(R.id.save);
 
         this.resume= GlobalProvider.getInstance().resume;
         if(resume.getSelfEvaluation()!=null){selfEvaluation.setText(resume.getSelfEvaluation());}
         if(resume.getExperience()!=null){experience.setText(resume.getExperience());}
         if(resume.getWorks()!=null){works.setText(resume.getWorks());}
+
+
+
 
 
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);

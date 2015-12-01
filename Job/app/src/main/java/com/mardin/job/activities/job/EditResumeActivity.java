@@ -136,6 +136,22 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         case R.id.save:
             doExist();
             break;
+        case R.id.personal_base_info:
+            Intent intent8 = new Intent( EditResumeActivity.this,BaseDataActivity.class);
+            startActivityForResult(intent8, Constants.UPDATERESUMEBASEINFO);
+            break;
+        case R.id.job_intention:
+            Intent intent9 = new Intent( EditResumeActivity.this,JobIntentionActivity.class);
+            startActivityForResult(intent9, Constants.UPDATERESUMEINTEND);
+            break;
+        case R.id.education_info:
+            Intent intent10 = new Intent( EditResumeActivity.this,EducationInfoActivity.class);
+            startActivityForResult(intent10, Constants.UPDATERESUMEDUCATION);
+            break;
+        case R.id.important_info:
+            Intent intent11 = new Intent( EditResumeActivity.this,ImportantInfoActivity.class);
+            startActivityForResult(intent11, Constants.UPDATERESUMEIMPORTANTE);
+            break;
 
     }
     }
@@ -390,6 +406,11 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         job_intention_nofill.setOnClickListener(this);
         important_info_nofill.setOnClickListener(this);
         education_info_nofill.setOnClickListener(this);
+
+        personal_base_info.setOnClickListener(this);
+        job_intention.setOnClickListener(this);
+        education_info.setOnClickListener(this);
+        important_info.setOnClickListener(this);
         save.setOnClickListener(this);
 
     }

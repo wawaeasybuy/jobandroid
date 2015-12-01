@@ -91,9 +91,9 @@ public class JobRecAdapter extends BaseAdapter {
 //        holder.job_character_layout.setVisibility(View.GONE);
         if(job.getPositionName()!=null){holder.positionName.setText(job.getPositionName());}
         if(job.getCompanyAddress()!=null){holder.city.setText(job.getCompanyAddress());}
-        holder.salary.setText(job.getSalary()+"");
+        holder.salary.setText("搴曡柂"+job.getSalary()+"");
         if(job.getTimeUpdate()!=null){holder.timeUpdate.setText(ConverToString(job.getTimeUpdate()));}
-        //if(job.getPositionCharacter()!=null&&!job.getPositionCharacter().equals("")){holder.job_character.setText(job.getPositionCharacter());}else{holder.job_character.setText("暂无职位特色");}
+        //if(job.getPositionCharacter()!=null&&!job.getPositionCharacter().equals("")){holder.job_character.setText(job.getPositionCharacter());}else{holder.job_character.setText("鏆傛棤鑱屼綅鐗硅壊");}
         return convertView;
     }
     public static String ConverToString(Date date)
