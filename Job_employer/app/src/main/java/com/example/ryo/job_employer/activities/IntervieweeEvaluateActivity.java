@@ -138,7 +138,7 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
             this.finish();
             break;
              case R.id.save:
-            doEvaluete();
+                doEvaluete();
             break;
       }
     }
@@ -158,6 +158,8 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     Toast.makeText(IntervieweeEvaluateActivity.this, "评价成功！", Toast.LENGTH_SHORT).show();
+                    setResult(Activity.RESULT_OK);
+                    finish();
                     //doResult();
                     //parseLoginResult(new String(responseBody));
                 }

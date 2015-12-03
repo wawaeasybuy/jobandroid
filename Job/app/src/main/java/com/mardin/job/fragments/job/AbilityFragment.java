@@ -10,16 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
+import com.mardin.job.adapters.job.AdviceListAdapter;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Resume;
+import com.mardin.job.models.Skills;
 import com.mardin.job.models.Talent;
+import com.mardin.job.models.TalentList;
 import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
@@ -31,7 +35,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Ryo on 2015/9/27.
@@ -52,6 +58,11 @@ public class AbilityFragment extends Fragment  {
     public TextView companyName;
     public TextView evaluationTime;
 
+    public List<TalentList> mItems;
+    public AdviceListAdapter adapter;
+    public ListView lv;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,15 +78,18 @@ public class AbilityFragment extends Fragment  {
         star_bar3 = (RatingBar)getActivity().findViewById(R.id.star_bar3);
         star_bar4 = (RatingBar)getActivity().findViewById(R.id.star_bar4);
         star_bar5 = (RatingBar)getActivity().findViewById(R.id.star_bar5);
-        adviceText= (TextView) getActivity().findViewById(R.id.adviceText);
-        companyName= (TextView) getActivity().findViewById(R.id.companyName);
-        evaluationTime= (TextView) getActivity().findViewById(R.id.evaluationTime);
-
+        lv= (ListView) getActivity().findViewById(R.id.lv);
+//        adviceText= (TextView) getActivity().findViewById(R.id.adviceText);
+//        companyName= (TextView) getActivity().findViewById(R.id.companyName);
+//        evaluationTime= (TextView) getActivity().findViewById(R.id.evaluationTime);
+        mItems=new ArrayList<TalentList>();
+        adapter=new AdviceListAdapter(getActivity(),mItems);
+        lv.setAdapter(adapter);
         getTalent();
     }
     public void getTalent(){
         GlobalProvider globalProvider = GlobalProvider.getInstance();
-        String Url=Constants.talentStr+"/"+GlobalProvider.getInstance().candidate.get_id();
+        String Url=Constants.skillUrlStr+"/"+GlobalProvider.getInstance().candidate.get_id();
         globalProvider.get(getActivity(), Url, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -98,15 +112,18 @@ public class AbilityFragment extends Fragment  {
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
-            Talent talent = (Talent) objectMapper.readValue(jsonParser, Talent.class);
-            star_bar1.setRating(talent.getProfessionalLevel());
-            star_bar2.setRating(talent.getAnalysis());
-            star_bar3.setRating(talent.getExpression());
-            star_bar4.setRating(talent.getCompression());
-            star_bar5.setRating(talent.getAttitude());
-            if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}else{adviceText.setText("暂无任何公司评价");}
-            if(talent.getCompanyName()!=null){companyName.setText(talent.getCompanyName());}
-            if(talent.getEvaluationTime()!=null){evaluationTime.setText(ConverToString(talent.getEvaluationTime()));}
+            Skills skills = (Skills) objectMapper.readValue(jsonParser, Skills.class);
+            star_bar1.setRating(skills.getProfessionalLevel());
+            star_bar2.setRating(skills.getAnalysis());
+            star_bar3.setRating(skills.getExpression());
+            star_bar4.setRating(skills.getCompression());
+            star_bar5.setRating(skills.getAttitude());
+            this.mItems.clear();
+            this.mItems.addAll(skills.advices);
+            adapter.notifyDataSetChanged();
+//            if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}else{adviceText.setText("暂无任何公司评价");}
+//            if(talent.getCompanyName()!=null){companyName.setText(talent.getCompanyName());}
+//            if(talent.getEvaluationTime()!=null){evaluationTime.setText(ConverToString(talent.getEvaluationTime()));}
 //            adapter.notifyDataSetChanged();
             //do something
         }catch (IOException e) {

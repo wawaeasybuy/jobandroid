@@ -76,7 +76,7 @@ public class TalentAdapter extends BaseAdapter{
             }
         }
         if(talent.getName()!=null){holder.name.setText(talent.getName());}
-        holder.testValue.setText("职业测评分 ："+talent.getTestValue());
+        holder.testValue.setText("职业测评分 ："+talent._candidate.getTestValue());
         if(talent.getSchoolName()!=null){holder.schoolName.setText(talent.getSchoolName());}
         if(talent.getProfessional()!=null){holder.professional.setText(talent.getProfessional());}
         //holder.schoolName.setText(talent.getSchoolName());

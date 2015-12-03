@@ -266,6 +266,7 @@ public class PositionDetailActivity extends Activity {
             PublicResume  resume = (PublicResume) objectMapper.readValue(jsonParser, PublicResume.class);
             if(resume.getMsg()==null){
                 Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
+                finish();
             }else{
                 new AlertDialog.Builder(this)
                         .setMessage("简历已投递过！不能再次投递！")

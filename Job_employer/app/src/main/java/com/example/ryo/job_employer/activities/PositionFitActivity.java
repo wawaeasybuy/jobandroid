@@ -315,11 +315,12 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
     }
     public void PositionFitIgnore(final String id){
         RequestParams params = new RequestParams();
-        params.put("id",id );
-        params.put("_employer",GlobalProvider.getInstance().employerId);
+//        params.put("id",id );
+//        params.put("_employer",GlobalProvider.getInstance().employerId);
 
         GlobalProvider globalProvider = GlobalProvider.getInstance();
-        globalProvider.put(this, Constants.PositionFitIgnoreStr, params, new RequestListener() {
+        String url=Constants.PositionFitIgnoreStr+"?"+"id="+id+"&&_employer="+GlobalProvider.getInstance().employerId;
+        globalProvider.put(this, url, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 LoadResumeList();

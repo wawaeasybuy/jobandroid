@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.ryo.job_employer.R;
@@ -16,10 +17,19 @@ import com.example.ryo.job_employer.network.Constants;
  */
 public class SettingActivity extends Activity{
     public Button logout;
+    public LinearLayout turn_left;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_setting);
         logout= (Button) findViewById(R.id.logout);
+        turn_left= (LinearLayout) findViewById(R.id.turn_left);
+        turn_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResult(Activity.RESULT_OK);
+                finish();
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,7 +19,7 @@ public class Talent implements Serializable {
 
     public String _id;
     public String _employer;
-    public String _candidate;
+    public Candidate _candidate;
 
     public String get_job() {
         return _job;
@@ -76,11 +76,11 @@ public class Talent implements Serializable {
         this._employer = _employer;
     }
 
-    public String get_candidate() {
+    public Candidate get_candidate() {
         return _candidate;
     }
 
-    public void set_candidate(String _candidate) {
+    public void set_candidate(Candidate _candidate) {
         this._candidate = _candidate;
     }
 

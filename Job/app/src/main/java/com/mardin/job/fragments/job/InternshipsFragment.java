@@ -112,7 +112,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         Address mAddress = getAddressbyGeoPoint(getActivity(), gp);
 //        address.setText("Address: " + mAddress.getCountryName() + ","
 //                + mAddress.getLocality() + "," + mAddress.getThoroughfare());
-        address.setText(mAddress.getThoroughfare());
+        //address.setText(mAddress.getThoroughfare());
         search_edit.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -179,11 +179,12 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         RequestParams params = new RequestParams();
         params.put("page", page);
         params.put("itemsPerPage", itemsPerPage);
-        if(GlobalProvider.getInstance().resume.getExpectedPosition()!=null){
-            retrieval=GlobalProvider.getInstance().resume.getExpectedPosition();
-            params.put("retrieval",retrieval);
+//        if(GlobalProvider.getInstance().resume.getExpectedPosition()!=null){
+//            retrieval=GlobalProvider.getInstance().resume.getExpectedPosition();
+//            params.put("retrieval",retrieval);
             GlobalProvider globalProvider = GlobalProvider.getInstance();
-            globalProvider.get(getActivity(), Constants.jobListUrlStr, params, new RequestListener() {
+            String url=Constants.recommendStr+"/"+GlobalProvider.getInstance().candidate.get_id();
+            globalProvider.get(getActivity(), url, params, new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     parseJobList(new String(responseBody));
@@ -196,6 +197,8 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                     //Log.v("err", new String(responseBody));
 //                noLogin.setVisibility(View.VISIBLE);
 //                lv_rec.setVisibility(View.GONE);
+                    rec.setText("暂无可推荐职位！");
+                    rec.setTextColor(0xffee2400);
                 }
 
                 @Override
@@ -203,10 +206,11 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
                 }
             });
-        }else{
-            rec.setText("暂无可推荐职位！");
-            rec.setTextColor(0xffee2400);
-        }
+       // }
+//        else{
+//            rec.setText("暂无可推荐职位！");
+//            rec.setTextColor(0xffee2400);
+//        }
     }
     public void parseJobList(String json){
         JsonFactory jsonFactory = new JsonFactory();
@@ -255,9 +259,9 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
             GlobalProvider.getInstance().candidate=candidate;
-            if(candidate.resume!=null){
-                GlobalProvider.getInstance().resume=candidate.resume;
-            }
+//            if(candidate.resume!=null){
+//                GlobalProvider.getInstance().resume=candidate.resume;
+//            }
             LoadRecJobList();
         }catch (IOException e) {
             e.printStackTrace();
@@ -277,49 +281,49 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 //                startActivity(intent1);
 //                break;
             case R.id.IT:
-                industryCategory="IT|互联网|通信";
+                industryCategory="互联网";
                 Intent intent2 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent2.putExtra("industryCategory",industryCategory);
                 startActivity(intent2);
                 break;
             case R.id.bank:
-                industryCategory="金融";
+                industryCategory="金融财会";
                 Intent intent3 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent3.putExtra("industryCategory",industryCategory);
                 startActivity(intent3);
                 break;
             case R.id.house:
-                industryCategory="房产|建筑|物业管理";
+                industryCategory="房产建筑";
                 Intent intent4 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent4.putExtra("industryCategory",industryCategory);
                 startActivity(intent4);
                 break;
             case R.id.industry:
-                industryCategory="生产|制造";
+                industryCategory="工业制造";
                 Intent intent5 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent5.putExtra("industryCategory",industryCategory);
                 startActivity(intent5);
                 break;
             case R.id.hospital:
-                industryCategory="服务业";
+                industryCategory="医药化学";
                 Intent intent6 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent6.putExtra("industryCategory",industryCategory);
                 startActivity(intent6);
                 break;
             case R.id.ad:
-                industryCategory="传媒|印刷|艺术|设计";
+                industryCategory="广告传媒";
                 Intent intent7 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent7.putExtra("industryCategory",industryCategory);
                 startActivity(intent7);
                 break;
             case R.id.outBuy:
-                industryCategory="服务业";
+                industryCategory="外贸行业";
                 Intent intent8 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent8.putExtra("industryCategory",industryCategory);
                 startActivity(intent8);
                 break;
             case R.id.other:
-                industryCategory="兼职|实习|社工|其他";
+                industryCategory="其他行业";
                 Intent intent9 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent9.putExtra("industryCategory",industryCategory);
                 startActivity(intent9);

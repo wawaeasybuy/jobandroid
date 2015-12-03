@@ -228,6 +228,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         GlobalProvider.getInstance().employer.setCity(layout2_txt.getText().toString());
         GlobalProvider.getInstance().employer.setRegion(layout3_txt.getText().toString());
         Toast.makeText(FirmInfoActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
+        finish();
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

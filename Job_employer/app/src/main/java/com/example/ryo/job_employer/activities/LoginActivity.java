@@ -1,11 +1,14 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -44,6 +47,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public Button login;
     public TextView register;
     public TextView forgeterPsd;
+    private int a=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,11 +72,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
     public void LoginAction() {
 
-        //·Ö±ğ°Ñemail¡¢psdµÄÖµ´«µİ¸øusernameStr¡¢passwordStr
+        //åˆ†åˆ«æŠŠemailã€psdçš„å€¼ä¼ é€’ç»™usernameStrã€passwordStr
         String tel = phone.getText().toString();
         String passwordStr = psd.getText().toString();
 
-        // °ó¶¨²ÎÊı
+        // ç»‘å®šå‚æ•°
         LoginBody body=new LoginBody();
         body.setPassword(passwordStr);
         body.setTel(tel);
@@ -104,12 +108,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
 
         //Toast.makeText(LoginActivity.this, usernameStr , Toast.LENGTH_SHORT).show();
-        //ÏÔÊ¾ÓÃ»§Ãû
+        //æ˜¾ç¤ºç”¨æˆ·å
     }
-    //ÉùÃ÷·½·¨parseLoginResult(String json)
+    //å£°æ˜æ–¹æ³•parseLoginResult(String json)
     public void parseLoginResult(String json) {
 
-        // °ó¶¨²ÎÊı
+        // ç»‘å®šå‚æ•°
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -117,16 +121,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             JsonNode rootNode =  mapper.readTree(jsonParser);
             JsonNode tokenNode = rootNode.path("token");
             String token = tokenNode.toString();
-            token = token.replaceAll("\"", "");//°ÑtokenÖĞµÄ"\""È«²¿Ìæ»»³É""
-            Constants.setToken(LoginActivity.this, token);//°ó¶¨LoginActivityÖĞµÄtoken
+            token = token.replaceAll("\"", "");//æŠŠtokenä¸­çš„"\""å…¨éƒ¨æ›¿æ¢æˆ""
+            Constants.setToken(LoginActivity.this, token);//ç»‘å®šLoginActivityä¸­çš„token
             //Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
-            //ÏÔÊ¾tokenĞÅÏ¢
+            //æ˜¾ç¤ºtokenä¿¡æ¯
             Log.v("err",token);
-            this.setResult(Activity.RESULT_OK);//Îª½á¹û°ó¶¨Activity.RESULT_OK
-            this.finish();//Íê³É
+            this.setResult(Activity.RESULT_OK);//ä¸ºç»“æœç»‘å®šActivity.RESULT_OK
+            this.finish();//å®Œæˆ
         } catch (IOException e) {
             e.printStackTrace();
-        }//µ±tryÖĞ´úÂë·¢Éú´íÎóÊ±£¬¾Í»á·µ»ØËùĞ´Òì³£µÄ´¦Àí
+        }//å½“tryä¸­ä»£ç å‘ç”Ÿé”™è¯¯æ—¶ï¼Œå°±ä¼šè¿”å›æ‰€å†™å¼‚å¸¸çš„å¤„ç†
 
     }
 
@@ -185,5 +189,46 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             im.hideSoftInputFromWindow(token,
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        //æŒ‰ä¸‹é”®ç›˜ä¸Šè¿”å›æŒ‰é’®
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+
+
+
+            new AlertDialog.Builder(this)
+                    .setMessage("æ‚¨ç¡®å®šé€€å‡ºåº”ç”¨å—ï¼Ÿ")
+                    .setNegativeButton("å–æ¶ˆ", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .setPositiveButton("ç¡®å®š", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            a=a+1;
+                            finish();
+
+                        }
+                    }).show();
+
+            return true;
+        }else{
+            return super.onKeyDown(keyCode, event);
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if(a>0){
+            System.exit(0);
+
+        }
+        a=0;
+        //æˆ–è€…ä¸‹é¢è¿™ç§æ–¹å¼
+        //android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

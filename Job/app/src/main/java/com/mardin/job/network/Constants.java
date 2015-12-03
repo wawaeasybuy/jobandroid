@@ -10,16 +10,17 @@ import com.mardin.job.helper.GlobalProvider;
  * Created by Mardin on 7/7/15.
  */
 public class Constants {
-    static public String baseUrlStr = "http://192.168.1.108:9000/";
-    //static public String baseUrlStr = "http://54.169.214.156:8080/";
+    //static public String baseUrlStr = "http://192.168.1.108:9000/";
+    static public String baseUrlStr = "http://54.169.214.156:8080/";
     static public String jobListUrlStr = baseUrlStr + "api/jobs";
+    static  public String skillUrlStr=baseUrlStr+"api/skills";
     static public String loginUrlStr = baseUrlStr + "auth/local";
     static public String crePubResume = baseUrlStr + "api/publicresumes";
     static public String talentStr = baseUrlStr + "api/talents";
     static public String jobCollectUrlStr = baseUrlStr + "api/jobs";
     static public String meUrlStr = baseUrlStr + "api/users/me";
     static public String updateEmployerStr = baseUrlStr + "api/employers";
-
+    static public String recommendStr=baseUrlStr+"api/jobs/recommend";
     static public String regEmpStr = baseUrlStr + "api/employers";
     static  public  String createResumeStr=baseUrlStr+"api/resumes";
 

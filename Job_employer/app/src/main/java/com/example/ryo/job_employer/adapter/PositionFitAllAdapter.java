@@ -85,7 +85,7 @@ public class PositionFitAllAdapter extends BaseAdapter{
             holder.ignore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //((PositionFitActivity)context).PositionFitIgnore(resume.get_id());
+                    ((PositionFitActivity)context).PositionFitIgnore(resume.get_id());
                 }
             });
             return convertView;
