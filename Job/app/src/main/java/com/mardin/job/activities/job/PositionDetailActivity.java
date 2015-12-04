@@ -208,8 +208,8 @@ public class PositionDetailActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.i("alertdialog", " 保存数据");
-//                                Intent intent=new Intent(PositionDetailActivity.this,LoginActivity.class);
-//                                startActivityForResult(intent,Constants.GOCREATEPUB);
+                                Intent intent = new Intent(PositionDetailActivity.this, EditResumeActivity.class);
+                                startActivity(intent);
                             }
                         }).show();
             }

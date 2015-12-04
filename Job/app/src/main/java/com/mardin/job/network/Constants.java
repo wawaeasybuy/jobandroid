@@ -43,6 +43,7 @@ public class Constants {
     public static final int UPDATERESUME= 96;
     public static  final int GOCREATEPUB=97;
     public static  final int GOTOLOGOUT=98;
+    public static  final int GOUPDATERESUME=99;
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager
