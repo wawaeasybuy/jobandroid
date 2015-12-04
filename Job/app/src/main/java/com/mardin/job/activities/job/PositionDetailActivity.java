@@ -75,7 +75,6 @@ public class PositionDetailActivity extends Activity {
         Intent intent = this.getIntent();
         if(intent.getSerializableExtra("job")!=null){
             job= (Job) intent.getSerializableExtra("job");
-
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
             if(job.getPositionName()!=null){job_name.setText(job.getPositionName());}
             if(job.getTimeUpdate()!=null){time_update.setText(ConverToString(job.getTimeUpdate()));}
@@ -85,22 +84,7 @@ public class PositionDetailActivity extends Activity {
         position_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(GlobalProvider.getInstance().resume.isdelivered){
-                    doApply();
-                }else{
-                    new AlertDialog.Builder(PositionDetailActivity.this)
-                            .setMessage("您的简历还没完善，暂时还不能投递！")
-                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Log.i("alertdialog", " 保存数据");
-
-                                }
-
-                            }).show();
-                }
-
+                doLoadCandidateInfo();
             }
         });
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
@@ -180,7 +164,25 @@ public class PositionDetailActivity extends Activity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                new AlertDialog.Builder(PositionDetailActivity.this)
+                        .setMessage("您还没登录，请先登录")
+                        .setPositiveButton("去登陆", new DialogInterface.OnClickListener() {
 
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("alertdialog", " 保存数据");
+                                Intent intent=new Intent(PositionDetailActivity.this,LoginActivity.class);
+                                startActivityForResult(intent,Constants.GOCREATEPUB);
+                            }
+
+                        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+//                            MainActivity.getDefault().setSelect(2);
+                    }
+
+                }).show();
             }
 
             @Override
@@ -197,6 +199,20 @@ public class PositionDetailActivity extends Activity {
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
             GlobalProvider.getInstance().candidate=candidate;
+            if(candidate.resume.isdelivered()){
+                doApply();
+            }else{
+                new AlertDialog.Builder(PositionDetailActivity.this)
+                        .setMessage("您的简历还没完善，请完善！")
+                        .setPositiveButton("去完善", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("alertdialog", " 保存数据");
+//                                Intent intent=new Intent(PositionDetailActivity.this,LoginActivity.class);
+//                                startActivityForResult(intent,Constants.GOCREATEPUB);
+                            }
+                        }).show();
+            }
 //            adapter.notifyDataSetChanged();
             //do something
         }catch (IOException e) {
@@ -229,25 +245,7 @@ public class PositionDetailActivity extends Activity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
-                    new AlertDialog.Builder(PositionDetailActivity.this)
-                            .setMessage("您还没登录，请先登录")
-                            .setPositiveButton("去登陆", new DialogInterface.OnClickListener() {
 
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Log.i("alertdialog", " 保存数据");
-                                    Intent intent=new Intent(PositionDetailActivity.this,LoginActivity.class);
-                                    startActivityForResult(intent,Constants.GOCREATEPUB);
-                                }
-
-                            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // TODO Auto-generated method stub
-//                            MainActivity.getDefault().setSelect(2);
-                        }
-
-                    }).show();
                 }
 
                 @Override
