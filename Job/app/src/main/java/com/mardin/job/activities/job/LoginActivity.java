@@ -50,31 +50,25 @@ public class LoginActivity extends Activity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
-
         TextView forget_password= (TextView) findViewById(R.id.forget_password);
         forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(LoginActivity.this,RetrievePasswordActivity.class);
                 startActivity(intent);
             }
         });
-
         Button login= (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LoginAction();
             }
         });
-
     }
     public void LoginAction(){
         String telStr = tel.getText().toString();

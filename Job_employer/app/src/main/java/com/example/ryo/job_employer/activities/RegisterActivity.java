@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ryo.job_employer.MainActivity;
 import com.example.ryo.job_employer.R;
@@ -88,10 +89,11 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             json = ow.writeValueAsString(body);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
-            globalProvider.post(this, Constants.RegisterStr, entity, "application/json", new RequestListener() {
+            globalProvider.post(this, Constants.personalInfo, entity, "application/json", new RequestListener() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                        doRegister(new String(responseBody));
+                        Toast.makeText(RegisterActivity.this, "æ³¨å†ŒæˆåŠŸï¼", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -116,16 +118,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             JsonNode rootNode =  mapper.readTree(jsonParser);
             JsonNode tokenNode = rootNode.path("token");
             String token = tokenNode.toString();
-            token = token.replaceAll("\"", "");//°ÑtokenÖĞµÄ"\""È«²¿Ìæ»»³É""
-            Constants.setToken(RegisterActivity.this,token);//°ó¶¨LoginActivityÖĞµÄtoken
+            token = token.replaceAll("\"", "");//æŠŠtokenä¸­çš„"\""å…¨éƒ¨æ›¿æ¢æˆ""
+            Constants.setToken(RegisterActivity.this,token);//ç»‘å®šLoginActivityä¸­çš„token
             //Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
-            //ÏÔÊ¾tokenĞÅÏ¢
+            //æ˜¾ç¤ºtokenä¿¡æ¯
             Intent intent=new Intent(RegisterActivity.this, MainActivity.class);
             startActivity(intent);
             this.finish();
         } catch (IOException e) {
             e.printStackTrace();
-        }//µ±tryÖĞ´úÂë·¢Éú´íÎóÊ±£¬¾Í»á·µ»ØËùĞ´Òì³£µÄ´¦Àí
+        }//å½“tryä¸­ä»£ç å‘ç”Ÿé”™è¯¯æ—¶ï¼Œå°±ä¼šè¿”å›æ‰€å†™å¼‚å¸¸çš„å¤„ç†
     }
 
     @Override

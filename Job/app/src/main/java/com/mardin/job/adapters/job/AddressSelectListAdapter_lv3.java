@@ -15,9 +15,9 @@ import java.util.List;
  * Created by Administrator on 2015/11/5.
  */
 public class AddressSelectListAdapter_lv3 extends BaseAdapter{
-    public List<String> Data;
+    public String[] Data;
     public Context context;
-    private int i;
+    private int i=0;
 
     public interface  OnItemClickListener{
 
@@ -32,18 +32,18 @@ public class AddressSelectListAdapter_lv3 extends BaseAdapter{
         this.mOnItemClickListener=mOnItemClickListener;
 
     }
-    public AddressSelectListAdapter_lv3(Context context,List data){
+    public AddressSelectListAdapter_lv3(Context context,String[] data){
         this.Data=data;
         this.context=context;
     }
     @Override
     public int getCount() {
-        return Data.size();
+        return Data.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return  Data.get(position);
+        return  Data[position];
     }
 
     @Override
@@ -54,7 +54,7 @@ public class AddressSelectListAdapter_lv3 extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        final String name=Data.get(position);
+        final String name=Data[position];
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.select_address_list_item, null);
             holder = new ViewHolder();

@@ -56,6 +56,31 @@
                 android:textColor="#0080fe" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ability"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ability_p"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/sxb_gerenpince_gray"/>
+
+            <TextView
+                android:id="@+id/ability_t"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/function_score_header" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/personal"
@@ -83,31 +108,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ability"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/ability_p"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:src="@drawable/sxb_gerenpince_gray"/>
-
-            <TextView
-                android:id="@+id/ability_t"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/function_score_header" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

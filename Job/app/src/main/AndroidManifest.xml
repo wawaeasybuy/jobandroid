@@ -34,6 +34,10 @@
             android:label="@string/title_activity_Topic" >
         </activity>
         <activity
+            android:name=".activities.job.ApplyActivity"
+            >
+        </activity>
+        <activity
             android:name=".activities.zhiwei.TopicDetail"
             android:label="@string/title_activity_TopicDetail" >
         </activity>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
+import com.mardin.job.activities.job.ApplyActivity;
 import com.mardin.job.activities.job.EditResumeActivity;
 import com.mardin.job.activities.job.FunctionScoreActivity;
 import com.mardin.job.activities.job.LoginActivity;
@@ -93,6 +94,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public TextView resume_delivery;
 
     public boolean isLogined;
+    public TextView deliveryResource;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -164,7 +166,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 //personalName.setText(candidate.getName());
                 name.setText(candidate.getName());
             }
-            if(candidate.getSchoolName()!=null){schoolName.setText(candidate.getSchoolName());}
+            if(candidate.getSchoolName()!=null){
+                schoolName.setText(candidate.getSchoolName());
+            }else{
+                schoolName.setText("请填写大学名字");
+            }
             if(candidate.resume!=null){
 
                 if(candidate.resume.getBeOpen()==null||!candidate.resume.getBeOpen()){
@@ -318,6 +324,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         message_layout= (LinearLayout) change_layout.findViewById(R.id.message);
 
         resume_delivery= (TextView) resume_layout.findViewById(R.id.resume_delivery);
+        deliveryResource= (TextView) resume_layout.findViewById(R.id.deliveryResource);
 
     }
     public void initAction(){
@@ -343,6 +350,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         resume_release.setOnClickListener(this);
         createResume.setOnClickListener(this);
         resume_delete.setOnClickListener(this);
+        deliveryResource.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -399,14 +407,15 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                                     Log.i("alertdialog", " 保存数据");
 
                                 }
-
                             }).show();
                 }
-
                 break;
             case R.id.resume_delete:
                 doDelete();
                 break;
+            case R.id.deliveryResource:
+                Intent intent=new Intent(getActivity(), ApplyActivity.class);
+                startActivity(intent);
         }
     }
 }

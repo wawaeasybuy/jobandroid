@@ -36,6 +36,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -77,6 +78,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public Boolean ishowing=false;
     public TextView industry;
     public ImageView search;
+    public int Position;
+    public String[] ARR;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -216,7 +219,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             modifyRegion(province, city);
             lv3.setVisibility(View.VISIBLE);
         } else if (parent == lv3) {
-            region = arrRegion[position];
+            this.Position=position;
+            region = ARR[position];
             lv1.setVisibility(View.GONE);
             lv2.setVisibility(View.GONE);
             lv3.setVisibility(View.GONE);
@@ -235,14 +239,23 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     private void modifyRegion(String province, String city) {
         arrRegion = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_REGION, province,
                 city);
-        AddressSelectListAdapter adapterRegion = getArrayAdapter(arrRegion);
-        lv3.setAdapter(adapterRegion);
+        AddressSelectListAdapter_lv3 adapter_lv3=new AddressSelectListAdapter_lv3(this,changeList(arrRegion,city));
+        //AddressSelectListAdapter adapterRegion = getArrayAdapter(changeList(arrRegion,city));
+        lv3.setAdapter(adapter_lv3);
     }
     private AddressSelectListAdapter getArrayAdapter(String[] arr) {
         AddressSelectListAdapter adapter = new AddressSelectListAdapter(this,arr);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //adapter.sort(comparator);
         return adapter;
+    }
+    public String[] changeList(String[] arr,String city_name){
+        ARR= Arrays.copyOf(arr, arr.length + 1);
+        ARR[0]=city_name;
+        for(int i=0;i<arr.length;i++){
+            ARR[i+1]=arr[i];
+        }
+        return ARR;
     }
     public void LoadJobList(){
         RequestParams params = new RequestParams();
@@ -276,9 +289,14 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             params.put("positionCategory", PositionCategory);
         }
         if(!region.equals("")){
+            if(Position>0){
             params.put("province",province);
             params.put("city",city);
             params.put("region",region);
+            }else{
+                params.put("province",province);
+                params.put("city",city);
+            }
         }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
