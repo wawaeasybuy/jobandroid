@@ -191,7 +191,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/top"
+            android:id="@+id/top_one"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="8dp"
@@ -286,7 +286,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/urg"
+            android:id="@+id/urg_one"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="8dp"

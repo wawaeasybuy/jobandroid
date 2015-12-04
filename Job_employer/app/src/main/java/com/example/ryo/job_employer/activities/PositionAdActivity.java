@@ -1,6 +1,8 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +18,14 @@ import com.example.ryo.job_employer.models.DoReleaseBody;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.Job;
+import com.example.ryo.job_employer.models.JobList;
 import com.example.ryo.job_employer.network.Constants;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.ByteArrayEntity;
 import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
@@ -125,6 +129,15 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
                 break;
         }
     }
+    public String elertMessage(String key){
+        String message="";
+        if(key.equals("top")){
+            message="置顶券不足，请前往兑换";
+        }else if(key.equals("urg")){
+            message="加急券不足，请前往兑换";
+        }
+        return message;
+    }
     public void doExcute(){
         DoReleaseBody body=new DoReleaseBody();
         body.setKey(key);
@@ -141,17 +154,26 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
             globalProvider.put(this, URL, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+                    //parseResult(new String(responseBody));
+                    if(responseBody.length>0){
+                        new AlertDialog.Builder(PositionAdActivity.this)
+                                .setMessage(elertMessage(key))
+                                .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        Intent intent=new Intent(PositionAdActivity.this,ScoreActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }).show();
+                    }else{
+                        doResult();
+                    }
                     //parseLoginResult(new String(responseBody));
                     //loadjobList();
-                    doResult();
                 }
-
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
-
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
                 }
@@ -160,6 +182,18 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
             e.printStackTrace();
         }
     }
+//    private void parseResult(String json){
+//        JsonFactory jsonFactory = new JsonFactory();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try{
+//            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+//            JobList jobList = (JobList) objectMapper.readValue(jsonParser, JobList.class);
+//            Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+//            doResult();
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
     public void doResult(){
         this.setResult(Activity.RESULT_OK);
         this.finish();

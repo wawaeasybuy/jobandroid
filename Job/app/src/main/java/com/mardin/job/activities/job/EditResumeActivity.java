@@ -184,6 +184,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                     .setPositiveButton("是", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             GlobalProvider.getInstance().resume.setIsdelivered(true);
+
                             doSave();
 
                         }
@@ -200,6 +201,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                     .setPositiveButton("是", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             GlobalProvider.getInstance().resume.setIsdelivered(false);
+                            GlobalProvider.getInstance().resume.setBeOpen(false);
                             doSave();
                         }
                     }).show();

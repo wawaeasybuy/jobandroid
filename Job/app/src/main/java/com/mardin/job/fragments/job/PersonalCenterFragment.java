@@ -1,8 +1,11 @@
 package com.mardin.job.fragments.job;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +91,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public TextView release;
 
     public TextView resume_delivery;
+
+    public boolean isLogined;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -117,6 +122,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 ID.removeAllViews();
                 ID.addView(login_id_layout);
                 message_layout.removeAllViews();
+                personal_setting.setVisibility(View.VISIBLE);
+                isLogined=true;
                 //ID.addView(resume_layout);
 //                change.setVisibility(View.VISIBLE);
 //                resumeLayout.setVisibility(View.VISIBLE);
@@ -135,6 +142,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 //                noResumeLayout.setVisibility(View.GONE);
 //                noLogin.setVisibility(View.VISIBLE);
 //                isLoging = false;
+                personal_setting.setVisibility(View.GONE);
+                isLogined=false;
             }
 
             @Override
@@ -358,12 +367,42 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             case R.id.resume_release:
 //                Intent intent4=new Intent(getActivity(),FunctionScoreActivity.class);
 //                startActivity(intent4);
-                doRelease();
+                if(GlobalProvider.getInstance().candidate.resume.isdelivered()){
+                    doRelease();
+                }else{
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("您的简历未完善，暂时不能公开！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.i("alertdialog", " 保存数据");
+
+                                }
+
+                            }).show();
+                }
+
                 break;
             case R.id.createResume:
-                Intent intent6=new Intent(getActivity(),  EditResumeActivity.class);
-                //intent1.putExtra("resume", resume);
-                getActivity().startActivityForResult(intent6, Constants.UPDATERESUME);
+                if(isLogined){
+                    Intent intent6=new Intent(getActivity(),  EditResumeActivity.class);
+                    //intent1.putExtra("resume", resume);
+                    getActivity().startActivityForResult(intent6, Constants.UPDATERESUME);
+                }else{
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("您还未登录，请先登录！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.i("alertdialog", " 保存数据");
+
+                                }
+
+                            }).show();
+                }
+
                 break;
             case R.id.resume_delete:
                 doDelete();
