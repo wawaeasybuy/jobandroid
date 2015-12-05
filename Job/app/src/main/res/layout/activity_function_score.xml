@@ -71,7 +71,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5"
-                            android:rating="1"
+                            android:rating="0"
                             android:layout_marginLeft="20dp" >
                         </RatingBar>
 
@@ -98,7 +98,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5"
-                            android:rating="4"
+                            android:rating="0"
                             android:layout_marginLeft="20dp" >
                         </RatingBar>
 
@@ -126,7 +126,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5"
-                            android:rating="4"
+                            android:rating="0"
                             android:layout_marginLeft="20dp" >
                         </RatingBar>
 
@@ -154,7 +154,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5"
-                            android:rating="4"
+                            android:rating="0"
                             android:layout_marginLeft="20dp" >
                         </RatingBar>
 
@@ -181,7 +181,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5"
-                            android:rating="4"
+                            android:rating="0"
                             android:layout_marginLeft="20dp" >
                         </RatingBar>
 

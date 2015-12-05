@@ -98,7 +98,11 @@ public class AbilityFragment extends Fragment  {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                star_bar1.setEnabled(false);
+                star_bar2.setEnabled(false);
+                star_bar3.setEnabled(false);
+                star_bar4.setEnabled(false);
+                star_bar5.setEnabled(false);
             }
 
             @Override
@@ -118,6 +122,14 @@ public class AbilityFragment extends Fragment  {
             star_bar3.setRating(skills.getExpression());
             star_bar4.setRating(skills.getCompression());
             star_bar5.setRating(skills.getAttitude());
+
+            star_bar1.setEnabled(false);
+            star_bar2.setEnabled(false);
+            star_bar3.setEnabled(false);
+            star_bar4.setEnabled(false);
+            star_bar5.setEnabled(false);
+
+
             this.mItems.clear();
             this.mItems.addAll(skills.advices);
             adapter.notifyDataSetChanged();
