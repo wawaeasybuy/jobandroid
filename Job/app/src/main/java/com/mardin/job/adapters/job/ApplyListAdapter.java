@@ -67,9 +67,9 @@ public class ApplyListAdapter extends BaseAdapter{
         }
 
         if(pub.getCompanyName()!=null){  holder.firmName.setText(pub.getCompanyName());}
-        holder.city.setText(pub.get_job().getCity()+"/"+pub.get_job().getRegion());
-        if(pub._job.getPositionName()!=null){holder.positionName.setText(pub._job.getPositionName());}
-       holder.salary.setText("底薪"+pub.get_job().getSalary());
+        if(pub._job!=null){holder.city.setText(pub.get_job().getCity()+"/"+pub.get_job().getRegion());}
+        if(pub._job!=null){if(pub._job.getPositionName()!=null){holder.positionName.setText(pub._job.getPositionName());}}
+        if(pub._job!=null){holder.salary.setText("底薪"+pub.get_job().getSalary());}
         if(pub.isRead){
             holder.success.setText("已查看");
         }else{
