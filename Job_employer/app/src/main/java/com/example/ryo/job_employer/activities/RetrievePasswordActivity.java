@@ -1,9 +1,8 @@
-package com.mardin.job.activities.job;
+package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +11,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.ResponseHandlerInterface;
-import com.mardin.job.R;
-import com.mardin.job.helper.GlobalProvider;
-import com.mardin.job.helper.RequestListener;
-import com.mardin.job.models.GetCodeBody;
-import com.mardin.job.models.RegisterBody;
-import com.mardin.job.models.ResetPsdBody;
-import com.mardin.job.network.Constants;
+
+import com.example.ryo.job_employer.R;
+import com.example.ryo.job_employer.helper.GlobalProvider;
+import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.GetCodeBody;
+import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
+import com.example.ryo.job_employer.models.ResetPsdBody;
+import com.example.ryo.job_employer.network.Constants;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -163,10 +162,12 @@ public class RetrievePasswordActivity extends Activity {
                     finish();
 
                 }
+
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
+
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
                 }

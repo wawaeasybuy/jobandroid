@@ -154,19 +154,8 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
             globalProvider.put(this, URL, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    //parseResult(new String(responseBody));
-                    if(responseBody.length>0){
-                        new AlertDialog.Builder(PositionAdActivity.this)
-                                .setMessage(elertMessage(key))
-                                .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                        Intent intent=new Intent(PositionAdActivity.this,ScoreActivity.class);
-                                        startActivity(intent);
-                                    }
-                                }).show();
-                    }else{
-                        doResult();
-                    }
+                    parseResult(new String(responseBody));
+
                     //parseLoginResult(new String(responseBody));
                     //loadjobList();
                 }
@@ -182,18 +171,29 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
             e.printStackTrace();
         }
     }
-//    private void parseResult(String json){
-//        JsonFactory jsonFactory = new JsonFactory();
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        try{
-//            JsonParser jsonParser = jsonFactory.createJsonParser(json);
-//            JobList jobList = (JobList) objectMapper.readValue(jsonParser, JobList.class);
-//            Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
-//            doResult();
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void parseResult(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try{
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            Job job = (Job) objectMapper.readValue(jsonParser, Job.class);
+            if(job.error!=null){
+                new AlertDialog.Builder(PositionAdActivity.this)
+                        .setMessage(elertMessage(key))
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Intent intent=new Intent(PositionAdActivity.this,ScoreActivity.class);
+                                startActivity(intent);
+                            }
+                        }).show();
+            }else{
+                Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+                doResult();
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void doResult(){
         this.setResult(Activity.RESULT_OK);
         this.finish();

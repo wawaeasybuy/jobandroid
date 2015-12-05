@@ -159,4 +159,5 @@ public class Job implements Serializable {
     public Date topTime;  //for employer msg
     public Date UrgTime;    //for employer msg
     public Date timeUpdate;
+    public Error error;
 }
