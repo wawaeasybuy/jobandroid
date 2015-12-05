@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.mardin.job.R;
 import com.mardin.job.helper.GlobalProvider;
+import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Resume;
 
 import java.util.Calendar;
@@ -25,12 +26,13 @@ import java.util.Calendar;
  */
 public class EducationInfoActivity extends Activity {
 
-    public EditText schoolName;
+    public TextView schoolName;
     public EditText professional;
     public TextView  graduationTime;
     public EditText grade;
     public EditText internshipExprience;
     public Resume resume;
+    public Candidate candidate;
 
     public TextView save;
     public TextView saveToNext;
@@ -42,7 +44,7 @@ public class EducationInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_education_info);
-        schoolName= (EditText) findViewById(R.id.schoolName);
+        schoolName= (TextView) findViewById(R.id.schoolName);
         professional= (EditText) findViewById(R.id.professional);
         graduationTime= (TextView) findViewById(R.id.graduationTime);
         grade= (EditText) findViewById(R.id.grade);
@@ -52,7 +54,8 @@ public class EducationInfoActivity extends Activity {
         graduationTime_select_layout= (LinearLayout) findViewById(R.id.graduationTime_select_layout);
 
         this.resume= GlobalProvider.getInstance().resume;
-        if(resume.getSchoolName()!=null){schoolName.setText(resume.getSchoolName());}
+        candidate=GlobalProvider.getInstance().candidate;
+        if(candidate.getSchoolName()!=null){schoolName.setText(candidate.getSchoolName());}
         if(resume.getProfessional()!=null){professional.setText(resume.getProfessional());}
         if(resume.getGraduationTime()!=null){graduationTime.setText(resume.getGraduationTime());Str_data=resume.getGraduationTime();}
         if(resume.getGrade()!=null){grade.setText(resume.getGrade());}
@@ -74,7 +77,6 @@ public class EducationInfoActivity extends Activity {
                 datePicker.show();
             }
         });
-
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override

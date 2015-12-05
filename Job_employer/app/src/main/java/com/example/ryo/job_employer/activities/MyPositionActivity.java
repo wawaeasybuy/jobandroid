@@ -3,7 +3,9 @@ package com.example.ryo.job_employer.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -55,6 +57,8 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
     private Integer mPage;
     private Integer mItemsPerPage;
     public OnekeyShare onekeyShare;
+    public SwipeRefreshLayout swiperefresh;
+    public Boolean mNomore=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,33 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         list = new ArrayList<Job>();
         adapter = new PositionAdapter(this, list);
         lv.setAdapter(adapter);
+        swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mNomore = false;
+                mPage = 1;
+                loadjobList();
+//                if (GlobalProvider.getInstance().ShangpingHeaderLoadCategory.equals("")) {
+//                    loadJobList();
+//                } else {
+//                    loadProduct(GlobalProvider.getInstance().ShangpingHeaderLoadCategory);
+//                }
+            }
+        });
+        lv.setOnScrollListener(new ListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                if (!mNomore && lv.getCount() != 0 && lv.getLastVisiblePosition() >= (lv.getCount() - 1)) {
+                    loadMoreJobList();
+                }
+            }
+        });
         loadjobList();
     }
 
@@ -83,6 +114,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         add_position = (ImageView) findViewById(R.id.add_position);
         turn_left = (ImageView) findViewById(R.id.turn_left);
         lv = (ListView) findViewById(R.id.lv);
+        swiperefresh= (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
 
     }
 
@@ -125,11 +157,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parseJobList(new String(responseBody));
+                swiperefresh.setRefreshing(false);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 //Log.v("err", new String(responseBody));
+                swiperefresh.setRefreshing(false);
 
             }
 
@@ -139,7 +173,51 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             }
         });
     }
+public void loadMoreJobList(){
+    mPage=mPage+1;
+    RequestParams params = new RequestParams();
+    params.put("page", mPage);
+    params.put("itemsPerPage", mItemsPerPage);
+    params.put("employerId", GlobalProvider.getInstance().employerId);
 
+    GlobalProvider globalProvider = GlobalProvider.getInstance();
+    globalProvider.get(this, Constants.PositionStr, params, new RequestListener() {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+            parseMoreJobList(new String(responseBody));
+            //swiperefresh.setRefreshing(false);
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+            //Log.v("err", new String(responseBody));
+            //swiperefresh.setRefreshing(false);
+
+        }
+
+        @Override
+        public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+        }
+    });
+}
+    public void parseMoreJobList(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            JobList joblist = (JobList) objectMapper.readValue(jsonParser, JobList.class);
+            if(joblist.jobs.size()<mItemsPerPage){
+                mNomore = true;
+            }
+            this.list.addAll(joblist.jobs);
+            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+            adapter.notifyDataSetChanged();
+            //loadme();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void parseJobList(String json) {
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();

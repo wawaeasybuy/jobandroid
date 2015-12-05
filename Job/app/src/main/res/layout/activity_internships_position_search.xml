@@ -211,17 +211,22 @@
 
     <ListView
         android:background="#ffffff"
-        android:id="@+id/lv_job"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
-    <ListView
-        android:background="#ffffff"
         android:id="@+id/lv_position_pull"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </ListView>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:background="#ffffff"
+            android:id="@+id/lv_job"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

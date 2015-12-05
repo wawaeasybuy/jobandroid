@@ -22,6 +22,7 @@ import com.mardin.job.models.JobApplyBody;
 import com.mardin.job.models.JobList;
 import com.mardin.job.models.Job_delivered;
 import com.mardin.job.models.PublicResume;
+import com.mardin.job.models.PublicResumeDelivery;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
@@ -261,7 +262,7 @@ public class PositionDetailActivity extends Activity {
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
-            PublicResume  resume = (PublicResume) objectMapper.readValue(jsonParser, PublicResume.class);
+            PublicResumeDelivery resume = (PublicResumeDelivery) objectMapper.readValue(jsonParser, PublicResumeDelivery.class);
             if(resume.getMsg()==null){
                 Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
                 finish();
@@ -269,7 +270,6 @@ public class PositionDetailActivity extends Activity {
                 new AlertDialog.Builder(this)
                         .setMessage("简历已投递过！不能再次投递！")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.i("alertdialog", " 保存数据");

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.mardin.job.R;
 import com.mardin.job.helper.GlobalProvider;
+import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Resume;
 
 import java.util.Calendar;
@@ -40,12 +41,13 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
     private ImageView male_p;
     private ImageView female_p;
 
-    public EditText name;
-    public EditText tel;
+    public TextView name;
+    public TextView tel;
     public EditText address;
     public TextView birth;
 
     public Resume resume;
+    public Candidate candidate;
     public String Str_data="";
 
 public TextView saveToNext;
@@ -60,12 +62,13 @@ public TextView saveToNext;
         initAction();
 
         this.resume= GlobalProvider.getInstance().resume;
-        if(resume.getName()!=null){name.setText(resume.getName());}
+        candidate=GlobalProvider.getInstance().candidate;
+        if(candidate.getName()!=null){name.setText(candidate.getName());}
         if(resume.getBirth()!=null){birth.setText(resume.getBirth());Str_data=resume.getBirth();}
         this.gender=resume.getGender();
         setSelect(gender);
         if(resume.getAddress()!=null){address.setText(resume.getAddress());}
-        if(resume.getTel()!=null){tel.setText(resume.getTel());}
+        if(candidate.getTel()!=null){tel.setText(candidate.getTel());}
         final Calendar c = Calendar.getInstance();
         birth_select_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,9 +107,9 @@ public void initAction(){
         male_p= (ImageView) findViewById(R.id.male_p);
         female_p= (ImageView) findViewById(R.id.female_p);
 
-        name= (EditText) findViewById(R.id.name);
+        name= (TextView) findViewById(R.id.name);
         address= (EditText) findViewById(R.id.address);
-        tel= (EditText) findViewById(R.id.tel);
+        tel= (TextView) findViewById(R.id.tel);
         birth= (TextView) findViewById(R.id.birth);
         //saveToNext= (TextView) findViewById(R.id.saveToNext);
         birth_select_layout= (LinearLayout) findViewById(R.id.birth_select_layout);

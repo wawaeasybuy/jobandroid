@@ -423,7 +423,7 @@ public class ChinaCityUtil {
         tmpProvince.put("云南省", tmpCity);
         // 浙江省
         tmpCity = new Hashtable<String, String[]>();
-        tmpCity.put("杭州市", new String[] { "滨江区，淳安县", "富阳市", "拱墅区", "建德市", "江干区", "临安市", "上城区",
+        tmpCity.put("杭州市", new String[] { "滨江区","淳安县", "富阳市", "拱墅区", "建德市", "江干区", "临安市", "上城区",
                 "桐庐县", "西湖区", "下城区", "萧山区", "余杭区" });
         tmpCity.put("湖州市", new String[] { "长兴县", "德清县", "南浔区", "吴兴区" });
         tmpCity.put("嘉兴市", new String[] { "海宁市", "海盐县", "平湖市", "桐乡市", "南湖区", "秀洲区" });

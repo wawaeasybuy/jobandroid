@@ -45,6 +45,10 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:background="#f2f2f2">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <ListView
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -57,6 +61,7 @@
         >
 
     </ListView>
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_gravity="center"

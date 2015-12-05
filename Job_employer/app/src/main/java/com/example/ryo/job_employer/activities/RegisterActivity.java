@@ -1,7 +1,9 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import com.example.ryo.job_employer.MainActivity;
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.GetCodeBody;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.RegisterBody;
 import com.example.ryo.job_employer.network.Constants;
@@ -31,6 +35,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Administrator on 2015/10/23.
@@ -42,6 +48,12 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     public EditText psd;
     public TextView get_verification_code;
     public Button ok;
+    public LinearLayout turn_left;
+
+    private int time = 60;
+    private Timer timer = new Timer();
+    TimerTask task;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +65,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private void initAction() {
         ok.setOnClickListener(this);
         get_verification_code.setOnClickListener(this);
+        turn_left.setOnClickListener(this);
     }
-
     private void initView() {
         phone_num= (EditText) findViewById(R.id.phone_num);
         verification_code= (EditText) findViewById(R.id.verification_code);
@@ -62,6 +74,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         psd= (EditText) findViewById(R.id.password);
         get_verification_code= (TextView) findViewById(R.id.get_verification_code);
         ok= (Button) findViewById(R.id.ok);
+        turn_left= (LinearLayout) findViewById(R.id.turn_left);
     }
 
     @Override
@@ -71,15 +84,84 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
               RegisterAction();
               break;
           case R.id.get_verification_code:
+              getCode();
               break;
-
+          case R.id.turn_left:
+              finish();
+              break;
       }
+    }
+    public void startThread(){
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() { // UI thread
+                    @Override
+                    public void run() {
+                        if (time <= 0) {
+                            get_verification_code.setEnabled(true);
+                            get_verification_code.setText("获取验证码");
+                            task.cancel();
+                        } else {
+                            get_verification_code.setText("" + time);
+                        }
+                        time--;
+                    }
+                });
+            }
+        };
+        //time = 60;
+        timer.schedule(task, 0, 1000);
+    }
+    public void getCode(){
+        GetCodeBody body=new GetCodeBody();
+        //body.setName(name.getText().toString());
+        if(phone_num.getText()==null||phone_num.getText().toString().equals("")){
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setMessage("手机号码不能为空！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    }).show();
+            return;
+        }else{
+            body.setTel(phone_num.getText().toString());
+        }
+        //body.setPassword(psd.getText().toString());
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
+        String json = "";
+        try {
+            json = ow.writeValueAsString(body);
+            ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+            GlobalProvider globalProvider = GlobalProvider.getInstance();
+            globalProvider.post(this, Constants.getCodeUrlStr, entity, "application/json", new RequestListener() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    //doRegister(new String(responseBody));
+                    Toast.makeText(RegisterActivity.this, "发送成功！", Toast.LENGTH_SHORT).show();
+                    startThread();
+                }
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void RegisterAction() {
         RegisterBody body=new RegisterBody();
         body.setName(name.getText().toString());
         body.setTel(phone_num.getText().toString());
         body.setPassword(psd.getText().toString());
+        body.setCode(verification_code.getText().toString());
 
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();

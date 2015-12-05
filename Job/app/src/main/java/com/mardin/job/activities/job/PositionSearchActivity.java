@@ -3,7 +3,9 @@ package com.mardin.job.activities.job;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -80,6 +82,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public ImageView search;
     public int Position;
     public String[] ARR;
+    public SwipeRefreshLayout swiperefresh;
+    private Boolean mNomore=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +126,20 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         lv_position_pull.setAdapter(Adapter);
         lv_position_pull.setVisibility(View.GONE);
         position_Img.setImageResource(R.drawable.turn_down);
+
+        swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mNomore = false;
+                page = 1;
+                LoadJobListByCondition();
+//                if (GlobalProvider.getInstance().ShangpingHeaderLoadCategory.equals("")) {
+//                    loadJobList();
+//                } else {
+//                    loadProduct(GlobalProvider.getInstance().ShangpingHeaderLoadCategory);
+//                }
+            }
+        });
 
         position_Layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +220,20 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 startActivity(intent);
             }
         });
-        LoadJobList();
+        lv_job.setOnScrollListener(new ListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                if (!mNomore && lv_job.getCount() != 0 && lv_job.getLastVisiblePosition() >= (lv_job.getCount() - 1)) {
+                    loadMoreJobList();
+                }
+            }
+        });
+        LoadJobListByCondition();
     }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -303,10 +334,12 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parseJobList(new String(responseBody));
+                swiperefresh.setRefreshing(false);
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 //Log.v("err", new String(responseBody));
+                swiperefresh.setRefreshing(false);
 
             }
             @Override
@@ -314,6 +347,61 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
 
             }
         });
+    }
+    public void loadMoreJobList(){
+        page = page + 1;
+        RequestParams params = new RequestParams();
+        params.put("page", page);
+        params.put("itemsPerPage", itemsPerPage);
+        params.put("industryCategory", industryCategory);
+        if(!PositionCategory.equals("")) {
+            params.put("positionCategory", PositionCategory);
+        }
+        if(!region.equals("")){
+            if(Position>0){
+                params.put("province",province);
+                params.put("city",city);
+                params.put("region",region);
+            }else{
+                params.put("province",province);
+                params.put("city",city);
+            }
+        }
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                parseMoreJobList(new String(responseBody));
+                //swiperefresh.setRefreshing(false);
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //Log.v("err", new String(responseBody));
+                //swiperefresh.setRefreshing(false);
+
+            }
+            @Override
+            public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+
+            }
+        });
+    }
+    public void parseMoreJobList(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            JobList joblist = (JobList) objectMapper.readValue(jsonParser, JobList.class);
+            if(joblist.jobs.size()<itemsPerPage){
+                mNomore = true;
+            }
+            this.mItems.addAll(joblist.jobs);
+            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+            adapter.notifyDataSetChanged();
+            //loadme();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void parseJobList(String json) {
         JsonFactory jsonFactory = new JsonFactory();
@@ -331,6 +419,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         }
     }
     public void initView(){
+        swiperefresh= (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         turn_left = (LinearLayout) findViewById(R.id.turn_left);
         lv_job= (ListView) findViewById(R.id.lv_job);
         address= (LinearLayout) findViewById(R.id.address);
@@ -383,7 +472,6 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                   img1.setVisibility(View.VISIBLE);
                   img2.setVisibility(View.INVISIBLE);
                   turn_one.setImageResource(R.drawable.turn_up);
-
                 }
                 position_Img.setImageResource(R.drawable.turn_down);
                 lv_position_pull.setVisibility(View.GONE);
