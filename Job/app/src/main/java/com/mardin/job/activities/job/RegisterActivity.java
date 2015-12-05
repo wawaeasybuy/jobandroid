@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
@@ -29,6 +30,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Ryo on 2015/9/14.
@@ -38,6 +41,10 @@ public class RegisterActivity extends Activity {
     public EditText tel;
     public EditText psd;
     public Button ok;
+    public TextView get_verification_code;
+    private int time = 60;
+    private Timer timer = new Timer();
+    TimerTask task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +52,37 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_personal_register);
 
         ImageView turn_left = (ImageView) findViewById(R.id.turn_left);
+        get_verification_code= (TextView) findViewById(R.id.get_verification_code);
         name= (EditText) findViewById(R.id.name);
         tel= (EditText) findViewById(R.id.tel);
         psd= (EditText) findViewById(R.id.psd);
         ok= (Button) findViewById(R.id.ok);
-
+        get_verification_code.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                get_verification_code.setEnabled(false);
+                task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() { // UI thread
+                            @Override
+                            public void run() {
+                                if (time <= 0) {
+                                    get_verification_code.setEnabled(true);
+                                    get_verification_code.setText("获取验证码");
+                                    task.cancel();
+                                } else {
+                                    get_verification_code.setText("" + time);
+                                }
+                                time--;
+                            }
+                        });
+                    }
+                };
+                //time = 60;
+                timer.schedule(task, 0, 1000);
+            }
+        });
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +93,6 @@ public class RegisterActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-
             }
         });
     }

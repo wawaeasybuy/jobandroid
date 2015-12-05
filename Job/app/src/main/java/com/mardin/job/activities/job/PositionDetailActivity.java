@@ -274,7 +274,6 @@ public class PositionDetailActivity extends Activity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.i("alertdialog", " 保存数据");
                             }
-
                         }).show();
             }
 //            adapter.notifyDataSetChanged();

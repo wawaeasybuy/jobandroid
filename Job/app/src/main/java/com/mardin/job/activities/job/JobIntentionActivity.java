@@ -71,7 +71,7 @@ public class JobIntentionActivity extends Activity {
         expectedIndustry_layout= (LinearLayout) findViewById(R.id.expectedIndustry_layout);
         expectedPosition_layout= (LinearLayout) findViewById(R.id.expectedPosition_layout);
 
-        SaveToNext= (TextView) findViewById(R.id.SaveToNext);
+//        SaveToNext= (TextView) findViewById(R.id.SaveToNext);
 
 
         expectedIndustry_layout.setOnClickListener(new View.OnClickListener() {
@@ -140,16 +140,16 @@ public class JobIntentionActivity extends Activity {
              finish();
              }
 });
-        SaveToNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
-                GlobalProvider.getInstance().resume.setExpectedAddress(expectedAddress.getText().toString());
-                GlobalProvider.getInstance().resume.setExpectedPosition(expectedPosition.getText().toString());
-                setResult(Activity.RESULT_OK);
-                finish();
-            }
-        });
+//        SaveToNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
+//                GlobalProvider.getInstance().resume.setExpectedAddress(expectedAddress.getText().toString());
+//                GlobalProvider.getInstance().resume.setExpectedPosition(expectedPosition.getText().toString());
+//                setResult(Activity.RESULT_OK);
+//                finish();
+//            }
+//        });
         LinearLayout turn_left = (LinearLayout) findViewById(R.id.turn_left);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override

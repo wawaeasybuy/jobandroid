@@ -42,8 +42,8 @@
 
             <ImageView
                 android:id="@+id/home_p"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:src="@drawable/sxb_home_blue"/>
 
@@ -68,8 +68,8 @@
 
             <ImageView
                 android:id="@+id/ability_p"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_weight="1"
                 android:src="@drawable/sxb_gerenpince_gray"/>
 
@@ -94,8 +94,8 @@
 
             <ImageView
                 android:id="@+id/personal_p"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:src="@drawable/sxb_gerenzhongxin_gray"/>
 

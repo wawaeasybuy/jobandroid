@@ -88,7 +88,7 @@ public void initAction(){
     male.setOnClickListener(this);
     female.setOnClickListener(this);
     save.setOnClickListener(this);
-    saveToNext.setOnClickListener(this);
+    //saveToNext.setOnClickListener(this);
 
 }
     private void initView() {
@@ -108,7 +108,7 @@ public void initAction(){
         address= (EditText) findViewById(R.id.address);
         tel= (EditText) findViewById(R.id.tel);
         birth= (TextView) findViewById(R.id.birth);
-        saveToNext= (TextView) findViewById(R.id.saveToNext);
+        //saveToNext= (TextView) findViewById(R.id.saveToNext);
         birth_select_layout= (LinearLayout) findViewById(R.id.birth_select_layout);
 
     }
@@ -166,9 +166,9 @@ public void initAction(){
             case R.id.save:
                 doSave();
                 break;
-            case R.id.saveToNext:
-                doSave();
-                break;
+//            case R.id.saveToNext:
+//                doSave();
+//                break;
         }
     }
     @Override

@@ -259,18 +259,18 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:paddingTop="10dp"
-        android:id="@+id/saveToNext"
-        android:paddingBottom="10dp"
-        android:background="@drawable/textview_button_border"
-        android:textColor="#0080fe"
-        android:text="@string/base_data_save_next"/>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:id="@+id/saveToNext"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:background="@drawable/textview_button_border"-->
+        <!--android:textColor="#0080fe"-->
+        <!--android:text="@string/base_data_save_next"/>-->
 
 </LinearLayout>

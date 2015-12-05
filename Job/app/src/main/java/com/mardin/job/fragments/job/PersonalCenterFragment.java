@@ -100,13 +100,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.activity_personal_center_logined, container, false);
-
         return view;
 
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         initView();
         initAction();
         ID.removeAllViews();

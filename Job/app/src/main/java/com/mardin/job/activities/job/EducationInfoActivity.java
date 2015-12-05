@@ -48,7 +48,7 @@ public class EducationInfoActivity extends Activity {
         grade= (EditText) findViewById(R.id.grade);
         internshipExprience= (EditText) findViewById(R.id.internshipExprience);
         save= (TextView) findViewById(R.id.save);
-        saveToNext= (TextView) findViewById(R.id.saveToNext);
+        //saveToNext= (TextView) findViewById(R.id.saveToNext);
         graduationTime_select_layout= (LinearLayout) findViewById(R.id.graduationTime_select_layout);
 
         this.resume= GlobalProvider.getInstance().resume;
@@ -82,19 +82,19 @@ public class EducationInfoActivity extends Activity {
                 finish();
             }
         });
-        saveToNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GlobalProvider.getInstance().resume.setSchoolName(schoolName.getText().toString());
-                GlobalProvider.getInstance().resume.setProfessional(professional.getText().toString());
-                //GlobalProvider.getInstance().resume.setGraduationTime(graduationTime.getText().toString());
-                GlobalProvider.getInstance().resume.setGrade(grade.getText().toString());
-                GlobalProvider.getInstance().resume.setGraduationTime(Str_data);
-                GlobalProvider.getInstance().resume.setInternshipExprience(internshipExprience.getText().toString());
-                setResult(Activity.RESULT_OK);
-                finish();
-            }
-        });
+//        saveToNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GlobalProvider.getInstance().resume.setSchoolName(schoolName.getText().toString());
+//                GlobalProvider.getInstance().resume.setProfessional(professional.getText().toString());
+//                //GlobalProvider.getInstance().resume.setGraduationTime(graduationTime.getText().toString());
+//                GlobalProvider.getInstance().resume.setGrade(grade.getText().toString());
+//                GlobalProvider.getInstance().resume.setGraduationTime(Str_data);
+//                GlobalProvider.getInstance().resume.setInternshipExprience(internshipExprience.getText().toString());
+//                setResult(Activity.RESULT_OK);
+//                finish();
+//            }
+//        });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

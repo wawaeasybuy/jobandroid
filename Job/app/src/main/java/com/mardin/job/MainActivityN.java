@@ -87,8 +87,8 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                 transaction.replace(R.id.main, home);
 
                 home_t.setTextColor(0xff0080fe);
-                personal_t.setTextColor(0xFF000000);
-                ability_t.setTextColor(0xff000000);
+                personal_t.setTextColor(0xFF929292);
+                ability_t.setTextColor(0xff929292);
 
                 home_p.setImageResource(R.drawable.sxb_home_blue);
                 personal_p.setImageResource(R.drawable.sxb_gerenzhongxin_gray);
@@ -100,9 +100,9 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                 PersonalCenterFragment personal=new PersonalCenterFragment();
                 transaction.replace(R.id.main,personal);
 
-                home_t.setTextColor(0xFF000000);
+                home_t.setTextColor(0xFF929292);
                 personal_t.setTextColor(0xff0080fe);
-                ability_t.setTextColor(0xff000000);
+                ability_t.setTextColor(0xFF929292);
 
                 home_p.setImageResource(R.drawable.sxb_home_gray);
                 personal_p.setImageResource(R.drawable.sxb_gerenzhongxin_blue);
@@ -115,8 +115,8 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                 AbilityFragment ability=new AbilityFragment();
                 transaction.replace(R.id.main,ability);
 
-                home_t.setTextColor(0xff000000);
-                personal_t.setTextColor(0xff000000);
+                home_t.setTextColor(0xFF929292);
+                personal_t.setTextColor(0xFF929292);
                 ability_t.setTextColor(0xFF0080fe);
 
                 home_p.setImageResource(R.drawable.sxb_home_gray);

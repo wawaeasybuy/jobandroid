@@ -74,7 +74,7 @@ public class LoginActivity extends Activity {
         String telStr = tel.getText().toString();
         String psdStr = psd.getText().toString();
 
-        // °ó¶¨²ÎÊı
+        // ç»‘å®šå‚æ•°
         LoginBody body=new LoginBody();
         body.setPassword(psdStr);
         body.setTel(telStr);
@@ -106,11 +106,11 @@ public class LoginActivity extends Activity {
         }
 
         //Toast.makeText(LoginActivity.this, usernameStr , Toast.LENGTH_SHORT).show();
-        //ÏÔÊ¾ÓÃ»§Ãû
+        //æ˜¾ç¤ºç”¨æˆ·å
     }
     public void parseLoginResult(String json) {
 
-        // °ó¶¨²ÎÊı
+        // ç»‘å®šå‚æ•°
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -118,18 +118,18 @@ public class LoginActivity extends Activity {
             JsonNode rootNode =  mapper.readTree(jsonParser);
             JsonNode tokenNode = rootNode.path("token");
             String token = tokenNode.toString();
-            token = token.replaceAll("\"", "");//°ÑtokenÖĞµÄ"\""È«²¿Ìæ»»³É""
-            Constants.setToken(LoginActivity.this, token);//°ó¶¨LoginActivityÖĞµÄtoken
+            token = token.replaceAll("\"", "");//æŠŠtokenä¸­çš„"\""å…¨éƒ¨æ›¿æ¢æˆ""
+            Constants.setToken(LoginActivity.this, token);//ç»‘å®šLoginActivityä¸­çš„token
             //Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
-            //ÏÔÊ¾tokenĞÅÏ¢
+            //æ˜¾ç¤ºtokenä¿¡æ¯
             Log.v("err", token);
             this.setResult(Activity.RESULT_OK);
             this.finish();
-//            this.setResult(Activity.RESULT_OK);//Îª½á¹û°ó¶¨Activity.RESULT_OK
-//            this.finish();//Íê³É
+//            this.setResult(Activity.RESULT_OK);//ä¸ºç»“æœç»‘å®šActivity.RESULT_OK
+//            this.finish();//å®Œæˆ
         } catch (IOException e) {
             e.printStackTrace();
-        }//µ±tryÖĞ´úÂë·¢Éú´íÎóÊ±£¬¾Í»á·µ»ØËùĞ´Òì³£µÄ´¦Àí
+        }//å½“tryä¸­ä»£ç å‘ç”Ÿé”™è¯¯æ—¶ï¼Œå°±ä¼šè¿”å›æ‰€å†™å¼‚å¸¸çš„å¤„ç†
 
     }
     @Override
