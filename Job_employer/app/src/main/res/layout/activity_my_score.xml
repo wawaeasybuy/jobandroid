@@ -86,6 +86,7 @@
         android:background="#006ace">
 
         <TextView
+            android:id="@+id/go_to_evaluate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

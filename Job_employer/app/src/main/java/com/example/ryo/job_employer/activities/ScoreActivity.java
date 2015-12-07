@@ -39,12 +39,20 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
     public RelativeLayout top;
     public String key="";
     public TextView score;
+    public TextView go_to_evaluate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_score);
         initView();
         initAction();
+        go_to_evaluate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ScoreActivity.this,IntervieweeActivity.class);
+                startActivity(intent);
+            }
+        });
         top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +113,7 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
         top= (RelativeLayout) findViewById(R.id.top);
         urg= (RelativeLayout) findViewById(R.id.urg);
         score= (TextView) findViewById(R.id.score);
+        go_to_evaluate= (TextView) findViewById(R.id.go_to_evaluate);
     }
     public void initAction(){
         turn_left.setOnClickListener(this);
