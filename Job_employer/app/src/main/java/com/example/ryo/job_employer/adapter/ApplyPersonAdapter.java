@@ -28,11 +28,11 @@ import java.util.List;
 public class ApplyPersonAdapter extends BaseAdapter{
     private List<PublicResume> Data;
     private Context context;
-    public List<Job> data;
-    public ApplyPersonAdapter(Context context,List Data,List data){
+   // public List<Job> data;
+    public ApplyPersonAdapter(Context context,List Data){
         this.context=context;
         this.Data=Data;
-        this.data=data;
+        //this.data=data;
     }
     @Override
     public int getCount() {
@@ -65,11 +65,16 @@ public class ApplyPersonAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        for(int i=0;i<data.size();i++){
-            if(Data.get(position).get_job().equals(data.get(i).get_id())){
-                if(data.get(i).getPositionName()!=null) {
-                    holder.positionName.setText("急求"+data.get(i).getPositionName());
-                }
+//        for(int i=0;i<data.size();i++){
+//            if(Data.get(position).get_job().equals(data.get(i).get_id())){
+//                if(data.get(i).getPositionName()!=null) {
+//                    holder.positionName.setText("急求"+data.get(i).getPositionName());
+//                }
+//            }
+//        }
+        if(resume._job!=null){
+            if(resume._job.getPositionName()!=null){
+                holder.positionName.setText(resume._job.getPositionName());
             }
         }
         if(resume.getName()!=null){holder.name.setText(resume.getName());}

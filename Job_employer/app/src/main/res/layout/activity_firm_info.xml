@@ -364,9 +364,7 @@
             android:text="@string/firm_intro"/>
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -384,7 +382,7 @@
                 android:textSize="13sp"
                 android:hint="@string/firm_intro_limit"/>
 
-        </ScrollView>
+
 
     </LinearLayout>
 

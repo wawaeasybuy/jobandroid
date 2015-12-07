@@ -74,6 +74,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public Hashtable hashtable_position;
     public ListView lv_position_pull;
     public LinearLayout position_Layout;
+    public TextView address_text;
     public TextView position_Text;
     public ImageView position_Img;
     public PositionFitHeaderAdapter Adapter;
@@ -186,6 +187,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 }else{
                     PositionCategory="";
                 }
+                position_Text.setText(positionCategory[position]);
                 LoadJobListByCondition();
             }
         });
@@ -258,6 +260,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             selectAddress.setVisibility(View.GONE);
             lv_job.setVisibility(View.VISIBLE);
             turn_one.setImageResource(R.drawable.turn_down);
+            address_text.setText(region);
             LoadJobListByCondition();
             //txtInfo.setText(province + " " + city + " " + region);
         }
@@ -437,6 +440,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         position_Layout= (LinearLayout) findViewById(R.id.position_Layout);
         position_Img= (ImageView) findViewById(R.id.position_Img);
         position_Text= (TextView) findViewById(R.id.position_Text);
+        address_text= (TextView) findViewById(R.id.address_text);
         industry= (TextView) findViewById(R.id.industry);
         search= (ImageView) findViewById(R.id.search);
     }

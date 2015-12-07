@@ -11,6 +11,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -174,6 +175,9 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         return false;
     }
     public void doExist(){
+        elertMsg();
+    }
+    public void elertMsg(){
         if(adjustToSave()){
             new AlertDialog.Builder(this)
                     .setMessage("简历可投递，是否保存当前编辑？")
@@ -207,6 +211,15 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                             doSave();
                         }
                     }).show();
+        }
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //按下键盘上返回按钮
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            elertMsg();
+            return true;
+        }else{
+            return super.onKeyDown(keyCode, event);
         }
     }
     public void doSave(){
@@ -389,7 +402,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         }
     }
     public boolean adjustToSave(){
-        if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")&&resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")&&resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")&&resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){
+        if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")&&resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")&&resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){
             return true;
         }else{
             return false;

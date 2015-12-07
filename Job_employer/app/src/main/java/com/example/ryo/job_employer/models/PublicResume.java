@@ -21,7 +21,7 @@ public class PublicResume implements Serializable {
     public String _id;
     public String _employer;
     public Candidate _candidate;
-    public String _job;
+    public Job _job;
     public int gender;
     public String companyName;
     public String tel;
@@ -222,11 +222,11 @@ public class PublicResume implements Serializable {
         this.gender = gender;
     }
 
-    public String get_job() {
+    public Job get_job() {
         return _job;
     }
 
-    public void set_job(String _job) {
+    public void set_job(Job _job) {
         this._job = _job;
     }
 

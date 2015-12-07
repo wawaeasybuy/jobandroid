@@ -200,12 +200,25 @@ public class PositionDetailActivity extends Activity {
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Candidate candidate = (Candidate) objectMapper.readValue(jsonParser, Candidate.class);
             GlobalProvider.getInstance().candidate=candidate;
+            if(candidate.resume!=null){
             if(candidate.resume.isdelivered()){
                 doApply();
             }else{
                 new AlertDialog.Builder(PositionDetailActivity.this)
                         .setMessage("您的简历还没完善，请完善！")
                         .setPositiveButton("去完善", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("alertdialog", " 保存数据");
+                                Intent intent = new Intent(PositionDetailActivity.this, EditResumeActivity.class);
+                                startActivity(intent);
+                            }
+                        }).show();
+            }
+            }else{
+                new AlertDialog.Builder(PositionDetailActivity.this)
+                        .setMessage("您还没有创建简历，请前去创建！")
+                        .setPositiveButton("去创建", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.i("alertdialog", " 保存数据");

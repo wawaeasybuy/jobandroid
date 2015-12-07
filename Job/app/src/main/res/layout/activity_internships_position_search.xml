@@ -81,6 +81,10 @@
             android:layout_weight="1">
 
             <TextView
+                android:maxEms="5"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:id="@+id/address_text"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -110,6 +114,9 @@
             android:layout_weight="1">
 
             <TextView
+                android:maxEms="5"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:id="@+id/position_Text"
                 android:gravity="center"
                 android:layout_gravity="center"

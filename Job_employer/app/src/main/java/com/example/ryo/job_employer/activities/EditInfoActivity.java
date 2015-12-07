@@ -1,11 +1,13 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -36,6 +38,7 @@ import java.io.IOException;
  */
 public class EditInfoActivity extends Activity implements View.OnClickListener{
     public ImageView turn_left;
+    public TextView needText;
     public LinearLayout firm_info ;
     public TextView save;
     public EditText name;
@@ -48,9 +51,16 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
         initView();
         initAction();
         if(GolEmployer.name!=null){name.setText(GolEmployer.getName());}
+        doAdjust();
 
     }
-
+    public void doAdjust(){
+        if(GolEmployer.getCompanyname()!=null&&!GolEmployer.getCompanyname().equals("")&&GolEmployer.getMainBusiness()!=null&&!GolEmployer.getMainBusiness().equals("")&&GolEmployer.getCompanyInfo()!=null&&!GolEmployer.getCompanyInfo().equals("")&&GolEmployer.getCompanyAddress()!=null&&!GolEmployer.getCompanyAddress().equals("")&&GolEmployer.getCompanyURL()!=null&&!GolEmployer.getCompanyURL().equals("")&&GolEmployer.getProvince()!=null&&!GolEmployer.getProvince().equals("")&&GolEmployer.getCity()!=null&&!GolEmployer.getCity().equals("")&&GolEmployer.getRegion()!=null&&!GolEmployer.getRegion().equals("")){
+            needText.setText("已完善");
+        }else{
+            needText.setText("需完善");
+        }
+    }
     private void initAction() {
         save.setOnClickListener(this);
         turn_left.setOnClickListener(this);
@@ -62,6 +72,28 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
         firm_info = (LinearLayout) findViewById(R.id.firm_info);
         save= (TextView) findViewById(R.id.save);
         name= (EditText) findViewById(R.id.name);
+        needText= (TextView) findViewById(R.id.needText);
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //按下键盘上返回按钮
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            new AlertDialog.Builder(this)
+                    .setMessage("是否保存当前编辑？")
+                    .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            doSave();
+                        }
+                    }).show();
+            return true;
+        }else{
+            return super.onKeyDown(keyCode, event);
+        }
     }
     @Override
     public void onClick(View v) {
@@ -70,15 +102,35 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
           doSave();
           break;
       case R.id.turn_left:
-          //this.setResult(RESULT_OK);
-          this.finish();
+          new AlertDialog.Builder(this)
+                  .setMessage("是否保存当前编辑？")
+                  .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                          doResult();
+                      }
+                  })
+                  .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int whichButton) {
+                          doSave();
+                      }
+                  }).show();
           break;
       case R.id.firm_info:
           Intent intent = new Intent(EditInfoActivity.this, FirmInfoActivity.class);
-          startActivity(intent);
+          startActivityForResult(intent, Constants.CHANGEFIRMINFO);
           break;
 
       }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.CHANGEFIRMINFO:
+                if (resultCode == RESULT_OK) {
+                    doAdjust();
+                }
+                break;
+        }
     }
     public void doSave(){
         GlobalProvider.getInstance().employer.setName(name.getText().toString());

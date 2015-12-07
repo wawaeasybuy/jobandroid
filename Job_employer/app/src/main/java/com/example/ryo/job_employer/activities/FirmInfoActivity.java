@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -124,7 +125,20 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
   switch(v.getId()){
       case R.id.turn_left:
-          finish();
+          new AlertDialog.Builder(this)
+                  .setMessage("是否保存当前编辑？")
+                  .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                          setResult(Activity.RESULT_OK);
+                          finish();
+                      }
+                  })
+                  .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int whichButton) {
+                          doSave();
+                      }
+                  }).show();
           break;
       case R.id.save:
           doSave();
@@ -228,7 +242,30 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         GlobalProvider.getInstance().employer.setCity(layout2_txt.getText().toString());
         GlobalProvider.getInstance().employer.setRegion(layout3_txt.getText().toString());
         Toast.makeText(FirmInfoActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
+        setResult(Activity.RESULT_OK);
         finish();
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //按下键盘上返回按钮
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            new AlertDialog.Builder(this)
+                    .setMessage("是否保存当前编辑？")
+                    .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            setResult(Activity.RESULT_OK);
+                            finish();
+                        }
+                    })
+                    .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            doSave();
+                        }
+                    }).show();
+            return true;
+        }else{
+            return super.onKeyDown(keyCode, event);
+        }
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

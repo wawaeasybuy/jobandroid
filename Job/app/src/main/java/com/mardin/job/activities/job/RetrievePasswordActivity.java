@@ -85,7 +85,7 @@ public class RetrievePasswordActivity extends Activity {
                     public void run() {
                         if (time <= 0) {
                             get_verification_code.setEnabled(true);
-                            get_verification_code.setText("»ñÈ¡ÑéÖ¤Âë");
+                            get_verification_code.setText("èŽ·å–éªŒè¯ç ");
                             task.cancel();
                         } else {
                             get_verification_code.setText("" + time);
@@ -102,8 +102,8 @@ public class RetrievePasswordActivity extends Activity {
         GetCodeBody body=new GetCodeBody();
         if(tel.getText()==null||tel.getText().equals("")){
             new AlertDialog.Builder(RetrievePasswordActivity.this)
-                    .setMessage("ÊÖ»úºÅÂë²»ÄÜÎª¿Õ£¡")
-                    .setPositiveButton("È·¶¨", new DialogInterface.OnClickListener() {
+                    .setMessage("æ‰‹æœºå·ç ä¸èƒ½ä¸ºç©ºï¼")
+                    .setPositiveButton("ç¡®å®š", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                         }
@@ -126,7 +126,7 @@ public class RetrievePasswordActivity extends Activity {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     //parseLoginResult(new String(responseBody));
-                    Toast.makeText(RetrievePasswordActivity.this, "·¢ËÍ³É¹¦£¡", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RetrievePasswordActivity.this, "å‘é€æˆåŠŸï¼", Toast.LENGTH_SHORT).show();
                     startThread();
                 }
                 @Override
@@ -159,7 +159,7 @@ public class RetrievePasswordActivity extends Activity {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     //parseLoginResult(new String(responseBody));
-                    Toast.makeText(RetrievePasswordActivity.this, "¸ü¸Ä³É¹¦£¡", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RetrievePasswordActivity.this, "æ›´æ”¹æˆåŠŸï¼", Toast.LENGTH_SHORT).show();
                     finish();
 
                 }

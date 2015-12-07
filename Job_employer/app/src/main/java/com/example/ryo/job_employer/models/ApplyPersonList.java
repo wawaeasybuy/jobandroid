@@ -11,5 +11,5 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApplyPersonList implements Serializable {
     public List<PublicResume> resumes;
-    public List<Job> jobs;
+   // public List<Job> jobs;
 }
