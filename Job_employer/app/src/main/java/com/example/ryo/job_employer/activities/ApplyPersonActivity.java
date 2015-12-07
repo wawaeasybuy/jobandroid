@@ -365,10 +365,16 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
         globalProvider.delete(this, Url,new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                mItems_all.clear();
-                mItems.clear();
-                list.clear();
-                LoadApplyList();
+                //mItems_all.clear();
+//                mItems.clear();
+//                list.clear();
+//                LoadApplyList();
+                for(int i=0;i<mItems.size();i++){
+                    if(mItems.get(i).get_id().equals(id)){
+                        mItems.remove(mItems.get(i));
+                    }
+                }
+                adapterAll.notifyDataSetChanged();
 
             }
             @Override

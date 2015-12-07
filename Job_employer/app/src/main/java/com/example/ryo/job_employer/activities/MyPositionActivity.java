@@ -54,8 +54,8 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
     public ListView lv;
     public PositionAdapter adapter;
     public List<Job> list;
-    private Integer mPage;
-    private Integer mItemsPerPage;
+    private int mPage;
+    private int mItemsPerPage;
     public OnekeyShare onekeyShare;
     public SwipeRefreshLayout swiperefresh;
     public Boolean mNomore=false;
@@ -88,9 +88,8 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         lv.setOnScrollListener(new ListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+//                     mNomore=true;
             }
-
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
@@ -101,7 +100,6 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         });
         loadjobList();
     }
-
     private void initAction() {
         add_position.setOnClickListener(this);
         turn_left.setOnClickListener(this);
@@ -173,15 +171,15 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             }
         });
     }
-public void loadMoreJobList(){
-    mPage=mPage+1;
-    RequestParams params = new RequestParams();
-    params.put("page", mPage);
-    params.put("itemsPerPage", mItemsPerPage);
-    params.put("employerId", GlobalProvider.getInstance().employerId);
+   public void loadMoreJobList(){
+        mPage=mPage+1;
+        RequestParams params = new RequestParams();
+        params.put("page", mPage);
+        params.put("itemsPerPage", mItemsPerPage);
+        params.put("employerId", GlobalProvider.getInstance().employerId);
 
-    GlobalProvider globalProvider = GlobalProvider.getInstance();
-    globalProvider.get(this, Constants.PositionStr, params, new RequestListener() {
+        GlobalProvider globalProvider = GlobalProvider.getInstance();
+        globalProvider.get(this, Constants.PositionStr, params, new RequestListener() {
         @Override
         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
             parseMoreJobList(new String(responseBody));
@@ -257,7 +255,7 @@ public void loadMoreJobList(){
         });
     }
 
-    public void doRelease(String id, int state) {
+    public void doRelease(final String id, final int state) {
         DoReleaseBody body=new DoReleaseBody();
         body.setKey("release");
         body.setState(state);
@@ -275,7 +273,17 @@ public void loadMoreJobList(){
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     Toast.makeText(MyPositionActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
                     //parseLoginResult(new String(responseBody));
-                    loadjobList();
+                    //loadjobList();
+                    for(int i=0;i<list.size();i++){
+                        if(list.get(i).get_id().equals(id)){
+                            if(state==0){
+                                list.get(i).setIsRelease(true);
+                            }else if(state==1){
+                                list.get(i).setIsRelease(false);
+                            }
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
                 }
 
                 @Override

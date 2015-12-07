@@ -175,10 +175,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
                 if(candidate.resume.getBeOpen()==null||!candidate.resume.getBeOpen()){
                     candidate.resume.setBeOpen(false);
-                    img_release.setImageResource(R.drawable.unlocked);
-                    release.setText("公开");
-                }else{
                     img_release.setImageResource(R.drawable.locked);
+                    release.setText("未公开");
+                }else{
+                    img_release.setImageResource(R.drawable.unlocked);
                     release.setText("已公开");
                 }
                 if(candidate.resume.isdelivered){

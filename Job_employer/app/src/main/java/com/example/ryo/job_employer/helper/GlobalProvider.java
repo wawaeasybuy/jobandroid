@@ -18,6 +18,9 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2015/10/8.
  */
@@ -28,6 +31,7 @@ public class GlobalProvider {
     public Job job=new Job();
     public String employerId="";
     public Boolean isAllowToTalent=false;
+    public List<Job> jobList=new ArrayList<Job>();
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

@@ -75,7 +75,7 @@ public class PositionAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-            holder.positionName.setText("急求" + job.getPositionName());
+            holder.positionName.setText(job.getPositionName());
             holder.updateTime.setText(ConverToString(job.getTimeUpdate()));
             //if(job.getIsRelease()){}else{}
 
