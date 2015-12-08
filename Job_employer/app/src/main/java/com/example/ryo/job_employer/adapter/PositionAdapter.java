@@ -80,11 +80,11 @@ public class PositionAdapter extends BaseAdapter{
             //if(job.getIsRelease()){}else{}
 
         if(job.getIsRelease()){
-            holder.openImg.setImageResource(R.drawable.locked);
+            holder.openImg.setImageResource(R.drawable.unlocked);
             holder.openText.setText("已公开");
         }else{
-            holder.openImg.setImageResource(R.drawable.unlocked);
-            holder.openText.setText("公开");
+            holder.openImg.setImageResource(R.drawable.locked);
+            holder.openText.setText("未公开");
         }
 
            holder.tuiguang.setOnClickListener(new View.OnClickListener() {
