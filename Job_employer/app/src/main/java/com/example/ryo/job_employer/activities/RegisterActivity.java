@@ -164,6 +164,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         }
     }
     private void RegisterAction() {
+        if(name.getText()==null||name.getText().toString().length()==0||phone_num.getText()==null||phone_num.getText().toString().length()==0||psd.getText()==null||psd.getText().toString().length()==0||verification_code.getText()==null||verification_code.getText().toString().length()==0){
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setMessage("输入不能为空，请重新输入！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
         RegisterBody body=new RegisterBody();
         body.setName(name.getText().toString());
         body.setTel(phone_num.getText().toString());
@@ -188,6 +198,13 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                         //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                        new AlertDialog.Builder(RegisterActivity.this)
+                                .setMessage("注册失败，请重新输入！")
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                                    }
+                                }).show();
                     }
 
                     @Override

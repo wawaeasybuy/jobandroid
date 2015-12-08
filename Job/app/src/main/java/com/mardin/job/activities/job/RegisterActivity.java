@@ -65,7 +65,7 @@ public class RegisterActivity extends Activity {
         get_verification_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                get_verification_code.setEnabled(false);
+
                 getCode();
             }
         });
@@ -106,18 +106,18 @@ public class RegisterActivity extends Activity {
     }
     public void getCode(){
         GetCodeBody body=new GetCodeBody();
-        if(tel.getText()==null||tel.getText().equals("")){
+        if(tel.getText()==null||tel.getText().toString().length()==0){
             new AlertDialog.Builder(RegisterActivity.this)
                     .setMessage("手机号码不能为空！")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
                         }
                     }).show();
             return;
-        }else{
-            body.setTel(tel.getText().toString());
         }
+        body.setTel(tel.getText().toString());
 //        body.setPassword(psd.getText().toString());
 //        body.setTel(tel.getText().toString());
         JsonFactory jsonFactory = new JsonFactory();
@@ -133,6 +133,7 @@ public class RegisterActivity extends Activity {
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     //parseLoginResult(new String(responseBody));
                     Toast.makeText(RegisterActivity.this, "发送成功！", Toast.LENGTH_SHORT).show();
+                    get_verification_code.setEnabled(false);
                     startThread();
                 }
                 @Override
@@ -154,6 +155,16 @@ public class RegisterActivity extends Activity {
         }
     }
     public void doRegister(){
+        if(name.getText()==null||name.getText().toString().length()==0||psd.getText()==null||psd.getText().toString().length()==0||tel.getText()==null||tel.getText().toString().length()==0||verification_code.getText()==null||verification_code.getText().toString().length()==0){
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setMessage("输入不能为空，请重新输入！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
         RegisterBody body=new RegisterBody();
         body.setName(name.getText().toString());
         body.setPassword(psd.getText().toString());

@@ -63,7 +63,6 @@ public class RetrievePasswordActivity extends Activity {
         get_verification_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                get_verification_code.setEnabled(false);
                 getCode();
             }
         });
@@ -99,7 +98,7 @@ public class RetrievePasswordActivity extends Activity {
     }
     public void getCode(){
         GetCodeBody body=new GetCodeBody();
-        if(tel.getText()==null||tel.getText().equals("")){
+        if(tel.getText()==null||tel.getText().toString().length()==0){
             new AlertDialog.Builder(RetrievePasswordActivity.this)
                     .setMessage("手机号码不能为空！")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -126,6 +125,7 @@ public class RetrievePasswordActivity extends Activity {
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     //parseLoginResult(new String(responseBody));
                     Toast.makeText(RetrievePasswordActivity.this, "发送成功！", Toast.LENGTH_SHORT).show();
+                    get_verification_code.setEnabled(false);
                     startThread();
                 }
                 @Override
@@ -148,6 +148,16 @@ public class RetrievePasswordActivity extends Activity {
         }
     }
     public void doResetPsd(){
+        if(psd.getText()==null||psd.getText().toString().length()==0||tel.getText()==null||tel.getText().toString().length()==0||verification_code.getText()==null||verification_code.getText().toString().length()==0){
+            new AlertDialog.Builder(RetrievePasswordActivity.this)
+                    .setMessage("输入不能为空，请重新输入！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
         ResetPsdBody body=new ResetPsdBody();
 //        if(psd.getText().toString()==null||psd.getText().toString().equals(""))
         body.setNewPassword(psd.getText().toString());

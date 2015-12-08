@@ -73,6 +73,16 @@ public class LoginActivity extends Activity {
         });
     }
     public void LoginAction(){
+        if(tel.getText()==null||tel.getText().toString().length()==0||psd.getText()==null||psd.getText().toString().length()==0){
+            new AlertDialog.Builder(LoginActivity.this)
+                    .setMessage("输入不能为空，请重新输入！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
         String telStr = tel.getText().toString();
         String psdStr = psd.getText().toString();
 

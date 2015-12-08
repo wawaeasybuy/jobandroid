@@ -72,11 +72,22 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
     public void LoginAction() {
 
+        if(phone.getText()==null||phone.getText().toString().length()==0||psd.getText()==null||psd.getText().toString().length()==0){
+            new AlertDialog.Builder(LoginActivity.this)
+                    .setMessage("输入不能为空，请重新输入！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
         //分别把email、psd的值传递给usernameStr、passwordStr
         String tel = phone.getText().toString();
         String passwordStr = psd.getText().toString();
 
         // 绑定参数
+
         LoginBody body=new LoginBody();
         body.setPassword(passwordStr);
         body.setTel(tel);
