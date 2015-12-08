@@ -147,6 +147,13 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(RegisterActivity.this)
+                            .setMessage("发送失败！请重新输入你的号码")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
                 }
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
