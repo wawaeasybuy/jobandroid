@@ -68,7 +68,7 @@ public class PositionFitAllAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
             for(int i=1;i<list.size();i++){
-                if(resume.getExpectedIndustry().equals(list.get(i).getIndustryCategory())){
+                if(resume.getExpectedPosition().equals(list.get(i).getPositionCategory())){
                     holder.positionName.setText("急求"+list.get(i).getPositionName());
                 }
             }

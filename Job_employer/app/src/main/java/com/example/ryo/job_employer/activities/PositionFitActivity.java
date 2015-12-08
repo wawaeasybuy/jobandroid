@@ -72,7 +72,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         initView();
         initAction();
         mPage = 1;
-        mItemsPerPage = 10;
+        mItemsPerPage = 20;
 
         list=new ArrayList<Job>();
         mItems=new ArrayList<Resume>();
@@ -114,8 +114,8 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
-                 job=list.get(position).getIndustryCategory();
-                    LoadResumeByIndustryCategory();
+                 job=list.get(position).getPositionCategory();
+                    LoadResumeByPositionCategory();
                  //fitHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                  job="";
@@ -228,7 +228,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             }
         });
     }
-    public void LoadResumeByIndustryCategory(){
+    public void LoadResumeByPositionCategory(){
         RequestParams params = new RequestParams();
         params.put("page", mPage);
         params.put("itemsPerPage", mItemsPerPage);
