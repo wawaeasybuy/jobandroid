@@ -85,11 +85,11 @@ public class LoginActivity extends Activity {
         }
         String telStr = tel.getText().toString();
         String psdStr = psd.getText().toString();
-
         // 绑定参数
         LoginBody body=new LoginBody();
         body.setPassword(psdStr);
         body.setTel(telStr);
+        body.setEdition("candidate");
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();

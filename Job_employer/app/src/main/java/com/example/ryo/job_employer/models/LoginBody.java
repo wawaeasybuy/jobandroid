@@ -28,4 +28,14 @@ public class LoginBody implements Serializable {
     }
 
     public String password;
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public String edition;
 }

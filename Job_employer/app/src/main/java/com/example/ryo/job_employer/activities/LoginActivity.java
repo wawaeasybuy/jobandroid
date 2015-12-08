@@ -91,6 +91,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         LoginBody body=new LoginBody();
         body.setPassword(passwordStr);
         body.setTel(tel);
+        body.setEdition("employer");
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
