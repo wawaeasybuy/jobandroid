@@ -76,6 +76,23 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
         body.setExpression(talent.getExpression());
         body.setCompression(talent.getCompression());
         body.setAttitude(talent.getAttitude());
+        if(talent.isInterview){
+            star_bar1.setEnabled(false);
+            star_bar2.setEnabled(false);
+            star_bar3.setEnabled(false);
+            star_bar4.setEnabled(false);
+            star_bar5.setEnabled(false);
+            adviceText.setEnabled(false);
+            save.setVisibility(View.INVISIBLE);
+        }else{
+            star_bar1.setEnabled(true);
+            star_bar2.setEnabled(true);
+            star_bar3.setEnabled(true);
+            star_bar4.setEnabled(true);
+            star_bar5.setEnabled(true);
+            adviceText.setEnabled(true);
+            save.setVisibility(View.VISIBLE);
+        }
 
         star_bar1.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 

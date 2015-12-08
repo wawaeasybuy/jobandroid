@@ -28,7 +28,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="30dp"
-        android:background="#b3b4b6" />
+        android:src="@drawable/biaoti" />
 
     <EditText
         android:layout_width="match_parent"
