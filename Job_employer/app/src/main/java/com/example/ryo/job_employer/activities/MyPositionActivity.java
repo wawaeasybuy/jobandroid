@@ -232,7 +232,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         }
     }
 
-    public void deletePosition(String _id) {
+    public void deletePosition(final String _id) {
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         String url_l = Constants.DeleteJobStr + "/" + _id;
 
@@ -240,7 +240,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 //String result_l = new String(responseBody);
-                loadjobList();
+                //loadjobList();
+                for(int i=0;i<list.size();i++){
+                    if(list.get(i).get_id().equals(_id)){
+                        list.remove(list.get(i));
+                    }
+                }
+                adapter.notifyDataSetChanged();
             }
 
             @Override

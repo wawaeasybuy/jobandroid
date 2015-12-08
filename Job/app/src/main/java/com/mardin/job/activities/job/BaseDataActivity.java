@@ -1,10 +1,12 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.MotionEvent;
@@ -164,7 +166,20 @@ public void initAction(){
                 setSelect(1);
                 break;
             case R.id.turn_left:
-                finish();
+                new AlertDialog.Builder(this)
+                        .setMessage("是否保存再退出？")
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setResult(Activity.RESULT_OK);
+                                finish();
+                            }
+                        })
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                doSave();
+                            }
+                        }).show();
                 break;
             case R.id.save:
                 doSave();

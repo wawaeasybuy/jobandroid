@@ -137,6 +137,7 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
         lv_pull_down.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mPage = 1;
                 if(position>0){
                     job=list.get(position).get_id();
                 }else{

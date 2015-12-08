@@ -383,8 +383,8 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             important_info.setVisibility(View.VISIBLE);
             no_important_info.setVisibility(View.GONE);
             if(resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){selfEvaluation.setText("自我评价: "+resume.getSelfEvaluation());}else{selfEvaluation.setText("自我评价: 未填写");}
-            if(resume.getExperience()!=null&&!resume.getExperience().equals("")){experience.setText("实习经历: "+resume.getExperience());}
-            if(resume.getWorks()!=null&&!resume.getWorks().equals("")){works.setText("作品附件: "+resume.getWorks());}
+            if(resume.getExperience()!=null&&!resume.getExperience().equals("")){experience.setText("实习经历: "+resume.getExperience());}else{experience.setText("实习经历: 未填写");}
+            if(resume.getWorks()!=null&&!resume.getWorks().equals("")){works.setText("作品附件: "+resume.getWorks());}else{works.setText("作品附件: 未填写");}
 
             if(resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")&&resume.getExperience()!=null&&!resume.getExperience().equals("")&&resume.getWorks()!=null&&!resume.getWorks().equals("")){
                 important_info_nofill.setText("已完善");

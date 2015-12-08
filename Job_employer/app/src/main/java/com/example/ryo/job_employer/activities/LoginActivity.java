@@ -92,11 +92,19 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     parseLoginResult(new String(responseBody));
+                    Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    Toast.makeText(LoginActivity.this, new String(responseBody), Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setMessage("用户名或密码错误！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+
                 }
 
                 @Override

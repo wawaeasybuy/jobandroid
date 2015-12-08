@@ -1,7 +1,9 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.text.Editable;
@@ -89,19 +91,35 @@ public class ImportantInfoActivity extends Activity {
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                new AlertDialog.Builder(ImportantInfoActivity.this)
+                        .setMessage("是否保存再退出？")
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setResult(Activity.RESULT_OK);
+                                finish();
+                            }
+                        })
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                doSave();
+                            }
+                        }).show();
             }
         });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GlobalProvider.getInstance().resume.setSelfEvaluation(selfEvaluation.getText().toString());
-                GlobalProvider.getInstance().resume.setExperience(experience.getText().toString());
-                GlobalProvider.getInstance().resume.setWorks(works.getText().toString());
-                setResult(Activity.RESULT_OK);
-                finish();
+               doSave();
             }
         });
+    }
+    public void doSave(){
+        GlobalProvider.getInstance().resume.setSelfEvaluation(selfEvaluation.getText().toString());
+        GlobalProvider.getInstance().resume.setExperience(experience.getText().toString());
+        GlobalProvider.getInstance().resume.setWorks(works.getText().toString());
+        setResult(Activity.RESULT_OK);
+        finish();
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

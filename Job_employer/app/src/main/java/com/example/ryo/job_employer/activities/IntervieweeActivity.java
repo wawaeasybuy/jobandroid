@@ -81,6 +81,7 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         lv_pull_down_position_name.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 if(position>0){
                     //job=list.get(position).get_id();
                     LoadTalentListByJobId(items.get(position).get_id());

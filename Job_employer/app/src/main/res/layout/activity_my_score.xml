@@ -67,7 +67,7 @@
                 android:paddingTop="35dp"
                 android:textColor="#0080fe"
                 android:textSize="25sp"
-                android:text="@string/present_score_num" />
+                android:text="" />
 
         </FrameLayout>
 

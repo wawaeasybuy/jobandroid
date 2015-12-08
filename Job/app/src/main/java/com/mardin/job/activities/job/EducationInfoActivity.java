@@ -1,8 +1,10 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.MotionEvent;
@@ -81,7 +83,20 @@ public class EducationInfoActivity extends Activity {
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                new AlertDialog.Builder(EducationInfoActivity.this)
+                        .setMessage("是否保存再退出？")
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setResult(Activity.RESULT_OK);
+                                finish();
+                            }
+                        })
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                doSave();
+                            }
+                        }).show();
             }
         });
 //        saveToNext.setOnClickListener(new View.OnClickListener() {
@@ -100,16 +115,19 @@ public class EducationInfoActivity extends Activity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GlobalProvider.getInstance().resume.setSchoolName(schoolName.getText().toString());
-                GlobalProvider.getInstance().resume.setProfessional(professional.getText().toString());
-                //GlobalProvider.getInstance().resume.setGraduationTime(graduationTime.getText().toString());
-                GlobalProvider.getInstance().resume.setGrade(grade.getText().toString());
-                GlobalProvider.getInstance().resume.setGraduationTime(Str_data);
-                GlobalProvider.getInstance().resume.setInternshipExprience(internshipExprience.getText().toString());
-                setResult(Activity.RESULT_OK);
-                finish();
+               doSave();
             }
         });
+    }
+    public void doSave(){
+        GlobalProvider.getInstance().resume.setSchoolName(schoolName.getText().toString());
+        GlobalProvider.getInstance().resume.setProfessional(professional.getText().toString());
+        //GlobalProvider.getInstance().resume.setGraduationTime(graduationTime.getText().toString());
+        GlobalProvider.getInstance().resume.setGrade(grade.getText().toString());
+        GlobalProvider.getInstance().resume.setGraduationTime(Str_data);
+        GlobalProvider.getInstance().resume.setInternshipExprience(internshipExprience.getText().toString());
+        setResult(Activity.RESULT_OK);
+        finish();
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

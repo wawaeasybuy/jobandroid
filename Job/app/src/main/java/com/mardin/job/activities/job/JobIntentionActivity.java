@@ -133,11 +133,7 @@ public class JobIntentionActivity extends Activity {
          @Override
           public void onClick(View v) {
            //doCreate();
-             GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
-             GlobalProvider.getInstance().resume.setExpectedAddress(expectedAddress.getText().toString());
-             GlobalProvider.getInstance().resume.setExpectedPosition(expectedPosition.getText().toString());
-             setResult(Activity.RESULT_OK);
-             finish();
+             doSave();
              }
 });
 //        SaveToNext.setOnClickListener(new View.OnClickListener() {
@@ -154,10 +150,30 @@ public class JobIntentionActivity extends Activity {
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                new AlertDialog.Builder(JobIntentionActivity.this)
+                        .setMessage("是否保存再退出？")
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setResult(Activity.RESULT_OK);
+                                finish();
+                            }
+                        })
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                doSave();
+                            }
+                        }).show();
 
             }
         });
+    }
+    public void doSave(){
+        GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
+        GlobalProvider.getInstance().resume.setExpectedAddress(expectedAddress.getText().toString());
+        GlobalProvider.getInstance().resume.setExpectedPosition(expectedPosition.getText().toString());
+        setResult(Activity.RESULT_OK);
+        finish();
     }
 
 //    private void doCreate() {

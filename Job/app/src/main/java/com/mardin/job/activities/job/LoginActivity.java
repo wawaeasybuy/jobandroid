@@ -1,7 +1,9 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -96,6 +98,13 @@ public class LoginActivity extends Activity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setMessage("用户名或密码错误！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
                 }
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {

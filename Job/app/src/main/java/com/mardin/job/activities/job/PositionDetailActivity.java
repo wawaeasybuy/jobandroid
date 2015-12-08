@@ -117,13 +117,11 @@ public class PositionDetailActivity extends Activity {
                 //Log.v("err", new String(responseBody));
 
             }
-
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
             }
         });
-
     }
     public void parseInfo(String json){
         JsonFactory jsonFactory = new JsonFactory();
@@ -281,7 +279,7 @@ public class PositionDetailActivity extends Activity {
                 finish();
             }else{
                 new AlertDialog.Builder(this)
-                        .setMessage("简历已投递过！不能再次投递！")
+                        .setMessage("该职位已经投递过！")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
