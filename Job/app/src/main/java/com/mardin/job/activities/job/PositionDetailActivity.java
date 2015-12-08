@@ -183,14 +183,12 @@ public class PositionDetailActivity extends Activity {
 
                 }).show();
             }
-
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
             }
         });
     }
-
     public void parseCandidateInfo(String json){
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -248,7 +246,9 @@ public class PositionDetailActivity extends Activity {
             globalProvider.post(this, Constants.crePubResume, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    parseResult(new String(responseBody));
+                    Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
+                    finish();
+                   // parseResult(new String(responseBody));
 //                    GlobalProvider.getInstance().isLoging=true;
 //                    parseLoginResult(new String(responseBody));
 
@@ -257,6 +257,14 @@ public class PositionDetailActivity extends Activity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(PositionDetailActivity.this)
+                            .setMessage("该职位已经投递过！")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.i("alertdialog", " 保存数据");
+                                }
+                            }).show();
 
                 }
 
@@ -268,30 +276,30 @@ public class PositionDetailActivity extends Activity {
             e.printStackTrace();
         }
     }
-    public void parseResult(String json){
-        JsonFactory jsonFactory = new JsonFactory();
-        ObjectMapper objectMapper = new ObjectMapper();
-        try{
-            JsonParser jsonParser = jsonFactory.createJsonParser(json);
-            PublicResumeDelivery resume = (PublicResumeDelivery) objectMapper.readValue(jsonParser, PublicResumeDelivery.class);
-            if(resume.getMsg()==null){
-                Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
-                finish();
-            }else{
-                new AlertDialog.Builder(this)
-                        .setMessage("该职位已经投递过！")
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Log.i("alertdialog", " 保存数据");
-                            }
-                        }).show();
-            }
-//            adapter.notifyDataSetChanged();
-            //do something
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void parseResult(String json){
+//        JsonFactory jsonFactory = new JsonFactory();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try{
+//            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+//            PublicResumeDelivery resume = (PublicResumeDelivery) objectMapper.readValue(jsonParser, PublicResumeDelivery.class);
+//            if(resume.getMsg()==null){
+//                Toast.makeText(PositionDetailActivity.this,"投递成功！", Toast.LENGTH_SHORT).show();
+//                finish();
+//            }else{
+//                new AlertDialog.Builder(this)
+//                        .setMessage("该职位已经投递过！")
+//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                Log.i("alertdialog", " 保存数据");
+//                            }
+//                        }).show();
+//            }
+////            adapter.notifyDataSetChanged();
+//            //do something
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
