@@ -3,6 +3,7 @@ package com.example.ryo.job_employer.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -75,17 +76,19 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         //RequestParams params = new RequestParams();
         //params
-        globalProvider.get(this,Constants.personalInfo,new RequestListener() {
+        globalProvider.get(this, Constants.personalInfo, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parsePersonalInfo(new String(responseBody));
                 //mSwipeRefreshlayout.setRefreshing(false);
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 //Log.v("err", new String(responseBody));
                 //mSwipeRefreshlayout.setRefreshing(false);
             }
+
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
@@ -125,7 +128,17 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
            setResult(Activity.RESULT_OK);
            finish();
            break;
-   }
+      }
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //按下键盘上返回按钮
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            setResult(Activity.RESULT_OK);
+            finish();
+            return true;
+        }else{
+            return super.onKeyDown(keyCode, event);
+        }
     }
     public void doChange(){
         DoReleaseBody body=new DoReleaseBody();

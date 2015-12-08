@@ -133,11 +133,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         switch (requestCode) {
             case Constants.EditJobIntent:
                 if (resultCode == RESULT_OK) {
+                    mPage=1;
                     loadjobList();
                 }
                 break;
             case Constants.TUIGUANGINTENT:
                 if (resultCode == RESULT_OK) {
+                    mPage=1;
                     loadjobList();
                 }
                 break;

@@ -71,6 +71,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textSize="14sp"
+        android:inputType="number"
         android:background="#ffffff"
         android:hint="@string/phone_num"/>
 
@@ -93,6 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="14sp"
+            android:inputType="number"
             android:id="@+id/verification_code"
             android:background="#ffffff"
             android:hint="@string/verification_code"/>

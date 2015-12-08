@@ -168,7 +168,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                         if(job!=null){
                             if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
                             if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-                            if(salary.getText()!=null){job.setSalary(Integer.parseInt(salary.getText().toString()));}
+                            if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
                             if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
                             if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
                             if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
@@ -177,7 +177,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                             jobBody=new CreateJobBody();
                             if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
                             if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
-                            if(salary.getText()!=null){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                            if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                             if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                             if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                             if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
@@ -213,7 +213,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         if(job!=null){
             if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
             if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-            if(salary.getText()!=null){job.setSalary(Integer.parseInt(salary.getText().toString()));}
+            if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
             if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
             if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
             if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
@@ -222,7 +222,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
             jobBody=new CreateJobBody();
             if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
             if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
-            if(salary.getText()!=null){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+            if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
             if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
             if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
             if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}

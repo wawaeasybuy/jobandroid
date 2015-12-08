@@ -211,6 +211,7 @@
                 android:layout_marginRight="15dp"
                 android:textSize="15dp"
                 android:gravity="center"
+                android:inputType="number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/salary_"/>

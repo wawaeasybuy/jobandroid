@@ -41,6 +41,7 @@
         android:paddingBottom="10dp"
         android:background="#ffffff"
         android:textSize="14sp"
+        android:inputType="number"
         android:id="@+id/tel"
         android:hint="@string/input_phone_num"/>
 
@@ -54,6 +55,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="#ffffff"
+        android:inputType="textPassword"
         android:textSize="14sp"
         android:id="@+id/psd"
         android:hint="@string/input_password"/>

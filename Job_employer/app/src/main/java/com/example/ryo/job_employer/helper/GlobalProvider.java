@@ -84,6 +84,22 @@ public class GlobalProvider {
             }
         });
     }
+    public void doLog(final Context context, String url, HttpEntity entity, String contentType, final RequestListener listener) {
+
+        addHeaderToken(context);
+        client.post(context, url, entity, contentType, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                listener.onSuccess(statusCode, headers, responseBody);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                //doFail(context, statusCode, headers, responseBody, error);
+                listener.onFailure(statusCode, headers, responseBody, error);
+            }
+        });
+    }
     public void post(final Context context, String url, HttpEntity entity, String contentType, final RequestListener listener) {
 
         addHeaderToken(context);
@@ -100,7 +116,6 @@ public class GlobalProvider {
             }
         });
     }
-
     public void post(final Context context, String url, RequestParams params, final RequestListener listener) {
 
         addHeaderToken(context);
@@ -117,8 +132,6 @@ public class GlobalProvider {
             }
         });
     }
-
-
     public void delete(final Context context, String url, final RequestListener listener) {
 
         addHeaderToken(context);
@@ -151,7 +164,6 @@ public class GlobalProvider {
             }
         });
     }
-
     public void put(final Context context, String url, HttpEntity entity,String contentType, final RequestListener listener) {
         addHeaderToken(context);
 

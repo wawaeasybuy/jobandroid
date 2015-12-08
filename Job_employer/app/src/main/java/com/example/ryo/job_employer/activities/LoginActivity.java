@@ -99,7 +99,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             json = ow.writeValueAsString(body);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
-            globalProvider.post(this, Constants.loginUrlStr, entity, "application/json", new RequestListener() {
+            globalProvider.doLog(this, Constants.loginUrlStr, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     parseLoginResult(new String(responseBody));
