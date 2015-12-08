@@ -252,6 +252,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             modifyRegion(province, city);
             lv3.setVisibility(View.VISIBLE);
         } else if (parent == lv3) {
+            page=1;
             this.Position=position;
             region = ARR[position];
             lv1.setVisibility(View.GONE);
