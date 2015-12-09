@@ -76,6 +76,8 @@
                 android:text="@string/real_name"/>
 
             <EditText
+                android:maxLines="1"
+                android:singleLine="true"
                 android:id="@+id/name"
                 android:background="#ffffff"
                 android:hint="@string/name"
@@ -130,6 +132,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="15dp"
+            android:id="@+id/changePsd"
             android:paddingBottom="15dp"
             android:paddingRight="20dp"
             android:paddingLeft="20dp">
@@ -141,11 +144,10 @@
                 android:textSize="16sp"
                 android:text="@string/change_password"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:text="@string/password"/>
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/turn_right1"/>
 
         </LinearLayout>
 

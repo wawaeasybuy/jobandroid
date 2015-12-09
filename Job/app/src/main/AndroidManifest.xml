@@ -22,6 +22,8 @@
             android:name=".activities.job.LoginActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity android:name=".activities.job.ChangePsdActivity">
+        </activity>
         <!--    <activity
             android:name=".activities.CollectedJobsActivity"
             android:label="@string/title_activity_collected_jobs" >

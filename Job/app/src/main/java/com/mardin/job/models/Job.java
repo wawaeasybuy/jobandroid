@@ -188,4 +188,14 @@ public class Job implements Serializable{
     public String province;
     public String region;
 
+    public Boolean getIsPush() {
+        return isPush;
+    }
+
+    public void setIsPush(Boolean isPush) {
+        this.isPush = isPush;
+    }
+
+    public Boolean isPush;
+
 }

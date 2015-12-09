@@ -1,7 +1,9 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -159,11 +161,39 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
             break;
       }
     }
+    public void elertMsg(String msg){
+        new AlertDialog.Builder(this)
+                .setMessage(msg)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                }).show();
+    }
     public void doEvaluete(){
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
+        if(body.getProfessionalLevel()==0){
+            elertMsg("专业水平评价不能为0！");
+            return;
+        }
+        if(body.getAnalysis()==0){
+            elertMsg("分析思考评价不能为0！");
+            return;
+        }
+        if(body.getExpression()==0){
+            elertMsg("语言表达评价不能为0！");
+            return;
+        }
+        if(body.getCompression()==0){
+            elertMsg("抗压应变评价不能为0！");
+            return;
+        }
+        if(body.getAttitude()==0){
+            elertMsg("态度礼仪评价不能为0！");
+            return;
+        }
         body.setAdviceText(adviceText.getText().toString());
         if(GlobalProvider.getInstance().employer.getCompanyname()!=null){body.setCompanyName(GlobalProvider.getInstance().employer.getCompanyname());}
         try {
@@ -182,7 +212,7 @@ public class IntervieweeEvaluateActivity extends Activity implements View.OnClic
                 }
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IntervieweeEvaluateActivity.this,new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {

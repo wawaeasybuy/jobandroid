@@ -184,6 +184,8 @@
                 android:text="@string/intention_expect_place"/>
 
             <EditText
+                android:maxLines="1"
+                android:singleLine="true"
                 android:id="@+id/expectedAddress"
                 android:background="#ffffff"
                 android:textSize="14dp"

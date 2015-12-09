@@ -1,7 +1,9 @@
 package com.example.ryo.job_employer.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,6 +73,7 @@ public class PositionAdapter extends BaseAdapter{
             holder.openText= (TextView) convertView.findViewById(R.id.openText);
             holder.tuiguangImg= (ImageView) convertView.findViewById(R.id.tuiguangImg);
             holder.fenxiangImg= (ImageView) convertView.findViewById(R.id.fenxiangImg);
+            holder.tuiguang_text= (TextView) convertView.findViewById(R.id.tuiguang_text);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -87,9 +90,43 @@ public class PositionAdapter extends BaseAdapter{
             holder.openText.setText("未公开");
         }
 
+        if(job.getIsTop()||job.getIsUrg()){
+            holder.tuiguang_text.setText("已推广");
+        }else{
+            holder.tuiguang_text.setText("推广");
+        }
+        if(job.getIsPush()!=null){
+            if(job.getIsPush()){
+                holder.my_position_limit.setText("可发布");
+            }else{
+                holder.my_position_limit.setText("不可发布");
+            }
+        }
+
            holder.tuiguang.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
+                   if(!job.getIsPush()){
+                       new AlertDialog.Builder(context)
+                               .setMessage("该职位不可发布，暂时不能推广！")
+                               .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                   @Override
+                                   public void onClick(DialogInterface dialog, int which) {
+
+                                   }
+                               }).show();
+                       return;
+                   }else if(!job.getIsRelease()){
+                       new AlertDialog.Builder(context)
+                               .setMessage("该职位还没公开，暂时不能推广！")
+                               .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                   @Override
+                                   public void onClick(DialogInterface dialog, int which) {
+
+                                   }
+                               }).show();
+                       return;
+                   }
                    Intent intent=new Intent(context, PositionAdActivity.class);
                    intent.putExtra("job",job);
                    ((MyPositionActivity)context).startActivityForResult(intent, Constants.TUIGUANGINTENT);
@@ -98,12 +135,23 @@ public class PositionAdapter extends BaseAdapter{
            holder.open.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   if(job.getIsRelease()==null||!job.getIsRelease()){
-                       state=0;
+                   if(!job.getIsPush()){
+                       new AlertDialog.Builder(context)
+                               .setMessage("该职位不可发布，暂时不能公开！")
+                               .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                   @Override
+                                   public void onClick(DialogInterface dialog, int which) {
+
+                                   }
+                               }).show();
                    }else{
-                       state=1;
+                       if(job.getIsRelease()==null||!job.getIsRelease()){
+                           state=0;
+                       }else{
+                           state=1;
+                       }
+                       ((MyPositionActivity)context).doRelease(job.get_id(), state);
                    }
-                   ((MyPositionActivity)context).doRelease(job.get_id(), state);
                }
            });
             holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +196,7 @@ public class PositionAdapter extends BaseAdapter{
         public ImageView tuiguangImg;
         public ImageView fenxiangImg;
         public TextView openText;
+        public TextView tuiguang_text;
     }
 
 }

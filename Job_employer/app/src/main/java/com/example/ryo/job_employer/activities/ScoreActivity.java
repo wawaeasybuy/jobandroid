@@ -1,6 +1,8 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -16,6 +18,7 @@ import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
 import com.example.ryo.job_employer.models.DoReleaseBody;
 import com.example.ryo.job_employer.models.Employer;
+import com.example.ryo.job_employer.models.ErrorList;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.network.Constants;
@@ -51,7 +54,7 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(ScoreActivity.this,IntervieweeActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, Constants.GOTOEVALUE);
             }
         });
         top.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +74,16 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
         });
         LoadPersonalInfo();
     }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.GOTOEVALUE:
+                if (resultCode == RESULT_OK) {
+                    LoadPersonalInfo();
+                }
+                break;
 
+        }
+    }
     public void LoadPersonalInfo(){
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         //RequestParams params = new RequestParams();
@@ -88,7 +100,6 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
                 //Log.v("err", new String(responseBody));
                 //mSwipeRefreshlayout.setRefreshing(false);
             }
-
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
 
@@ -164,8 +175,28 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
-                }
+                    if(responseBody!=null){
+                        JsonFactory jsonFactory = new JsonFactory();
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        try{
+                            JsonParser jsonParser = jsonFactory.createJsonParser(new String(responseBody));
+                            ErrorList errorList = (ErrorList) objectMapper.readValue(jsonParser, ErrorList.class);
+                            if(errorList.error!=null){
+                                if(errorList.error.msg!=null){
+                                    new AlertDialog.Builder(ScoreActivity.this)
+                                            .setMessage(errorList.error.msg)
+                                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int whichButton) {
 
+                                                }
+                                            }).show();
+                                }
+                            }
+                        }catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
                 }

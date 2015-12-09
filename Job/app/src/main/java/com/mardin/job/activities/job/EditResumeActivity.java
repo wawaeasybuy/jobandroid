@@ -365,7 +365,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             if(resume.getGrade()!=null&&!resume.getGrade().equals("")){grade.setText("成绩排名: "+resume.getGrade());}else{grade.setText("成绩排名: 未填写");}
             if(resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")){internshipExprience.setText("在校实践: "+resume.getInternshipExprience());}else{internshipExprience.setText("在校实践: 未填写");}
 
-            if(resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")){
+            if(resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")){
                 education_info_nofill.setText("已完善");
                 clickToFillEducationInfo.setText("(点击修改)");
                 //education_info_nofill.setClickable(false);

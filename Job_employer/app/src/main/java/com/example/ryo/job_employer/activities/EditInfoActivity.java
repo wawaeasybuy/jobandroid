@@ -40,6 +40,7 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
     public ImageView turn_left;
     public TextView needText;
     public LinearLayout firm_info ;
+    public LinearLayout changePsd;
     public TextView save;
     public EditText name;
     public Employer GolEmployer=GlobalProvider.getInstance().employer;
@@ -65,6 +66,7 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
         save.setOnClickListener(this);
         turn_left.setOnClickListener(this);
         firm_info.setOnClickListener(this);
+        changePsd.setOnClickListener(this);
 
     }
     private void initView() {
@@ -73,6 +75,7 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
         save= (TextView) findViewById(R.id.save);
         name= (EditText) findViewById(R.id.name);
         needText= (TextView) findViewById(R.id.needText);
+        changePsd= (LinearLayout) findViewById(R.id.changePsd);
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         //按下键盘上返回按钮
@@ -120,7 +123,10 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
           Intent intent = new Intent(EditInfoActivity.this, FirmInfoActivity.class);
           startActivityForResult(intent, Constants.CHANGEFIRMINFO);
           break;
-
+      case R.id.changePsd:
+          Intent intent1=new Intent(EditInfoActivity.this,ChangePsdActivity.class);
+          startActivity(intent1);
+          break;
       }
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

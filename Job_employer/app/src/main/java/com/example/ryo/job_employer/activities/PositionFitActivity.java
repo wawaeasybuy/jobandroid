@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.adapter.PositionFitAllAdapter;
@@ -323,6 +324,7 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         globalProvider.put(this, url, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Toast.makeText(PositionFitActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
                 LoadResumeList();
             }
             @Override

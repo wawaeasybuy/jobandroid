@@ -159,37 +159,89 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                break;
        }
     }
+    public Boolean adjustToPush(){
+        if(positionName.getText()!=null&&positionName.getText().toString().length()>0&&industry_text.getText()!=null&&industry_text.getText().toString().length()>0&&salary.getText()!=null&&salary.getText().toString().length()>0&&requirement.getText()!=null&&requirement.getText().toString().length()>0&&positionCharacter.getText()!=null&&positionCharacter.getText().toString().length()>0&&position_text.getText()!=null&&position_text.getText().toString().length()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public String elertMsg(){
+        if(adjustToPush()){
+            return "职位可发布，是否保存？";
+        }else{
+            return "职位不可发布，是否保存？";
+        }
+    }
     public void dofinish(){
-        new AlertDialog.Builder(this)
-                .setMessage("是否保存当前修改？")
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(job!=null){
-                            if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
-                            if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-                            if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
-                            if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
-                            if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
-                            if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
-                            update();
-                        }else{
-                            jobBody=new CreateJobBody();
-                            if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
-                            if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
-                            if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
-                            if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
-                            if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
-                            if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
-                            createJob();
+        if(adjustToPush()){
+            new AlertDialog.Builder(this)
+                    .setMessage("职位可发布，是否保存？")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(job!=null){
+                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsPush(true);
+                                update();
+                            }else{
+                                jobBody=new CreateJobBody();
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsPush(true);
+                                createJob();
+                            }
                         }
-                    }
-                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                doResult();
-            }
-        }).show();
+                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    doResult();
+                }
+            }).show();
+        }else{
+            new AlertDialog.Builder(this)
+                    .setMessage("职位不可发布，是否保存？")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(job!=null){
+                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsPush(false);
+                                update();
+                            }else{
+                                jobBody=new CreateJobBody();
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsPush(false);
+                                createJob();
+                            }
+                        }
+                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    doResult();
+                }
+            }).show();
+        }
+
     }
     public void doSave(){
 //           if(job!=null){
@@ -210,23 +262,72 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
 //               jobBody.setPositionCategory(position_text.getText().toString());
 //               createJob();
 //          }
-        if(job!=null){
-            if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
-            if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-            if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
-            if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
-            if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
-            if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
-            update();
+        if(adjustToPush()){
+            new AlertDialog.Builder(this)
+                    .setMessage("职位可发布，是否保存？")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(job!=null){
+                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsPush(true);
+                                update();
+                            }else{
+                                jobBody=new CreateJobBody();
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsPush(true);
+                                createJob();
+                            }
+                        }
+                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //doResult();
+                }
+            }).show();
         }else{
-            jobBody=new CreateJobBody();
-            if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
-            if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
-            if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
-            if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
-            if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
-            if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
-            createJob();
+            new AlertDialog.Builder(this)
+                    .setMessage("职位不可发布，是否保存？")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(job!=null){
+                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsPush(false);
+                                update();
+                            }else{
+                                jobBody=new CreateJobBody();
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsPush(false);
+                                createJob();
+                            }
+                        }
+                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //doResult();
+                }
+            }).show();
         }
     }
     public void update(){

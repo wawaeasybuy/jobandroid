@@ -342,7 +342,7 @@
                             android:text="@string/school_experience"/>
 
                         <TextView
-                            android:id="@+id/experience"
+                            android:id="@+id/internshipExprience"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp" />
@@ -395,7 +395,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
@@ -404,7 +404,7 @@
                     android:background="#ffffff"
                     android:id="@+id/selfEvaluation"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
 
                 </LinearLayout>
@@ -451,17 +451,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingTop="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:background="#ffffff"
-                        android:id="@+id/internshipExprience"
+                        android:id="@+id/exprience"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 

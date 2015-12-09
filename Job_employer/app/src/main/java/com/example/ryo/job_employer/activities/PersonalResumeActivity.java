@@ -136,7 +136,7 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
         professional= (TextView) findViewById(R.id.professional);
         graduationTime= (TextView) findViewById(R.id.graduationTime);
         grade= (TextView) findViewById(R.id.grade);
-        experience= (TextView) findViewById(R.id.experience);
+        experience= (TextView) findViewById(R.id.exprience);
         internshipExprience= (TextView) findViewById(R.id.internshipExprience);
         selfEvaluation= (TextView) findViewById(R.id.selfEvaluation);
     }

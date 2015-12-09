@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.adapter.ApplyPersonAdapter;
@@ -370,6 +371,7 @@ public class ApplyPersonActivity extends Activity implements View.OnClickListene
 //                mItems.clear();
 //                list.clear();
 //                LoadApplyList();
+                Toast.makeText(ApplyPersonActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
                 for(int i=0;i<mItems.size();i++){
                     if(mItems.get(i).get_id().equals(id)){
                         mItems.remove(mItems.get(i));

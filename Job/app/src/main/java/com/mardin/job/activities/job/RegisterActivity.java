@@ -188,7 +188,7 @@ public class RegisterActivity extends Activity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     new AlertDialog.Builder(RegisterActivity.this)
-                            .setMessage("发送失败！请检查你的输入是否有误！")
+                            .setMessage("注册失败！请检查你的输入是否有误！")
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
 

@@ -136,6 +136,8 @@
                     android:text="@string/resume_major_name"/>
 
                 <EditText
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:id="@+id/professional"
                     android:layout_marginRight="15dp"
                     android:background="#ffffff"

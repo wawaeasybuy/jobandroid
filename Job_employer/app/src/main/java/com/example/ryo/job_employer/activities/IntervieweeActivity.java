@@ -3,6 +3,7 @@ package com.example.ryo.job_employer.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ryo.job_employer.R;
+import com.example.ryo.job_employer.adapter.InterViewPulldownAdapter;
 import com.example.ryo.job_employer.adapter.PositionFitHeaderAdapter;
 import com.example.ryo.job_employer.adapter.TalentAdapter;
 import com.example.ryo.job_employer.helper.GlobalProvider;
@@ -46,9 +48,13 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
     public ImageView turn_img;
     public LinearLayout turn;
     public TextView turn_text;
+    public LinearLayout interview_layout;
+    public TextView interview_text;
+    public ImageView interview_img;
 
     public TalentAdapter mAdapter;
     public PositionFitHeaderAdapter adapter;
+    public InterViewPulldownAdapter Adapter;
     public List<Talent> mItems;
     public List<Talent> mItems_all;
     public List<Job> items;
@@ -56,6 +62,8 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
     private Integer mPage;
     private Integer mItemsPerPage;
     private Boolean isShowing=false;
+    public  Boolean isShowing1=false;
+    public String[] data ={"全部","已评价","待评价"};
 
     public Job JOB;
     @Override
@@ -70,6 +78,9 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         items=new ArrayList<Job>();
         mAdapter=new TalentAdapter(this,mItems,items);
         adapter=new PositionFitHeaderAdapter(this,items);
+        Adapter=new InterViewPulldownAdapter(this,data);
+        lv_pull_down_interview.setAdapter(Adapter);
+        lv_pull_down_interview.setVisibility(View.GONE);
         lv_main.setAdapter(mAdapter);
        // lv_pull_down_interview.setAdapter(adapter);
         lv_pull_down_position_name.setAdapter(adapter);
@@ -82,21 +93,50 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(position>0){
+                if (position > 0) {
                     //job=list.get(position).get_id();
                     LoadTalentListByJobId(items.get(position).get_id());
                     //applyHeader_text.setText(list.get(position-1).getPositionName());
-                }else{
+                } else {
                     //job="";
-                   LoadTalentList();
+                    LoadTalentList();
                     //applyHeader_text.setText("全部职位");
                 }
                 turn_text.setText(items.get(position).getPositionName());
                 lv_pull_down_position_name.setVisibility(View.GONE);
                 lv_main.setVisibility(View.VISIBLE);
                 turn_img.setImageResource(R.drawable.turn_down);
-                isShowing=false;
+                isShowing = false;
                 mAdapter.notifyDataSetChanged();
+
+            }
+        });
+        lv_pull_down_interview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                interview_text.setText(data[position]);
+                lv_pull_down_interview.setVisibility(View.GONE);
+                lv_main.setVisibility(View.VISIBLE);
+                interview_img.setImageResource(R.drawable.turn_down);
+                isShowing1 = false;
+            }
+        });
+        interview_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isShowing1){
+                    interview_img.setImageResource(R.drawable.turn_up);
+                    lv_pull_down_interview.setVisibility(View.VISIBLE);
+                    lv_main.setVisibility(View.GONE);
+                }else{
+                    interview_img.setImageResource(R.drawable.turn_down);
+                    lv_pull_down_interview.setVisibility(View.GONE);
+                    lv_main.setVisibility(View.VISIBLE);
+                }
+                isShowing1=!isShowing1;
+                isShowing=false;
+                turn_img.setImageResource(R.drawable.turn_down);
+                lv_pull_down_position_name.setVisibility(View.GONE);
 
             }
         });
@@ -111,6 +151,7 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.turn_left:
+                setResult(Activity.RESULT_OK);
                 finish();
                 break;
             case R.id.turn:
@@ -123,12 +164,25 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
                     lv_main.setVisibility(View.VISIBLE);
                     turn_img.setImageResource(R.drawable.turn_down);
                 }
+                interview_img.setImageResource(R.drawable.turn_down);
+                lv_pull_down_interview.setVisibility(View.GONE);
+                isShowing1=false;
                 isShowing=!isShowing;
                 break;
 //          case  R.id.interviewee_to_evaluate:
 //              Intent intent = new Intent( IntervieweeActivity.this, IntervieweeEvaluateActivity.class);
 //              startActivity(intent);
 //              break;
+        }
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //按下键盘上返回按钮
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            setResult(Activity.RESULT_OK);
+            finish();
+            return true;
+        }else{
+            return super.onKeyDown(keyCode, event);
         }
     }
     private void LoadJobList(){
@@ -289,5 +343,8 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         turn_img= (ImageView) findViewById(R.id.turn_img);
         turn= (LinearLayout) findViewById(R.id.turn);
         turn_text= (TextView) findViewById(R.id.turn_text);
+        interview_layout= (LinearLayout) findViewById(R.id.interview_layout);
+        interview_text= (TextView) findViewById(R.id.interview_text);
+        interview_img= (ImageView) findViewById(R.id.interview_img);
     }
 }

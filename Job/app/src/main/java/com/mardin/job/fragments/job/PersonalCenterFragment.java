@@ -144,7 +144,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 //                noResumeLayout.setVisibility(View.GONE);
 //                noLogin.setVisibility(View.VISIBLE);
 //                isLoging = false;
-                personal_setting.setVisibility(View.GONE);
+                personal_setting.setVisibility(View.INVISIBLE);
                 isLogined=false;
             }
 

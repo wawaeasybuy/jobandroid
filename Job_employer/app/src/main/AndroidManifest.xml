@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".activities.RetrievePasswordActivity">
         </activity>
+        <activity android:name=".activities.ChangePsdActivity">
+        </activity>
         <activity android:name=".activities.RegisterActivity">
         </activity>
         <activity android:name=".activities.SettingActivity">
@@ -51,6 +53,7 @@
             android:label="@string/internships_my_position" >
         </activity>
         <activity
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:name=".activities.EditPositionActivity"
             android:label="@string/edit_position" >
         </activity>

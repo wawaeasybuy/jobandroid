@@ -40,6 +40,7 @@ public class Constants {
     public static  final int SCOREINTENT=96;
     public static  final int LOGOUT=97;
     public static  final int CHANGEFIRMINFO=98;
+    public static  final int GOTOEVALUE=99;
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager

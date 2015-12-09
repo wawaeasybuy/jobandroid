@@ -160,4 +160,13 @@ public class Job implements Serializable {
     public Date UrgTime;    //for employer msg
     public Date timeUpdate;
     public Error error;
+    public Boolean getIsPush() {
+        return isPush;
+    }
+
+    public void setIsPush(Boolean isPush) {
+        this.isPush = isPush;
+    }
+
+    public Boolean isPush;
 }

@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:textColor="#ffffff"
-            android:text="@string/change_password"
+            android:text="@string/retrieve_password"
             android:textSize="20sp"/>
 
 

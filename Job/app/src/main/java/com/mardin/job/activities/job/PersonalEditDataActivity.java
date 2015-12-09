@@ -49,6 +49,8 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
     public Candidate candidate;
     public LinearLayout img_layout;
     private final String IMAGE_TYPE = "image/*";
+    public LinearLayout changePsd;
+
 
     private final int IMAGE_CODE = 0;   //这里的IMAGE_CODE是自己任意定义的
     @Override
@@ -70,6 +72,7 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
         turn_left.setOnClickListener(this);
         save.setOnClickListener(this);
         img_layout.setOnClickListener(this);
+        changePsd.setOnClickListener(this);
     }
     private void initView() {
         turn_left = (LinearLayout) findViewById(R.id.turn_left);
@@ -78,6 +81,7 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
         name= (EditText) findViewById(R.id.name);
         touxiang= (ImageView) findViewById(R.id.touxiang);
         img_layout= (LinearLayout) findViewById(R.id.img_layout);
+        changePsd= (LinearLayout) findViewById(R.id.changePsd);
     }
     @Override
     public void onClick(View v) {
@@ -90,6 +94,10 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
                 break;
             case  R.id.img_layout:
                 setImage();
+                break;
+            case  R.id.changePsd:
+               Intent intent=new Intent(PersonalEditDataActivity.this,ChangePsdActivity.class);
+                startActivity(intent);
                 break;
         }
     }

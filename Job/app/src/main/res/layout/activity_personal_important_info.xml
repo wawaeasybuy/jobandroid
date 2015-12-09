@@ -78,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:height="100dp"
+                android:maxLength="250"
                 android:paddingTop="10dp"
                 android:gravity="top"
                 android:background="#ffffff"
@@ -146,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:height="80dp"
+                android:maxLength="250"
                 android:paddingTop="10dp"
                 android:gravity="top"
                 android:background="#ffffff"
@@ -171,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#9b9b9b"
-                android:text="@string/internships_experience_limit_num"/>
+                android:text="@string/evaluate_limit_num"/>
 
         </LinearLayout>
 

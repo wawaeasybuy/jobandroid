@@ -29,7 +29,7 @@
                 android:textSize="16sp"
                 android:gravity="center"
                 android:textColor="#0080fe"
-                android:text="登录" />
+                android:text="@string/personal_login" />
 
         </LinearLayout>
 
@@ -70,7 +70,7 @@
         android:textSize="14sp"
         android:inputType="number"
         android:background="#ffffff"
-        android:hint="@string/phone_num"/>
+        android:hint="@string/input_phone_num"/>
 
     <LinearLayout
         android:layout_width="match_parent"

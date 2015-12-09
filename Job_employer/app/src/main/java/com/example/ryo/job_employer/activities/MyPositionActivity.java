@@ -1,6 +1,8 @@
 package com.example.ryo.job_employer.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -15,6 +17,7 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.adapter.PositionAdapter;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.CreateJobBody;
 import com.example.ryo.job_employer.models.DoReleaseBody;
 import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.Http.RequestParams;
@@ -249,6 +252,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
                     }
                 }
                 adapter.notifyDataSetChanged();
+                Toast.makeText(MyPositionActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -264,6 +268,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
     }
 
     public void doRelease(final String id, final int state) {
+
         DoReleaseBody body=new DoReleaseBody();
         body.setKey("release");
         body.setState(state);

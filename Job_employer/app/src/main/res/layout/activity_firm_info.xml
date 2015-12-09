@@ -82,6 +82,8 @@
                 android:text="@string/firm_name"/>
 
             <EditText
+                android:maxLines="1"
+                android:singleLine="true"
                 android:background="#ffffff"
                 android:textSize="14dp"
                 android:gravity="center"
@@ -116,6 +118,8 @@
                 android:text="@string/main_business"/>
 
             <EditText
+                android:maxLines="1"
+                android:singleLine="true"
                 android:background="#ffffff"
                 android:textSize="14dp"
                 android:gravity="center"
@@ -153,6 +157,8 @@
                 android:text="@string/firm_website"/>
 
             <EditText
+                android:maxLines="1"
+                android:singleLine="true"
                 android:background="#ffffff"
                 android:textSize="14dp"
                 android:gravity="center"
@@ -235,6 +241,7 @@
                <TextView
                    android:layout_centerInParent="true"
                    android:textSize="14sp"
+                   android:gravity="center"
                    android:id="@+id/layout1_txt"
                    android:layout_width="70dp"
                    android:layout_height="wrap_content" />
@@ -262,6 +269,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:gravity="center"
                     android:layout_centerInParent="true"
                     android:id="@+id/layout2_txt"
                     android:textSize="14sp"
@@ -291,6 +299,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:gravity="center"
                     android:layout_centerInParent="true"
                     android:id="@+id/layout3_txt"
                     android:textSize="14sp"
@@ -336,6 +345,8 @@
                 android:text="@string/detail_address"/>
 
             <EditText
+                android:maxLines="1"
+                android:singleLine="true"
                 android:background="#ffffff"
                 android:textSize="14dp"
                 android:gravity="center"
