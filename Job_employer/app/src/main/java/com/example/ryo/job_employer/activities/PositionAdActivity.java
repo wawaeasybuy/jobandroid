@@ -15,6 +15,7 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
 import com.example.ryo.job_employer.models.DoReleaseBody;
+import com.example.ryo.job_employer.models.ErrorList;
 import com.example.ryo.job_employer.models.Http.RequestParams;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.Job;
@@ -161,6 +162,28 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
                 }
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    if(responseBody!=null){
+                        JsonFactory jsonFactory = new JsonFactory();
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        try{
+                            JsonParser jsonParser = jsonFactory.createJsonParser(new String(responseBody));
+                            ErrorList errorList = (ErrorList) objectMapper.readValue(jsonParser, ErrorList.class);
+                            if(errorList.error!=null){
+                                if(errorList.error.msg!=null){
+                                    new AlertDialog.Builder(PositionAdActivity.this)
+                                            .setMessage(errorList.error.msg)
+                                            .setPositiveButton("去兑换", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int whichButton) {
+                                                    Intent intent=new Intent(PositionAdActivity.this,ScoreActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            }).show();
+                                }
+                            }
+                        }catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
                 @Override
@@ -177,19 +200,8 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Job job = (Job) objectMapper.readValue(jsonParser, Job.class);
-            if(job.error!=null){
-                new AlertDialog.Builder(PositionAdActivity.this)
-                        .setMessage(elertMessage(key))
-                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                Intent intent=new Intent(PositionAdActivity.this,ScoreActivity.class);
-                                startActivity(intent);
-                            }
-                        }).show();
-            }else{
-                Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
-                doResult();
-            }
+            Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+            doResult();
         }catch (IOException e) {
             e.printStackTrace();
         }
