@@ -91,10 +91,11 @@ public class ApplyListAdapter extends BaseAdapter{
         public TextView success;
         public TextView date;
 
+
     }
     public static String ConverToString(Date date)
     {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm");
 
         return df.format(date);
     }

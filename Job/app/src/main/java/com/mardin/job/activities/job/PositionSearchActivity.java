@@ -85,6 +85,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public String[] ARR;
     public SwipeRefreshLayout swiperefresh;
     private Boolean mNomore=false;
+    public TextView noResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -227,6 +229,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 
             }
+
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
@@ -235,6 +238,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 }
             }
         });
+        noResult.setVisibility(View.GONE);
         LoadJobListByCondition();
     }
     @Override
@@ -262,6 +266,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             lv_job.setVisibility(View.VISIBLE);
             turn_one.setImageResource(R.drawable.turn_down);
             address_text.setText(region);
+            lv1_showing=false;
             LoadJobListByCondition();
             //txtInfo.setText(province + " " + city + " " + region);
         }
@@ -417,6 +422,13 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             this.mItems.addAll(joblist.jobs);
             //GlobalProvider.getInstance().shangpingListDefault=mItems;
             adapter.notifyDataSetChanged();
+            if(joblist.jobs.size()>0){
+                lv_job.setVisibility(View.VISIBLE);
+                noResult.setVisibility(View.GONE);
+            }else{
+                lv_job.setVisibility(View.GONE);
+                noResult.setVisibility(View.VISIBLE);
+            }
             //do something
         }catch (IOException e) {
             e.printStackTrace();
@@ -444,6 +456,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         address_text= (TextView) findViewById(R.id.address_text);
         industry= (TextView) findViewById(R.id.industry);
         search= (ImageView) findViewById(R.id.search);
+        noResult= (TextView) findViewById(R.id.noResult);
     }
     public void initAction(){
         turn_left.setOnClickListener(this);

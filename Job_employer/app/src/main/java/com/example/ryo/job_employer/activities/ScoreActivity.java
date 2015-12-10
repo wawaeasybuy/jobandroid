@@ -114,6 +114,7 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Employer employer = (Employer) objectMapper.readValue(jsonParser, Employer.class);
             //接受全局employer
+            GlobalProvider.getInstance().employer=employer;
             score.setText(employer.score+"");
             //do something
         }catch (IOException e) {

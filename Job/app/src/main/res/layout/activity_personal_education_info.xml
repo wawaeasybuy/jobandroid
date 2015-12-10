@@ -197,11 +197,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/select_grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
                 android:paddingLeft="10dp"
@@ -210,20 +209,29 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_centerVertical="true"
                     android:text="@string/resume_grade_range"/>
-
-                <EditText
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/img_turn"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/turn_right1"
+                 />
+                <TextView
+                    android:layout_toLeftOf="@id/img_turn"
                     android:id="@+id/grade"
-                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
                     android:background="#ffffff"
                     android:textSize="14dp"
-                    android:hint="@string/base_data_residence_"
                     android:gravity="right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -247,7 +255,6 @@
                     android:id="@+id/internshipExprience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:height="100dp"
                     android:paddingTop="10dp"
                     android:gravity="top"
                     android:background="#ffffff"

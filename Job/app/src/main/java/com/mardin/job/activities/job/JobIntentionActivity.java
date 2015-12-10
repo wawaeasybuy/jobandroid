@@ -10,12 +10,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
+import com.mardin.job.Utils.ChinaCityUtil;
 import com.mardin.job.Utils.PositionIndustryUtil;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
@@ -35,10 +38,10 @@ import java.util.Hashtable;
 /**
  * Created by Ryo on 2015/9/15.
  */
-public class JobIntentionActivity extends Activity {
+public class JobIntentionActivity extends Activity implements View.OnClickListener {
     public TextView expectedIndustry;
     public TextView expectedPosition;
-    public EditText expectedAddress;
+    public TextView expectedAddress;
 
     public LinearLayout expectedIndustry_layout;
     public LinearLayout expectedPosition_layout;
@@ -50,8 +53,28 @@ public class JobIntentionActivity extends Activity {
     public String[] industry_arr;
     public String[] position_arr;
 
-    public int chooseItem_industry;
-    public int getChooseItem_position;
+    public int chooseItem_industry=0;
+    public int getChooseItem_position=0;
+
+    private Hashtable<String, Hashtable<String, String[]>> Hashtable;
+    private String[] arrProvince, arrCity, arrRegion;
+    private String province="", city="", region="";
+    public boolean Ishowing=false;
+    public int choose_province;
+    public int choose_city;
+    public int choose_region;
+
+    public LinearLayout address_select_layout;
+    public RelativeLayout layout1;
+    public RelativeLayout layout2;
+    public RelativeLayout layout3;
+
+    public LinearLayout address_layout;
+    public ImageView address_img;
+
+    public TextView layout1_txt;
+    public TextView layout2_txt;
+    public TextView layout3_txt;
 
     public TextView SaveToNext;
     //public static String employerId="5628474a583221f00507653b";
@@ -65,15 +88,31 @@ public class JobIntentionActivity extends Activity {
 
         expectedIndustry= (TextView) findViewById(R.id.expectedIndustry);
         expectedPosition= (TextView) findViewById(R.id.expectedPosition);
-        expectedAddress= (EditText) findViewById(R.id.expectedAddress);
+        expectedAddress= (TextView) findViewById(R.id.expectedAddress);
 
-        expectedAddress_layout= (LinearLayout) findViewById(R.id.expectedAddress_layout);
+        //expectedAddress_layout= (LinearLayout) findViewById(R.id.expectedAddress_layout);
         expectedIndustry_layout= (LinearLayout) findViewById(R.id.expectedIndustry_layout);
         expectedPosition_layout= (LinearLayout) findViewById(R.id.expectedPosition_layout);
 
+        address_layout= (LinearLayout) findViewById(R.id.address_layout);
+        //expectedAddress= (TextView) findViewById(R.id.address);
+        address_img= (ImageView) findViewById(R.id.address_img);
+
+        address_select_layout= (LinearLayout) findViewById(R.id.address_select_layout);
+        layout1= (RelativeLayout) findViewById(R.id.layout1);
+        layout2= (RelativeLayout) findViewById(R.id.layout2);
+        layout3= (RelativeLayout) findViewById(R.id.layout3);
+
+        layout1_txt= (TextView) findViewById(R.id.layout1_txt);
+        layout2_txt= (TextView) findViewById(R.id.layout2_txt);
+        layout3_txt= (TextView) findViewById(R.id.layout3_txt);
+
 //        SaveToNext= (TextView) findViewById(R.id.SaveToNext);
 
-
+        address_layout.setOnClickListener(this);
+        layout1.setOnClickListener(this);
+        layout2.setOnClickListener(this);
+        layout3.setOnClickListener(this);
         expectedIndustry_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,6 +206,103 @@ public class JobIntentionActivity extends Activity {
 
             }
         });
+        Hashtable = ChinaCityUtil.initChinaCitysHashtable();
+
+        arrProvince=ChinaCityUtil.findAreaStringArr(Hashtable, ChinaCityUtil.TYPE_PROVINCE);
+
+        address_img.setImageResource(R.drawable.turn_down);
+        address_select_layout.setVisibility(View.GONE);
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.address_layout:
+                if(!Ishowing){
+                    address_img.setImageResource(R.drawable.turn_up);
+                    address_select_layout.setVisibility(View.VISIBLE);
+                }else{
+                    address_img.setImageResource(R.drawable.turn_down);
+                    address_select_layout.setVisibility(View.GONE);
+                }
+                Ishowing=!Ishowing;
+                break;
+            case R.id.layout1:
+                new AlertDialog.Builder(JobIntentionActivity.this)
+                        .setSingleChoiceItems(arrProvince, 0,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        choose_province = which;
+                                    }
+                                }
+                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        province=arrProvince[choose_province];
+                        layout1_txt.setText(province);
+                        layout2_txt.setText("");
+                        layout3_txt.setText("");
+                        //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                        //shipingAdress_Str=items_shiping[chooseItem_one];
+                    }
+                }).setNegativeButton("取消",null)
+                        .show();
+                break;
+            case  R.id.layout2:
+                if(!layout1_txt.getText().equals("")) {
+                    arrCity = ChinaCityUtil.findAreaStringArr(Hashtable, ChinaCityUtil.TYPE_CITY, layout1_txt.getText().toString());
+                    new AlertDialog.Builder(JobIntentionActivity.this)
+                            .setSingleChoiceItems(arrCity, 0,
+                                    new DialogInterface.OnClickListener() {
+
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            choose_city = which;
+                                        }
+                                    }
+                            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            city = arrCity[choose_city];
+                            layout2_txt.setText(city);
+
+                            layout3_txt.setText("");
+                            //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                            //shipingAdress_Str=items_shiping[chooseItem_one];
+                        }
+                    }).setNegativeButton("取消", null)
+                            .show();
+                }
+                break;
+            case R.id.layout3:
+                if(!layout1_txt.getText().equals("")&&!layout2_txt.getText().equals("")) {
+                    arrRegion = ChinaCityUtil.findAreaStringArr(Hashtable, ChinaCityUtil.TYPE_REGION, layout1_txt.getText().toString(),
+                            layout2_txt.getText().toString());
+                    new AlertDialog.Builder(JobIntentionActivity.this)
+                            .setSingleChoiceItems(arrRegion, 0,
+                                    new DialogInterface.OnClickListener() {
+
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            choose_region = which;
+                                        }
+                                    }
+                            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            region = arrRegion[choose_region];
+                            layout3_txt.setText(region);
+
+                            expectedAddress.setText(region);
+                            //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                            //shipingAdress_Str=items_shiping[chooseItem_one];
+                        }
+                    }).setNegativeButton("取消", null)
+                            .show();
+                }
+                break;
+        }
     }
     public void doSave(){
         GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
@@ -248,4 +384,6 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
+
+
 }

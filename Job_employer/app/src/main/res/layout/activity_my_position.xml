@@ -45,6 +45,12 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:background="#f2f2f2">
+        <TextView
+            android:text="您还有职位哦~快去新建吧！"
+            android:gravity="center"
+            android:id="@+id/noPosition"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swiperefresh"
             android:layout_marginTop="10dp"

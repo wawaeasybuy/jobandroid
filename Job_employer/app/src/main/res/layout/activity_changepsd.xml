@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:textColor="#ffffff"
-            android:text="@string/retrieve_password"
+            android:text="@string/change_password"
             android:textSize="20sp"/>
 
 
@@ -58,7 +58,7 @@
 
     <!--  Content -->
     <EditText
-        android:id="@+id/tel"
+        android:id="@+id/old_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
@@ -70,48 +70,10 @@
         android:textSize="14sp"
         android:inputType="number"
         android:background="#ffffff"
-        android:hint="@string/phone_num"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="15dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textSize="14sp"
-        android:background="#ffffff">
-
-        <EditText
-            android:id="@+id/verification_code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:inputType="number"
-            android:background="#ffffff"
-            android:hint="@string/verification_code"/>
-
-        <TextView
-            android:id="@+id/get_verification_code"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textColor="#ffffff"
-            android:textSize="12sp"
-            android:background="#0080fe"
-            android:text="@string/get_verification_code"/>
-
-    </LinearLayout>
+        android:hint="@string/old_password"/>
 
     <EditText
-        android:id="@+id/psd"
+        android:id="@+id/new_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"

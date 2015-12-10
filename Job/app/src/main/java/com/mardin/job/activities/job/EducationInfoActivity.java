@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ public class EducationInfoActivity extends Activity {
     public TextView schoolName;
     public EditText professional;
     public TextView  graduationTime;
-    public EditText grade;
+    public TextView grade;
     public EditText internshipExprience;
     public Resume resume;
     public Candidate candidate;
@@ -40,8 +41,10 @@ public class EducationInfoActivity extends Activity {
     public TextView saveToNext;
     public LinearLayout graduationTime_select_layout;
     public String Str_data="";
+    public RelativeLayout select_grade;
+    public int chooseGrade;
 
-
+    public String[] grade_select={"0-10%","10-20%","20-30%","30-40%","40-50%","50-60%","60-70%","70-80%","80-90%","90-100%"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,8 @@ public class EducationInfoActivity extends Activity {
         schoolName= (TextView) findViewById(R.id.schoolName);
         professional= (EditText) findViewById(R.id.professional);
         graduationTime= (TextView) findViewById(R.id.graduationTime);
-        grade= (EditText) findViewById(R.id.grade);
+        grade= (TextView) findViewById(R.id.grade);
+        select_grade= (RelativeLayout) findViewById(R.id.select_grade);
         internshipExprience= (EditText) findViewById(R.id.internshipExprience);
         save= (TextView) findViewById(R.id.save);
         //saveToNext= (TextView) findViewById(R.id.saveToNext);
@@ -64,6 +68,29 @@ public class EducationInfoActivity extends Activity {
         if(resume.getInternshipExprience()!=null){internshipExprience.setText(resume.getInternshipExprience());}
 
         final Calendar c = Calendar.getInstance();
+        select_grade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(EducationInfoActivity.this)
+                        .setSingleChoiceItems(grade_select, 0,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        chooseGrade = which;
+                                    }
+                                }
+                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        grade.setText(grade_select[chooseGrade]);
+                        //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                        //shipingAdress_Str=items_shiping[chooseItem_one];
+                    }
+                }).setNegativeButton("取消",null)
+                        .show();
+            }
+        });
         graduationTime_select_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

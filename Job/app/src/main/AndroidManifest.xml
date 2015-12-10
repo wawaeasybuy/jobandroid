@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".activities.job.ChangePsdActivity">
         </activity>
+        <activity android:name=".activities.job.WebViewActivity">
+        </activity>
         <!--    <activity
             android:name=".activities.CollectedJobsActivity"
             android:label="@string/title_activity_collected_jobs" >

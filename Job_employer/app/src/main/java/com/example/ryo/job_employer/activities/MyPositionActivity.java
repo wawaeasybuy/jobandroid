@@ -11,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ryo.job_employer.R;
@@ -34,6 +35,7 @@ import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -62,6 +64,8 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
     public OnekeyShare onekeyShare;
     public SwipeRefreshLayout swiperefresh;
     public Boolean mNomore=false;
+    public TextView noPosition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +97,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 //                     mNomore=true;
             }
+
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
@@ -101,6 +106,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
                 }
             }
         });
+        noPosition.setVisibility(View.GONE);
         loadjobList();
     }
     private void initAction() {
@@ -116,6 +122,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
         turn_left = (ImageView) findViewById(R.id.turn_left);
         lv = (ListView) findViewById(R.id.lv);
         swiperefresh= (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        noPosition= (TextView) findViewById(R.id.noPosition);
 
     }
 
@@ -231,6 +238,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
             this.list.addAll(joblist.jobs);
             //GlobalProvider.getInstance().shangpingListDefault=mItems;
             adapter.notifyDataSetChanged();
+            if(joblist.jobs.size()>0){
+                lv.setVisibility(View.VISIBLE);
+                noPosition.setVisibility(View.GONE);
+            }else{
+                lv.setVisibility(View.GONE);
+                noPosition.setVisibility(View.VISIBLE);
+            }
             //do something
         } catch (IOException e) {
             e.printStackTrace();
@@ -252,6 +266,13 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
                     }
                 }
                 adapter.notifyDataSetChanged();
+                if(list.size()>0){
+                    lv.setVisibility(View.VISIBLE);
+                    noPosition.setVisibility(View.GONE);
+                }else{
+                    lv.setVisibility(View.GONE);
+                    noPosition.setVisibility(View.VISIBLE);
+                }
                 Toast.makeText(MyPositionActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
             }
 

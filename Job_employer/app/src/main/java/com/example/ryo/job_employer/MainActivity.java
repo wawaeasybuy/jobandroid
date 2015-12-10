@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -63,9 +64,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         item=new ArrayList<EmpMessage>();
         adapter=new MessageAdapter(this,item);
         lv_msg.setAdapter(adapter);
+        lv_msg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(MainActivity.this,ApplyPersonActivity.class);
+                startActivity(intent);
+            }
+        });
         LoadPersonalInfo();
     }
-
     private void initAction() {
         base_data.setOnClickListener(this);
         score.setOnClickListener(this);
@@ -76,7 +83,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setting.setOnClickListener(this);
 
     }
-
     private void initView() {
         base_data = (LinearLayout) findViewById(R.id.base_data);
         score = (LinearLayout) findViewById(R.id.score);
@@ -125,7 +131,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         }
     }
-
     private void doLogout() {
         Intent intent=new Intent(MainActivity.this, SettingActivity.class);
         startActivityForResult(intent,Constants.LOGOUT);
@@ -138,7 +143,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //                    LoadPersonalInfo();
 //                }
             }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case Constants.LoginIntent:

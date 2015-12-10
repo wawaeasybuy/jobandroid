@@ -198,7 +198,7 @@ public class PositionDetailActivity extends Activity {
             GlobalProvider.getInstance().candidate=candidate;
             if(candidate.resume!=null){
             if(candidate.resume.isdelivered()){
-                doApply();
+                DoAdajust();
             }else{
                 new AlertDialog.Builder(PositionDetailActivity.this)
                         .setMessage("您的简历还没完善，请完善！")
@@ -229,7 +229,16 @@ public class PositionDetailActivity extends Activity {
             e.printStackTrace();
         }
     }
+    public void DoAdajust(){
+        if(job.get_employer()==null){
+            Intent intent=new Intent(PositionDetailActivity.this,WebViewActivity.class);
+            startActivity(intent);
+        }else{
+            doApply();
+        }
+    }
     public void doApply(){
+
         JobApplyBody body=new JobApplyBody();
         body.set_id(job.get_id());
         body.set_employer(job.get_employer());

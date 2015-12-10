@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
@@ -43,12 +44,14 @@ public class InternshipsSearchActivity extends Activity {
     public List<Job> mItems;
     public String retrieval="";
     public EditText input;
+    public TextView no_result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_position_search);
         lv_job_search= (ListView) findViewById(R.id.lv_job_search);
         input= (EditText) findViewById(R.id.input);
+        no_result= (TextView) findViewById(R.id.no_result);
         page=1;
         itemsPerPage=10;
         mItems=new ArrayList<Job>();
@@ -93,6 +96,7 @@ public class InternshipsSearchActivity extends Activity {
             }
         });
         //LoadRecJobList();
+        no_result.setVisibility(View.GONE);
     }
     public void LoadRecJobList(){
         RequestParams params = new RequestParams();
@@ -130,6 +134,13 @@ public class InternshipsSearchActivity extends Activity {
             this.mItems.addAll(joblist.jobs);
             //GlobalProvider.getInstance().shangpingListDefault=mItems;
             adapter.notifyDataSetChanged();
+            if(joblist.jobs.size()==0){
+                no_result.setVisibility(View.VISIBLE);
+                lv_job_search.setVisibility(View.GONE);
+            }else{
+                no_result.setVisibility(View.GONE);
+                lv_job_search.setVisibility(View.VISIBLE);
+            }
             //do something
         }catch (IOException e) {
             e.printStackTrace();
