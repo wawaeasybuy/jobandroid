@@ -80,7 +80,6 @@ public class InternshipsSearchActivity extends Activity {
                 }
 
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 

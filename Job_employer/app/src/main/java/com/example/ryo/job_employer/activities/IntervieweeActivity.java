@@ -3,8 +3,10 @@ package com.example.ryo.job_employer.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,6 +68,10 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
     public String[] data ={"全部","已评价","待评价"};
 
     public Job JOB;
+    public int isInterview=4;
+    public String jobId="";
+    public SwipeRefreshLayout swiperefresh;
+    public Boolean mNomore=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,20 +94,44 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         lv_pull_down_position_name.setVisibility(View.GONE);
 
         turn_text.setText("全部职位");
+        swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mNomore = false;
+                mPage = 1;
+                LoadTalentList();
+            }
+        });
+        lv_main.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
 
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (!mNomore && lv_main.getCount() != 0 && lv_main.getLastVisiblePosition() >= (lv_main.getCount() - 1)) {
+                    LoadMoreTalentList();
+                }
+            }
+        });
         lv_pull_down_position_name.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position > 0) {
                     //job=list.get(position).get_id();
-                    LoadTalentListByJobId(items.get(position).get_id());
+                    jobId=items.get(position).get_id();
+                   // LoadTalentListByJobId(items.get(position).get_id());
                     //applyHeader_text.setText(list.get(position-1).getPositionName());
                 } else {
                     //job="";
-                    LoadTalentList();
+                    jobId="";
+                    //LoadTalentList();
                     //applyHeader_text.setText("全部职位");
                 }
+                mPage=1;
+                LoadTalentList();
                 turn_text.setText(items.get(position).getPositionName());
                 lv_pull_down_position_name.setVisibility(View.GONE);
                 lv_main.setVisibility(View.VISIBLE);
@@ -114,11 +144,15 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         lv_pull_down_interview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                isInterview=position;
+                mPage=1;
+                LoadTalentList();
                 interview_text.setText(data[position]);
                 lv_pull_down_interview.setVisibility(View.GONE);
                 lv_main.setVisibility(View.VISIBLE);
                 interview_img.setImageResource(R.drawable.turn_down);
                 isShowing1 = false;
+
             }
         });
         interview_layout.setOnClickListener(new View.OnClickListener() {
@@ -220,19 +254,6 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
                 }
                 //this.list.addAll(jobFitList.jobs);
             }
-
-//            if(list.size()==0){
-//                if(JOB==null){
-//                    JOB=new Job();
-//                    JOB.setPositionName("全部职位");
-//                }
-//                list.add(JOB);
-//                for(int i=0;i<jobFitList.jobs.size();i++){
-//                    list.add(jobFitList.jobs.get(i));
-//                }
-//                //this.list.addAll(jobFitList.jobs);
-//            }
-            //GlobalProvider.getInstance().shangpingListDefault=mItems;
             adapter.notifyDataSetChanged();
             //adapterAll.notifyDataSetChanged();
             //do something
@@ -241,20 +262,29 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         }
     }
     private void LoadTalentList() {
+        mPage=1;
         RequestParams params = new RequestParams();
         params.put("page", mPage);
         params.put("itemsPerPage", mItemsPerPage);
         params.put("id", GlobalProvider.getInstance().employerId);
+        if(!jobId.equals("")){
+            params.put("jobId", jobId);
+        }
+        if(isInterview==1||isInterview==2){
+            params.put("isInterview",isInterview);
+        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.TalentStr, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 parseTalentList(new String(responseBody));
+                swiperefresh.setRefreshing(false);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 //Log.v("err", new String(responseBody));
+                swiperefresh.setRefreshing(false);
             }
             @Override
             public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
@@ -262,17 +292,23 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
             }
         });
     }
-    private void LoadTalentListByJobId(String jobId) {
+    public void LoadMoreTalentList(){
+        mPage=mPage+1;
         RequestParams params = new RequestParams();
         params.put("page", mPage);
         params.put("itemsPerPage", mItemsPerPage);
         params.put("id", GlobalProvider.getInstance().employerId);
-        params.put("jobId", jobId);
+        if(!jobId.equals("")){
+            params.put("jobId", jobId);
+        }
+        if(isInterview==1||isInterview==2){
+            params.put("isInterview",isInterview);
+        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.TalentStr, params, new RequestListener() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                parseTalentList(new String(responseBody));
+                parseMoreTalentList(new String(responseBody));
             }
 
             @Override
@@ -314,6 +350,23 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
             e.printStackTrace();
         }
     }
+    public void parseMoreTalentList(String json){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonParser jsonParser = jsonFactory.createJsonParser(json);
+            TalentList jobFitList = (TalentList) objectMapper.readValue(jsonParser, TalentList.class);
+            if(jobFitList.talents.size()<mItemsPerPage){
+                mNomore = true;
+            }
+            this.mItems.addAll(jobFitList.talents);
+            //GlobalProvider.getInstance().shangpingListDefault=mItems;
+            mAdapter.notifyDataSetChanged();
+            //loadme();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case Constants.EVALUATEINTENT:
@@ -346,5 +399,6 @@ public class IntervieweeActivity extends Activity implements View.OnClickListene
         interview_layout= (LinearLayout) findViewById(R.id.interview_layout);
         interview_text= (TextView) findViewById(R.id.interview_text);
         interview_img= (ImageView) findViewById(R.id.interview_img);
+        swiperefresh= (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
     }
 }
