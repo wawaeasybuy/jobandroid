@@ -17,6 +17,8 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.activities.EditPositionActivity;
 import com.example.ryo.job_employer.activities.MyPositionActivity;
 import com.example.ryo.job_employer.activities.PositionAdActivity;
+import com.example.ryo.job_employer.helper.GlobalProvider;
+import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.Job;
 import com.example.ryo.job_employer.network.Constants;
 
@@ -106,51 +108,62 @@ public class PositionAdapter extends BaseAdapter{
            holder.tuiguang.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   if(!job.getIsPush()){
-                       new AlertDialog.Builder(context)
-                               .setMessage("该职位不可发布，暂时不能推广！")
-                               .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                   @Override
-                                   public void onClick(DialogInterface dialog, int which) {
+                       if(!job.getIsPush()){
+                           new AlertDialog.Builder(context)
+                                   .setMessage("该职位不可发布，暂时不能推广！")
+                                   .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                       @Override
+                                       public void onClick(DialogInterface dialog, int which) {
 
-                                   }
-                               }).show();
-                       return;
-                   }else if(!job.getIsRelease()){
-                       new AlertDialog.Builder(context)
-                               .setMessage("该职位还没公开，暂时不能推广！")
-                               .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                   @Override
-                                   public void onClick(DialogInterface dialog, int which) {
+                                       }
+                                   }).show();
+                           return;
+                       }else if(!job.getIsRelease()){
+                           new AlertDialog.Builder(context)
+                                   .setMessage("该职位还没公开，暂时不能推广！")
+                                   .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                       @Override
+                                       public void onClick(DialogInterface dialog, int which) {
 
-                                   }
-                               }).show();
-                       return;
-                   }
-                   Intent intent=new Intent(context, PositionAdActivity.class);
-                   intent.putExtra("job",job);
-                   ((MyPositionActivity)context).startActivityForResult(intent, Constants.TUIGUANGINTENT);
+                                       }
+                                   }).show();
+                           return;
+                       }
+                       Intent intent=new Intent(context, PositionAdActivity.class);
+                       intent.putExtra("job",job);
+                       ((MyPositionActivity)context).startActivityForResult(intent, Constants.TUIGUANGINTENT);
                }
            });
            holder.open.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   if(!job.getIsPush()){
+                   if(adJustToOpen()){
+                       if(!job.getIsPush()){
+                           new AlertDialog.Builder(context)
+                                   .setMessage("该职位不可发布，暂时不能公开！")
+                                   .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                       @Override
+                                       public void onClick(DialogInterface dialog, int which) {
+
+                                       }
+                                   }).show();
+                       }else{
+                           if(job.getIsRelease()==null||!job.getIsRelease()){
+                               state=0;
+                           }else{
+                               state=1;
+                           }
+                           ((MyPositionActivity)context).doRelease(job.get_id(), state);
+                       }
+                   }else{
                        new AlertDialog.Builder(context)
-                               .setMessage("该职位不可发布，暂时不能公开！")
+                               .setMessage("公司信息还未完善，暂时不能公开！")
                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                    @Override
                                    public void onClick(DialogInterface dialog, int which) {
 
                                    }
                                }).show();
-                   }else{
-                       if(job.getIsRelease()==null||!job.getIsRelease()){
-                           state=0;
-                       }else{
-                           state=1;
-                       }
-                       ((MyPositionActivity)context).doRelease(job.get_id(), state);
                    }
                }
            });
@@ -176,10 +189,16 @@ public class PositionAdapter extends BaseAdapter{
             });
         return convertView;
     }
+    public boolean adJustToOpen(){
+        if(GlobalProvider.getInstance().employer.getName()==null||GlobalProvider.getInstance().employer.getName().equals("")||GlobalProvider.getInstance().employer.getCompanyname()==null||GlobalProvider.getInstance().employer.getCompanyname().equals("")||GlobalProvider.getInstance().employer.getMainBusiness()==null||GlobalProvider.getInstance().employer.getMainBusiness().equals("")||GlobalProvider.getInstance().employer.getCompanyURL()==null||GlobalProvider.getInstance().employer.getCompanyURL().equals("")||GlobalProvider.getInstance().employer.getProvince()==null||GlobalProvider.getInstance().employer.getCompanyAddress()==null||GlobalProvider.getInstance().employer.getCompanyAddress().equals("")||GlobalProvider.getInstance().employer.getCompanyInfo()==null||GlobalProvider.getInstance().employer.getCompanyInfo().equals("")){
+            return false;
+        }else{
+            return true;
+        }
+    }
     public static String ConverToString(Date date)
     {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
         return df.format(date);
     }
     class ViewHolder {

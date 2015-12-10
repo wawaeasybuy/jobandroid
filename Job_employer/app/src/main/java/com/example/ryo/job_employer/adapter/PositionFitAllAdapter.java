@@ -67,21 +67,22 @@ public class PositionFitAllAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-            for(int i=1;i<list.size();i++){
-                if(resume.getExpectedPosition().equals(list.get(i).getPositionCategory())){
-                    holder.positionName.setText("急求"+list.get(i).getPositionName());
-                }
-            }
-            holder.name.setText(resume.getName());
+//            for(int i=1;i<list.size();i++){
+//                if(resume.getExpectedPosition().equals(list.get(i).getPositionCategory())){
+//                    holder.positionName.setText("急求"+list.get(i).getPositionName());
+//                }
+//            }
+            if(resume.getExpectedPosition()!=null){holder.positionName.setText(resume.getExpectedPosition());}
+            if(resume.getName()!=null)holder.name.setText(resume.getName());
             holder.testValue.setText("职业测评分 ："+resume._candidate.getTestValue());
-            holder.schoolName.setText(resume.getSchoolName());
-            holder.professional.setText(resume.getProfessional());
+            if(resume.getSchoolName()!=null){holder.schoolName.setText(resume.getSchoolName());}
+            if(resume.getProfessional()!=null){holder.professional.setText(resume.getProfessional());}
             holder.chakan.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((PositionFitActivity)context).PositionFitUpdate(resume);
-                }
-            });
+                    @Override
+                    public void onClick(View v) {
+                        ((PositionFitActivity)context).PositionFitUpdate(resume);
+                    }
+                });
             holder.ignore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

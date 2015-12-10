@@ -154,4 +154,14 @@ public class Employer  implements Serializable {
     public Boolean pubResume;
     public List<EmpMessage>  message;
 
+    public boolean isRelease() {
+        return isRelease;
+    }
+
+    public void setIsRelease(boolean isRelease) {
+        this.isRelease = isRelease;
+    }
+
+    public boolean isRelease;
+
 }

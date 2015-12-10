@@ -62,6 +62,20 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
             needText.setText("需完善");
         }
     }
+    public boolean adJustToOpen(){
+        if(GolEmployer.getName()==null||GolEmployer.getName().equals("")||GolEmployer.getCompanyname()==null||GolEmployer.getCompanyname().equals("")||GolEmployer.getMainBusiness()==null||GolEmployer.getMainBusiness().equals("")||GolEmployer.getCompanyURL()==null||GolEmployer.getCompanyURL().equals("")||GolEmployer.getProvince()==null||GolEmployer.getCompanyAddress()==null||GolEmployer.getCompanyAddress().equals("")||GolEmployer.getCompanyInfo()==null||GolEmployer.getCompanyInfo().equals("")){
+            return false;
+        }else{
+            return true;
+        }
+    }
+//    public boolean adJustToOpen(){
+//        if(GlobalProvider.getInstance().employer.getName()==null||GlobalProvider.getInstance().employer.getName().equals("")||GlobalProvider.getInstance().employer.getCompanyname()==null||GlobalProvider.getInstance().employer.getCompanyname().equals("")||GlobalProvider.getInstance().employer.getMainBusiness()==null||GlobalProvider.getInstance().employer.getMainBusiness().equals("")||GlobalProvider.getInstance().employer.getCompanyURL()==null||GlobalProvider.getInstance().employer.getCompanyURL().equals("")||GlobalProvider.getInstance().employer.getProvince()==null||GlobalProvider.getInstance().employer.getCompanyAddress()==null||GlobalProvider.getInstance().employer.getCompanyAddress().equals("")||GlobalProvider.getInstance().employer.getCompanyInfo()==null||GlobalProvider.getInstance().employer.getCompanyInfo().equals("")){
+//            return false;
+//        }else{
+//            return true;
+//        }
+//    }
     private void initAction() {
         save.setOnClickListener(this);
         turn_left.setOnClickListener(this);
@@ -80,19 +94,35 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         //按下键盘上返回按钮
         if(keyCode == KeyEvent.KEYCODE_BACK){
-            new AlertDialog.Builder(this)
-                    .setMessage("是否保存当前编辑？")
-                    .setNegativeButton("否", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            doResult();
-                        }
-                    })
-                    .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            doSave();
-                        }
-                    }).show();
+            if(adJustToOpen()){
+                new AlertDialog.Builder(this)
+                        .setMessage("是否保存当前编辑？")
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                doResult();
+                            }
+                        })
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                doSave(true);
+                            }
+                        }).show();
+            }else{
+                new AlertDialog.Builder(this)
+                        .setMessage("您的信息不完整，职位暂时不能公开，是否保存？")
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                doResult();
+                            }
+                        })
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                doSave(false);
+                            }
+                        }).show();
+            }
             return true;
         }else{
             return super.onKeyDown(keyCode, event);
@@ -102,22 +132,66 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
   switch (v.getId()){
       case R.id.save:
-          doSave();
+          if(adJustToOpen()){
+              new AlertDialog.Builder(this)
+                      .setMessage("是否保存当前编辑？")
+                      .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                          @Override
+                          public void onClick(DialogInterface dialog, int which) {
+                              doResult();
+                          }
+                      })
+                      .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                          public void onClick(DialogInterface dialog, int whichButton) {
+                              doSave(true);
+                          }
+                      }).show();
+          }else{
+              new AlertDialog.Builder(this)
+                      .setMessage("您的信息不完整，职位暂时不能公开，是否保存？")
+                      .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                          @Override
+                          public void onClick(DialogInterface dialog, int which) {
+                              doResult();
+                          }
+                      })
+                      .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                          public void onClick(DialogInterface dialog, int whichButton) {
+                              doSave(false);
+                          }
+                      }).show();
+          }
           break;
       case R.id.turn_left:
-          new AlertDialog.Builder(this)
-                  .setMessage("是否保存当前编辑？")
-                  .setNegativeButton("否", new DialogInterface.OnClickListener() {
-                      @Override
-                      public void onClick(DialogInterface dialog, int which) {
-                          doResult();
-                      }
-                  })
-                  .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                      public void onClick(DialogInterface dialog, int whichButton) {
-                          doSave();
-                      }
-                  }).show();
+          if(adJustToOpen()){
+              new AlertDialog.Builder(this)
+                      .setMessage("是否保存当前编辑？")
+                      .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                          @Override
+                          public void onClick(DialogInterface dialog, int which) {
+                              doResult();
+                          }
+                      })
+                      .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                          public void onClick(DialogInterface dialog, int whichButton) {
+                              doSave(true);
+                          }
+                      }).show();
+          }else{
+              new AlertDialog.Builder(this)
+                      .setMessage("您的信息不完整，职位暂时不能公开，是否保存？")
+                      .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                          @Override
+                          public void onClick(DialogInterface dialog, int which) {
+                              doResult();
+                          }
+                      })
+                      .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                          public void onClick(DialogInterface dialog, int whichButton) {
+                              doSave(false);
+                          }
+                      }).show();
+          }
           break;
       case R.id.firm_info:
           Intent intent = new Intent(EditInfoActivity.this, FirmInfoActivity.class);
@@ -138,10 +212,10 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
                 break;
         }
     }
-    public void doSave(){
+    public void doSave(Boolean isRelease){
         GlobalProvider.getInstance().employer.setName(name.getText().toString());
         Employer emloyer=GlobalProvider.getInstance().employer;
-
+        emloyer.setIsRelease(isRelease);
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();

@@ -230,7 +230,7 @@ public class PositionDetailActivity extends Activity {
         }
     }
     public void DoAdajust(){
-        if(job.get_employer()==null){
+        if(job.get_employer()!=null){
             Intent intent=new Intent(PositionDetailActivity.this,WebViewActivity.class);
             startActivity(intent);
         }else{

@@ -67,8 +67,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         lv_msg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(MainActivity.this,ApplyPersonActivity.class);
-                startActivity(intent);
+                if(item.get(position).getIndex()==0){
+                    Intent intent=new Intent(MainActivity.this,ApplyPersonActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent=new Intent(MainActivity.this,MyPositionActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
         LoadPersonalInfo();

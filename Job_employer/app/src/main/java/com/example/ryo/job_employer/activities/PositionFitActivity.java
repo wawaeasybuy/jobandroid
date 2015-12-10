@@ -116,13 +116,13 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
                  job=list.get(position).getPositionCategory();
-                    LoadResumeByPositionCategory();
+                   // LoadResumeByPositionCategory();
                  //fitHeader_text.setText(list.get(position-1).getPositionName());
                 }else{
                  job="";
                  //fitHeader_text.setText("全部职位");
-                 LoadResumeList();
                 }
+                LoadResumeList();
                 fitHeader_text.setText(list.get(position).getPositionName());
                 lv_pull_down.setVisibility(View.GONE);
                 lv_all.setVisibility(View.VISIBLE);
@@ -210,9 +210,9 @@ public class PositionFitActivity extends Activity implements View.OnClickListene
         params.put("page", mPage);
         params.put("itemsPerPage", mItemsPerPage);
         params.put("id", GlobalProvider.getInstance().employerId);
-//        if(!job.equals("")){
-//            params.put("job",job);
-//        }
+        if(!job.equals("")){
+            params.put("job",job);
+        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.PositionFitStr, params, new RequestListener() {
             @Override
