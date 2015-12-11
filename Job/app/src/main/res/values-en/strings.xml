@@ -1,0 +1,404 @@
+<resources>
+    <string name="app_name">GetHired</string>
+
+    <string name="title_section1">Job</string>
+    <string name="title_section2">Me</string>
+    <string name="title_section3">Topic</string>
+    <string name="title_section4">Home</string>
+    <!--<string name="title_section3">Section 3</string>-->
+
+    <string name="action_example">Example action</string>
+    <string name="action_addjob">Post a Job</string>
+    <string name="action_next">Next</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Log Out</string>
+    <string name="title_login">Log In</string>
+    <string name="title_addJob">Add Job</string>
+    <string name="action_unsave">Remove it from my saving list</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_job">AddJobActivity</string>
+
+    <string name="title_information">Your Information</string>
+    <string name="title_Basic">Basic Information</string>
+    <string name="title_Detail">Detail</string>
+    <string name="title_web">Apply the job on other site</string>
+    <string name="title_regemployee">Sign Up To Find A Job</string>
+    <string name="title_regemployer">Sign Up To Post A Job</string>
+
+    <string name="jobName">Job Name*</string>
+    <string name="district">District*</string>
+    <string name="company">Company*</string>
+    <string name="description">Description*</string>
+    <string name="email">Email(recommend)</string>
+    <string name="weblink">Weblink</string>
+    <string name="hint_jobName">e.g. IOS developer</string>
+    <string name="hint_district">e.g. California, USA</string>
+    <string name="hint_company">e.g. Job Search Company</string>
+    <string name="hint_description">Enter job requirements, description in detail
+    will help you find a good employee sooner</string>
+    <string name="hint_email">e.g.wong@job.com</string>
+    <string name="hint_weblink">e.g.www.job.com/joblink</string>
+    <string name="hint_address">e.g.jurong east road</string>
+    <string name="hint_size">e.g. 100 staff</string>
+    <string name="hint_type">e.g. private or goverment </string>
+    <string name="hint_revenue">e.g. 100,000/year</string>
+    <string name="hint_name">e.g. Wang Xiaorui</string>
+    <string name="hint_gender">e.g. male or female</string>
+    <string name="hint_education">e.g. bechalor</string>
+    <string name="hint_experience">e.g. four years as an ios developer</string>
+
+    <string name="jobdescription">Description</string>
+    <string name="jobcompanyinfo">Company Infomation</string>
+    <string name="jobcompanyname">Company</string>
+    <string name="jobheadquarter">Headerquarter</string>
+    <string name="jobsize">Size</string>
+    <string name="jobfounded">Founded</string>
+    <string name="jobrevenue">Revenue</string>
+    <string name="jobtype">Type</string>
+    <string name="address">Address</string>
+    <string name="contact">Contact</string>
+    <string name="website">Website</string>
+    <string name="gender">Gender</string>
+    <string name="education">Education</string>
+    <string name="experience">Experience</string>
+
+    <string name="reg_employee">Register to find a job</string>
+    <string name="companyname">Company Name</string>
+    <string name="phone">Phone</string>
+    <string name="collectedjobs">Your saved Jobs</string>
+    <string name="postjobs">Your posted Jobs</string>
+    <string name="reg_employer">Register to post a job</string>
+
+    <string name="next">Next</string>
+    <string name="prev">Previous</string>
+    <string name="finish">Submit</string>
+    <string name="review">Review</string>
+    <string name="save">Save</string>
+    <string name="linkbtn">Apply on other website</string>
+
+    <string name="label_your_name">Name</string>
+    <string name="label_your_email">Email</string>
+    <string name="hint_your_name">e.g. Larry</string>
+    <string name="hint_your_email">Optional</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+
+    <string name="submit_confirm_upemployer">Update your information? You will receive an email
+        conformation.</string>
+    <string name="submit_conform_upemployer_btn">Update your info</string>
+    <string name="submit_confirm_message">Post this job? You will receive an email
+        confirmation.</string>
+    <string name="submit_confirm_button">Post Job</string>
+    <string name="title_activity_job_page">JobPageActivity</string>
+    <string name="title_activity_job_detail">JobDetailActivity</string>
+    <string name="title_activity_collected_jobs">CollectedJobsActivity</string>
+    <string name="title_activity_collected_job_list">CollectedJobListActivity</string>
+    <string name="title_activity_posted_job_list">PostedJobListActivity</string>
+    <string name="title_activity_update_employer">UpdateEmployerActivity</string>
+    <string name="title_activity_update_can">UpdateCanActivity</string>
+    <string name="title_activity_web">WebActivity</string>
+    <string name="title_activity_register_employee">RegisterEmployeeActivity</string>
+    <string name="title_activity_reg_employer">RegEmployerActivity</string>
+    <!--  Topic  -->
+
+
+    <!-- Position -->
+
+    <string name = "position_search">job search</string>
+
+    <string name = "positionToapply">job applications</string>
+
+    <string name = "position_search_content">please enter the position/company</string>
+
+    <string name = "position_classify">job category</string>
+
+    <string name = "Internet">Internet</string>
+
+    <string name = "jinrong">Financial accounting</string>
+
+    <string name = "jianzhu">housing construction</string>
+
+    <string name = "gongye">industrial manufacturing</string>
+
+    <string name = "yiyao">pharmaceutical chemical</string>
+
+    <string name = "guanggao">advertising media</string>
+
+    <string name = "waimao">the foreign trade industry</string>
+
+    <string name = "other">other industries</string>
+
+
+
+    <!-- Activity Label -->
+    <string name="title_activity_Topic">Topic</string>
+    <string name="title_activity_HomeHeaderSearch">HomeHeaderSearch</string>
+    <string name="title_activity_TopicDetail">TopicDetail</string>
+
+    <!-- New -->
+    <!-- Personal -->
+
+    <string name = "personal_center">personal center</string>
+
+    <string name = "personal_setting">Settings</string>
+
+    <string name = "personal_school">XXXX university</string>
+
+    <string name = "personal_click_login">click login</string>
+
+    <string name = "personal_view_apply_record">application record</string>
+
+    <string name = "personal_message_info">news</string>
+
+    <string name = "personal_message_info_time">last month</string>
+
+    <string name = "personal_change_time">2 hours ago</string>
+
+
+    <string name = "personal_change_content1">XXX company looked at your resume</string>
+
+    <string name = "personal_change_content2">XXX company made new for your interview evaluation</string>
+
+    <string name = "personal_login">login</string>
+
+    <string name = "personal_register_bf">has not been registered</string>
+
+    <string name = "personal_register">register</string>
+
+    <string name = "input_phone_num">please enter the phone number</string>
+
+    <string name = "input_password">please enter a password</string>
+
+    <string name = "input_new_password">please enter a new password</string>
+
+
+    <string name = "confirm_psd">confirm password</string>
+
+    <string name = "old_Password">please enter the old password</string>
+
+    <string name = "forget_password">forgot password</string>
+
+    <string name = "verification_code">authentication code</string>
+
+    <string name = "get_verification_code">get verification code</string>
+
+    <string name = "retrieve_password">retrieve password</string>
+
+    <string name = "ok">ok</string>
+
+
+    <string name = "re_input_password">please enter the password again</string>
+
+    <string name = "edit_data">edit data</string>
+
+    <string name = "real_name">real name</string>
+
+    <string name = "real_name_">Ryo</string>
+
+    <string name = "change_portrait">modify head</string>
+
+    <string name = "change_password">change password</string>
+
+    <string name = "old_password">123456</string>
+
+    <string name = "personal_setting_about_us">about us</string>
+
+    <string name = "personal_setting_feedback">feedback</string>
+
+    <string name = "feedback_important">your advice is very important to</string>
+
+
+    <string name = "personal_setting_massage">push information</string>
+
+    <string name = "setting_massage_off">click close</string>
+
+    <string name = "personal_setting_log_out">log out</string>
+
+    <string name = "resume_name">resume name</string>
+
+    <string name = "input_resume_name">please enter your resume name</string>
+
+    <string name = "resume_name_">click on the input name</string>
+
+    <string name = "clickToInput">click enter</string>
+
+    <string name = "base_data_save">save</string>
+
+    <string name = "base_data_name">name</string>
+
+
+    <string name = "base_data_sex">gender</string>
+
+    <string name = "male">men</string>
+
+    <string name = "female">women</string>
+
+    <string name = "sorry_noresult">I am sorry, but had not your search position!</string>
+
+    <string name = "base_data_contact_info">phone number</string>
+
+    <string name = "base_data_contact_info_">13333333333</string>
+
+    <string name = "base_data_residence">home</string>
+
+    <string name = "base_data_residence_">did not fill in</string>
+
+    <string name = "select">please select</string>
+
+
+
+    <string name = "base_data_birth_date">birth</string>
+
+    <string name = "base_data_birth_date_">did not fill in</string>
+
+    <string name = "base_data_save_next">save and fill in the a</string>
+
+    <string name = "intention_expect_trade">expected industry</string>
+
+    <string name = "intention_expect_trade_">Internet</string>
+
+    <string name = "intention_expect_position">expected position</string>
+
+    <string name = "intention_expect_position_">UI designer</string>
+
+    <string name = "intention_expect_place">expect work</string>
+
+    <string name = "intention_expect_place_">Hangzhou</string>
+
+    <string name = "resume_school_name">school name</string>
+
+
+    <string name = "info_school_name">school name</string>
+
+    <string name = "resume_school_name_">zhejiang xx school</string>
+
+    <string name = "info_school_name_">zhejiang xx school</string>
+
+    <string name = "resume_major_name" >Professional title</string>
+
+    <string name = "resume_major_name_" >E-commerce</string>
+
+    <string name = "resume_graduate_time">graduation time</string>
+
+    <string name = "resume_graduate_time_">2016</string>
+
+    <string name = "resume_grade_range">professional league</string>
+
+    <string name = "resume_grade_range_">top 15%</string>
+
+    <string name = "resume_practice">in the school practice (optional)</string>
+
+    <string name = "resume_practice__">school practice:</string>
+
+    <string name = "resume_practice_">presented at school to participate in and practice or game experience relevant to the job. Description about their roles and responsibilities.</string>
+
+    <string name = "resume_work">work attachment (not complete)</string>
+
+    <string name = "resume_work_">please enter a network backup link</string >
+
+
+    <string name = "self_evaluate_hint">1. The detailed list you have special features, skills and practical experience, and cultivate the ability to come out during the period of school through exercise. \ n2 is too colloquial language. Content must seek truth from facts, not exaggerated</string>
+
+    <string name = "evaluate_actual_num">0</string>
+
+    <string name = "evaluate_limit_num">/ 250 words</string>
+
+    <string name = "internships_experience">internship</string>
+
+    <string name = "can_ignore">(not complete)</string>
+
+    <string name = "internships_experience_hint">presented vacation had corporate internship experience, and describe their positions and job content</string>
+
+    <string name = "internships_experience_actual_num">0</string>
+
+    <string name = "internships_experience_limit_num">/200 words</string>
+
+    <string name = "work_attach">work attachment</string>
+
+    <string name = "unfilled">did not fill out</string>
+
+    <string name = "send">send</string>
+
+    <string name = "setting_feedback_info" >Feedback</string>
+
+    <string name = "setting_feedback_info_">your advice is very valuable for us!</string>
+
+
+
+
+    <!-- Function Score -->
+
+    <string name = "function_score_header">achievement</string>
+
+    <string name = "function_score">78</string>
+
+    <string name = "function_score_evaluate">ability good</string>
+
+    <string name = "function_evaluate_time">assessment time:</string>
+
+    <string name = "function_evaluate_time_specific">05.09</string>
+
+    <string name = "function_feedback">function measurement points according to the feedback of the enterprise is</string>
+
+    <string name = "function_expertise_level">professional</string>
+
+    <string name = "function_language_express">language</string>
+
+    <string name = "function_compress_strain">compressive strain</string>
+
+    <string name = "function_attitude_etiquette">attitude etiquette</string>
+
+
+    <string name = "function_analysis_thinking">analytical thinking</string>
+
+    <string name = "function_firm_suggestion">company advised</string>
+
+    <string name = "function_suggestion_content">XXXXXXXXXXXXXXXXXX</string>
+
+    <string name = "function_firm">XXX company</string>
+
+    <string name = "function_suggestion_time">05-09</string>
+
+    <string name = "Function_score_lack">due to the lack of an interview experience cannot make function assessment points</string>
+
+    <string name = "to_send_resume">go to resume quickly</string>
+
+
+    <!-- Search Internships -->
+
+    <string name = "home">home page</string>
+
+    <string name = "classify">IT/Internet</string>
+
+    <string name = "search_hint">search is interested in the position and the company</string>
+
+    <string name = "position_recommend">position recommended</string>
+
+    <string name = "position_recommend_title">help wanted XXXXXXX</string>
+
+    <string name = "position_recommend_up">top</string>
+
+    <string name = "position_recommend_urgent">urgent</string>
+
+    <string name = "position_recommend_time">05-09</string>
+
+    <string name = "position_recommend_place">wensan road west lake</string>
+
+    <string name = "position_recommend_salary">2000 yuan</string>
+
+    <string name = "internships_search">search</string>
+
+    <string name = "internships_intelligent_sorting">intelligent sorting</string>
+
+    <string name = "position_special">position characteristic</string>
+
+    <string name="position_special_">position special</string>
+    <string name="more">more</string>
+
+
+</resources>

@@ -1,6 +1,7 @@
 package com.mardin.job.activities.job;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -15,6 +16,7 @@ import com.mardin.job.R;
 public class WebViewActivity extends Activity{
     public WebView webView;
     public LinearLayout turn_left;
+    public String url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,10 @@ public class WebViewActivity extends Activity{
                 return true;
             }
         });
-        webView.loadUrl("http://www.baidu.com");
+        Intent intent = this.getIntent();
+        if(intent.getSerializableExtra("url")!=null){
+            url= (String) intent.getSerializableExtra("url");
+            webView.loadUrl(url);
+        }
     }
 }

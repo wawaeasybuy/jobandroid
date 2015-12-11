@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Job</string>
+    <string name="app_name">GetHired</string>
 
     <string name="title_section1">Job</string>
     <string name="title_section2">Me</string>
@@ -133,6 +133,7 @@
     <!-- Home -->
     <string name="personal">个人</string>
     <string name="position">职位</string>
+
     <string name="home_classify">化妆品销售</string>
     <string name="home_time1">刚刚提问</string>
     <string name="home_time2">2小时前回答</string>
@@ -191,8 +192,18 @@
 
     <!-- Position -->
     <string name="position_search">职位搜索</string>
+    <string name="positionToapply">职位申请</string>
     <string name="position_search_content"> 请输入职位/公司</string>
     <string name="position_classify">职位类别</string>
+    <string name="Internet">互联网</string>
+    <string name="jinrong">金融财会</string>
+    <string name="jianzhu">房产建筑</string>
+    <string name="gongye">工业制造</string>
+    <string name="yiyao">医药化学</string>
+    <string name="guanggao">广告传媒</string>
+    <string name="waimao">外贸行业</string>
+    <string name="other">其他行业</string>
+
     <string name="profession_classify">行业类别</string>
     <string name="working_place">工作地点</string>
     <string name="search_result">搜索记录：化妆品销售/杭州</string>
@@ -387,16 +398,21 @@
     <string name="setting_massage_off">点击关闭</string>
     <string name="personal_setting_log_out">退出登录</string>
     <string name="resume_name">简历名称</string>
+    <string name="input_resume_name">请输入简历名字</string>
     <string name="resume_name_">点击输入名称</string>
+    <string name="clickToInput">点击输入</string>
     <string name="base_data_save">保存</string>
     <string name="base_data_name">姓名</string>
     <string name="base_data_sex">性别</string>
     <string name="male">男</string>
     <string name="female">女</string>
+    <string name="sorry_noresult">抱歉，暂时没有你搜索的职位!</string>
     <string name="base_data_contact_info">手机号码</string>
     <string name="base_data_contact_info_">13333333333</string>
     <string name="base_data_residence">居住地</string>
     <string name="base_data_residence_">未填写</string>
+    <string name="select">请选择</string>
+
     <string name="base_data_birth_date">出生年月</string>
     <string name="base_data_birth_date_">未填写</string>
     <string name="base_data_save_next">保存并填写下一项</string>

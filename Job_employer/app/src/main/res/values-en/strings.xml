@@ -1,0 +1,183 @@
+﻿<resources>
+    <string name="app_name">GetHiredEMP</string>
+
+    <string name="login">login</string>
+    <string name="phone_num">phone numer</string>
+    <string name="not_register">Not yet registered</string>
+    <string name="forget_password">forget password</string>
+    <string name="personal_register">register</string>
+    <string name="verification_code">verification code</string>
+    <string name="get_verification_code">get verification code</string>
+    <string name="input_new_password">input new password</string>
+    <string name="retrieve_password">Retrieve password</string>
+    <string name="old_password">input old password</string>
+    <string name="password">password</string>
+    <string name="name">name</string>
+    <string name="ok">ok</string>
+    <string name="personal_setting_about_us">about us</string>
+    <string name="personal_setting_feedback">feedback</string>
+    <string name="feedback_important">Your suggestion is very important</string>
+    <string name="personal_setting_massage">Push information</string>
+    <string name="setting_massage_off">Click off</string>
+    <string name="personal_setting_log_out">Exit sign</string>
+    <!-- Internships -->
+
+    <string name="internships">GetHiredEMP</string>
+    <string name="setting">setting</string>
+    <string name="click_login">Click login</string>
+    <string name="firm">firm</string>
+    <string name="comPanyAddress">Company Address</string>
+    <string name="score">score</string>
+    <string name="score_num">59</string>
+    <string name="my_position">my position</string>
+    <string name="position_fit">position fit</string>
+    <string name="apply_person">apply person</string>
+    <string name="interviewee">talent pool</string>
+
+    <string name="my_message">my message</string>
+    <string name="my_message_time">Last month</string>
+    <string name="my_message_receive">receive</string>
+    <string name="my_message_resume">new resume</string>
+    <string name="my_message_applier">Ryo</string>
+    <string name="my_message_receive_time">2</string>
+    <string name="my_message_succeed">success to</string>
+    <string name="my_message_position">position</string>
+    <string name="my_message_up">top</string>
+
+
+    <!-- Internships Edit Info -->
+    <string name="edit_info">edit info</string>
+    <string name="real_name">real name</string>
+    <string name="change_portrait">change portrait</string>
+    <string name="change_password">change password</string>
+    <string name="hold_position">Post Office</string>
+    <string name="firm_info">firm info</string>
+    <string name="add">add</string>
+    <string name="save">save</string>
+    <string name="netobcomplt">Need to improve</string>
+
+    <!-- Internships Firm Info -->
+    <string name="firm_name">firm name</string>
+    <string name="noPosition">You haven not a job well!</string>
+    <string name="select">select please</string>
+    <string name="firm_name_">click to input</string>
+    <string name="main_business">main business</string>
+    <string name="main_business_">Software production</string>
+    <string name="firm_website">Company website</string>
+    <string name="detail_address">Detailed address</string>
+    <string name="firm_intro">company profile</string>
+    <string name="firm_intro_limit">Write a "turn" the little meat they profile. (no less than 200 words)</string>
+
+    <!-- Internships My Score -->
+    <string name="my_score_header">my score</string>
+    <string name="present_score">present score</string>
+    <string name="present_score_num">59</string>
+    <string name="evaluate_score">Evaluate to get score</string>
+    <string name="buy_score">buy score</string>
+    <string name="score_ad">score promotion</string>
+    <string name="ad_up">Top marketing</string>
+    <string name="ad_up_detail">The release of the top position</string>
+    <string name="ad_urgent">Urg marketing</string>
+    <string name="ad_urgent_detail">The release of the urg position</string>
+    <string name="ad_last_time">Duration:</string>
+    <string name="ad_time">3days</string>
+    <string name="change">exchange</string>
+
+    <!-- Internships interviewee -->
+    <string name="internships_interviewee">The interviewer</string>
+    <string name="internships_rck">talent pool</string>
+    <string name="interviewee_position">all position</string>
+    <string name="need_evaluate">To be evaluated</string>
+    <string name="interviewee_name">Ryo</string>
+    <string name="interviewee_major">professional</string>
+    <string name="interviewee_before">No interview</string>
+    <string name="interviewee_to_evaluate">Go evaluation</string>
+    <string name="interviewee_evaluated">Has been evaluated</string>
+    <string name="interviewee_view_evaluate">See evaluation</string>
+
+    <string name="interviewee_evaluate">Function evaluation</string>
+    <string name="expertise_level">professional level</string>
+    <string name="analysis_thinking">Analysis thinking</string>
+    <string name="language_express">language expression</string>
+    <string name="compress_strain">Compressive strain</string>
+    <string name="attitude_etiquette">Attitude</string>
+    <string name="interviewee_suggestion">Evaluation and suggestion</string>
+    <string name="interviewee_suggestion_hint">Please give a brief evaluation of the performance of the candidates and give suggestions.</string>
+
+    <!-- Internships apply_person -->
+    <string name="new_apply_person">new apply person</string>
+    <string name="apply_time">2 hour ago</string>
+    <string name="delete">delete</string>
+    <string name="apply_person_name">Ryo</string>
+    <string name="apply_person_resume">resume</string>
+    <string name="apply_person_sex">male</string>
+    <string name="apply_person_place">Residence：</string>
+    <string name="apply_place">Hangzhou Zhejiang</string>
+    <string name="apply_person_birth">1993.5.5</string>
+    <string name="apply_person_phone">Mobile phone</string>
+    <string name="apply_person_num">12345678909</string>
+    <string name="apply_person_add">Join the talent pool</string>
+    <string name="education">educational information</string>
+    <string name="school_name">school name</string>
+    <string name="school_name_">school name</string>
+    <string name="major_name">professional name：</string>
+    <string name="major_name_">industrial design</string>
+    <string name="graduate_time">graduate time：</string>
+    <string name="graduate_time_">2016</string>
+    <string name="grade_range">grade range：</string>
+    <string name="grade_range_">grade range</string>
+    <string name="self_evaluate">self evaluate</string>
+    <string name="works">works</string>
+    <string name="school_experience">school experience</string>
+    <string name="internship_experience">internship experience</string>
+
+    <!-- Internships my_position-->
+    <string name="internships_my_position">my position</string>
+    <string name="my_position_title">my position title</string>
+    <string name="my_position_update">update</string>
+    <string name="my_position_update_time">05-09</string>
+    <string name="my_position_limit">Can be released</string>
+    <string name="my_position_nc">Need to improve</string>
+    <string name="edit">edit</string>
+    <string name="my_position_open">open</string>
+    <string name="my_position_ad">Extension</string>
+    <string name="my_position_share">share</string>
+    <string name="add_new_position">New job</string>
+
+    <!-- Internships edit position-->
+    <string name="edit_position">edit position</string>
+    <string name="position_name">position name</string>
+    <string name="position_name_">click to input</string>
+    <string name="classify">industry category</string>
+    <string name="classify_">Internet</string>
+    <string name="position_classify">position category</string>
+    <string name="position_classify_">Interaction design</string>
+    <string name="salary">salary</string>
+    <string name="salary_">click to add</string>
+    <string name="position_request">position request</string>
+    <string name="position_request_">What skills will your love get?</string>
+    <string name="position_sp">position characteristics</string>
+    <string name="position_sp_imp">Very important</string>
+    <string name="position_sp_">1 probably describes the position of the future of the training direction of the . team is elite forces . welfare subsidies (meals, accommodation, etc.)</string>
+
+    <!-- Internships position ad -->
+    <string name="position_ad">Promotion</string>
+    <string name="position_up">Top position</string>
+    <string name="used">Consumed one</string>
+    <string name="used_up">position top ticket</string>
+    <string name="used_urgent">position urg ticket</string>
+    <string name="turn_on">open</string>
+    <string name="position_urgent">position urg</string>
+    <string name="already_turn_on">Has been opened</string>
+
+    <!-- Internships position  fit -->
+    <string name="fit_position">all position</string>
+    <string name="fit_person_name">Ryo</string>
+    <string name="fit_person_score">score</string>
+    <string name="fit_person_view_resume">Check your resume</string>
+    <string name="fit_person_school">college</string>
+    <string name="fit_person_major">electronic</string>
+    <string name="fit_person_ignore">ignore</string>
+    <string name="fit_person_position">urg to need</string>
+
+</resources>

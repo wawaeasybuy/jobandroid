@@ -193,9 +193,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
-                android:text="公司地址"/>
+                android:text="@string/comPanyAddress"/>
             <TextView
-                android:text="请选择"
+                android:text="@string/select"
                 android:id="@+id/address"
                 android:textSize="14sp"
                 android:maxEms="10"

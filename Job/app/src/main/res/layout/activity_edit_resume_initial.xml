@@ -47,7 +47,7 @@
             android:textColor="#0080fe"
             android:clickable="true"
             android:gravity="center"
-            android:text="保存" />
+            android:text="@string/base_data_save" />
 
     </LinearLayout>
 
@@ -84,7 +84,7 @@
                     android:id="@+id/resume_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="请输入简历名字"/>
+                    android:text="@string/input_resume_name"/>
 
             </LinearLayout>
 

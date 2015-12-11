@@ -225,7 +225,7 @@
     </ListView>
     <TextView
         android:id="@+id/noResult"
-        android:text="抱歉，暂时没有你筛选的职位!"
+        android:text="@string/sorry_noresult"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"

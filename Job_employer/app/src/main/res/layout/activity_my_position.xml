@@ -46,7 +46,7 @@
         android:orientation="vertical"
         android:background="#f2f2f2">
         <TextView
-            android:text="您还有职位哦~快去新建吧！"
+           android:text="@string/noPosition"
             android:gravity="center"
             android:id="@+id/noPosition"
             android:layout_width="match_parent"

@@ -232,6 +232,9 @@ public class PositionDetailActivity extends Activity {
     public void DoAdajust(){
         if(job.get_employer()==null){
             Intent intent=new Intent(PositionDetailActivity.this,WebViewActivity.class);
+            if(companyUrl.getText()!=null){
+                intent.putExtra("url",companyUrl.getText());
+            }
             startActivity(intent);
         }else{
             doApply();

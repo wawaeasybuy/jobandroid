@@ -20,14 +20,14 @@
             android:layout_height="45dp"
             android:src="@drawable/jiahao"/>
         <TextView
-            android:text="点击创建简历"
+            android:text="@string/click_create_resume"
             android:paddingTop="10dp"
             android:textSize="14dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:text="你也可以是人生赢家"
+            android:text="@string/click_create_resume_"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
             android:textSize="14dp"

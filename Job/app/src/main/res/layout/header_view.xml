@@ -58,7 +58,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="互联网" />
+                    android:text="@string/Internet" />
 
             </LinearLayout>
 
@@ -82,7 +82,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="金融财会" />
+                    android:text="@string/jinrong" />
 
             </LinearLayout>
 
@@ -107,7 +107,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="房产建筑" />
+                    android:text="@string/jianzhu" />
 
             </LinearLayout>
 
@@ -132,7 +132,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="工业制造" />
+                    android:text="@string/gongye" />
 
             </LinearLayout>
 
@@ -167,7 +167,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="医药化学" />
+                    android:text="@string/yiyao" />
 
             </LinearLayout>
 
@@ -192,7 +192,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="广告传媒" />
+                    android:text="@string/guanggao" />
 
             </LinearLayout>
 
@@ -217,7 +217,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="外贸行业" />
+                    android:text="@string/waimao" />
 
             </LinearLayout>
 
@@ -242,7 +242,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="其他行业" />
+                    android:text="@string/other" />
 
             </LinearLayout>
 

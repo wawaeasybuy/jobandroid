@@ -79,7 +79,7 @@
             android:layout_marginRight="15dp"
             android:textSize="13dp"
             android:gravity="right"
-            android:hint="点击输入"
+            android:hint="@string/clickToInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -116,7 +116,7 @@
             android:id="@+id/name"
             android:layout_marginRight="15dp"
             android:textSize="13dp"
-            android:hint="点击输入"
+            android:hint="@string/clickToInput"
             android:gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

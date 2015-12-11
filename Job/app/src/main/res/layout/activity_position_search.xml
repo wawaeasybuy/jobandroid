@@ -74,7 +74,7 @@
     </ListView>
     <TextView
         android:id="@+id/no_result"
-        android:text="抱歉，暂时没有你搜索的职位!"
+        android:text="@string/sorry_noresult"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="20dp"
