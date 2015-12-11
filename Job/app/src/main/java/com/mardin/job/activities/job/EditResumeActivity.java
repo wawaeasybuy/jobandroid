@@ -83,6 +83,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
     public LinearLayout no_job_intention;
     public LinearLayout no_education_info;
     public LinearLayout no_important_info;
+    public TextView resume_name;
 
 
 
@@ -317,7 +318,13 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         if((candidate.getName()!=null&&!candidate.getName().equals(""))||(candidate.getTel()!=null&&!candidate.getTel().equals(""))||(resume.getAddress()!=null&&!resume.getAddress().equals(""))||(resume.getBirth()!=null&&!resume.getBirth().equals(""))){
             no_personal_base_info.setVisibility(View.GONE);
             personal_base_info.setVisibility(View.VISIBLE);
-            if(candidate.getName()!=null&&!candidate.getName().equals("")){name.setText("姓名: "+candidate.getName());}else{name.setText("姓名: 未填写");}
+            if(candidate.getName()!=null&&!candidate.getName().equals("")){
+                name.setText("姓名: "+candidate.getName());
+                resume_name.setText(candidate.getName()+"的简历");
+            }else{
+                name.setText("姓名: 未填写");
+                resume_name.setText("简历名称未填写");
+            }
             if(candidate.getTel()!=null&&!candidate.getTel().equals("")){tel.setText("联系方式: "+candidate.getTel());}else{tel.setText("联系方式: 未填写");}
             if(resume.getAddress()!=null&&!resume.getAddress().equals("")){address.setText("居住地: "+resume.getAddress());}else{address.setText("居住地: 未填写");}
             if(resume.getBirth()!=null&&!resume.getBirth().equals("")){birth.setText("出生年月: "+resume.getBirth());}else{birth.setText("出生年月: 未填写");}
@@ -360,7 +367,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             no_education_info.setVisibility(View.GONE);
             education_info.setVisibility(View.VISIBLE);
             if(candidate.getSchoolName()!=null&&!candidate.getSchoolName().equals("")){schoolName.setText("学校名称: "+candidate.getSchoolName());}else{schoolName.setText("学校名称: 未填写");}
-            if(resume.getProfessional()!=null&&!resume.getProfessional().equals("")){professional.setText("专业名称: "+resume.getProfessional());}else{professional.setText("学校名称: 未填写");}
+            if(resume.getProfessional()!=null&&!resume.getProfessional().equals("")){professional.setText("专业名称: "+resume.getProfessional());}else{professional.setText("专业名称: 未填写");}
             if(resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")){graduationTime.setText("毕业时间: "+resume.getGraduationTime());}else{graduationTime.setText("毕业时间: 未填写");}
             if(resume.getGrade()!=null&&!resume.getGrade().equals("")){grade.setText("成绩排名: "+resume.getGrade());}else{grade.setText("成绩排名: 未填写");}
             if(resume.getInternshipExprience()!=null&&!resume.getInternshipExprience().equals("")){internshipExprience.setText("在校实践: "+resume.getInternshipExprience());}else{internshipExprience.setText("在校实践: 未填写");}
@@ -475,7 +482,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         clickToFillJobIntent= (TextView) findViewById(R.id.clickToFillJobIntent);
 
 
-
+        resume_name= (TextView) findViewById(R.id.resume_name);
         save= (TextView) findViewById(R.id.save);
 
     }

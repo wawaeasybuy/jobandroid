@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
 import com.mardin.job.Utils.ChinaCityUtil;
+import com.mardin.job.Utils.ExpectedIndustryUtil;
 import com.mardin.job.Utils.PositionIndustryUtil;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
@@ -75,7 +76,8 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
     public TextView layout1_txt;
     public TextView layout2_txt;
     public TextView layout3_txt;
-
+    public int a=0;
+    public int b=0;
     public TextView SaveToNext;
     //public static String employerId="5628474a583221f00507653b";
     @Override
@@ -83,8 +85,8 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_job_intention);
 
-        hashtable= PositionIndustryUtil.initPositionIndustryHashtable();
-        industry_arr=PositionIndustryUtil.getIndustryCategory(hashtable);
+        hashtable= ExpectedIndustryUtil.initPositionIndustryHashtable();
+        industry_arr=ExpectedIndustryUtil.getIndustryCategory(hashtable);
 
         expectedIndustry= (TextView) findViewById(R.id.expectedIndustry);
         expectedPosition= (TextView) findViewById(R.id.expectedPosition);
@@ -116,19 +118,25 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
         expectedIndustry_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                a=0;
                 new AlertDialog.Builder(JobIntentionActivity.this)
                         .setSingleChoiceItems(industry_arr, 0,
                                 new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface dialog, int which) {
                                         chooseItem_industry = which;
+                                        a=1;
                                     }
                                 }
                         ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        expectedIndustry.setText(industry_arr[chooseItem_industry]);
+                        if(a>0){
+                            expectedIndustry.setText(industry_arr[chooseItem_industry]);
+                        }else{
+                            expectedIndustry.setText(industry_arr[0]);
+                        }
                         expectedPosition.setText("");
                         //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
                         //shipingAdress_Str=items_shiping[chooseItem_one];
@@ -140,20 +148,26 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
         expectedPosition_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                position_arr=PositionIndustryUtil.getPositionCategory(hashtable,expectedIndustry.getText().toString());
+                b=0;
+                position_arr=ExpectedIndustryUtil.getPositionCategory(hashtable,expectedIndustry.getText().toString());
                 new AlertDialog.Builder(JobIntentionActivity.this)
                         .setSingleChoiceItems(position_arr, 0,
                                 new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface dialog, int which) {
                                         getChooseItem_position = which;
+                                        b=1;
                                     }
                                 }
                         ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        expectedPosition.setText(position_arr[getChooseItem_position]);
+                        if(b>0){
+                            expectedPosition.setText(position_arr[getChooseItem_position]);
+                        }else{
+                            expectedPosition.setText(position_arr[0]);
+                        }
                         //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
                         //shipingAdress_Str=items_shiping[chooseItem_one];
                     }

@@ -191,7 +191,7 @@
 
     <!-- Position -->
     <string name="position_search">职位搜索</string>
-    <string name="position_search_content"> 请输入职位/行业/公司</string>
+    <string name="position_search_content"> 请输入职位/公司</string>
     <string name="position_classify">职位类别</string>
     <string name="profession_classify">行业类别</string>
     <string name="working_place">工作地点</string>
@@ -366,6 +366,7 @@
     <string name="input_phone_num">请输入手机号码</string>
     <string name="input_password">请输入密码</string>
     <string name="input_new_password">请输入新密码</string>
+    <string name="confirm_psd">确认密码</string>
     <string name="old_Password">请输入旧密码</string>
     <string name="forget_password">忘记密码</string>
     <string name="verification_code">验证码</string>

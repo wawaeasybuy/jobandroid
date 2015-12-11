@@ -116,7 +116,6 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
 //        ad.setOnClickListener(this);
 
     }
-
     private void initView() {
         add_position = (ImageView) findViewById(R.id.add_position);
         turn_left = (ImageView) findViewById(R.id.turn_left);
@@ -138,7 +137,6 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
                 break;
         }
     }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case Constants.EditJobIntent:
@@ -155,7 +153,6 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
                 break;
         }
     }
-
     private void loadjobList() {
         RequestParams params = new RequestParams();
         params.put("page", mPage);

@@ -120,7 +120,6 @@ public class ScoreActivity extends Activity implements View.OnClickListener {
         }catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     private void initView() {
        // position_ad= (RelativeLayout) findViewById(R.id.position_ad);

@@ -140,7 +140,7 @@ public class PositionAdapter extends BaseAdapter{
                    if(adJustToOpen()){
                        if(!job.getIsPush()){
                            new AlertDialog.Builder(context)
-                                   .setMessage("该职位不可发布，暂时不能公开！")
+                                   .setMessage("该职位信息还不完善，暂时不能公开！")
                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                        @Override
                                        public void onClick(DialogInterface dialog, int which) {

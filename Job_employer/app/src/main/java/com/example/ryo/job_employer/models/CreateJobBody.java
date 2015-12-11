@@ -66,6 +66,16 @@ public class CreateJobBody implements Serializable{
     public String PositionCategory;
     public int Salary;
 
+    public Boolean getIsRelease() {
+        return isRelease;
+    }
+
+    public void setIsRelease(Boolean isRelease) {
+        this.isRelease = isRelease;
+    }
+
+    public Boolean isRelease;
+
     public Boolean getIsPush() {
         return isPush;
     }

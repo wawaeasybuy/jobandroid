@@ -61,6 +61,8 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
 
     public int chooseItem_industry;
     public int getChooseItem_position;
+    public int a=0;
+    public int b=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,19 +89,26 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         industry_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                a=0;
                 new AlertDialog.Builder(EditPositionActivity.this)
                         .setSingleChoiceItems(industry_arr, 0,
                                 new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface dialog, int which) {
                                         chooseItem_industry = which;
+                                        a=1;
                                     }
                                 }
                         ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        industry_text.setText(industry_arr[chooseItem_industry]);
+                        if(a>0){
+                            industry_text.setText(industry_arr[chooseItem_industry]);
+                        }else{
+                            industry_text.setText(industry_arr[0]);
+                        }
+
                         position_text.setText("");
                         //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
                         //shipingAdress_Str=items_shiping[chooseItem_one];
@@ -111,6 +120,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         position_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b=0;
                 position_arr=PositionIndustryUtil.getPositionCategory(hashtable,industry_text.getText().toString());
                 new AlertDialog.Builder(EditPositionActivity.this)
                         .setSingleChoiceItems(position_arr, 0,
@@ -118,13 +128,19 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
 
                                     public void onClick(DialogInterface dialog, int which) {
                                         getChooseItem_position = which;
+                                        b=1;
                                     }
                                 }
                         ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        position_text.setText(position_arr[getChooseItem_position]);
+                        if(b>0){
+                            position_text.setText(position_arr[getChooseItem_position]);
+                        }else{
+                            position_text.setText(position_arr[0]);
+                        }
+
                         //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
                         //shipingAdress_Str=items_shiping[chooseItem_one];
                     }
@@ -187,6 +203,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsRelease(true);
                                 job.setIsPush(true);
                                 update();
                             }else{
@@ -197,6 +214,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(true);
                                 jobBody.setIsPush(true);
                                 createJob();
                             }
@@ -220,6 +238,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsRelease(false);
                                 job.setIsPush(false);
                                 update();
                             }else{
@@ -230,6 +249,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(false);
                                 jobBody.setIsPush(false);
                                 createJob();
                             }
@@ -275,6 +295,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                 job.setIsRelease(true);
                                 job.setIsPush(true);
                                 update();
                             }else{
@@ -285,6 +306,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(true);
                                 jobBody.setIsPush(true);
                                 createJob();
                             }
@@ -308,6 +330,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
+                                job.setIsRelease(false);
                                 job.setIsPush(false);
                                 update();
                             }else{
@@ -318,6 +341,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(false);
                                 jobBody.setIsPush(false);
                                 createJob();
                             }

@@ -81,9 +81,10 @@
                     android:text="@string/resume_name"/>
 
                 <TextView
+                    android:id="@+id/resume_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/resume_name_"/>
+                    android:text="请输入简历名字"/>
 
             </LinearLayout>
 

@@ -33,6 +33,7 @@ public class ChangePsdActivity extends Activity{
     public LinearLayout turn_left;
     public EditText newPassword;
     public EditText oldPassword;
+    public EditText confirm_psd;
     public Button ok;
 
 
@@ -43,6 +44,7 @@ public class ChangePsdActivity extends Activity{
         turn_left= (LinearLayout) findViewById(R.id.turn_left);
         newPassword= (EditText) findViewById(R.id.newPassword);
         oldPassword= (EditText) findViewById(R.id.oldPassword);
+        confirm_psd= (EditText) findViewById(R.id.confirm_psd);
         ok= (Button) findViewById(R.id.ok);
         turn_left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,9 +60,19 @@ public class ChangePsdActivity extends Activity{
         });
     }
     public void doChange(){
-        if(oldPassword.getText()==null||oldPassword.getText().toString().length()==0||newPassword.getText()==null||newPassword.getText().toString().length()==0){
+        if(oldPassword.getText()==null||oldPassword.getText().toString().length()==0||newPassword.getText()==null||newPassword.getText().toString().length()==0||confirm_psd.getText()==null||confirm_psd.getText().toString().length()==0){
             new AlertDialog.Builder(ChangePsdActivity.this)
                     .setMessage("输入不能为空，请重新输入！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
+        if(!newPassword.getText().equals(confirm_psd.getText())){
+            new AlertDialog.Builder(ChangePsdActivity.this)
+                    .setMessage("两次密码输入不相同，请重新输入！")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
 

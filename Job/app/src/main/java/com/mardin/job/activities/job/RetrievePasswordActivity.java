@@ -39,6 +39,7 @@ public class RetrievePasswordActivity extends Activity {
     public EditText tel;
     public EditText verification_code;
     public EditText psd;
+
     public TextView  get_verification_code;
     private int time = 60;
     private Timer timer = new Timer();
@@ -53,6 +54,7 @@ public class RetrievePasswordActivity extends Activity {
         tel= (EditText) findViewById(R.id.tel);
         verification_code= (EditText) findViewById(R.id.verification_code);
         psd= (EditText) findViewById(R.id.psd);
+
         get_verification_code= (TextView) findViewById(R.id.get_verification_code);
         ok= (Button) findViewById(R.id.ok);
         ok.setOnClickListener(new View.OnClickListener() {

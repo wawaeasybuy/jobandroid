@@ -50,6 +50,7 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
     public LinearLayout img_layout;
     private final String IMAGE_TYPE = "image/*";
     public LinearLayout changePsd;
+    public Resume resume=GlobalProvider.getInstance().resume;
 
 
     private final int IMAGE_CODE = 0;   //这里的IMAGE_CODE是自己任意定义的
@@ -146,8 +147,28 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
             globalProvider.put(this, URL, entity, "application/json", new RequestListener() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    Toast.makeText(PersonalEditDataActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
+                    if(schoolName.getText()==null||name.getText()==null||schoolName.getText().toString().length()==0||name.getText().toString().length()==0){
+                        if(resume.get_id()!=null){
+                            if(schoolName.getText()!=null){resume.setSchoolName(schoolName.getText().toString());}
+                            if(name.getText()!=null){resume.setName(name.getText().toString());}
+                            resume.setIsdelivered(false);
+                            resume.setBeOpen(false);
+                            doSave();
+                        }
+                    }else{
+                        if(resume.get_id()!=null){
+                            resume.setSchoolName(schoolName.getText().toString());
+                            resume.setName(name.getText().toString());
+                            if(adjustToSave()){
+                                resume.setIsdelivered(true);
+                            }else{
+                                resume.setIsdelivered(false);
+                            }
+                            doSave();
+                        }
+                    }
                     doResult();
+                    Toast.makeText(PersonalEditDataActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
                     //parseLoginResult(new String(responseBody));
                 }
                 @Override
@@ -160,6 +181,47 @@ public class PersonalEditDataActivity extends Activity implements View.OnClickLi
             });
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    public void doSave(){
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
+        String json = "";
+        try {
+            json = ow.writeValueAsString(resume);
+            ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+            GlobalProvider globalProvider = GlobalProvider.getInstance();
+            if(resume.get_id()!=null){
+                String Url=Constants.createResumeStr+"/"+resume.get_id();
+                globalProvider.put(this, Url, entity, "application/json", new RequestListener() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                        Toast.makeText(PersonalEditDataActivity.this, "保存成功！", Toast.LENGTH_SHORT).show();
+//                        doResult();
+//                    GlobalProvider.getInstance().isLoging=true;
+//                    parseLoginResult(new String(responseBody));
+
+                    }
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {
+                    }
+                });
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public boolean adjustToSave(){
+        if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")&&resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")&&resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){
+            return true;
+        }else{
+            return false;
         }
     }
     private void doResult() {
