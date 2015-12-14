@@ -1,9 +1,11 @@
 package com.mardin.job;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import com.mardin.job.fragments.job.AbilityFragment;
 import com.mardin.job.fragments.job.InternshipsFragment;
 import com.mardin.job.fragments.job.PersonalCenterFragment;
+import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.network.Constants;
 
 
@@ -35,6 +38,8 @@ public class MainActivityN extends Activity implements View.OnClickListener{
     private ImageView home_p;
     private ImageView personal_p;
     private ImageView ability_p;
+    private String[] country={"中国","United States","Singapore"};
+    private int choose_country=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +61,36 @@ public class MainActivityN extends Activity implements View.OnClickListener{
         home.setOnClickListener(this);
         personal.setOnClickListener(this);
         ability.setOnClickListener(this);
+        if(GlobalProvider.getInstance().country==null){ new AlertDialog.Builder(MainActivityN.this)
+                .setSingleChoiceItems(country, 0,
+                        new DialogInterface.OnClickListener() {
 
-        setSelect(0);
+                            public void onClick(DialogInterface dialog, int which) {
+                                choose_country = which;
+                            }
+                        }
+                ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (choose_country == 3) {
+                            GlobalProvider.getInstance().country = country[0];
+                        }else{
+                            GlobalProvider.getInstance().country = country[choose_country];
+                        }
+                        setSelect(0);
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        GlobalProvider.getInstance().country = country[0];
+                        setSelect(0);
+                    }
+                })
+                .show();}else{
+            setSelect(0);
+        }
     }
 
     private void initView() {

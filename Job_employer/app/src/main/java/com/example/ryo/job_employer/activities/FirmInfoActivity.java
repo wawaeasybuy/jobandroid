@@ -58,6 +58,8 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
     public int choose_province;
     public int choose_city;
     public int choose_region;
+    public String country=GlobalProvider.getInstance().country;
+    public String[] USA={"Alabama","Alaska","American Samoa","Arizona","Arkansas","Armed Forces Africa","Armed Forces Americas","Armed Forces Canada", "Armed Forces Europe", "Armed Forces Middle East", "Armed Forces Pacific", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States Of Micronesia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +67,15 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_firm_info);
         initView();
         initAction();
+        hashtable = ChinaCityUtil.initChinaCitysHashtable();
 
         if(GoEmployer.companyname!=null){name.setText(GoEmployer.getCompanyname());}
         if(GoEmployer.mainBusiness!=null){mainBusiness.setText(GoEmployer.getMainBusiness());}
         if(GoEmployer.companyInfo!=null){description.setText(GoEmployer.getCompanyInfo());}
         if(GoEmployer.companyAddress!=null){companyAddress.setText(GoEmployer.getCompanyAddress());}
         if(GoEmployer.companyURL!=null){companyURL.setText(GoEmployer.getCompanyURL());}
+        if(country.equals("中国")){
+        arrProvince=ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
         if(GoEmployer.province!=null){
             layout1_txt.setText(GoEmployer.getProvince());
             if(GoEmployer.city!=null){
@@ -81,10 +86,12 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
                 }
             }
         }
-        hashtable = ChinaCityUtil.initChinaCitysHashtable();
-
-        arrProvince=ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
-
+        }else{
+            if(GoEmployer.province!=null){
+                address.setText(GoEmployer.getProvince());
+            }
+            arrProvince=USA;
+        }
         address_img.setImageResource(R.drawable.turn_down);
         address_select_layout.setVisibility(View.GONE);
     }
@@ -96,7 +103,6 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         layout2.setOnClickListener(this);
         layout3.setOnClickListener(this);
     }
-
     private void initView() {
         turn_left = (ImageView) findViewById(R.id.turn_left);
         save= (TextView) findViewById(R.id.save);
@@ -118,7 +124,6 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         layout1_txt= (TextView) findViewById(R.id.layout1_txt);
         layout2_txt= (TextView) findViewById(R.id.layout2_txt);
         layout3_txt= (TextView) findViewById(R.id.layout3_txt);
-
 
     }
     @Override
@@ -144,6 +149,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
           doSave();
           break;
       case R.id.address_layout:
+          if(country.equals("中国")){
           if(!Ishowing){
               address_img.setImageResource(R.drawable.turn_up);
               address_select_layout.setVisibility(View.VISIBLE);
@@ -152,18 +158,35 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
               address_select_layout.setVisibility(View.GONE);
           }
           Ishowing=!Ishowing;
+          }else{
+              new AlertDialog.Builder(FirmInfoActivity.this)
+                      .setSingleChoiceItems(arrProvince, 0,
+                              new DialogInterface.OnClickListener() {
+                                  public void onClick(DialogInterface dialog, int which) {
+                                      choose_province = which;
+                                  }
+                              }
+                      ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                      province=arrProvince[choose_province];
+                      address.setText(province);
+                      //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+                      //shipingAdress_Str=items_shiping[chooseItem_one];
+                  }
+              }).setNegativeButton("取消",null)
+                      .show();
+          }
           break;
       case R.id.layout1:
           new AlertDialog.Builder(FirmInfoActivity.this)
                   .setSingleChoiceItems(arrProvince, 0,
                           new DialogInterface.OnClickListener() {
-
                               public void onClick(DialogInterface dialog, int which) {
                                   choose_province = which;
                               }
                           }
                   ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
               @Override
               public void onClick(DialogInterface dialog, int which) {
                   province=arrProvince[choose_province];
@@ -238,9 +261,13 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         GlobalProvider.getInstance().employer.setCompanyInfo(description.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyAddress(companyAddress.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyURL(companyURL.getText().toString());
-        GlobalProvider.getInstance().employer.setProvince(layout1_txt.getText().toString());
-        GlobalProvider.getInstance().employer.setCity(layout2_txt.getText().toString());
-        GlobalProvider.getInstance().employer.setRegion(layout3_txt.getText().toString());
+        if(country.equals("中国")){
+            GlobalProvider.getInstance().employer.setProvince(layout1_txt.getText().toString());
+            GlobalProvider.getInstance().employer.setCity(layout2_txt.getText().toString());
+            GlobalProvider.getInstance().employer.setRegion(layout3_txt.getText().toString());
+        }else{
+            GlobalProvider.getInstance().employer.setProvince(province);
+        }
         Toast.makeText(FirmInfoActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
         setResult(Activity.RESULT_OK);
         finish();

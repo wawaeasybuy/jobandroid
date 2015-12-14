@@ -53,6 +53,10 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private int time = 60;
     private Timer timer = new Timer();
     TimerTask task;
+    public TextView areaCode;
+    public String[] codeArr={"+86 中国","+01 美国","+65 新加坡"};
+    public int select_code=3;
+    public String areacode="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,52 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_register);
         initView();
         initAction();
+        areaCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                areaCode.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        select_code=0;
+                        new AlertDialog.Builder(RegisterActivity.this)
+                                .setSingleChoiceItems(codeArr, 0,
+                                        new DialogInterface.OnClickListener() {
+
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                select_code = which;
+                                            }
+                                        }
+                                ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (select_code){
+                                    case 3:
+                                        areacode="86";
+                                        break;
+                                    case 0:
+                                        areacode="86";
+                                        break;
+                                    case 1:
+                                        areacode="01";
+                                        break;
+                                    case 2:
+                                        areacode="65";
+                                        break;
+                                }
+                                areaCode.setText(areacode+"+");
+                            }
+                        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                areacode="86";
+                                areaCode.setText(areacode+"+");
+                            }
+                        }).show();
+                    }
+                });
+            }
+        });
     }
 
     private void initAction() {
@@ -75,6 +125,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         get_verification_code= (TextView) findViewById(R.id.get_verification_code);
         ok= (Button) findViewById(R.id.ok);
         turn_left= (LinearLayout) findViewById(R.id.turn_left);
+        areaCode= (TextView) findViewById(R.id.areaCode);
     }
 
     @Override
@@ -125,9 +176,18 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                         }
                     }).show();
             return;
-        }else{
-            body.setTel(phone_num.getText().toString());
         }
+        if(areacode.equals("")){
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setMessage("请输入区号！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    }).show();
+            return;
+        }
+        body.setTel(areacode+phone_num.getText().toString());
         //body.setPassword(psd.getText().toString());
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -176,7 +236,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         }
         RegisterBody body=new RegisterBody();
         body.setName(name.getText().toString());
-        body.setTel(phone_num.getText().toString());
+        body.setTel(areacode+phone_num.getText().toString());
         body.setPassword(psd.getText().toString());
         body.setCode(verification_code.getText().toString());
 

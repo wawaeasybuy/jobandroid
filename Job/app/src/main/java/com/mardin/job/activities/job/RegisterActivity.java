@@ -49,6 +49,10 @@ public class RegisterActivity extends Activity {
     private int time = 60;
     private Timer timer = new Timer();
     TimerTask task;
+    public TextView areaCode;
+    public String[] codeArr={"+86 中国","+01 美国","+65 新加坡"};
+    public int select_code=3;
+    public String areacode="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +65,53 @@ public class RegisterActivity extends Activity {
         tel= (EditText) findViewById(R.id.tel);
         psd= (EditText) findViewById(R.id.psd);
         ok= (Button) findViewById(R.id.ok);
+        areaCode= (TextView) findViewById(R.id.areaCode);
         verification_code= (EditText) findViewById(R.id.verification_code);
         get_verification_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 getCode();
+            }
+        });
+        areaCode.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                select_code=0;
+                new AlertDialog.Builder(RegisterActivity.this)
+                        .setSingleChoiceItems(codeArr, 0,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        select_code = which;
+                                    }
+                                }
+                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (select_code){
+                            case 3:
+                                areacode="86";
+                                break;
+                            case 0:
+                                areacode="86";
+                                break;
+                            case 1:
+                                areacode="01";
+                                break;
+                            case 2:
+                                areacode="65";
+                                break;
+                        }
+                        areaCode.setText(areacode+"+");
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        areacode="86";
+                        areaCode.setText(areacode+"+");
+                    }
+                }).show();
             }
         });
         ok.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +162,18 @@ public class RegisterActivity extends Activity {
                     }).show();
             return;
         }
-        body.setTel(tel.getText().toString());
+        if(areacode.equals("")){
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setMessage("请选择区号！")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
+            return;
+        }
+        body.setTel(areacode+tel.getText().toString());
 //        body.setPassword(psd.getText().toString());
 //        body.setTel(tel.getText().toString());
         JsonFactory jsonFactory = new JsonFactory();
@@ -168,7 +224,7 @@ public class RegisterActivity extends Activity {
         RegisterBody body=new RegisterBody();
         body.setName(name.getText().toString());
         body.setPassword(psd.getText().toString());
-        body.setTel(tel.getText().toString());
+        body.setTel(areacode+tel.getText().toString());
         body.setCode(verification_code.getText().toString());
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();

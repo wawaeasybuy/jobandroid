@@ -1,7 +1,9 @@
 package com.mardin.job.fragments.job;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -80,10 +82,12 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
     public LinearLayout ad;
     public LinearLayout outBuy;
     public LinearLayout other;
+    public String country=GlobalProvider.getInstance().country;
 
-
-
+    public LinearLayout area;
     public String industryCategory;
+    private String[] country_arr={"中国","United States","Singapore"};
+    private int choose_country=3;
 
     public String[] arr;
     public String[] array;
@@ -112,7 +116,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         Address mAddress = getAddressbyGeoPoint(getActivity(), gp);
 //        address.setText("Address: " + mAddress.getCountryName() + ","
 //                + mAddress.getLocality() + "," + mAddress.getThoroughfare());
-        //address.setText(mAddress.getThoroughfare());
+        address.setText(country);
         search_edit.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -159,6 +163,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         rec= (TextView) headerView.findViewById(R.id.rec);
         search_edit= (EditText) getActivity().findViewById(R.id.search_edit);
         address= (TextView) getActivity().findViewById(R.id.address);
+        area= (LinearLayout) getActivity().findViewById(R.id.area);
         //position_recommend= (LinearLayout) getActivity().findViewById(R.id.position_recommend);
     }
     public void initAction(){
@@ -171,6 +176,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
         ad.setOnClickListener(this);
         outBuy.setOnClickListener(this);
         other.setOnClickListener(this);
+        area.setOnClickListener(this);
 
         //classify.setOnClickListener(this);
         // position_recommend.setOnClickListener(this);
@@ -328,10 +334,33 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 intent9.putExtra("industryCategory",industryCategory);
                 startActivity(intent9);
                 break;
-//            case R.id.position_recommend:
-//                Intent intent2 = new Intent(getActivity(), PositionDetailActivity.class);
-//                startActivity(intent2);
-//                break;
+            case R.id.area:
+                new AlertDialog.Builder(getActivity())
+                        .setSingleChoiceItems(country_arr, 0,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        choose_country = which;
+                                    }
+                                }
+                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (choose_country == 3) {
+                            GlobalProvider.getInstance().country = country_arr[0];
+                        }else{
+                            GlobalProvider.getInstance().country = country_arr[choose_country];
+                        }
+                        address.setText(GlobalProvider.getInstance().country);
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        GlobalProvider.getInstance().country = country_arr[0];
+                        address.setText(GlobalProvider.getInstance().country);
+                    }
+                }).show();
+                break;
         }
     }
     public Location getLocation(Context context) {

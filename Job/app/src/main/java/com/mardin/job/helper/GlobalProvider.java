@@ -27,6 +27,7 @@ public class GlobalProvider {
     public Resume resume=new Resume();
     public Boolean isLoging;
     public Candidate candidate=new Candidate();
+    public String country;
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

@@ -243,13 +243,13 @@ public void initAction(){
             case R.id.layout1:
                 new AlertDialog.Builder(BaseDataActivity.this)
                         .setSingleChoiceItems(arrProvince, 0,
-                                new DialogInterface.OnClickListener() {
+                    new DialogInterface.OnClickListener() {
 
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        choose_province = which;
-                                    }
-                                }
-                        ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            choose_province = which;
+                        }
+                    }
+            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

@@ -32,6 +32,7 @@ public class GlobalProvider {
     public String employerId="";
     public Boolean isAllowToTalent=false;
     public List<Job> jobList=new ArrayList<Job>();
+    public String country="中国";
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

@@ -86,7 +86,9 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public SwipeRefreshLayout swiperefresh;
     private Boolean mNomore=false;
     public TextView noResult;
-
+    public String country=GlobalProvider.getInstance().country;
+    public  AddressSelectListAdapter adapterProvince;
+    public String[] USA={"Alabama","Alaska","American Samoa","Arizona","Arkansas","Armed Forces Africa","Armed Forces Americas","Armed Forces Canada", "Armed Forces Europe", "Armed Forces Middle East", "Armed Forces Pacific", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States Of Micronesia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,8 +105,19 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
 
         comparator = new ChinaAlphabetComparator();
         hashtable = ChinaCityUtil.initChinaCitysHashtable();
-        arrProvince = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
-        AddressSelectListAdapter adapterProvince = getArrayAdapter(arrProvince);
+        if(country.equals("中国")){
+            arrProvince = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
+            adapterProvince = getArrayAdapter(arrProvince);
+        }else if(country.equals("United States"))
+        {
+            adapterProvince = getArrayAdapter(USA);
+            arrProvince=USA;
+            //arrProvince=USA;
+        }else if(country.equals("Singapore")){
+            adapterProvince = getArrayAdapter(USA);
+            arrProvince=USA;
+        }
+
         lv1.setAdapter(adapterProvince);
         lv1.setOnItemClickListener(this);
         lv2.setOnItemClickListener(this);
@@ -245,12 +258,28 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         if (parent == lv1) {
-            province = arrProvince[position];
-            modifyCity(province);
-            lv2.setVisibility(View.VISIBLE);
-            lv3.setVisibility(View.INVISIBLE);
-            img1.setVisibility(View.VISIBLE);
-            img2.setVisibility(View.VISIBLE);
+            if(country.equals("中国")){
+                province = arrProvince[position];
+                modifyCity(province);
+                lv2.setVisibility(View.VISIBLE);
+                lv3.setVisibility(View.INVISIBLE);
+                img1.setVisibility(View.VISIBLE);
+                img2.setVisibility(View.VISIBLE);
+            }else{
+                province = arrProvince[position];
+                city="";
+                region="";
+                page=1;
+                lv1.setVisibility(View.GONE);
+                lv2.setVisibility(View.GONE);
+                lv3.setVisibility(View.GONE);
+                selectAddress.setVisibility(View.GONE);
+                lv_job.setVisibility(View.VISIBLE);
+                turn_one.setImageResource(R.drawable.turn_down);
+                address_text.setText(province);
+                lv1_showing=false;
+                LoadJobListByCondition();
+            }
         } else if (parent == lv2) {
             city = arrCity[position];
             modifyRegion(province, city);
@@ -328,15 +357,24 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         if(!PositionCategory.equals("")) {
             params.put("positionCategory", PositionCategory);
         }
-        if(!region.equals("")){
-            if(Position>0){
+//        if(!region.equals("")){
+//            if(Position>0){
+//            params.put("province",province);
+//            params.put("city",city);
+//            params.put("region",region);
+//            }else{
+//                params.put("province",province);
+//                params.put("city",city);
+//            }
+//        }
+        if(!province.equals("")){
             params.put("province",province);
+        }
+        if(!city.equals("")){
             params.put("city",city);
+        }
+        if(!region.equals("")&&Position>0){
             params.put("region",region);
-            }else{
-                params.put("province",province);
-                params.put("city",city);
-            }
         }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
