@@ -12,6 +12,8 @@
     <string name="input_phone_num">请输入手机号</string>
     <string name="retrieve_password">找回密码</string>
     <string name="old_password">请输入旧密码</string>
+    <string name="sorry_noresult">抱歉，暂时没有你搜索的职位!</string>
+    <string name="position_search_content"> 请输入职位/公司</string>
     <string name="password">密码</string>
     <string name="name">姓名</string>
     <string name="ok">确定</string>
@@ -152,6 +154,7 @@
     <string name="classify">行业类别</string>
     <string name="classify_">互联网</string>
     <string name="position_classify">职位类别</string>
+    <string name="workingAddress">工作地点</string>
     <string name="position_classify_">交互设计</string>
     <string name="salary">薪资待遇</string>
     <string name="salary_">点击添加</string>

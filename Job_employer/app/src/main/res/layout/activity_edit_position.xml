@@ -182,6 +182,48 @@
                 />
 
         </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="#c9c9c9"/>
+
+        <RelativeLayout
+            android:id="@+id/workingAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/workingAddress"/>
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/workingAddress_img"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/turn_right1"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/workingAddress_img"
+                android:id="@+id/workingAddress_text"
+                android:textSize="15dp"
+                android:background="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"
+                />
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="match_parent"

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.ErrorList;
 import com.example.ryo.job_employer.models.GetCodeBody;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.models.ResetPsdBody;
@@ -24,6 +25,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.ByteArrayEntity;
 import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
@@ -243,13 +245,31 @@ public class RetrievePasswordActivity extends Activity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
-                    new AlertDialog.Builder(RetrievePasswordActivity.this)
-                            .setMessage("更改失败，请检查你的输入是否有误！")
-                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
+//                    new AlertDialog.Builder(RetrievePasswordActivity.this)
+//                            .setMessage("更改失败，请检查你的输入是否有误！")
+//                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int whichButton) {
+//
+//                                }
+//                            }).show();
+                    if(responseBody!=null) {
+                        JsonFactory jsonFactory = new JsonFactory();
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        try {
+                            JsonParser jsonParser = jsonFactory.createJsonParser(new String(responseBody));
+                            ErrorList errorList = (ErrorList) objectMapper.readValue(jsonParser, ErrorList.class);
+                            new AlertDialog.Builder(RetrievePasswordActivity.this)
+                                    .setMessage(errorList.error.msg)
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    }).show();
 
-                                }
-                            }).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
 
                 @Override

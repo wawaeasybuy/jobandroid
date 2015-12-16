@@ -28,6 +28,7 @@ import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.R;
 import com.mardin.job.Utils.PositionIndustryUtil;
 import com.mardin.job.activities.job.InternshipsSearchActivity;
+import com.mardin.job.activities.job.LocationSearchActivity;
 import com.mardin.job.activities.job.PositionDetailActivity;
 import com.mardin.job.activities.job.PositionSearchActivity;
 import com.mardin.job.adapters.job.JobListAdapter;
@@ -92,6 +93,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
     public String[] arr;
     public String[] array;
     public Hashtable<String,String[]> hashtable;
+    public EditText location;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -126,6 +128,15 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 }
             }
         });
+        location.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    Intent intent = new Intent(getActivity(), LocationSearchActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
         lv_rec.addHeaderView(headerView, null, true);
         lv_rec.setAdapter(adapter);
         lv_rec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -151,6 +162,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 
         search= ( LinearLayout) getActivity().findViewById(R.id.search);
         classify= (LinearLayout) headerView.findViewById(R.id.classify);
+        location= (EditText) headerView.findViewById(R.id.location);
         IT= (LinearLayout) headerView.findViewById(R.id.IT);
         bank= (LinearLayout) headerView.findViewById(R.id.bank);
         house= (LinearLayout) headerView.findViewById(R.id.house);

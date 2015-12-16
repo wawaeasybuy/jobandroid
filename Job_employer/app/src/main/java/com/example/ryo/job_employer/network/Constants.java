@@ -10,8 +10,8 @@ import com.example.ryo.job_employer.helper.GlobalProvider;
  * Created by Administrator on 2015/10/8.
  */
 public class Constants {
-    static public String baseUrlStr = "http://192.168.2.105:9000/";
-    //static public String baseUrlStr = "http://54.169.214.156:8080/";//≤‚ ‘URL
+    //static public String baseUrlStr = "http://192.168.2.105:9000/";
+    static public String baseUrlStr = "http://54.169.214.156:8080/";//≤‚ ‘URL
     //static public String baseUrlStr = "http://192.168.1.103:8080/";
     static public String personalInfo = baseUrlStr + "api/employers";
     static public String changePsd=baseUrlStr+"api/users/changePassword";

@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivityN"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode = "adjustPan">
         </activity>
         <activity
             android:name=".activities.job.StartActivity"
@@ -29,6 +30,8 @@
         <activity android:name=".activities.job.ChangePsdActivity">
         </activity>
         <activity android:name=".activities.job.WebViewActivity">
+        </activity>
+        <activity android:name=".activities.job.LocationSearchActivity">
         </activity>
         <!--    <activity
             android:name=".activities.CollectedJobsActivity"

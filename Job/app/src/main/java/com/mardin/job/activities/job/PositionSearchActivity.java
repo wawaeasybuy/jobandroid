@@ -45,7 +45,7 @@ import java.util.List;
 /**
  * Created by Ryo on 2015/9/17.
  */
-public class PositionSearchActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class PositionSearchActivity extends Activity implements View.OnClickListener{
     public LinearLayout turn_left;
     public ListView lv_job;
     public List<Job> mItems;
@@ -103,25 +103,25 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         hashtable_position=PositionIndustryUtil.initPositionIndustryHashtable();
         positionCategory= PositionIndustryUtil.getPositionCategory(hashtable_position,industryCategory);
 
-        comparator = new ChinaAlphabetComparator();
-        hashtable = ChinaCityUtil.initChinaCitysHashtable();
-        if(country.equals("中国")){
-            arrProvince = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
-            adapterProvince = getArrayAdapter(arrProvince);
-        }else if(country.equals("United States"))
-        {
-            adapterProvince = getArrayAdapter(USA);
-            arrProvince=USA;
-            //arrProvince=USA;
-        }else if(country.equals("Singapore")){
-            adapterProvince = getArrayAdapter(USA);
-            arrProvince=USA;
-        }
+//        comparator = new ChinaAlphabetComparator();
+//        hashtable = ChinaCityUtil.initChinaCitysHashtable();
+//        if(country.equals("中国")){
+//            arrProvince = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
+//            adapterProvince = getArrayAdapter(arrProvince);
+//        }else if(country.equals("United States"))
+//        {
+//            adapterProvince = getArrayAdapter(USA);
+//            arrProvince=USA;
+//            //arrProvince=USA;
+//        }else if(country.equals("Singapore")){
+//            adapterProvince = getArrayAdapter(USA);
+//            arrProvince=USA;
+//        }
 
-        lv1.setAdapter(adapterProvince);
-        lv1.setOnItemClickListener(this);
-        lv2.setOnItemClickListener(this);
-        lv3.setOnItemClickListener(this);
+//        lv1.setAdapter(adapterProvince);
+//        lv1.setOnItemClickListener(this);
+//        lv2.setOnItemClickListener(this);
+//        lv3.setOnItemClickListener(this);
         mItems=new ArrayList<Job>();
         adapter=new JobListAdapter(this,mItems);
 //        mAdapter=new AddressSelectListAdapter(this,Data());
@@ -133,8 +133,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         lv_job.setAdapter(adapter);
         page=1;
         itemsPerPage=10;
-        selectAddress.setVisibility(View.GONE);
-        turn_one.setImageResource(R.drawable.turn_down);
+//        selectAddress.setVisibility(View.GONE);
+//        turn_one.setImageResource(R.drawable.turn_down);
         //turn_two.setImageResource(R.drawable.turn_down);
         turn_three.setImageResource(R.drawable.turn_down);
 
@@ -163,24 +163,24 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
                 if(!ishowing){
                     position_Img.setImageResource(R.drawable.turn_up);
                     lv_position_pull.setVisibility(View.VISIBLE);
-                    lv1.setVisibility(View.GONE);
-                    lv2.setVisibility(View.GONE);
-                    lv3.setVisibility(View.GONE);
-                    selectAddress.setVisibility(View.GONE);
+//                    lv1.setVisibility(View.GONE);
+//                    lv2.setVisibility(View.GONE);
+//                    lv3.setVisibility(View.GONE);
+//                    selectAddress.setVisibility(View.GONE);
                     lv_job.setVisibility(View.GONE);
-                    turn_one.setImageResource(R.drawable.turn_down);
+//                    turn_one.setImageResource(R.drawable.turn_down);
                 }else{
                     position_Img.setImageResource(R.drawable.turn_down);
                     lv_position_pull.setVisibility(View.GONE);
-                    lv1.setVisibility(View.GONE);
-                    lv2.setVisibility(View.GONE);
-                    lv3.setVisibility(View.GONE);
-                    selectAddress.setVisibility(View.GONE);
+//                    lv1.setVisibility(View.GONE);
+//                    lv2.setVisibility(View.GONE);
+//                    lv3.setVisibility(View.GONE);
+//                    selectAddress.setVisibility(View.GONE);
                     lv_job.setVisibility(View.VISIBLE);
-                    turn_one.setImageResource(R.drawable.turn_down);
+                    //turn_one.setImageResource(R.drawable.turn_down);
                 }
                 ishowing=!ishowing;
-                lv1_showing=false;
+                //lv1_showing=false;
             }
         });
         lv_position_pull.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -188,14 +188,13 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 position_Img.setImageResource(R.drawable.turn_down);
                 lv_position_pull.setVisibility(View.GONE);
-                lv1.setVisibility(View.GONE);
-                lv2.setVisibility(View.GONE);
-                lv3.setVisibility(View.GONE);
-                selectAddress.setVisibility(View.GONE);
+//                lv1.setVisibility(View.GONE);
+//                lv2.setVisibility(View.GONE);
+//                lv3.setVisibility(View.GONE);
+//                selectAddress.setVisibility(View.GONE);
                 lv_job.setVisibility(View.VISIBLE);
-                turn_one.setImageResource(R.drawable.turn_down);
+                //turn_one.setImageResource(R.drawable.turn_down);
                 ishowing=false;
-
                 page=1;
                 if(position>0){
                     PositionCategory=positionCategory[position];
@@ -242,7 +241,6 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 
             }
-
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
@@ -254,52 +252,52 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         noResult.setVisibility(View.GONE);
         LoadJobListByCondition();
     }
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        if (parent == lv1) {
-            if(country.equals("中国")){
-                province = arrProvince[position];
-                modifyCity(province);
-                lv2.setVisibility(View.VISIBLE);
-                lv3.setVisibility(View.INVISIBLE);
-                img1.setVisibility(View.VISIBLE);
-                img2.setVisibility(View.VISIBLE);
-            }else{
-                province = arrProvince[position];
-                city="";
-                region="";
-                page=1;
-                lv1.setVisibility(View.GONE);
-                lv2.setVisibility(View.GONE);
-                lv3.setVisibility(View.GONE);
-                selectAddress.setVisibility(View.GONE);
-                lv_job.setVisibility(View.VISIBLE);
-                turn_one.setImageResource(R.drawable.turn_down);
-                address_text.setText(province);
-                lv1_showing=false;
-                LoadJobListByCondition();
-            }
-        } else if (parent == lv2) {
-            city = arrCity[position];
-            modifyRegion(province, city);
-            lv3.setVisibility(View.VISIBLE);
-        } else if (parent == lv3) {
-            page=1;
-            this.Position=position;
-            region = ARR[position];
-            lv1.setVisibility(View.GONE);
-            lv2.setVisibility(View.GONE);
-            lv3.setVisibility(View.GONE);
-            selectAddress.setVisibility(View.GONE);
-            lv_job.setVisibility(View.VISIBLE);
-            turn_one.setImageResource(R.drawable.turn_down);
-            address_text.setText(region);
-            lv1_showing=false;
-            LoadJobListByCondition();
-            //txtInfo.setText(province + " " + city + " " + region);
-        }
-    }
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//        if (parent == lv1) {
+//            if(country.equals("中国")){
+//                province = arrProvince[position];
+//                modifyCity(province);
+//                lv2.setVisibility(View.VISIBLE);
+//                lv3.setVisibility(View.INVISIBLE);
+//                img1.setVisibility(View.VISIBLE);
+//                img2.setVisibility(View.VISIBLE);
+//            }else{
+//                province = arrProvince[position];
+//                city="";
+//                region="";
+//                page=1;
+//                lv1.setVisibility(View.GONE);
+//                lv2.setVisibility(View.GONE);
+//                lv3.setVisibility(View.GONE);
+//                selectAddress.setVisibility(View.GONE);
+//                lv_job.setVisibility(View.VISIBLE);
+//                turn_one.setImageResource(R.drawable.turn_down);
+//                address_text.setText(province);
+//                lv1_showing=false;
+//                LoadJobListByCondition();
+//            }
+//        } else if (parent == lv2) {
+//            city = arrCity[position];
+//            modifyRegion(province, city);
+//            lv3.setVisibility(View.VISIBLE);
+//        } else if (parent == lv3) {
+//            page=1;
+//            this.Position=position;
+//            region = ARR[position];
+//            lv1.setVisibility(View.GONE);
+//            lv2.setVisibility(View.GONE);
+//            lv3.setVisibility(View.GONE);
+//            selectAddress.setVisibility(View.GONE);
+//            lv_job.setVisibility(View.VISIBLE);
+//            turn_one.setImageResource(R.drawable.turn_down);
+//            address_text.setText(region);
+//            lv1_showing=false;
+//            LoadJobListByCondition();
+//            //txtInfo.setText(province + " " + city + " " + region);
+//        }
+//    }
     private void modifyCity(String province) {
         arrCity = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_CITY, province);
         AddressSelectListAdapter adapterCity = getArrayAdapter(arrCity);
@@ -476,29 +474,29 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         swiperefresh= (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         turn_left = (LinearLayout) findViewById(R.id.turn_left);
         lv_job= (ListView) findViewById(R.id.lv_job);
-        address= (LinearLayout) findViewById(R.id.address);
-        lv1= (ListView) findViewById(R.id.lv1);
-        lv2= (ListView) findViewById(R.id.lv2);
-        lv3= (ListView) findViewById(R.id.lv3);
-        selectAddress= (LinearLayout) findViewById(R.id.selectAddress);
-        turn_one= (ImageView) findViewById(R.id.turn_one);
+//        address= (LinearLayout) findViewById(R.id.address);
+//        lv1= (ListView) findViewById(R.id.lv1);
+//        lv2= (ListView) findViewById(R.id.lv2);
+//        lv3= (ListView) findViewById(R.id.lv3);
+//        selectAddress= (LinearLayout) findViewById(R.id.selectAddress);
+//        turn_one= (ImageView) findViewById(R.id.turn_one);
         //turn_two= (ImageView) findViewById(R.id.turn_two);
         turn_three= (ImageView) findViewById(R.id.turn_three);
-        img1= (ImageView) findViewById(R.id.img_1);
-        img2= (ImageView) findViewById(R.id.img_2);
+//        img1= (ImageView) findViewById(R.id.img_1);
+//        img2= (ImageView) findViewById(R.id.img_2);
 
         lv_position_pull= (ListView) findViewById(R.id.lv_position_pull);
         position_Layout= (LinearLayout) findViewById(R.id.position_Layout);
         position_Img= (ImageView) findViewById(R.id.position_Img);
         position_Text= (TextView) findViewById(R.id.position_Text);
-        address_text= (TextView) findViewById(R.id.address_text);
+        //address_text= (TextView) findViewById(R.id.address_text);
         industry= (TextView) findViewById(R.id.industry);
         search= (ImageView) findViewById(R.id.search);
         noResult= (TextView) findViewById(R.id.noResult);
     }
     public void initAction(){
         turn_left.setOnClickListener(this);
-        address.setOnClickListener(this);
+        //address.setOnClickListener(this);
         search.setOnClickListener(this);
     }
     @Override
@@ -507,33 +505,33 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             case R.id.turn_left:
                 finish();
                 break;
-            case R.id.address:
-                if(lv1_showing)
-                {
-                    lv1.setVisibility(View.INVISIBLE);
-                    lv2.setVisibility(View.INVISIBLE);
-                    lv3.setVisibility(View.INVISIBLE);
-                    img1.setVisibility(View.INVISIBLE);
-                    img2.setVisibility(View.INVISIBLE);
-                    selectAddress.setVisibility(View.GONE);
-                    lv_job.setVisibility(View.VISIBLE);
-                    turn_one.setImageResource(R.drawable.turn_down);
-                  //lv1.setVisibility(View.GONE);
-                }else {
-                  selectAddress.setVisibility(View.VISIBLE);
-                  lv_job.setVisibility(View.GONE);
-                  lv1.setVisibility(View.VISIBLE);
-                  lv2.setVisibility(View.INVISIBLE);
-                  lv3.setVisibility(View.INVISIBLE);
-                  img1.setVisibility(View.VISIBLE);
-                  img2.setVisibility(View.INVISIBLE);
-                  turn_one.setImageResource(R.drawable.turn_up);
-                }
-                position_Img.setImageResource(R.drawable.turn_down);
-                lv_position_pull.setVisibility(View.GONE);
-                ishowing=false;
-                lv1_showing=!lv1_showing;
-                break;
+//            case R.id.address:
+//                if(lv1_showing)
+//                {
+//                    lv1.setVisibility(View.INVISIBLE);
+//                    lv2.setVisibility(View.INVISIBLE);
+//                    lv3.setVisibility(View.INVISIBLE);
+//                    img1.setVisibility(View.INVISIBLE);
+//                    img2.setVisibility(View.INVISIBLE);
+//                    selectAddress.setVisibility(View.GONE);
+//                    lv_job.setVisibility(View.VISIBLE);
+//                    turn_one.setImageResource(R.drawable.turn_down);
+//                  //lv1.setVisibility(View.GONE);
+//                }else {
+//                  selectAddress.setVisibility(View.VISIBLE);
+//                  lv_job.setVisibility(View.GONE);
+//                  lv1.setVisibility(View.VISIBLE);
+//                  lv2.setVisibility(View.INVISIBLE);
+//                  lv3.setVisibility(View.INVISIBLE);
+//                  img1.setVisibility(View.VISIBLE);
+//                  img2.setVisibility(View.INVISIBLE);
+//                  turn_one.setImageResource(R.drawable.turn_up);
+//                }
+//                position_Img.setImageResource(R.drawable.turn_down);
+//                lv_position_pull.setVisibility(View.GONE);
+//                ishowing=false;
+//                lv1_showing=!lv1_showing;
+//                break;
             case R.id.search:
                 Intent intent=new Intent(PositionSearchActivity.this,InternshipsSearchActivity.class);
                 startActivity(intent);

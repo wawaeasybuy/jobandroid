@@ -382,6 +382,8 @@
     <string name="forget_password">忘记密码</string>
     <string name="verification_code">验证码</string>
     <string name="get_verification_code">获取验证码</string>
+    <string name="noEvalue">还没有任何公司评论您，快去投递简历吧！</string>
+    noEvalue
     <string name="retrieve_password">找回密码</string>
     <string name="ok">确定</string>
     <string name="re_input_password">请重新输入密码</string>
@@ -476,6 +478,7 @@
     <string name="home">首页</string>
     <string name="classify">IT/互联网</string>
     <string name="search_hint">搜索感兴趣的职位和公司</string>
+    <string name="location">Location</string>
     <string name="position_recommend">职位推荐</string>
     <string name="position_recommend_title">急聘xxxxxxx</string>
     <string name="position_recommend_up">顶</string>

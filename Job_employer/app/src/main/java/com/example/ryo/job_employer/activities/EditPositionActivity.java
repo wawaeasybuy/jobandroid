@@ -53,6 +53,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
 
     public RelativeLayout industry_layout;
     public RelativeLayout position_layout;
+    public RelativeLayout workingAddress;
     public TextView industry_text;
     public TextView position_text;
     public Hashtable<String,String[]> hashtable;
@@ -86,6 +87,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     private void initAction() {
         turn_left.setOnClickListener(this);
         save.setOnClickListener(this);
+        workingAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(EditPositionActivity.this,LocationSearchActivity.class);
+                startActivity(intent);
+            }
+        });
         industry_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +170,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         positionCharacter= (EditText) findViewById(R.id.positionCharacter);
         salary= (EditText) findViewById(R.id.salary);
         requirement= (EditText) findViewById(R.id.requirement);
+        workingAddress= (RelativeLayout) findViewById(R.id.workingAddress);
         //positionCategory= (EditText) findViewById(R.id.positionCategory);
     }
     @Override

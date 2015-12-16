@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <!--  Header -->
+
     <LinearLayout
         android:orientation="horizontal"
         style="@style/header"
@@ -29,7 +30,11 @@
         android:layout_height="1dp" />
 
     <!--  Content -->
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -224,7 +229,27 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+    <!--<LinearLayout-->
 
-
+        <!--android:id="@+id/noEvalue"-->
+        <!--android:orientation="vertical"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<ImageView-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/noevalue"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+        <!--<TextView-->
+            <!--android:text="@string/noEvalue"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>
+

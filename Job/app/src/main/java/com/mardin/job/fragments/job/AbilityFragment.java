@@ -61,6 +61,8 @@ public class AbilityFragment extends Fragment  {
     public List<TalentList> mItems;
     public AdviceListAdapter adapter;
     public ListView lv;
+    public LinearLayout main;
+    public LinearLayout noEvalue;
 
 
     @Override
@@ -79,6 +81,10 @@ public class AbilityFragment extends Fragment  {
         star_bar4 = (RatingBar)getActivity().findViewById(R.id.star_bar4);
         star_bar5 = (RatingBar)getActivity().findViewById(R.id.star_bar5);
         lv= (ListView) getActivity().findViewById(R.id.lv);
+        main= (LinearLayout) getActivity().findViewById(R.id.main);
+       // noEvalue= (LinearLayout) getActivity().findViewById(R.id.noEvalue);
+//        main.setVisibility(View.VISIBLE);
+//        noEvalue.setVisibility(View.GONE);
 //        adviceText= (TextView) getActivity().findViewById(R.id.adviceText);
 //        companyName= (TextView) getActivity().findViewById(R.id.companyName);
 //        evaluationTime= (TextView) getActivity().findViewById(R.id.evaluationTime);
@@ -117,22 +123,28 @@ public class AbilityFragment extends Fragment  {
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Skills skills = (Skills) objectMapper.readValue(jsonParser, Skills.class);
-            star_bar1.setRating(skills.getProfessionalLevel());
-            star_bar2.setRating(skills.getAnalysis());
-            star_bar3.setRating(skills.getExpression());
-            star_bar4.setRating(skills.getCompression());
-            star_bar5.setRating(skills.getAttitude());
+//            if(skills.advices.size()==0&&skills.getProfessionalLevel()==0&&skills.getAnalysis()==0&&skills.getExpression()==0&&skills.getCompression()==0&&skills.getAttitude()==0){
+//               main.setVisibility(View.GONE);
+//               noEvalue.setVisibility(View.VISIBLE);
+//            }else{
+//                main.setVisibility(View.VISIBLE);
+//                noEvalue.setVisibility(View.GONE);
+                star_bar1.setRating(skills.getProfessionalLevel());
+                star_bar2.setRating(skills.getAnalysis());
+                star_bar3.setRating(skills.getExpression());
+                star_bar4.setRating(skills.getCompression());
+                star_bar5.setRating(skills.getAttitude());
 
-            star_bar1.setEnabled(false);
-            star_bar2.setEnabled(false);
-            star_bar3.setEnabled(false);
-            star_bar4.setEnabled(false);
-            star_bar5.setEnabled(false);
+                star_bar1.setEnabled(false);
+                star_bar2.setEnabled(false);
+                star_bar3.setEnabled(false);
+                star_bar4.setEnabled(false);
+                star_bar5.setEnabled(false);
+                this.mItems.clear();
+                this.mItems.addAll(skills.advices);
+                adapter.notifyDataSetChanged();
+            //}
 
-
-            this.mItems.clear();
-            this.mItems.addAll(skills.advices);
-            adapter.notifyDataSetChanged();
 //            if(talent.getAdviceText()!=null){adviceText.setText(talent.getAdviceText());}else{adviceText.setText("暂无任何公司评价");}
 //            if(talent.getCompanyName()!=null){companyName.setText(talent.getCompanyName());}
 //            if(talent.getEvaluationTime()!=null){evaluationTime.setText(ConverToString(talent.getEvaluationTime()));}
@@ -145,7 +157,6 @@ public class AbilityFragment extends Fragment  {
     public static String ConverToString(Date date)
     {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
         return df.format(date);
     }
 }

@@ -19,6 +19,7 @@ import com.mardin.job.MainActivityN;
 import com.mardin.job.R;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
+import com.mardin.job.models.ErrorList;
 import com.mardin.job.models.GetCodeBody;
 import com.mardin.job.models.RegisterBody;
 import com.mardin.job.network.Constants;
@@ -243,13 +244,31 @@ public class RegisterActivity extends Activity {
                 }
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    new AlertDialog.Builder(RegisterActivity.this)
-                            .setMessage("注册失败！请检查你的输入是否有误！")
-                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
+//                    new AlertDialog.Builder(RegisterActivity.this)
+//                            .setMessage("注册失败！请检查你的输入是否有误！")
+//                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int whichButton) {
+//
+//                                }
+//                            }).show();
+                    if(responseBody!=null) {
+                        JsonFactory jsonFactory = new JsonFactory();
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        try {
+                            JsonParser jsonParser = jsonFactory.createJsonParser(new String(responseBody));
+                            ErrorList errorList = (ErrorList) objectMapper.readValue(jsonParser, ErrorList.class);
+                            new AlertDialog.Builder(RegisterActivity.this)
+                                    .setMessage(errorList.error.msg)
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    }).show();
 
-                                }
-                            }).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
                 @Override
                 public void onPostProcessResponse(ResponseHandlerInterface instance, HttpResponse response) {

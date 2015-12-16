@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".activities.RetrievePasswordActivity">
         </activity>
+        <activity android:name=".activities.LocationSearchActivity">
+        </activity>
         <activity android:name=".activities.ChangePsdActivity">
         </activity>
         <activity android:name=".activities.RegisterActivity">
