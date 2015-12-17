@@ -26,6 +26,7 @@ import com.mardin.job.activities.job.PersonalSettingActivity;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
+import com.mardin.job.models.DoReleaseBody;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
@@ -249,17 +250,19 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         });
     }
     public void doRelease(){
+        DoReleaseBody body=new DoReleaseBody();
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
         if(resume.getBeOpen()){
-            resume.setBeOpen(false);
+            body.setBeOpen(false);
         }else{
-            resume.setBeOpen(true);
+            body.setBeOpen(true);
         }
+        body.set_id(resume.get_id());
         try {
-            json = ow.writeValueAsString(resume);
+            json = ow.writeValueAsString(body);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
             globalProvider.put(getActivity(), Constants.createResumeStr, entity, "application/json", new RequestListener() {
