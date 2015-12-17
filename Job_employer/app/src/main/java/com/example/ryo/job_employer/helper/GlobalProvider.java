@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.example.ryo.job_employer.activities.LoginActivity;
+import com.example.ryo.job_employer.models.City;
 import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.Http.AsyncHttpClient;
 import com.example.ryo.job_employer.models.Http.AsyncHttpResponseHandler;
@@ -33,6 +34,7 @@ public class GlobalProvider {
     public Boolean isAllowToTalent=false;
     public List<Job> jobList=new ArrayList<Job>();
     public String country="中国";
+    public City city;
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

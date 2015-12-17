@@ -183,6 +183,11 @@ public class MainActivityN extends Activity implements View.OnClickListener{
                     setSelect(1);
                 }
                 break;
+            case Constants.GETLOCATIONINTENT:
+                if (resultCode == RESULT_OK) {
+                    setSelect(0);
+                }
+                break;
         }
     }
     @Override

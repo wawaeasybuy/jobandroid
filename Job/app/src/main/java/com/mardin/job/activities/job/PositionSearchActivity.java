@@ -67,7 +67,7 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     private ChinaAlphabetComparator comparator;
     private Hashtable<String, Hashtable<String, String[]>> hashtable;
     private String[] arrProvince, arrCity, arrRegion;
-    private String province="", city="", region="";
+    //private String province="", city="", region="";
     public String industryCategory="";
     public String PositionCategory="";
     public String[] positionCategory;
@@ -88,6 +88,8 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
     public TextView noResult;
     public String country=GlobalProvider.getInstance().country;
     public  AddressSelectListAdapter adapterProvince;
+    public String city;
+
     public String[] USA={"Alabama","Alaska","American Samoa","Arizona","Arkansas","Armed Forces Africa","Armed Forces Americas","Armed Forces Canada", "Armed Forces Europe", "Armed Forces Middle East", "Armed Forces Pacific", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States Of Micronesia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +102,11 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
             industryCategory= (String) intent.getSerializableExtra("industryCategory");
             industry.setText(industryCategory);
         }
+        if(intent.getSerializableExtra("city")!=null){
+            city= (String) intent.getSerializableExtra("city");
+        }
         hashtable_position=PositionIndustryUtil.initPositionIndustryHashtable();
         positionCategory= PositionIndustryUtil.getPositionCategory(hashtable_position,industryCategory);
-
 //        comparator = new ChinaAlphabetComparator();
 //        hashtable = ChinaCityUtil.initChinaCitysHashtable();
 //        if(country.equals("中国")){
@@ -355,6 +359,9 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         if(!PositionCategory.equals("")) {
             params.put("positionCategory", PositionCategory);
         }
+        if(city!=null){
+            params.put("city",city);
+        }
 //        if(!region.equals("")){
 //            if(Position>0){
 //            params.put("province",province);
@@ -365,15 +372,15 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
 //                params.put("city",city);
 //            }
 //        }
-        if(!province.equals("")){
-            params.put("province",province);
-        }
-        if(!city.equals("")){
-            params.put("city",city);
-        }
-        if(!region.equals("")&&Position>0){
-            params.put("region",region);
-        }
+//        if(!province.equals("")){
+//            params.put("province",province);
+//        }
+//        if(!city.equals("")){
+//            params.put("city",city);
+//        }
+//        if(!region.equals("")&&Position>0){
+//            params.put("region",region);
+//        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
             @Override
@@ -402,16 +409,19 @@ public class PositionSearchActivity extends Activity implements View.OnClickList
         if(!PositionCategory.equals("")) {
             params.put("positionCategory", PositionCategory);
         }
-        if(!region.equals("")){
-            if(Position>0){
-                params.put("province",province);
-                params.put("city",city);
-                params.put("region",region);
-            }else{
-                params.put("province",province);
-                params.put("city",city);
-            }
+        if(city!=null){
+            params.put("city",city);
         }
+//        if(!region.equals("")){
+//            if(Position>0){
+//                params.put("province",province);
+//                params.put("city",city);
+//                params.put("region",region);
+//            }else{
+//                params.put("province",province);
+//                params.put("city",city);
+//            }
+//        }
         GlobalProvider globalProvider = GlobalProvider.getInstance();
         globalProvider.get(this, Constants.jobListUrlStr, params, new RequestListener() {
             @Override

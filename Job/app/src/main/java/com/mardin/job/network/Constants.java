@@ -10,11 +10,12 @@ import com.mardin.job.helper.GlobalProvider;
  * Created by Mardin on 7/7/15.
  */
 public class Constants {
-    //static public String baseUrlStr = "http://192.168.2.105:9000/";
-    static public String baseUrlStr = "http://54.169.214.156:8080/";
+    static public String baseUrlStr = "http://192.168.2.106:9000/";
+    //static public String baseUrlStr = "http://54.169.214.156:8080/";
     static public String jobListUrlStr = baseUrlStr + "api/jobs";
     static public String getCodeUrlStr=baseUrlStr+"api/codes";
     static public String forgetPsdUrlStr=baseUrlStr+"api/users/forget";
+    static  public String locationStr=baseUrlStr+"api/cities";
     static public String changePsd=baseUrlStr+"api/users/changePassword";
     static public String skillUrlStr=baseUrlStr+"api/skills";
     static public String loginUrlStr = baseUrlStr + "auth/local";
@@ -47,6 +48,7 @@ public class Constants {
     public static  final int GOCREATEPUB=97;
     public static  final int GOTOLOGOUT=98;
     public static  final int GOUPDATERESUME=99;
+    public static  final int GETLOCATIONINTENT=100;
 
     public static void setToken(Context context,String token) {
         SharedPreferences settings = PreferenceManager

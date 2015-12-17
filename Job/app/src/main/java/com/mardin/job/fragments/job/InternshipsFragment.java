@@ -1,5 +1,6 @@
 package com.mardin.job.fragments.job;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
@@ -36,6 +37,7 @@ import com.mardin.job.adapters.job.JobRecAdapter;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
+import com.mardin.job.models.City;
 import com.mardin.job.models.Job;
 import com.mardin.job.models.JobList;
 import com.mardin.job.models.Resume;
@@ -94,6 +96,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
     public String[] array;
     public Hashtable<String,String[]> hashtable;
     public EditText location;
+    public City interCity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -133,7 +136,7 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     Intent intent = new Intent(getActivity(), LocationSearchActivity.class);
-                    startActivity(intent);
+                    getActivity().startActivityForResult(intent, Constants.GETLOCATIONINTENT);
                 }
             }
         });
@@ -149,6 +152,10 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 }
             }
         });
+        if(GlobalProvider.getInstance().city!=null){
+            interCity=GlobalProvider.getInstance().city;
+            location.setText(interCity.getC_city());
+        }
         lv_rec.setHeaderDividersEnabled(false);
         rec.setText("您还未登录，请前往登录！");
         rec.setTextColor(0xff666666);
@@ -299,52 +306,131 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
 //                startActivity(intent1);
 //                break;
             case R.id.IT:
-                industryCategory="互联网";
-                Intent intent2 = new Intent(getActivity(), PositionSearchActivity.class);
-                intent2.putExtra("industryCategory",industryCategory);
-                startActivity(intent2);
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else{
+                    industryCategory="互联网";
+                    Intent intent2 = new Intent(getActivity(), PositionSearchActivity.class);
+                    intent2.putExtra("industryCategory",industryCategory);
+                    intent2.putExtra("city",interCity.get_id());
+                    startActivity(intent2);
+                }
+
                 break;
             case R.id.bank:
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else{
                 industryCategory="金融财会";
                 Intent intent3 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent3.putExtra("industryCategory",industryCategory);
-                startActivity(intent3);
+                    intent3.putExtra("city",interCity.get_id());
+                    startActivity(intent3);
+                }
                 break;
             case R.id.house:
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else{
                 industryCategory="房产建筑";
                 Intent intent4 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent4.putExtra("industryCategory",industryCategory);
-                startActivity(intent4);
+                    intent4.putExtra("city",interCity.get_id());
+                    startActivity(intent4);
+                }
                 break;
             case R.id.industry:
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else{
                 industryCategory="工业制造";
                 Intent intent5 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent5.putExtra("industryCategory",industryCategory);
-                startActivity(intent5);
+                    intent5.putExtra("city",interCity.get_id());
+                    startActivity(intent5);
+                }
                 break;
             case R.id.hospital:
-                industryCategory="医药化学";
-                Intent intent6 = new Intent(getActivity(), PositionSearchActivity.class);
-                intent6.putExtra("industryCategory",industryCategory);
-                startActivity(intent6);
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else {
+                    industryCategory = "医药化学";
+                    Intent intent6 = new Intent(getActivity(), PositionSearchActivity.class);
+                    intent6.putExtra("industryCategory", industryCategory);
+                    intent6.putExtra("city",interCity.get_id());
+                    startActivity(intent6);
+                }
                 break;
             case R.id.ad:
                 industryCategory="广告传媒";
                 Intent intent7 = new Intent(getActivity(), PositionSearchActivity.class);
                 intent7.putExtra("industryCategory",industryCategory);
+                intent7.putExtra("city",interCity.get_id());
                 startActivity(intent7);
                 break;
             case R.id.outBuy:
-                industryCategory="外贸行业";
-                Intent intent8 = new Intent(getActivity(), PositionSearchActivity.class);
-                intent8.putExtra("industryCategory",industryCategory);
-                startActivity(intent8);
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else {
+                    industryCategory = "外贸行业";
+                    Intent intent8 = new Intent(getActivity(), PositionSearchActivity.class);
+                    intent8.putExtra("industryCategory", industryCategory);
+                    intent8.putExtra("city",interCity.get_id());
+                    startActivity(intent8);
+                }
                 break;
             case R.id.other:
-                industryCategory="其他行业";
-                Intent intent9 = new Intent(getActivity(), PositionSearchActivity.class);
-                intent9.putExtra("industryCategory",industryCategory);
-                startActivity(intent9);
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else {
+                    industryCategory = "其他行业";
+                    Intent intent9 = new Intent(getActivity(), PositionSearchActivity.class);
+                    intent9.putExtra("industryCategory", industryCategory);
+                    intent9.putExtra("city",interCity.get_id());
+                    startActivity(intent9);
+                }
                 break;
             case R.id.area:
                 new AlertDialog.Builder(getActivity())

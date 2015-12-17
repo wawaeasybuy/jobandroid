@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.MotionEvent;
@@ -25,6 +26,7 @@ import com.mardin.job.Utils.ChinaCityUtil;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Resume;
+import com.mardin.job.network.Constants;
 
 import java.util.Calendar;
 import java.util.Hashtable;
@@ -55,25 +57,25 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
     public Candidate candidate;
     public String Str_data="";
 
-    private Hashtable<String, Hashtable<String, String[]>> hashtable;
-    private String[] arrProvince, arrCity, arrRegion;
-    private String province="", city="", region="";
-    public boolean Ishowing=false;
-    public int choose_province;
-    public int choose_city;
-    public int choose_region;
+//    private Hashtable<String, Hashtable<String, String[]>> hashtable;
+//    private String[] arrProvince, arrCity, arrRegion;
+//    private String province="", city="", region="";
+//    public boolean Ishowing=false;
+//    public int choose_province;
+//    public int choose_city;
+//    public int choose_region;
 
-    public LinearLayout address_select_layout;
-    public RelativeLayout layout1;
-    public RelativeLayout layout2;
-    public RelativeLayout layout3;
+//    public LinearLayout address_select_layout;
+//    public RelativeLayout layout1;
+//    public RelativeLayout layout2;
+//    public RelativeLayout layout3;
 
     public LinearLayout address_layout;
     public ImageView address_img;
 
-    public TextView layout1_txt;
-    public TextView layout2_txt;
-    public TextView layout3_txt;
+//    public TextView layout1_txt;
+//    public TextView layout2_txt;
+//    public TextView layout3_txt;
 
     public TextView saveToNext;
     public int gender;
@@ -92,7 +94,7 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
         if(resume.getBirth()!=null){birth.setText(resume.getBirth());Str_data=resume.getBirth();}
         this.gender=resume.getGender();
         setSelect(gender);
-        if(resume.getAddress()!=null){address.setText(resume.getAddress());}
+        if(resume.getAddress()!=null){address.setText(resume.getAddress().getC_city());}
         if(candidate.getTel()!=null){tel.setText(candidate.getTel());}
         final Calendar c = Calendar.getInstance();
         birth_select_layout.setOnClickListener(new View.OnClickListener() {
@@ -110,12 +112,12 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
                 datePicker.show();
             }
         });
-        hashtable = ChinaCityUtil.initChinaCitysHashtable();
-
-        arrProvince=ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
-
-        address_img.setImageResource(R.drawable.turn_down);
-        address_select_layout.setVisibility(View.GONE);
+//        hashtable = ChinaCityUtil.initChinaCitysHashtable();
+//
+//        arrProvince=ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
+//
+//        address_img.setImageResource(R.drawable.turn_down);
+//        address_select_layout.setVisibility(View.GONE);
     }
 public void initAction(){
     turn_left.setOnClickListener(this);
@@ -124,9 +126,9 @@ public void initAction(){
     save.setOnClickListener(this);
     //saveToNext.setOnClickListener(this);
     address_layout.setOnClickListener(this);
-    layout1.setOnClickListener(this);
-    layout2.setOnClickListener(this);
-    layout3.setOnClickListener(this);
+//    layout1.setOnClickListener(this);
+//    layout2.setOnClickListener(this);
+//    layout3.setOnClickListener(this);
 
 }
     private void initView() {
@@ -153,26 +155,26 @@ public void initAction(){
         address= (TextView) findViewById(R.id.address);
         address_img= (ImageView) findViewById(R.id.address_img);
 
-        address_select_layout= (LinearLayout) findViewById(R.id.address_select_layout);
-        layout1= (RelativeLayout) findViewById(R.id.layout1);
-        layout2= (RelativeLayout) findViewById(R.id.layout2);
-        layout3= (RelativeLayout) findViewById(R.id.layout3);
-
-        layout1_txt= (TextView) findViewById(R.id.layout1_txt);
-        layout2_txt= (TextView) findViewById(R.id.layout2_txt);
-        layout3_txt= (TextView) findViewById(R.id.layout3_txt);
-
+//        address_select_layout= (LinearLayout) findViewById(R.id.address_select_layout);
+//        layout1= (RelativeLayout) findViewById(R.id.layout1);
+//        layout2= (RelativeLayout) findViewById(R.id.layout2);
+//        layout3= (RelativeLayout) findViewById(R.id.layout3);
+//
+//        layout1_txt= (TextView) findViewById(R.id.layout1_txt);
+//        layout2_txt= (TextView) findViewById(R.id.layout2_txt);
+//        layout3_txt= (TextView) findViewById(R.id.layout3_txt);
     }
     public void doSave(){
         GlobalProvider.getInstance().resume.setName(name.getText().toString());
-        GlobalProvider.getInstance().resume.setAddress(address.getText().toString());
+        if(GlobalProvider.getInstance().resume.getAddress()!=null){
+            GlobalProvider.getInstance().resume.setAddress( GlobalProvider.getInstance().resume.getAddress());
+        }
         GlobalProvider.getInstance().resume.setTel(tel.getText().toString());
         GlobalProvider.getInstance().resume.setBirth(Str_data);
         GlobalProvider.getInstance().resume.setGender(gender);
         this.setResult(Activity.RESULT_OK);
         this.finish();
     }
-
     public void setSelect(int i){
         switch(i){
 
@@ -199,6 +201,18 @@ public void initAction(){
                 this.gender=1;
                 break;
 
+        }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.GETLOCATIONINTENT:
+                if (resultCode == RESULT_OK) {
+                    if(GlobalProvider.getInstance().city!=null){
+                        address.setText(GlobalProvider.getInstance().city.getC_city());
+                        GlobalProvider.getInstance().resume.setAddress(GlobalProvider.getInstance().city);
+                    }
+                }
+                break;
         }
     }
     @Override
@@ -231,91 +245,93 @@ public void initAction(){
                 doSave();
                 break;
             case R.id.address_layout:
-                if(!Ishowing){
-                    address_img.setImageResource(R.drawable.turn_up);
-                    address_select_layout.setVisibility(View.VISIBLE);
-                }else{
-                    address_img.setImageResource(R.drawable.turn_down);
-                    address_select_layout.setVisibility(View.GONE);
-                }
-                Ishowing=!Ishowing;
+                Intent intent = new Intent(BaseDataActivity.this, LocationSearchActivity.class);
+                startActivityForResult(intent, Constants.GETLOCATIONINTENT);
+//                if(!Ishowing){
+//                    address_img.setImageResource(R.drawable.turn_up);
+//                    address_select_layout.setVisibility(View.VISIBLE);
+//                }else{
+//                    address_img.setImageResource(R.drawable.turn_down);
+//                    address_select_layout.setVisibility(View.GONE);
+//                }
+//                Ishowing=!Ishowing;
                 break;
-            case R.id.layout1:
-                new AlertDialog.Builder(BaseDataActivity.this)
-                        .setSingleChoiceItems(arrProvince, 0,
-                    new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int which) {
-                            choose_province = which;
-                        }
-                    }
-            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        province=arrProvince[choose_province];
-                        layout1_txt.setText(province);
-                        layout2_txt.setText("");
-                        layout3_txt.setText("");
-                        //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
-                        //shipingAdress_Str=items_shiping[chooseItem_one];
-                    }
-                }).setNegativeButton("取消",null)
-                        .show();
-                break;
-            case  R.id.layout2:
-                if(!layout1_txt.getText().equals("")) {
-                    arrCity = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_CITY, layout1_txt.getText().toString());
-                    new AlertDialog.Builder(BaseDataActivity.this)
-                            .setSingleChoiceItems(arrCity, 0,
-                                    new DialogInterface.OnClickListener() {
-
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            choose_city = which;
-                                        }
-                                    }
-                            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            city = arrCity[choose_city];
-                            layout2_txt.setText(city);
-
-                            layout3_txt.setText("");
-                            //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
-                            //shipingAdress_Str=items_shiping[chooseItem_one];
-                        }
-                    }).setNegativeButton("取消", null)
-                            .show();
-                }
-                break;
-            case R.id.layout3:
-                if(!layout1_txt.getText().equals("")&&!layout2_txt.getText().equals("")) {
-                    arrRegion = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_REGION, layout1_txt.getText().toString(),
-                            layout2_txt.getText().toString());
-                    new AlertDialog.Builder(BaseDataActivity.this)
-                            .setSingleChoiceItems(arrRegion, 0,
-                                    new DialogInterface.OnClickListener() {
-
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            choose_region = which;
-                                        }
-                                    }
-                            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            region = arrRegion[choose_region];
-                            layout3_txt.setText(region);
-
-                            address.setText(region);
-                            //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
-                            //shipingAdress_Str=items_shiping[chooseItem_one];
-                        }
-                    }).setNegativeButton("取消", null)
-                            .show();
-                }
-                break;
+//            case R.id.layout1:
+//                new AlertDialog.Builder(BaseDataActivity.this)
+//                        .setSingleChoiceItems(arrProvince, 0,
+//                    new DialogInterface.OnClickListener() {
+//
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            choose_province = which;
+//                        }
+//                    }
+//            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        province=arrProvince[choose_province];
+//                        layout1_txt.setText(province);
+//                        layout2_txt.setText("");
+//                        layout3_txt.setText("");
+//                        //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+//                        //shipingAdress_Str=items_shiping[chooseItem_one];
+//                    }
+//                }).setNegativeButton("取消",null)
+//                        .show();
+//                break;
+//            case  R.id.layout2:
+//                if(!layout1_txt.getText().equals("")) {
+//                    arrCity = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_CITY, layout1_txt.getText().toString());
+//                    new AlertDialog.Builder(BaseDataActivity.this)
+//                            .setSingleChoiceItems(arrCity, 0,
+//                                    new DialogInterface.OnClickListener() {
+//
+//                                        public void onClick(DialogInterface dialog, int which) {
+//                                            choose_city = which;
+//                                        }
+//                                    }
+//                            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+//
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            city = arrCity[choose_city];
+//                            layout2_txt.setText(city);
+//
+//                            layout3_txt.setText("");
+//                            //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+//                            //shipingAdress_Str=items_shiping[chooseItem_one];
+//                        }
+//                    }).setNegativeButton("取消", null)
+//                            .show();
+//                }
+//                break;
+//            case R.id.layout3:
+//                if(!layout1_txt.getText().equals("")&&!layout2_txt.getText().equals("")) {
+//                    arrRegion = ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_REGION, layout1_txt.getText().toString(),
+//                            layout2_txt.getText().toString());
+//                    new AlertDialog.Builder(BaseDataActivity.this)
+//                            .setSingleChoiceItems(arrRegion, 0,
+//                                    new DialogInterface.OnClickListener() {
+//
+//                                        public void onClick(DialogInterface dialog, int which) {
+//                                            choose_region = which;
+//                                        }
+//                                    }
+//                            ).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+//
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            region = arrRegion[choose_region];
+//                            layout3_txt.setText(region);
+//
+//                            address.setText(region);
+//                            //GlobalProvider.getInstance().Adress[0]=items_shiping[chooseItem_one];
+//                            //shipingAdress_Str=items_shiping[chooseItem_one];
+//                        }
+//                    }).setNegativeButton("取消", null)
+//                            .show();
+//                }
+//                break;
 //            case R.id.saveToNext:
 //                doSave();
 //                break;

@@ -21,6 +21,7 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
 import com.example.ryo.job_employer.models.Employer;
+import com.example.ryo.job_employer.models.EmployerUpdate;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
 import com.example.ryo.job_employer.network.Constants;
 
@@ -44,6 +45,7 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
     public TextView save;
     public EditText name;
     public Employer GolEmployer=GlobalProvider.getInstance().employer;
+    public EmployerUpdate employer=new EmployerUpdate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +58,14 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
 
     }
     public void doAdjust(){
-        if(GolEmployer.getCompanyname()!=null&&!GolEmployer.getCompanyname().equals("")&&GolEmployer.getMainBusiness()!=null&&!GolEmployer.getMainBusiness().equals("")&&GolEmployer.getCompanyInfo()!=null&&!GolEmployer.getCompanyInfo().equals("")&&GolEmployer.getCompanyAddress()!=null&&!GolEmployer.getCompanyAddress().equals("")&&GolEmployer.getCompanyURL()!=null&&!GolEmployer.getCompanyURL().equals("")&&GolEmployer.getProvince()!=null&&!GolEmployer.getProvince().equals("")&&GolEmployer.getCity()!=null&&!GolEmployer.getCity().equals("")&&GolEmployer.getRegion()!=null&&!GolEmployer.getRegion().equals("")){
+        if(GolEmployer.getCompanyname()!=null&&!GolEmployer.getCompanyname().equals("")&&GolEmployer.getMainBusiness()!=null&&!GolEmployer.getMainBusiness().equals("")&&GolEmployer.getCompanyInfo()!=null&&!GolEmployer.getCompanyInfo().equals("")&&GolEmployer.getCompanyAddress()!=null&&!GolEmployer.getCompanyAddress().equals("")&&GolEmployer.getDetailedCompanyAddress()!=null&&GolEmployer.getCompanyURL()!=null&&!GolEmployer.getCompanyURL().equals("")){
             needText.setText("已完善");
         }else{
             needText.setText("需完善");
         }
     }
     public boolean adJustToOpen(){
-        if(GolEmployer.getName()==null||GolEmployer.getName().equals("")||GolEmployer.getCompanyname()==null||GolEmployer.getCompanyname().equals("")||GolEmployer.getMainBusiness()==null||GolEmployer.getMainBusiness().equals("")||GolEmployer.getCompanyURL()==null||GolEmployer.getCompanyURL().equals("")||GolEmployer.getProvince()==null||GolEmployer.getCompanyAddress()==null||GolEmployer.getCompanyAddress().equals("")||GolEmployer.getCompanyInfo()==null||GolEmployer.getCompanyInfo().equals("")){
+        if(name.getText()==null||name.getText().toString().equals("")||GolEmployer.getName()==null||GolEmployer.getName().equals("")||GolEmployer.getCompanyname()==null||GolEmployer.getCompanyname().equals("")||GolEmployer.getMainBusiness()==null||GolEmployer.getMainBusiness().equals("")||GolEmployer.getCompanyURL()==null||GolEmployer.getCompanyURL().equals("")||GolEmployer.getCompanyAddress()==null||GolEmployer.getCompanyAddress().equals("")||GolEmployer.getDetailedCompanyAddress()==null||GolEmployer.getCompanyInfo()==null||GolEmployer.getCompanyInfo().equals("")){
             return false;
         }else{
             return true;
@@ -213,15 +215,21 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
         }
     }
     public void doSave(Boolean isRelease){
-        GlobalProvider.getInstance().employer.setName(name.getText().toString());
-        Employer emloyer=GlobalProvider.getInstance().employer;
-        emloyer.setIsRelease(isRelease);
+        //GlobalProvider.getInstance().employer.setName(name.getText().toString());
+        if(name.getText()!=null){employer.setName(name.getText().toString());}
+        if(GolEmployer.getDetailedCompanyAddress()!=null){employer.setDetailedCompanyAddress(GolEmployer.getDetailedCompanyAddress().get_id());}
+        if(GolEmployer.getCompanyAddress()!=null){employer.setCompanyAddress(GolEmployer.getCompanyAddress());}
+        if(GolEmployer.getCompanyInfo()!=null){employer.setCompanyInfo(GolEmployer.getCompanyInfo());}
+        if(GolEmployer.getCompanyURL()!=null){employer.setCompanyURL(GolEmployer.getCompanyURL());}
+        if(GolEmployer.getMainBusiness()!=null){employer.setMainBusiness(GolEmployer.getMainBusiness());}
+        if(GolEmployer.getCompanyname()!=null){employer.setCompanyname(GolEmployer.getCompanyname());}
+        employer.setIsRelease(isRelease);
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
         try {
-            json = ow.writeValueAsString(emloyer);
+            json = ow.writeValueAsString(employer);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
             String URL= Constants.personalInfo+"/"+GlobalProvider.getInstance().employerId;

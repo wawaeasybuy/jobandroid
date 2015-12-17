@@ -6,13 +6,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Administrator on 2015/10/23.
+ * Created by Administrator on 2015/12/17.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Employer  implements Serializable {
-
+public class EmployerUpdate implements Serializable{
     public String name;
-    public String password;
+
     public String companyname;
     public String companyInfo;
 
@@ -49,13 +48,7 @@ public class Employer  implements Serializable {
         this.companyname = companyname;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getName() {
         return name;
@@ -78,63 +71,18 @@ public class Employer  implements Serializable {
 
     public String companyAddress;
 
-    public City getDetailedCompanyAddress() {
+    public String getDetailedCompanyAddress() {
         return detailedCompanyAddress;
     }
 
-    public void setDetailedCompanyAddress(City detailedCompanyAddress) {
+    public void setDetailedCompanyAddress(String detailedCompanyAddress) {
         this.detailedCompanyAddress = detailedCompanyAddress;
     }
 
-    public City detailedCompanyAddress;
-    public int score;
-    public int UrTicket;
+    public String detailedCompanyAddress;
 
-    public String get_id() {
-        return _id;
-    }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
 
-    public String get_user() {
-        return _user;
-    }
-
-    public void set_user(String _user) {
-        this._user = _user;
-    }
-
-    public int getTopTicket() {
-        return TopTicket;
-    }
-
-    public void setTopTicket(int topTicket) {
-        TopTicket = topTicket;
-    }
-
-    public int getUrTicket() {
-        return UrTicket;
-    }
-
-    public void setUrTicket(int urTicket) {
-        UrTicket = urTicket;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public int TopTicket;
-    public String _user;
-    public String _id;
-    public Boolean pubResume;
-    public List<EmpMessage>  message;
 
     public boolean isRelease() {
         return isRelease;
@@ -145,5 +93,4 @@ public class Employer  implements Serializable {
     }
 
     public boolean isRelease;
-
 }

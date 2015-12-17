@@ -27,6 +27,7 @@ import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
 import com.mardin.job.models.Resume;
+import com.mardin.job.models.ResumeUpdate;
 import com.mardin.job.network.Constants;
 
 import org.apache.http.Header;
@@ -191,9 +192,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                     .setPositiveButton("是", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             GlobalProvider.getInstance().resume.setIsdelivered(true);
-
                             doSave();
-
                         }
                     }).show();
         }else{
@@ -224,17 +223,59 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         }
     }
     public void doSave(){
-        Resume resumeUpdate=GlobalProvider.getInstance().resume;
+        Resume Resume=GlobalProvider.getInstance().resume;
+        ResumeUpdate resumeUpdate=new ResumeUpdate();
+
+        if(Resume.getName()!=null){resumeUpdate.setName(Resume.getName());}
+        if(Resume.getName()!=null){resumeUpdate.setAddress(Resume.getAddress().get_id());}
+        if(Resume.getName()!=null){resumeUpdate.setTel(Resume.getTel());}
+        if(Resume.getName()!=null){resumeUpdate.setBirth(Resume.getBirth());}
+        if(Resume.getName()!=null){resumeUpdate.setGender(Resume.getGender());}
+        if(Resume.getName()!=null){resumeUpdate.setExpectedAddress(Resume.getExpectedAddress().get_id());}
+        if(Resume.getName()!=null){resumeUpdate.setExpectedIndustry(Resume.getExpectedIndustry());}
+        if(Resume.getName()!=null){resumeUpdate.setExpectedPosition(Resume.getExpectedPosition());}
+        if(Resume.getName()!=null){resumeUpdate.setSchoolName(Resume.getSchoolName());}
+        if(Resume.getName()!=null){resumeUpdate.setProfessional(Resume.getProfessional());}
+        if(Resume.getName()!=null){resumeUpdate.setGrade(Resume.getGrade());}
+        if(Resume.getName()!=null){resumeUpdate.setGraduationTime(Resume.getGraduationTime());}
+        if(Resume.getName()!=null){resumeUpdate.setInternshipExprience(Resume.getInternshipExprience());}
+        if(Resume.getName()!=null){resumeUpdate.setSelfEvaluation(Resume.getSelfEvaluation());}
+        if(Resume.getName()!=null){resumeUpdate.setExperience(Resume.getExperience());}
+        if(Resume.getName()!=null){resumeUpdate.setWorks(Resume.getWorks());}
+        if(Resume.getBeOpen()!=null&&!Resume.getBeOpen()){
+            resumeUpdate.setBeOpen(Resume.getBeOpen());
+        }
+        if(Resume.isdelivered()){
+            resumeUpdate.setIsdelivered(Resume.isdelivered());
+        }
+//        GlobalProvider.getInstance().resume.setName(name.getText().toString());
+//        GlobalProvider.getInstance().resume.setAddress(address.getText().toString());
+//        GlobalProvider.getInstance().resume.setTel(tel.getText().toString());
+//        GlobalProvider.getInstance().resume.setBirth(Str_data);
+//        GlobalProvider.getInstance().resume.setGender(gender);
+//        GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
+//        GlobalProvider.getInstance().resume.setExpectedAddress(expectedAddress.getText().toString());
+//        GlobalProvider.getInstance().resume.setExpectedPosition(expectedPosition.getText().toString());
+//        GlobalProvider.getInstance().resume.setSchoolName(schoolName.getText().toString());
+//        GlobalProvider.getInstance().resume.setProfessional(professional.getText().toString());
+//        //GlobalProvider.getInstance().resume.setGraduationTime(graduationTime.getText().toString());
+//        GlobalProvider.getInstance().resume.setGrade(grade.getText().toString());
+//        GlobalProvider.getInstance().resume.setGraduationTime(Str_data);
+//        GlobalProvider.getInstance().resume.setInternshipExprience(internshipExprience.getText().toString());
+//        GlobalProvider.getInstance().resume.setSelfEvaluation(selfEvaluation.getText().toString());
+//        GlobalProvider.getInstance().resume.setExperience(experience.getText().toString());
+//        GlobalProvider.getInstance().resume.setWorks(works.getText().toString());
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
         try {
-            json = ow.writeValueAsString(resumeUpdate);
-            ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
-            GlobalProvider globalProvider = GlobalProvider.getInstance();
-            if(resumeUpdate.get_id()!=null){
-                String Url=Constants.createResumeStr+"/"+resumeUpdate.get_id();
+            if(Resume.get_id()!=null){
+                resumeUpdate.set_id(Resume.get_id());
+                json = ow.writeValueAsString(resumeUpdate);
+                ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+                GlobalProvider globalProvider = GlobalProvider.getInstance();
+                String Url=Constants.createResumeStr+"/"+Resume.get_id();
                 globalProvider.put(this, Url, entity, "application/json", new RequestListener() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -255,6 +296,9 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                     }
                 });
             }else{
+                json = ow.writeValueAsString(resumeUpdate);
+                ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
+                GlobalProvider globalProvider = GlobalProvider.getInstance();
                 String Url=Constants.createResumeStr+"/"+GlobalProvider.getInstance().candidate.get_id();
                 globalProvider.post(this, Url, entity, "application/json", new RequestListener() {
                     @Override
@@ -315,7 +359,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
     public void doUpdateResume(){
         resume= GlobalProvider.getInstance().resume;
         candidate=GlobalProvider.getInstance().candidate;
-        if((candidate.getName()!=null&&!candidate.getName().equals(""))||(candidate.getTel()!=null&&!candidate.getTel().equals(""))||(resume.getAddress()!=null&&!resume.getAddress().equals(""))||(resume.getBirth()!=null&&!resume.getBirth().equals(""))){
+        if((candidate.getName()!=null&&!candidate.getName().equals(""))||(candidate.getTel()!=null&&!candidate.getTel().equals(""))||(resume.getAddress()!=null||(resume.getBirth()!=null&&!resume.getBirth().equals("")))){
             no_personal_base_info.setVisibility(View.GONE);
             personal_base_info.setVisibility(View.VISIBLE);
             if(candidate.getName()!=null&&!candidate.getName().equals("")){
@@ -326,10 +370,10 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                 resume_name.setText("简历名称未填写");
             }
             if(candidate.getTel()!=null&&!candidate.getTel().equals("")){tel.setText("联系方式: "+candidate.getTel());}else{tel.setText("联系方式: 未填写");}
-            if(resume.getAddress()!=null&&!resume.getAddress().equals("")){address.setText("居住地: "+resume.getAddress());}else{address.setText("居住地: 未填写");}
+            if(resume.getAddress()!=null){address.setText("居住地: "+resume.getAddress().getC_city());}else{address.setText("居住地: 未填写");}
             if(resume.getBirth()!=null&&!resume.getBirth().equals("")){birth.setText("出生年月: "+resume.getBirth());}else{birth.setText("出生年月: 未填写");}
 
-            if(candidate.getName()!=null&&!candidate.getName().equals("")&&candidate.getTel()!=null&&!candidate.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")){
+            if(candidate.getName()!=null&&!candidate.getName().equals("")&&candidate.getTel()!=null&&!candidate.getTel().equals("")&&resume.getAddress()!=null&&resume.getBirth()!=null&&!resume.getBirth().equals("")){
                 personal_base_info_nofill.setText("已完善");
                 clickToFillBaseInfo.setText("(点击修改)");
                 //personal_base_info_nofill.setClickable(true);
@@ -343,14 +387,14 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             no_personal_base_info.setVisibility(View.VISIBLE);
             personal_base_info.setVisibility(View.GONE);
         }
-        if((resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals(""))||(resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals(""))||(resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals(""))){
+        if((resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals(""))||(resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals(""))||(resume.getExpectedAddress()!=null)){
             no_job_intention.setVisibility(View.GONE);
             job_intention.setVisibility(View.VISIBLE);
             if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")){expectedIndustry.setText("期望行业: "+resume.getExpectedIndustry());}else{expectedIndustry.setText("期望行业: 未填写");}
             if(resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")){expectedPosition.setText("期望职位: "+resume.getExpectedPosition());}else{expectedPosition.setText("期望职位: 未填写");}
-            if(resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress());}else{expectedAddress.setText("期望工作地点: 未填写");}
+            if(resume.getExpectedAddress()!=null){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress().getC_city());}else{expectedAddress.setText("期望工作地点: 未填写");}
 
-            if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")){
+            if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null){
                 job_intention_nofill.setText("已完善");
                 clickToFillJobIntent.setText("(点击修改)");
                 //job_intention_nofill.setClickable(false);
@@ -409,7 +453,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
         }
     }
     public boolean adjustToSave(){
-        if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&!resume.getAddress().equals("")&&resume.getBirth()!=null&&!resume.getBirth().equals("")&&resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&!resume.getExpectedAddress().equals("")&&resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){
+        if(resume.getName()!=null&&!resume.getName().equals("")&&resume.getTel()!=null&&!resume.getTel().equals("")&&resume.getAddress()!=null&&resume.getBirth()!=null&&!resume.getBirth().equals("")&&resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null&&resume.getSchoolName()!=null&&!resume.getSchoolName().equals("")&&resume.getProfessional()!=null&&!resume.getProfessional().equals("")&&resume.getGraduationTime()!=null&&!resume.getGraduationTime().equals("")&&resume.getGrade()!=null&&!resume.getGrade().equals("")&&resume.getSelfEvaluation()!=null&&!resume.getSelfEvaluation().equals("")){
             return true;
         }else{
             return false;

@@ -3,6 +3,7 @@ package com.example.ryo.job_employer.models;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2015/11/5.
@@ -10,61 +11,83 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateJobBody implements Serializable{
 
-    public String PositionName;
 
-    public String getIndustryCategory() {
-        return IndustryCategory;
+    public String get_id() {
+        return _id;
     }
 
-    public void setIndustryCategory(String industryCategory) {
-        IndustryCategory = industryCategory;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public int getSalary() {
-        return Salary;
-    }
+    public String _id;
+    public String positionName;
+    public String positionCategory;
+    public String industryCategory;
+    public int salary;
+    public String requirement;
+    public String positionCharacter;
+   // public String city;
 
-    public void setSalary(int salary) {
-        Salary = salary;
-    }
 
-    public String getPositionCategory() {
-        return PositionCategory;
-    }
 
-    public void setPositionCategory(String positionCategory) {
-        PositionCategory = positionCategory;
-    }
 
-    public String getPositionCharacter() {
-        return PositionCharacter;
-    }
-
-    public void setPositionCharacter(String positionCharacter) {
-        PositionCharacter = positionCharacter;
-    }
-
-    public String getRequirement() {
-        return Requirement;
-    }
-
-    public void setRequirement(String requirement) {
-        Requirement = requirement;
-    }
 
     public String getPositionName() {
-        return PositionName;
+        return positionName;
     }
 
     public void setPositionName(String positionName) {
-        PositionName = positionName;
+        this.positionName = positionName;
     }
 
-    public String IndustryCategory;
-    public String Requirement;
-    public String PositionCharacter;
-    public String PositionCategory;
-    public int Salary;
+    public String getPositionCategory() {
+        return positionCategory;
+    }
+
+    public void setPositionCategory(String positionCategory) {
+        this.positionCategory = positionCategory;
+    }
+
+    public String getIndustryCategory() {
+        return industryCategory;
+    }
+
+    public void setIndustryCategory(String industryCategory) {
+        this.industryCategory = industryCategory;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+
+    public String getPositionCharacter() {
+        return positionCharacter;
+    }
+
+    public void setPositionCharacter(String positionCharacter) {
+        this.positionCharacter = positionCharacter;
+    }
+
+    public String getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(String requirement) {
+        this.requirement = requirement;
+    }
 
     public Boolean getIsRelease() {
         return isRelease;
@@ -73,6 +96,9 @@ public class CreateJobBody implements Serializable{
     public void setIsRelease(Boolean isRelease) {
         this.isRelease = isRelease;
     }
+
+
+
 
     public Boolean isRelease;
 
@@ -85,5 +111,24 @@ public class CreateJobBody implements Serializable{
     }
 
     public Boolean isPush;
+
+    public String getWorkAddress() {
+        return workAddress;
+    }
+
+    public void setWorkAddress(String workAddress) {
+        this.workAddress = workAddress;
+    }
+
+    public String getDetailedAddress() {
+        return detailedAddress;
+    }
+
+    public void setDetailedAddress(String detailedAddress) {
+        this.detailedAddress = detailedAddress;
+    }
+
+    public String  workAddress;
+    public String detailedAddress;
 
 }

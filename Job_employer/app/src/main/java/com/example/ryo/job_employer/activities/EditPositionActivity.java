@@ -54,6 +54,8 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     public RelativeLayout industry_layout;
     public RelativeLayout position_layout;
     public RelativeLayout workingAddress;
+    public TextView workingAddress_text;
+    public EditText detailedAddress;
     public TextView industry_text;
     public TextView position_text;
     public Hashtable<String,String[]> hashtable;
@@ -64,6 +66,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     public int getChooseItem_position;
     public int a=0;
     public int b=0;
+    public String id="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +84,8 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
             if(job.getRequirement()!=null){requirement.setText(job.getRequirement());}
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
             if(job.getPositionCategory()!=null){position_text.setText(job.getPositionCategory());}
+            if(job.getWorkAddress()!=null){workingAddress_text.setText(job.getWorkAddress().getC_city());}
+            if(job.getDetailedAddress()!=null){detailedAddress.setText(job.getDetailedAddress());}
             salary.setText(job.getSalary()+"");
         }
     }
@@ -90,8 +95,8 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         workingAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(EditPositionActivity.this,LocationSearchActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(EditPositionActivity.this, LocationSearchActivity.class);
+                startActivityForResult(intent, Constants.GETLOCATIONINTENT);
             }
         });
         industry_layout.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +106,6 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                 new AlertDialog.Builder(EditPositionActivity.this)
                         .setSingleChoiceItems(industry_arr, 0,
                                 new DialogInterface.OnClickListener() {
-
                                     public void onClick(DialogInterface dialog, int which) {
                                         chooseItem_industry = which;
                                         a=1;
@@ -157,7 +161,22 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
             }
         });
     }
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Constants.GETLOCATIONINTENT:
+                if (resultCode == RESULT_OK) {
+                    if(GlobalProvider.getInstance().city!=null){
+                        workingAddress_text.setText(GlobalProvider.getInstance().city.getC_city());
+                        if(job!=null){
+                            job.workAddress.set_id(GlobalProvider.getInstance().city.get_id());
+                        }else{
+                            id=GlobalProvider.getInstance().city.get_id();
+                        }
+                    }
+                }
+                break;
+        }
+    }
     private void initView() {
         turn_left = (LinearLayout) findViewById(R.id.turn_left);
         save= (TextView) findViewById(R.id.save);
@@ -171,6 +190,8 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         salary= (EditText) findViewById(R.id.salary);
         requirement= (EditText) findViewById(R.id.requirement);
         workingAddress= (RelativeLayout) findViewById(R.id.workingAddress);
+        workingAddress_text= (TextView) findViewById(R.id.workingAddress_text);
+        detailedAddress= (EditText) findViewById(R.id.detailedAddress);
         //positionCategory= (EditText) findViewById(R.id.positionCategory);
     }
     @Override
@@ -185,7 +206,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
        }
     }
     public Boolean adjustToPush(){
-        if(positionName.getText()!=null&&positionName.getText().toString().length()>0&&industry_text.getText()!=null&&industry_text.getText().toString().length()>0&&salary.getText()!=null&&salary.getText().toString().length()>0&&requirement.getText()!=null&&requirement.getText().toString().length()>0&&positionCharacter.getText()!=null&&positionCharacter.getText().toString().length()>0&&position_text.getText()!=null&&position_text.getText().toString().length()>0){
+        if(workingAddress_text.getText()!=null&&workingAddress_text.getText().toString().length()>0&&detailedAddress.getText()!=null&&detailedAddress.getText().toString().length()>0&&positionName.getText()!=null&&positionName.getText().toString().length()>0&&industry_text.getText()!=null&&industry_text.getText().toString().length()>0&&salary.getText()!=null&&salary.getText().toString().length()>0&&requirement.getText()!=null&&requirement.getText().toString().length()>0&&positionCharacter.getText()!=null&&positionCharacter.getText().toString().length()>0&&position_text.getText()!=null&&position_text.getText().toString().length()>0){
             return true;
         }else{
             return false;
@@ -200,27 +221,32 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     }
     public void dofinish(){
         if(adjustToPush()){
+            jobBody=new CreateJobBody();
             new AlertDialog.Builder(this)
                     .setMessage("职位可发布，是否保存？")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
                             if(job!=null){
-                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
-                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
-                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
-                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
-                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
-                                job.setIsRelease(true);
-                                job.setIsPush(true);
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.workAddress.get_id());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(true);
+                                jobBody.setIsPush(true);
                                 update();
                             }else{
-                                jobBody=new CreateJobBody();
                                 if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
                                 if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(true);
@@ -235,27 +261,32 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                 }
             }).show();
         }else{
+            jobBody=new CreateJobBody();
             new AlertDialog.Builder(this)
                     .setMessage("职位不可发布，是否保存？")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
                             if(job!=null){
-                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
-                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
-                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
-                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
-                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
-                                job.setIsRelease(false);
-                                job.setIsPush(false);
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.getWorkAddress().get_id());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(false);
+                                jobBody.setIsPush(false);
                                 update();
                             }else{
-                                jobBody=new CreateJobBody();
                                 if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
                                 if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(false);
@@ -270,7 +301,6 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                 }
             }).show();
         }
-
     }
     public void doSave(){
 //           if(job!=null){
@@ -292,27 +322,31 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
 //               createJob();
 //          }
         if(adjustToPush()){
+            jobBody=new CreateJobBody();
             new AlertDialog.Builder(this)
                     .setMessage("职位可发布，是否保存？")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if(job!=null){
-                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
-                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
-                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
-                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
-                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
-                                 job.setIsRelease(true);
-                                job.setIsPush(true);
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.getWorkAddress().get_id());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(true);
+                                jobBody.setIsPush(true);
                                 update();
                             }else{
-                                jobBody=new CreateJobBody();
                                 if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
                                 if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(true);
@@ -327,27 +361,31 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                 }
             }).show();
         }else{
+            jobBody=new CreateJobBody();
             new AlertDialog.Builder(this)
                     .setMessage("职位不可发布，是否保存？")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if(job!=null){
-                                if(positionName.getText()!=null){job.setPositionName(positionName.getText().toString());}
-                                if(industry_text.getText()!=null){job.setIndustryCategory(industry_text.getText().toString());}
-                                if(salary.getText()!=null&&salary.getText().toString().length()>0){job.setSalary(Integer.parseInt(salary.getText().toString()));}
-                                if(requirement.getText()!=null){job.setRequirement(requirement.getText().toString());}
-                                if(positionCharacter.getText()!=null){job.setPositionCharacter(positionCharacter.getText().toString());}
-                                if(position_text.getText()!=null){job.setPositionCategory(position_text.getText().toString());}
-                                job.setIsRelease(false);
-                                job.setIsPush(false);
+                                if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
+                                if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
+                                if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
+                                if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.getWorkAddress().get_id());}
+                                if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
+                                if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
+                                jobBody.setIsRelease(false);
+                                jobBody.setIsPush(false);
                                 update();
                             }else{
-                                jobBody=new CreateJobBody();
                                 if(positionName.getText()!=null){jobBody.setPositionName(positionName.getText().toString());}
                                 if(industry_text.getText()!=null){jobBody.setIndustryCategory(industry_text.getText().toString());}
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
+                                if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
+                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(false);
@@ -364,12 +402,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         }
     }
     public void update(){
+        jobBody.set_id(job.get_id());
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         String json = "";
         try {
-            json = ow.writeValueAsString(job);
+            json = ow.writeValueAsString(jobBody);
             ByteArrayEntity entity= new ByteArrayEntity(json.getBytes("UTF-8"));
             GlobalProvider globalProvider = GlobalProvider.getInstance();
             String URL= Constants.UpdateJobStr+"/"+job.get_id();

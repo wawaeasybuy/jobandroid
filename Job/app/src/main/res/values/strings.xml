@@ -194,6 +194,7 @@
     <string name="position_search">职位搜索</string>
     <string name="positionToapply">职位申请</string>
     <string name="position_search_content"> 请输入职位/公司</string>
+    <string name="location_search">请输入你需要查找的地点</string>
     <string name="position_classify">职位类别</string>
     <string name="Internet">互联网</string>
     <string name="jinrong">金融财会</string>

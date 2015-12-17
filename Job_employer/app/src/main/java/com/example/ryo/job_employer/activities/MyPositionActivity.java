@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -169,7 +170,7 @@ public class MyPositionActivity extends Activity implements View.OnClickListener
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                //Log.v("err", new String(responseBody));
+                Log.v("err", new String(responseBody));
                 swiperefresh.setRefreshing(false);
 
             }

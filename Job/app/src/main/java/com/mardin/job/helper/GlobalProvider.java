@@ -11,6 +11,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.mardin.job.models.Candidate;
+import com.mardin.job.models.City;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
@@ -28,6 +29,8 @@ public class GlobalProvider {
     public Boolean isLoging;
     public Candidate candidate=new Candidate();
     public String country;
+    public City city;
+    public City InterCity;
 
     private GlobalProvider() {
         client = new AsyncHttpClient();

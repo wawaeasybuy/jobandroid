@@ -59,7 +59,7 @@
                 android:background="#aaddff"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="1dp"
-                android:hint="@string/position_search_content" />
+                android:hint="@string/location_search" />
 
         </LinearLayout>
 
@@ -67,7 +67,7 @@
 
     <ListView
         android:background="#ffffff"
-        android:id="@+id/lv_job_search"
+        android:id="@+id/lv_location_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

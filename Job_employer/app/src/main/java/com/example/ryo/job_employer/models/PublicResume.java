@@ -25,13 +25,13 @@ public class PublicResume implements Serializable {
     public int gender;
     public String companyName;
     public String tel;
-    public String address;
+    public City address;
     public String name;
     public String birth;
     public String imgName;
     public String expectedIndustry;
     public String expectedPosition;
-    public String expectedAddress;
+    public City expectedAddress;
     public String selfEvaluation;
     public String experience;
     public String works;
@@ -142,11 +142,11 @@ public class PublicResume implements Serializable {
         this.selfEvaluation = selfEvaluation;
     }
 
-    public String getExpectedAddress() {
+    public City getExpectedAddress() {
         return expectedAddress;
     }
 
-    public void setExpectedAddress(String expectedAddress) {
+    public void setExpectedAddress(City expectedAddress) {
         this.expectedAddress = expectedAddress;
     }
 
@@ -190,11 +190,11 @@ public class PublicResume implements Serializable {
         this.name = name;
     }
 
-    public String getAddress() {
+    public City getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(City address) {
         this.address = address;
     }
 
