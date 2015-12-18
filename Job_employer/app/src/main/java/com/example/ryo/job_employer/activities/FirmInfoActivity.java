@@ -78,7 +78,12 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         if(GoEmployer.companyInfo!=null){description.setText(GoEmployer.getCompanyInfo());}
         if(GoEmployer.companyAddress!=null){CompanyAddress.setText(GoEmployer.getCompanyAddress());}
         if(GoEmployer.companyURL!=null){companyURL.setText(GoEmployer.getCompanyURL());}
-        if(GoEmployer.detailedCompanyAddress!=null){DetailedCompanyAddress.setText(GoEmployer.detailedCompanyAddress.getC_city());}
+        if(GoEmployer.detailedCompanyAddress!=null)
+        {
+            if(GoEmployer.detailedCompanyAddress._city!=null){
+            DetailedCompanyAddress.setText(GoEmployer.detailedCompanyAddress._city.getC_city());
+            }
+        }
         //if(country.equals("中国")){
 //        arrProvince=ChinaCityUtil.findAreaStringArr(hashtable, ChinaCityUtil.TYPE_PROVINCE);
 //       if(GoEmployer.province!=null){
@@ -136,6 +141,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
                 if (resultCode == RESULT_OK) {
                     if(GlobalProvider.getInstance().city!=null){
                         DetailedCompanyAddress.setText(GlobalProvider.getInstance().city.getC_city());
+                        GlobalProvider.getInstance().employer.detailedCompanyAddress.set_city(GlobalProvider.getInstance().city);
                     }
                 }
                 break;
@@ -277,7 +283,7 @@ public class FirmInfoActivity extends Activity implements View.OnClickListener {
         GlobalProvider.getInstance().employer.setMainBusiness(mainBusiness.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyInfo(description.getText().toString());
         GlobalProvider.getInstance().employer.setCompanyAddress(CompanyAddress.getText().toString());
-        GlobalProvider.getInstance().employer.setDetailedCompanyAddress(GlobalProvider.getInstance().city);
+        //GlobalProvider.getInstance().employer.detailedCompanyAddress.set_city(GlobalProvider.getInstance().city);
         GlobalProvider.getInstance().employer.setCompanyURL(companyURL.getText().toString());
 //        if(country.equals("中国")){
 //            GlobalProvider.getInstance().employer.setProvince(layout1_txt.getText().toString());

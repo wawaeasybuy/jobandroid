@@ -20,6 +20,8 @@ import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.Utils.PositionIndustryUtil;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.City;
+import com.example.ryo.job_employer.models.CityBodyUp;
 import com.example.ryo.job_employer.models.CreateJobBody;
 import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
@@ -67,6 +69,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
     public int a=0;
     public int b=0;
     public String id="";
+    public String cityCode="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +87,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
             if(job.getRequirement()!=null){requirement.setText(job.getRequirement());}
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
             if(job.getPositionCategory()!=null){position_text.setText(job.getPositionCategory());}
-            if(job.getWorkAddress()!=null){workingAddress_text.setText(job.getWorkAddress().getC_city());}
+            if(job.getWorkAddress()!=null&&job.getWorkAddress()._city!=null){workingAddress_text.setText(job.getWorkAddress()._city.getC_city());}
             if(job.getDetailedAddress()!=null){detailedAddress.setText(job.getDetailedAddress());}
             salary.setText(job.getSalary()+"");
         }
@@ -168,9 +171,14 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                     if(GlobalProvider.getInstance().city!=null){
                         workingAddress_text.setText(GlobalProvider.getInstance().city.getC_city());
                         if(job!=null){
-                            job.workAddress.set_id(GlobalProvider.getInstance().city.get_id());
+                            job.workAddress.set_city(GlobalProvider.getInstance().city);
+//                            if(job.getWorkAddress()._city==null){
+//                                job.getWorkAddress().set_city(new City());
+//                            }
+//                            job.workAddress._city.set_id(GlobalProvider.getInstance().city.get_id());
                         }else{
                             id=GlobalProvider.getInstance().city.get_id();
+                            cityCode=GlobalProvider.getInstance().city.getCityCode();
                         }
                     }
                 }
@@ -235,7 +243,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.workAddress.get_id());}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null){
+                                    jobBody.workAddress.set_city(job.workAddress._city.get_id());
+                                    jobBody.workAddress.setCityCode(job.workAddress._city.getCityCode());
+                                }
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(true);
                                 jobBody.setIsPush(true);
@@ -246,7 +260,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null&&!id.equals("")&&!cityCode.equals("")){
+                                    jobBody.workAddress.set_city(id);
+                                    jobBody.workAddress.setCityCode(cityCode);
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(true);
@@ -274,7 +294,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.getWorkAddress().get_id());}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null){
+                                    jobBody.workAddress.set_city(job.workAddress._city.get_id());
+                                    jobBody.workAddress.setCityCode(job.workAddress._city.getCityCode());
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(false);
@@ -286,7 +312,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null&&!id.equals("")&&!cityCode.equals("")){
+                                    jobBody.workAddress.set_city(id);
+                                    jobBody.workAddress.setCityCode(cityCode);
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(false);
@@ -334,7 +366,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.getWorkAddress().get_id());}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null){
+                                    jobBody.workAddress.set_city(job.workAddress._city.get_id());
+                                    jobBody.workAddress.setCityCode(job.workAddress._city.getCityCode());
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(true);
@@ -346,7 +384,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null&&!id.equals("")&&!cityCode.equals("")){
+                                    jobBody.workAddress.set_city(id);
+                                    jobBody.workAddress.setCityCode(cityCode);
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(true);
@@ -373,7 +417,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!=null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null){jobBody.setWorkAddress(job.getWorkAddress().get_id());}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null){
+                                    jobBody.workAddress.set_city(job.workAddress._city.get_id());
+                                    jobBody.workAddress.setCityCode(job.workAddress._city.getCityCode());
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(false);
@@ -385,7 +435,13 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
                                 if(salary.getText()!= null&&salary.getText().toString().length()>0){jobBody.setSalary(Integer.parseInt(salary.getText().toString()));}
                                 if(requirement.getText()!=null){jobBody.setRequirement(requirement.getText().toString());}
                                 if(detailedAddress.getText()!=null){jobBody.setDetailedAddress(detailedAddress.getText().toString());}
-                                if(workingAddress_text.getText()!=null&&!id.equals("")){jobBody.setWorkAddress(id);}
+                                if(jobBody.getWorkAddress()==null){
+                                    jobBody.setWorkAddress(new CityBodyUp());
+                                }
+                                if(workingAddress_text.getText()!=null&&!id.equals("")&&!cityCode.equals("")){
+                                    jobBody.workAddress.set_city(id);
+                                    jobBody.workAddress.setCityCode(cityCode);
+                                }
                                 if(positionCharacter.getText()!=null){jobBody.setPositionCharacter(positionCharacter.getText().toString());}
                                 if(position_text.getText()!=null){jobBody.setPositionCategory(position_text.getText().toString());}
                                 jobBody.setIsRelease(false);
@@ -402,6 +458,21 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         }
     }
     public void update(){
+        if(jobBody.getWorkAddress()==null||jobBody.getWorkAddress().get_city()==null){
+            new AlertDialog.Builder(this)
+                    .setMessage("工作地点为空，工作将不能保存！")
+                    .setNegativeButton("是，退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("继续填写", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    }).show();
+            return;
+        }
         jobBody.set_id(job.get_id());
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -434,6 +505,21 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
         }
     }
     public void createJob(){
+        if(jobBody.getWorkAddress()==null||jobBody.getWorkAddress().get_city()==null){
+            new AlertDialog.Builder(this)
+                    .setMessage("工作地点为空，工作将不能保存！")
+                    .setNegativeButton("是，退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("继续填写", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    }).show();
+            return;
+        }
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
@@ -452,7 +538,7 @@ public class EditPositionActivity extends Activity implements View.OnClickListen
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    //Toast.makeText(getActivity(), new String(responseBody), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditPositionActivity.this, new String(responseBody), Toast.LENGTH_SHORT).show();
                 }
 
                 @Override

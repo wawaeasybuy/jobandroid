@@ -79,7 +79,7 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
                 name_one.setText("Œ¥ÃÓ–¥");
             }
             if(resume.getBirth()!=null){birth.setText(resume.getBirth());}
-            if(resume.getAddress()!=null){address.setText(resume.getAddress().getC_city());}
+            if(resume.getAddress()!=null){address.setText(resume.address._city.getC_city());}
             if(resume.getTel()!=null){tel.setText(resume.getTel());}
             if(resume.getSchoolName()!=null) {schoolName.setText(resume.getSchoolName());}else{schoolName.setText("");}
             if(resume.getGraduationTime()!=null){graduationTime.setText(resume.getGraduationTime());}else{graduationTime.setText("");}
@@ -111,7 +111,7 @@ public class PersonalResumeActivity extends Activity implements View.OnClickList
                 name_one.setText("Œ¥ÃÓ–¥");
             }
             if(Pubresume.getBirth()!=null){birth.setText(Pubresume.getBirth());}
-            if(Pubresume.getAddress()!=null){address.setText(Pubresume.getAddress().getC_city());}
+            if(Pubresume.getAddress()!=null){address.setText(Pubresume.getAddress()._city.getC_city());}
             if(Pubresume.getTel()!=null){tel.setText(Pubresume.getTel());}
             if(Pubresume.getSchoolName()!=null) {schoolName.setText(Pubresume.getSchoolName());}else{schoolName.setText("");}
             if(Pubresume.getGraduationTime()!=null){graduationTime.setText(Pubresume.getGraduationTime());}else{graduationTime.setText("");}

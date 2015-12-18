@@ -32,13 +32,13 @@ public class Talent implements Serializable {
     public String _job;
     public int gender;
     public String phoneNumber;
-    public City address;
+    public CityBodyDown address;
     public String name;
     public Date birth;
     public String imgName;
     public String expectedIndustry;
     public String expectedPosition;
-    public City expectedAddress;
+    public CityBodyDown expectedAddress;
     public String selfEvaluation;
     public String experience;
     public String works;
@@ -100,11 +100,11 @@ public class Talent implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public City getAddress() {
+    public CityBodyDown getAddress() {
         return address;
     }
 
-    public void setAddress(City address) {
+    public void setAddress(CityBodyDown address) {
         this.address = address;
     }
 
@@ -148,11 +148,11 @@ public class Talent implements Serializable {
         this.expectedPosition = expectedPosition;
     }
 
-    public City getExpectedAddress() {
+    public CityBodyDown getExpectedAddress() {
         return expectedAddress;
     }
 
-    public void setExpectedAddress(City expectedAddress) {
+    public void setExpectedAddress(CityBodyDown expectedAddress) {
         this.expectedAddress = expectedAddress;
     }
 

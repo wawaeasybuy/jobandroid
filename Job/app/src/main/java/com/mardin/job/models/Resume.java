@@ -15,12 +15,12 @@ public class Resume implements Serializable {
     public Boolean beOpen;
     public int gender;
     public String tel;
-    public City address;
+    public CityBodyDown address;
     public String name;
     public String birth;
     public String imgName;
     public String expectedPosition;
-    public City expectedAddress;
+    public CityBodyDown expectedAddress;
     public String selfEvaluation;
     public String experience;
     public String works;
@@ -59,11 +59,11 @@ public class Resume implements Serializable {
         this.tel = tel;
     }
 
-    public City getAddress() {
+    public CityBodyDown getAddress() {
         return address;
     }
 
-    public void setAddress(City address) {
+    public void setAddress(CityBodyDown address) {
         this.address = address;
     }
 
@@ -99,11 +99,11 @@ public class Resume implements Serializable {
         this.expectedPosition = expectedPosition;
     }
 
-    public City getExpectedAddress() {
+    public CityBodyDown getExpectedAddress() {
         return expectedAddress;
     }
 
-    public void setExpectedAddress(City expectedAddress) {
+    public void setExpectedAddress(CityBodyDown expectedAddress) {
         this.expectedAddress = expectedAddress;
     }
 

@@ -71,15 +71,15 @@ public class EmployerUpdate implements Serializable{
 
     public String companyAddress;
 
-    public String getDetailedCompanyAddress() {
+    public CityBodyUp getDetailedCompanyAddress() {
         return detailedCompanyAddress;
     }
 
-    public void setDetailedCompanyAddress(String detailedCompanyAddress) {
+    public void setDetailedCompanyAddress(CityBodyUp detailedCompanyAddress) {
         this.detailedCompanyAddress = detailedCompanyAddress;
     }
 
-    public String detailedCompanyAddress;
+    public CityBodyUp detailedCompanyAddress;
 
 
 

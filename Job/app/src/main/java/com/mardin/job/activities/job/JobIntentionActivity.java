@@ -24,6 +24,7 @@ import com.mardin.job.Utils.ExpectedIndustryUtil;
 import com.mardin.job.Utils.PositionIndustryUtil;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
+import com.mardin.job.models.CityBodyDown;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
@@ -180,7 +181,7 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
        save= (TextView) findViewById(R.id.save);
 
         this.resume=GlobalProvider.getInstance().resume;
-        if(resume.getExpectedAddress()!=null){expectedAddress.setText(resume.getExpectedAddress().getC_city());}
+        if(resume.getExpectedAddress()!=null){expectedAddress.setText(resume.getExpectedAddress()._city.getC_city());}
         if(resume.getExpectedIndustry()!=null){expectedIndustry.setText(resume.getExpectedIndustry());}
         if(resume.getExpectedPosition()!=null){expectedPosition.setText(resume.getExpectedPosition());}
         save.setOnClickListener(new View.OnClickListener() {
@@ -234,7 +235,10 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
                 if (resultCode == RESULT_OK) {
                     if(GlobalProvider.getInstance().city!=null){
                         expectedAddress.setText(GlobalProvider.getInstance().city.getC_city());
-                        GlobalProvider.getInstance().resume.setExpectedAddress(GlobalProvider.getInstance().city);
+                        if(GlobalProvider.getInstance().resume.getExpectedAddress()==null){
+                            GlobalProvider.getInstance().resume.setExpectedAddress(new CityBodyDown());
+                        }
+                        GlobalProvider.getInstance().resume.expectedAddress.set_city(GlobalProvider.getInstance().city);
                     }
                 }
                 break;
@@ -335,9 +339,9 @@ public class JobIntentionActivity extends Activity implements View.OnClickListen
     }
     public void doSave(){
         GlobalProvider.getInstance().resume.setExpectedIndustry(expectedIndustry.getText().toString());
-        if(GlobalProvider.getInstance().resume.getExpectedAddress()!=null){
-            GlobalProvider.getInstance().resume.setExpectedAddress(GlobalProvider.getInstance().resume.getExpectedAddress());
-        }
+//        if(GlobalProvider.getInstance().resume.getExpectedAddress()!=null){
+//            GlobalProvider.getInstance().resume.setExpectedAddress(GlobalProvider.getInstance().resume.getExpectedAddress());
+//        }
         GlobalProvider.getInstance().resume.setExpectedPosition(expectedPosition.getText().toString());
         setResult(Activity.RESULT_OK);
         finish();

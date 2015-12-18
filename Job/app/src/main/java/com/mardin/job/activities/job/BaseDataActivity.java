@@ -25,6 +25,7 @@ import com.mardin.job.R;
 import com.mardin.job.Utils.ChinaCityUtil;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.models.Candidate;
+import com.mardin.job.models.CityBodyDown;
 import com.mardin.job.models.Resume;
 import com.mardin.job.network.Constants;
 
@@ -94,7 +95,7 @@ public class BaseDataActivity extends Activity implements View.OnClickListener{
         if(resume.getBirth()!=null){birth.setText(resume.getBirth());Str_data=resume.getBirth();}
         this.gender=resume.getGender();
         setSelect(gender);
-        if(resume.getAddress()!=null){address.setText(resume.getAddress().getC_city());}
+        if(resume.getAddress()!=null){address.setText(resume.getAddress()._city.getC_city());}
         if(candidate.getTel()!=null){tel.setText(candidate.getTel());}
         final Calendar c = Calendar.getInstance();
         birth_select_layout.setOnClickListener(new View.OnClickListener() {
@@ -166,9 +167,9 @@ public void initAction(){
     }
     public void doSave(){
         GlobalProvider.getInstance().resume.setName(name.getText().toString());
-        if(GlobalProvider.getInstance().resume.getAddress()!=null){
-            GlobalProvider.getInstance().resume.setAddress( GlobalProvider.getInstance().resume.getAddress());
-        }
+//        if(GlobalProvider.getInstance().resume.getAddress()!=null){
+//            GlobalProvider.getInstance().resume.setAddress( GlobalProvider.getInstance().resume.getAddress());
+//        }
         GlobalProvider.getInstance().resume.setTel(tel.getText().toString());
         GlobalProvider.getInstance().resume.setBirth(Str_data);
         GlobalProvider.getInstance().resume.setGender(gender);
@@ -209,7 +210,10 @@ public void initAction(){
                 if (resultCode == RESULT_OK) {
                     if(GlobalProvider.getInstance().city!=null){
                         address.setText(GlobalProvider.getInstance().city.getC_city());
-                        GlobalProvider.getInstance().resume.setAddress(GlobalProvider.getInstance().city);
+                        if(GlobalProvider.getInstance().resume.getAddress()==null){
+                            GlobalProvider.getInstance().resume.setAddress(new CityBodyDown());
+                        }
+                        GlobalProvider.getInstance().resume.address.set_city(GlobalProvider.getInstance().city);
                     }
                 }
                 break;

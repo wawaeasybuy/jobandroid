@@ -22,11 +22,11 @@ public class ResumeUpdate implements Serializable{
     public Boolean beOpen;
     public int gender;
     public String tel;
-    public String address;
+    public CityBodyUp address;
     public String name;
     public String birth;
     public String expectedPosition;
-    public String expectedAddress;
+    public CityBodyUp expectedAddress;
     public String selfEvaluation;
     public String experience;
     public String works;
@@ -65,11 +65,11 @@ public class ResumeUpdate implements Serializable{
         this.tel = tel;
     }
 
-    public String getAddress() {
+    public CityBodyUp getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(CityBodyUp address) {
         this.address = address;
     }
 
@@ -99,11 +99,11 @@ public class ResumeUpdate implements Serializable{
         this.expectedPosition = expectedPosition;
     }
 
-    public String getExpectedAddress() {
+    public CityBodyUp getExpectedAddress() {
         return expectedAddress;
     }
 
-    public void setExpectedAddress(String expectedAddress) {
+    public void setExpectedAddress(CityBodyUp expectedAddress) {
         this.expectedAddress = expectedAddress;
     }
 

@@ -392,11 +392,21 @@ public class InternshipsFragment extends Fragment implements View.OnClickListene
                 }
                 break;
             case R.id.ad:
-                industryCategory="广告传媒";
-                Intent intent7 = new Intent(getActivity(), PositionSearchActivity.class);
-                intent7.putExtra("industryCategory",industryCategory);
-                intent7.putExtra("city",interCity.get_id());
-                startActivity(intent7);
+                if(interCity==null){
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage("地址不能为空！")
+                            .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            }).show();
+                }else {
+                    industryCategory = "广告传媒";
+                    Intent intent7 = new Intent(getActivity(), PositionSearchActivity.class);
+                    intent7.putExtra("industryCategory", industryCategory);
+                    intent7.putExtra("city", interCity.get_id());
+                    startActivity(intent7);
+                }
                 break;
             case R.id.outBuy:
                 if(interCity==null){

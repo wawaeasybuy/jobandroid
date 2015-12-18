@@ -78,15 +78,15 @@ public class Employer  implements Serializable {
 
     public String companyAddress;
 
-    public City getDetailedCompanyAddress() {
+    public CityBodyDown getDetailedCompanyAddress() {
         return detailedCompanyAddress;
     }
 
-    public void setDetailedCompanyAddress(City detailedCompanyAddress) {
+    public void setDetailedCompanyAddress(CityBodyDown detailedCompanyAddress) {
         this.detailedCompanyAddress = detailedCompanyAddress;
     }
 
-    public City detailedCompanyAddress;
+    public CityBodyDown detailedCompanyAddress;
     public int score;
     public int UrTicket;
 

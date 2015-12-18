@@ -177,7 +177,6 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     parseResult(new String(responseBody));
-
                     //parseLoginResult(new String(responseBody));
                     //loadjobList();
                 }
@@ -222,7 +221,7 @@ public class PositionAdActivity extends Activity implements View.OnClickListener
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
-            Job job = (Job) objectMapper.readValue(jsonParser, Job.class);
+            //Job job = (Job) objectMapper.readValue(jsonParser, Job.class);
             Toast.makeText(PositionAdActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
             if(key.equals("top")&&state==0){
                 GlobalProvider.getInstance().employer.setTopTicket(GlobalProvider.getInstance().employer.getTopTicket()-1);

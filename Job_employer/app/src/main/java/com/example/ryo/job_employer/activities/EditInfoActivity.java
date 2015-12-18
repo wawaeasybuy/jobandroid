@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.ryo.job_employer.R;
 import com.example.ryo.job_employer.helper.GlobalProvider;
 import com.example.ryo.job_employer.helper.RequestListener;
+import com.example.ryo.job_employer.models.CityBodyUp;
 import com.example.ryo.job_employer.models.Employer;
 import com.example.ryo.job_employer.models.EmployerUpdate;
 import com.example.ryo.job_employer.models.Http.ResponseHandlerInterface;
@@ -217,7 +218,13 @@ public class EditInfoActivity extends Activity implements View.OnClickListener{
     public void doSave(Boolean isRelease){
         //GlobalProvider.getInstance().employer.setName(name.getText().toString());
         if(name.getText()!=null){employer.setName(name.getText().toString());}
-        if(GolEmployer.getDetailedCompanyAddress()!=null){employer.setDetailedCompanyAddress(GolEmployer.getDetailedCompanyAddress().get_id());}
+        if(GolEmployer.getDetailedCompanyAddress()!=null){
+            if(employer.detailedCompanyAddress==null){
+                employer.setDetailedCompanyAddress(new CityBodyUp());
+            }
+            employer.detailedCompanyAddress.set_city(GolEmployer.getDetailedCompanyAddress()._city.get_id());
+            employer.detailedCompanyAddress.setCityCode(GolEmployer.getDetailedCompanyAddress()._city.getCityCode());
+        }
         if(GolEmployer.getCompanyAddress()!=null){employer.setCompanyAddress(GolEmployer.getCompanyAddress());}
         if(GolEmployer.getCompanyInfo()!=null){employer.setCompanyInfo(GolEmployer.getCompanyInfo());}
         if(GolEmployer.getCompanyURL()!=null){employer.setCompanyURL(GolEmployer.getCompanyURL());}

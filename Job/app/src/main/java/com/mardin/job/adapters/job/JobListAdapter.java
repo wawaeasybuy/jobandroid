@@ -90,7 +90,7 @@ public class JobListAdapter extends BaseAdapter {
         if(job.getIsUrg()){holder.urg.setVisibility(View.VISIBLE);}else{holder.urg.setVisibility(View.GONE);}
         holder.job_character_layout.setVisibility(View.GONE);
         if(job.getPositionName()!=null){holder.positionName.setText(job.getPositionName());}
-        if(job.getCompanyAddress()!=null){holder.city.setText(job.getCompanyAddress());}
+        if(job.getWorkAddress()!=null){holder.city.setText(job.getWorkAddress()._city.getC_city());}
         holder.salary.setText("底薪"+job.getSalary());
         if(job.getTimeUpdate()!=null){holder.timeUpdate.setText(ConverToString(job.getTimeUpdate()));}
         if(job.getPositionCharacter()!=null&&!job.getPositionCharacter().equals("")){holder.job_character.setText(job.getPositionCharacter());}else{holder.job_character.setText("暂无职位特色");}

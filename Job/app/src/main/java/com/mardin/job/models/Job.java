@@ -198,4 +198,14 @@ public class Job implements Serializable{
 
     public Boolean isPush;
 
+    public CityBodyDown getWorkAddress() {
+        return workAddress;
+    }
+
+    public void setWorkAddress(CityBodyDown workAddress) {
+        this.workAddress = workAddress;
+    }
+
+    public CityBodyDown  workAddress;
+
 }

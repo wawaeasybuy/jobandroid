@@ -170,11 +170,11 @@ public class Job implements Serializable {
 
     public Boolean isPush;
 
-    public City getWorkAddress() {
+    public CityBodyDown getWorkAddress() {
         return workAddress;
     }
 
-    public void setWorkAddress(City workAddress) {
+    public void setWorkAddress(CityBodyDown workAddress) {
         this.workAddress = workAddress;
     }
 
@@ -186,7 +186,7 @@ public class Job implements Serializable {
         this.detailedAddress = detailedAddress;
     }
 
-    public City  workAddress;
+    public CityBodyDown  workAddress;
     public String detailedAddress;
 
 }

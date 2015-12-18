@@ -26,6 +26,7 @@ import com.mardin.job.R;
 import com.mardin.job.helper.GlobalProvider;
 import com.mardin.job.helper.RequestListener;
 import com.mardin.job.models.Candidate;
+import com.mardin.job.models.CityBodyUp;
 import com.mardin.job.models.Resume;
 import com.mardin.job.models.ResumeUpdate;
 import com.mardin.job.network.Constants;
@@ -224,24 +225,101 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
     }
     public void doSave(){
         Resume Resume=GlobalProvider.getInstance().resume;
+
+        if(Resume.getAddress()==null){
+            new AlertDialog.Builder(this)
+                    .setMessage("简历居住地选项为空，简历将不能保存！")
+                    .setNegativeButton("是，退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("继续填写", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
+        if(Resume.getExpectedAddress()==null){
+            new AlertDialog.Builder(this)
+                    .setMessage("简历期望工作地点选项为空，简历将不能保存！")
+                    .setNegativeButton("是，退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("继续填写", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
+        if(Resume.getAddress().get_city()==null){
+            new AlertDialog.Builder(this)
+                    .setMessage("简历居住地选项为空，简历将不能保存！")
+                    .setNegativeButton("是，退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("继续填写", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
+        if(Resume.getExpectedAddress().get_city()==null){
+            new AlertDialog.Builder(this)
+                    .setMessage("简历期望工作地点选项为空，简历将不能保存！")
+                    .setNegativeButton("是，退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doResult();
+                        }
+                    })
+                    .setPositiveButton("继续填写", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
+            return;
+        }
         ResumeUpdate resumeUpdate=new ResumeUpdate();
 
         if(Resume.getName()!=null){resumeUpdate.setName(Resume.getName());}
-        if(Resume.getName()!=null){resumeUpdate.setAddress(Resume.getAddress().get_id());}
-        if(Resume.getName()!=null){resumeUpdate.setTel(Resume.getTel());}
-        if(Resume.getName()!=null){resumeUpdate.setBirth(Resume.getBirth());}
-        if(Resume.getName()!=null){resumeUpdate.setGender(Resume.getGender());}
-        if(Resume.getName()!=null){resumeUpdate.setExpectedAddress(Resume.getExpectedAddress().get_id());}
-        if(Resume.getName()!=null){resumeUpdate.setExpectedIndustry(Resume.getExpectedIndustry());}
-        if(Resume.getName()!=null){resumeUpdate.setExpectedPosition(Resume.getExpectedPosition());}
-        if(Resume.getName()!=null){resumeUpdate.setSchoolName(Resume.getSchoolName());}
-        if(Resume.getName()!=null){resumeUpdate.setProfessional(Resume.getProfessional());}
-        if(Resume.getName()!=null){resumeUpdate.setGrade(Resume.getGrade());}
-        if(Resume.getName()!=null){resumeUpdate.setGraduationTime(Resume.getGraduationTime());}
-        if(Resume.getName()!=null){resumeUpdate.setInternshipExprience(Resume.getInternshipExprience());}
-        if(Resume.getName()!=null){resumeUpdate.setSelfEvaluation(Resume.getSelfEvaluation());}
-        if(Resume.getName()!=null){resumeUpdate.setExperience(Resume.getExperience());}
-        if(Resume.getName()!=null){resumeUpdate.setWorks(Resume.getWorks());}
+        if(resumeUpdate.address==null){
+            resumeUpdate.setAddress(new CityBodyUp());
+        }
+        if(Resume.getAddress()!=null){
+            resumeUpdate.address.set_city(Resume.getAddress()._city.get_id());
+            resumeUpdate.address.setCityCode(Resume.getAddress()._city.getCityCode());
+        }
+        if(Resume.getTel()!=null){resumeUpdate.setTel(Resume.getTel());}
+        if(Resume.getBirth()!=null){resumeUpdate.setBirth(Resume.getBirth());}
+        resumeUpdate.setGender(Resume.getGender());
+        if(resumeUpdate.expectedAddress==null){
+            resumeUpdate.setExpectedAddress(new CityBodyUp());
+        }
+        if(Resume.getExpectedAddress()!=null){
+            resumeUpdate.expectedAddress.set_city(Resume.getExpectedAddress()._city.get_id());
+            resumeUpdate.expectedAddress.setCityCode(Resume.getExpectedAddress()._city.getCityCode());
+        }
+        if(Resume.getExpectedIndustry()!=null){resumeUpdate.setExpectedIndustry(Resume.getExpectedIndustry());}
+        if(Resume.getExpectedPosition()!=null){resumeUpdate.setExpectedPosition(Resume.getExpectedPosition());}
+        if(Resume.getSchoolName()!=null){resumeUpdate.setSchoolName(Resume.getSchoolName());}
+        if(Resume.getProfessional()!=null){resumeUpdate.setProfessional(Resume.getProfessional());}
+        if(Resume.getGrade()!=null){resumeUpdate.setGrade(Resume.getGrade());}
+        if(Resume.getGraduationTime()!=null){resumeUpdate.setGraduationTime(Resume.getGraduationTime());}
+        if(Resume.getInternshipExprience()!=null){resumeUpdate.setInternshipExprience(Resume.getInternshipExprience());}
+        if(Resume.getSelfEvaluation()!=null){resumeUpdate.setSelfEvaluation(Resume.getSelfEvaluation());}
+        if(Resume.getExperience()!=null){resumeUpdate.setExperience(Resume.getExperience());}
+        if(Resume.getWorks()!=null){resumeUpdate.setWorks(Resume.getWorks());}
         if(Resume.getBeOpen()!=null&&!Resume.getBeOpen()){
             resumeUpdate.setBeOpen(Resume.getBeOpen());
         }
@@ -370,7 +448,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
                 resume_name.setText("简历名称未填写");
             }
             if(candidate.getTel()!=null&&!candidate.getTel().equals("")){tel.setText("联系方式: "+candidate.getTel());}else{tel.setText("联系方式: 未填写");}
-            if(resume.getAddress()!=null){address.setText("居住地: "+resume.getAddress().getC_city());}else{address.setText("居住地: 未填写");}
+            if(resume.getAddress()!=null){address.setText("居住地: "+resume.getAddress()._city.getC_city());}else{address.setText("居住地: 未填写");}
             if(resume.getBirth()!=null&&!resume.getBirth().equals("")){birth.setText("出生年月: "+resume.getBirth());}else{birth.setText("出生年月: 未填写");}
 
             if(candidate.getName()!=null&&!candidate.getName().equals("")&&candidate.getTel()!=null&&!candidate.getTel().equals("")&&resume.getAddress()!=null&&resume.getBirth()!=null&&!resume.getBirth().equals("")){
@@ -392,7 +470,7 @@ public class EditResumeActivity extends Activity implements View.OnClickListener
             job_intention.setVisibility(View.VISIBLE);
             if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")){expectedIndustry.setText("期望行业: "+resume.getExpectedIndustry());}else{expectedIndustry.setText("期望行业: 未填写");}
             if(resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")){expectedPosition.setText("期望职位: "+resume.getExpectedPosition());}else{expectedPosition.setText("期望职位: 未填写");}
-            if(resume.getExpectedAddress()!=null){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress().getC_city());}else{expectedAddress.setText("期望工作地点: 未填写");}
+            if(resume.getExpectedAddress()!=null){expectedAddress.setText("期望工作地点: "+resume.getExpectedAddress()._city.getC_city());}else{expectedAddress.setText("期望工作地点: 未填写");}
 
             if(resume.getExpectedIndustry()!=null&&!resume.getExpectedIndustry().equals("")&&resume.getExpectedPosition()!=null&&!resume.getExpectedPosition().equals("")&&resume.getExpectedAddress()!=null){
                 job_intention_nofill.setText("已完善");

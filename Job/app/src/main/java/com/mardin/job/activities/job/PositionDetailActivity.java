@@ -79,6 +79,7 @@ public class PositionDetailActivity extends Activity {
             if(job.getPositionCharacter()!=null){positionCharacter.setText(job.getPositionCharacter());}
             if(job.getPositionName()!=null){job_name.setText(job.getPositionName());}
             if(job.getTimeUpdate()!=null){time_update.setText(ConverToString(job.getTimeUpdate()));}
+            if(job.getWorkAddress()!=null){companyAddress.setText(job.getWorkAddress()._city.getC_city());}
             salary.setText("底薪"+job.getSalary()+"加提成");
             if(job.getRequirement()!=null){requirement.setText(job.getRequirement());}
         }
@@ -130,7 +131,6 @@ public class PositionDetailActivity extends Activity {
             JsonParser jsonParser = jsonFactory.createJsonParser(json);
             Job_delivered job = (Job_delivered) objectMapper.readValue(jsonParser, Job_delivered.class);
             if(job._employer.getCompanyname()!=null){companyName.setText(job._employer.getCompanyname());}
-            if(job._employer.getCompanyAddress()!=null){companyAddress.setText(job._employer.getCompanyAddress());}
             if(job._employer.getCompanyInfo()!=null){companyInfo.setText(job._employer.getCompanyInfo());}
             if(job._employer.getCompanyURL()!=null){companyUrl.setText(job._employer.getCompanyURL());}
             if(job._employer.getMainBusiness()!=null){mainBusiness.setText(job._employer.getMainBusiness());}
